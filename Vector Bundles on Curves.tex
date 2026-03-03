@@ -1,0 +1,474 @@
+\documentclass{ctexart}
+\usepackage[a4paper,left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{amssymb,amsfonts,amsmath,amsthm}
+\usepackage{anyfontsize}
+\usepackage{graphicx}
+\usepackage{tikz-cd}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage{mathrsfs}
+\usepackage[colorlinks = true,      % 启用彩色链接而非带框链接
+            linkcolor = blue,       % 内部链接（如目录、交叉引用）颜色
+            urlcolor = blue,        % 外部链接颜色
+            citecolor = blue]{hyperref} % 参考文献链接颜色
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{setting}{Setting}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{reason}{Reason}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{exercise}{Exercise}[section]
+
+\renewcommand{\proofname}{\textit{Proof}}
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\refname}{References}
+\renewcommand{\hom}{\operatorname{Hom}}
+
+\newcommand{\leftquotes}{``}
+\newcommand{\rightquotes}{''}
+
+\newcommand{\mapsfrom}{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+\newcommand{\longmapsfrom}{\mathrel{\reflectbox{\ensuremath{\longmapsto}}}}
+\newcommand{\groupaction}{\mathrel{\text{\scalebox{1.5}{\rotatebox[origin=c]{90}{$\circlearrowright$}}}}}
+
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\identity}{\operatorname{id}}
+\newcommand{\trdeg}{\operatorname{trdeg}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\depth}{\operatorname{depth}}
+\newcommand{\height}{\operatorname{height}}
+\newcommand{\projdim}{\dim_{\operatorname{proj}}}
+\newcommand{\characteristic}{\operatorname{Char}}
+
+\newcommand{\derivation}{\operatorname{Der}}
+\newcommand{\ext}{\operatorname{Ext}}
+\newcommand{\mor}{\operatorname{Mor}}
+\newcommand{\aut}{\operatorname{Aut}}
+\newcommand{\homend}{\operatorname{End}}
+
+\newcommand{\sheafhom}{\mathcal{H}\kern -.5pt om}
+\newcommand{\sheaftor}{\mathcal{T}\kern -.5pt or}
+\newcommand{\sheafext}{\mathcal{E}\kern -.5pt xt}
+\newcommand{\sheafend}{\mathcal{E}\kern -.5pt nd}
+
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\coim}{\operatorname{coim}}
+\newcommand{\cone}{\operatorname{cone}}
+\newcommand{\exceptionallocus}{\operatorname{Ex}}
+\newcommand{\totalcomplex}{\operatorname{Tot}}
+
+\newcommand{\spec}{\operatorname{Spec}}
+\newcommand{\proj}{\operatorname{Proj}}
+\newcommand{\spf}{\operatorname{Spf}}
+\newcommand{\fraction}{\operatorname{Frac}}
+\newcommand{\singular}{\operatorname{Sing}}
+\newcommand{\support}{\operatorname{Supp}}
+
+\newcommand{\reduction}{\operatorname{red}}
+\newcommand{\normalization}{\operatorname{nor}}
+\newcommand{\regular}{\operatorname{reg}}
+\newcommand{\smooth}{\operatorname{sm}}
+\newcommand{\analytification}{\operatorname{an}}
+
+\newcommand{\inverselimit}{\underset{\longleftarrow}{\lim}} 
+\newcommand{\colimit}{\underset{\longrightarrow}{\lim}}
+\newcommand{\derivedotimes}{\overset{\llcorner}{\otimes}}
+
+\newcommand{\grassmannianscheme}[2]{\operatorname{Gr}(#1, #2)}
+\newcommand{\grassmanmianfunctor}[2]{\mathcal{G}\kern -.5pt r(#1, #2)}
+\newcommand{\hilbertscheme}{\operatorname{Hilb}}
+\newcommand{\hilbertfunctor}{\mathcal{H}\kern -.5pt ilb}
+\newcommand{\picardscheme}{\operatorname{Pic}}
+\newcommand{\picardfunctor}{\mathcal{P}\kern -.5pt ic}
+\newcommand{\isomorphismscheme}{\operatorname{Isom}}
+\newcommand{\isomorphismfunctor}{\mathcal{I}\kern -.5pt som}
+
+\newcommand{\abeliangroups}{\mathbf{Ab}}
+\newcommand{\rings}{\mathbf{Ring}}
+\newcommand{\commutativerings}{\mathbf{CRing}}
+
+\newcommand{\module}{\operatorname{Mod}}
+\newcommand{\algebra}{\operatorname{Alg}}
+\newcommand{\scheme}{\operatorname{Sch}}
+
+\newcommand{\matrices}[2]{\operatorname{Mat}_{#1}(#2)}
+\newcommand{\generallineargroup}[2]{\operatorname{GL}_{#1}(#2)}
+\newcommand{\speciallineargroup}[2]{\operatorname{SL}_{#1}(#2)}
+\newcommand{\projectivespeciallineargroup}[2]{\operatorname{PSL}_{#1}(#2)}
+
+\newcommand{\order}{\operatorname{ord}}
+\newcommand{\divisor}{\operatorname{div}}
+\newcommand{\annihilator}{\operatorname{ann}}
+
+\title{Vector Bundles on Curves}
+\author{Taught by Jiabin Du}
+\date{}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section*{Introduction}
+\label{section:Introduction}
+
+The course aims at introducing vector bundles on curve and Koszul cohomology.
+You may benefit from the following references
+\begin{itemize}
+    \item \emph{Koszul Cohomology and Algebraic Geometry}, Aprodu-Nagel
+    \item \emph{Lectures on Vector Bundles}, J.Le Potier
+    \item \emph{The Geometry of Moduli Space of Sheaves}, Huybrechts-Lehn.
+\end{itemize}
+
+\section{Vector Bundles}
+\label{section:Vector_Bundles}
+
+\subsection{Sheaf theory}
+\label{subsection:Vector_Bundles_Sheaf_theory}
+
+Recall the definition of sheaves.
+\begin{definition}
+    Let $X$ be a topological space and $\mathcal{C}$ be a category.
+    Assume $op(X)$ is the category of open subsets of X with morphisms are inclusions.
+    A presheaf on $X$ valued on $\mathcal{C}$ (or say of $\mathcal{C}$) is a contravariant functor $\mathcal{F}: op(X) \longrightarrow \mathcal{C}$.
+\end{definition}
+\begin{remark}
+    Though we can consider this general definition of presheaf, we would only consider presheaves at least valued on $Ab$,
+    where $Ab$ is the category of abelian groups.
+    In addition, we need these presheaves map $\varnothing$ to $\{0\}$.
+\end{remark}
+\begin{definition}
+    Let $X$ be a topological space, $\mathcal{F}$ presheaf of abelian groups on $X$.
+    For $V \subseteq V$, we call the correspondence homomorphism $\mathcal{F}(U) \longrightarrow \mathcal{F}(V)$ a restriction map, denoted by $\cdot \rho_{UV}$.
+    Elements in $\mathcal{F}(U)$ is called a section of $\mathcal{F}$ on $U$.
+    In particular, if $U = X$, we call elements of $\mathcal{F}(X)$ global sections, otherwise local sections.
+\end{definition}
+\begin{remark}
+    For convenience, for $s\in \mathcal{F}(U)$, we would write $s\big{|}_V$ to denote image of $s$ instead of $\rho_{UV}(s)$.
+    Also, sometimes $\mathcal{F}(U)$ can be rewritten as $\Gamma(U, \mathcal{F})$.
+\end{remark}
+\begin{definition}
+    Let $X$ be a topological space, $\mathcal{F}$ presheaf of abelian groups on $X$.
+    $\mathcal{F}$ is a sheaf on $X$ if it satisfies that \\
+    (1)For each open subset $U$ with open covering $\{U_{i}\}_{i\in I}$ and $s\in \mathcal{F}(U)$, 
+    if $s\big{|}_{U_{i}} = 0$ for all $i$, then $s = 0$. \\
+    (2)For each open subset $U$ with open covering $\{U_{i}\}_{i\in I}$,
+    if there exists $s_{i}\in \mathcal{F}(U_{i})$ for all $i$, satisfying $s_{i}\big{|}_{U_{i} \cap U_{j}} = s_{j}\big{|}_{U_{i} \cap U_{j}}$ for all $i,j$,
+    then there exists $s\in \mathcal{F}(U)$ such that $s\big{|}_{U_{i}} = s_{i}$ for all $i$.
+\end{definition}
+\begin{remark}
+    The two conditions in fact give a exact sequence for each open subset $U$ with open covering $\{U_{i}\}_{i\in I}$.
+    \begin{equation*}
+        0 \longrightarrow \mathcal{F}(U) \longrightarrow \prod_{i\in I} \mathcal{F}(U_{i}) \longrightarrow \prod_{i,j\in I} \mathcal{F}(U_{i} \cap U_{j})
+    \end{equation*}
+\end{remark}
+\begin{example}
+    (1)Let $X$ be a topological space.
+    Then $U \longmapsto \{\text{continuous functions $U \longrightarrow \mathbb{R}$}\}$ give a sheaf on $X$. \\
+    (2)Let $X = \mathbb{R}^{n}$.
+    Then $U \longmapsto \{\text{$C^{\infty}$-functions $U \longrightarrow \mathbb{R}$}\}$ gives a sheaf on $X$. \\
+    (3)Let $X$ be a topological space and $A$ be an abelian group.
+    View $A$ as a topological space with discrete topology.
+    Then $U \longmapsto \{\text{locally constant functions $U \longrightarrow A$}\}$ gives a sheaf on $X$, which is called the constant sheaf of $A$ on $X$.
+\end{example}
+\begin{definition}
+    Let $X$ be a topological space, $\mathcal{F}$ (pre)sheaf of abelian groups on $X$.
+    For $x\in X$, define the stalk of $\mathcal{F}$ at $x$ to be $\mathcal{F}_{x} = \underset{\underset{U\ni x}{\longrightarrow}}{\lim} \mathcal{F}(U)$.
+    More concretely, an element of $\mathcal{F}_{x}$ is represented by a pair $(U, s) = s_{x}$ where $U$ is an open neighbourhood of x and $s\in \mathcal{F}(U)$, called a germ.
+    Two germs $(U, s)$ and $(V, t)$ represent the same element if there exists open neighbourhood $W$ of $x$ such that $W \subseteq U \cap V$ and $s\big{|}_{W} = t\big{|}_{W}$.
+\end{definition}
+\begin{proposition}
+    Let $X$ be a topological space, $\mathcal{F}$ sheaf of abelian groups on $X$.
+    Suppose $U$ is an open subset of $X$ and $s,t\in \mathcal{F}(U)$.
+    Then $s = t$ if and only if $s_{x} = t_{x}$ for all $x\in U$.
+    \label{Proposition 1.1}
+\end{proposition}
+\begin{proof}
+    $\leftquotes \Rightarrow \rightquotes$: Obviously.
+    \par
+    $\leftquotes \Leftarrow \rightquotes$: Since for all $x\in U$, we have $s_{x} = t_{x}$,
+    there exists open neighbourhood $W_{x}$ of $x$ such that $W_{x} \subseteq U$ and $s\big{|}_{W_{x}} = t\big{|}_{W_{x}}$.
+    Note that $\{W_{x}\}_{x\in U}$ form an open covering of $U$.
+    By property of sheaf, we get $s = t$.
+\end{proof}
+\begin{definition}
+    Let $X$ be a topological space, $\mathcal{F}, \mathcal{G}$ (pre)sheaves of abelian groups on $X$.
+    A morphism $\varphi$ from $\mathcal{F}$ to $\mathcal{G}$ is a family of group homomorphisms $\varphi(U): \mathcal{F}(U) \longrightarrow \mathcal{G}(U)$ such that for $V \subseteq U$,
+    there is a commutative diagram
+    \begin{equation*}
+        \begin{tikzcd}
+            \mathcal{F}(U) \arrow[r, "\varphi(U)"] \arrow[d, "\rho_{UV}"] &
+            \mathcal{G}(U) \arrow[d, "\rho_{UV}"] \\
+            \mathcal{F}(V) \arrow[r, "\varphi(V)"] &
+            \mathcal{G}(V)
+        \end{tikzcd}
+    \end{equation*}
+\end{definition}
+\begin{remark}
+    By property of direct limit, morphism $\varphi$ gives homomorphism $\varphi_{x}: \mathcal{F}_{x} \longrightarrow \mathcal{G}_{x}$ for all $x\in X$.
+\end{remark}
+\begin{definition}
+    Let $X$ be a topological space, $\varphi: \mathcal{F} \longrightarrow \mathcal{G}$ morphism of (pre)sheaves of abelian groups on $X$.
+    We say $\varphi$ is isomorphic if there exists morphism $\psi: \mathcal{G} \longrightarrow \mathcal{F}$ such that for each open subsets $U$, 
+    $\psi(U)\varphi(U) = \identity_{\mathcal{F}(U)}$ and $\varphi(U)\psi(U) = \identity_{\mathcal{G}(U)}$.
+\end{definition}
+\begin{proposition}
+    Let $X$ be a topological space, $\varphi: \mathcal{F} \longrightarrow \mathcal{G}$ morphism of sheaves of abelian groups on $X$.
+    Then $\varphi$ is isomorphic if and only if $\varphi_{x}$ is isomorphic for all $x\in X$.
+    \label{Proposition 1.2}
+\end{proposition}
+\begin{proof}
+    "$\Rightarrow$": For all $(U, t)\in \mathcal{F}_{x}$, since $\varphi(V)$ is isomorphic,
+    there exists $s\in \mathcal{F}(U)$ such that $\varphi(V)(s) = t$.
+    Thus $\varphi_{x}((U, s)) = (U, t)$, get $\varphi_{x}$ is surjective.
+    For all $(U, s)\in \ker(\varphi_{x})$, $(U, \varphi(U)(s)) = 0$ in $\mathcal{G}_{x}$.
+    Then there exists open neighbourhood $V$ of $x$ such that $V \subseteq U$ and $\varphi(U)(s)\big{|}_{V} = 0$.
+    By commutative diagram, $\varphi(U)(s)\big{|}_{V} = \varphi(V)(s\big{|}_{V})$.
+    Since $\varphi(V)$ is isomorphic, get $s\big{|}_{V} = 0$ and so $(U, s) = 0$ in $\mathcal{F}_{x}$.
+    Get $\varphi_{x}$ is isomorphic.
+    \par
+    "$\Leftarrow$": For each open subset $U$, want to show that $\varphi(U)$ is isomorphic.
+    For $s\in \ker{\varphi(U)}$, $\varphi(U)(s) = 0$.
+    Then for all $x\in U$, $(U, \varphi(U)(s)) = 0$ in $\mathcal{G}_{x}$.
+    As $(U, \varphi(U)(s)) = \varphi_{x}((U, s))$ and $\varphi_{x}$ is isomorphic, get $(U, s) = 0$ in $\mathcal{F}_{x}$.
+    Thus there exists open neighbourhood $W_{x}$ of $x$ such that $W_{x} \subseteq U$ and $s\big{|}_{W_{x}} = 0$.
+    By property of sheaf, get $s = 0$ and so $\varphi(U)$ is injective.
+    \par
+    For all $t\in \mathcal{G}(U)$, $(U, t)$ is an element of $\mathcal{G}_{x}$ for all $x\in U$.
+    Then there exists $(V_{x}, s(x))\in \mathcal{F}_{x}$ such that $\varphi_{x}((V_{x}, s(x))) = (U, t)$ and $\varphi(V_{x})(s(x)) = t\big{|}_{V_{x}}$.
+    Note that $\varphi(V_{x} \cap V_{y})(s(x)\big{|}_{V_{x} \cap V_{y}}) = (t\big{|}_{V_{x}})\big{|}_{V_{x} \cap V_{y}} = (t\big{|}_{V_{y}})\big{|}_{V_{x} \cap V_{y}} = \varphi(V_{x} \cap V_{y})(s(y)\big{|}_{V_{x} \cap V_{y}})$.
+    Since $\varphi(V_{x} \cap V_{y})$ is injective, get $s(x)\big{|}_{V_{x} \cap V_{y}} = s(y)\big{|}_{V_{x} \cap V_{y}}$.
+    By property of sheaf, there exists $s\in \mathcal{F}(U)$ such that $s\big{|}_{V_{x}} = s(x)$.
+    So $\varphi(U)(s)\big{|}_{V_{x}} = \varphi(V_{x})(s(x)) = t\big{|}_{V_{x}}$.
+    By property of sheaf, get $\varphi(U)(s) = t$ and so $\varphi(U)$ is isomorphic.
+\end{proof}
+\begin{definition}
+    Let $X$ be a topological space, $\varphi: \mathcal{F} \longrightarrow \mathcal{G}$ morphism of presheaves of abelian groups on $X$.
+    We have several notions
+    \begin{itemize}
+        \item Define the kernel of $\varphi$ to be $\ker(\varphi): op(X) \longrightarrow Ab\quad U \longmapsto \ker(\varphi(U))$.
+        \item Define the image of $\varphi$ to be $im(\varphi): op(X) \longrightarrow Ab\quad U \longmapsto im(\varphi(U))$.
+        \item Define the cokernel of $\varphi$ to be $coker(\varphi): op(X) \longrightarrow Ab\quad U \longmapsto coker(\varphi(U))$.
+    \end{itemize}
+\end{definition}
+\begin{remark}
+    The definition of cokernel in fact induce the definition of quotient presheaf.
+\end{remark}
+\begin{definition}[\textbf{\emph{Sheafification}}]
+    Let $X$ be a topological space, $\mathcal{F}$ presheaf of abelian groups on $X$.
+    Define a sheaf $\mathcal{F}^{+}$ of abelian groups on $X$ by $U \longmapsto \mathcal{F}^{+}(U)$, 
+    where $\mathcal{F}^{+}(U) = \{(s_{x})_{x\in U} \big{|} \text{ for all $x\in U$, $\exists$ \text{open} $V_{x}\ni x$ and $t(x)\in \mathcal{F}(V_{x})$ such that $t(x)_{y} = s_{y}$, $\forall y\in V_{x}$}\}$ is a subset of $\prod_{x\in U} \mathcal{F}_{x}$.
+\end{definition}
+\begin{proposition}
+    Let $X$ be a topological space, $\mathcal{F}$ presheaf of abelian groups on X.
+    Show that there is a natural morphism of presheaves $\varphi: \mathcal{F} \longrightarrow \mathcal{F}^{+}$ satisfies that
+    \begin{itemize}
+        \item $\varphi_{x}$ is identity homomorphism.
+        \item If $\mathcal{F}$ is sheaf, then $\varphi$ is isomorphism.
+        \item For any morphism of presheaves $\psi: \mathcal{F} \longrightarrow \mathcal{G}$ where $\mathcal{G}$ is a sheaf,
+        there exists unique morphism $\phi: \mathcal{F}^{+} \longrightarrow \mathcal{G}$ such that the following diagram commutes.
+        \begin{equation}
+            \begin{tikzcd}
+                \mathcal{F} \arrow[rr, "\psi"] \arrow[dr, "\varphi"] &&
+                \mathcal{G} \\
+                & \mathcal{F}^{+} \arrow[ur, "\phi"] &
+            \end{tikzcd}
+        \end{equation}
+    \end{itemize}
+    \label{Proposition 1.3}
+\end{proposition}
+\begin{reason}
+    The construction of $\varphi$ is just $\varphi(U): s \longmapsto (s_{x})_{x\in U}$.
+\end{reason}
+\begin{definition}
+    Let $X$ be a topological space, $\varphi: \mathcal{F} \longrightarrow \mathcal{G}$ morphism of sheaves of abelian groups on X. \\
+    (1)Define the kernel of $\varphi$ to be $\ker(\varphi): op(X) \longrightarrow Ab\quad U \longmapsto \ker(\varphi(U))$. \\
+    (2)Define the image of $\varphi$ to be sheafification of $op(X) \longrightarrow Ab\quad U \longmapsto im(\varphi(U))$, denoted by $im(\varphi)$. \\
+    (3)Define the cokernel of $\varphi$ to be sheafification of $op(X) \longrightarrow Ab\quad U \longmapsto coker(\varphi(U))$, denoted by $coker(\varphi)$.
+\end{definition}
+\begin{remark}
+    The definition of cokernel in fact induce the definition of quotient sheaf.
+\end{remark}
+\begin{definition}
+    Let $X$ be a topological space, $\varphi: \mathcal{F} \longrightarrow \mathcal{G}$ morphism of sheaves of abelian groups on X. \\
+    (1)We say that $\varphi$ is injective if $\ker(\varphi) = 0$. \\
+    (2)We say that $\varphi$ is surjective if $im(\varphi) = \mathcal{G}$
+\end{definition}
+\begin{proposition}
+    Let $X$ be a topological space, $\varphi: \mathcal{F} \longrightarrow \mathcal{G}$ morphism of sheaves of abelian groups on X.
+    Then \\
+    (1)$\varphi$ is injective if and only if $\varphi(U)$ is injective for all open subset U. \\
+    (2)$\varphi$ is injective if and only if $\varphi_{x}$ is injective for all $x\in X$. \\
+    (3)$\varphi$ is surjective if and only if $\varphi_{x}$ is surjective for all $x\in X$. \\
+    (4)$\varphi$ is isomorphic if and only if $\varphi$ is injective and surjective.
+    \label{Proposition 1.4}
+\end{proposition}
+\begin{remark}
+    The proof is similar to proof of Proposition \ref{Proposition 1.2}.
+    In addition, Hartshorne exercise II 1.2 gives a more explicit sketch.
+\end{remark}
+\begin{definition}[\textbf{\emph{Direct Image and Inverse Image}}]
+    Let $f:X \longrightarrow Y$ be continuous map of topological spaces, $\mathcal{F}$ sheaf of abelian groups on X, $\mathcal{G}$ sheaf of abelian groups on Y. \\
+    (1)Define dierct image to be the sheaf $f_{\ast}\mathcal{F}: V \longmapsto f_{\ast}\mathcal{F}(V) = \mathcal{F}(f^{-1}(V))$. \\
+    (2)Define inverse image to be the sheafification of $U \longmapsto \underset{\underset{V \supseteq f(U)}{\longrightarrow}}{\lim} \mathcal{G}(V)$, denoted by $f^{-1}\mathcal{G}$.
+\end{definition}
+\begin{remark}
+    In general, we don't have $(f_{\ast}\mathcal{F})_{f(x)} \neq \mathcal{F}_{x}$,
+    while there is a canonical homomorphism $(f_{\ast}\mathcal{F})_{f(x)} \longrightarrow \mathcal{F}_{x}$.
+    On the other hand, we always have $(f^{-1}\mathcal{G})_{x} = \mathcal{G}_{f(X)}$.
+\end{remark}
+\begin{example}
+    Let $i: Z \hookrightarrow X$ be an inclusion of topological spaces, $\mathcal{F}$ sheaf of abelian groups on X.
+    We often write $i^{-1}\mathcal{F}$ as $\mathcal{F}\big{|}_{Z}$.
+\end{example}
+
+\subsection{Sheaf modules}
+\label{subsection:Vector_Bundles_Sheaf_modules}
+
+\begin{definition}
+    Let $X$ be a scheme or $(X, \mathcal{O}_{X})$ be a ringed space.
+    A sheaf of $\mathcal{O}_{X}$-modules is a sheaf of abelian groups $\mathcal{F}$ on X such that for all $U \subseteq X$ open, 
+    $\mathcal{F}(U)$ is a module over $\mathcal{O}_{X}(U)$ which is compatible with restriction maps.
+\end{definition}
+\begin{definition}
+    Let $X$ be a scheme or $(X, \mathcal{O}_{X})$ be a ringed space, $\mathcal{F},\mathcal{G}$ two $\mathcal{O}_{X}$-modules.
+    A morphism $\varphi$ from $\mathcal{F}$ to $\mathcal{G}$ is a morphism of sheaves compatible with the module structure i.e. for all $U \subseteq X$ open, 
+    $\varphi(U): \mathcal{F}(U) \longrightarrow \mathcal{G}(U)$ is a homomorphism of $\mathcal{O}_{X}(U)$-modules.
+\end{definition}
+\begin{remark}
+    Kernel, image and cokernel of a morphism of $\mathcal{O}_{X}$-modules are still $\mathcal{O}_{X}$-modules.
+    Can also define submodule, quotient module and direct sum.
+\end{remark}
+\begin{definition}
+    Let $X$ be a scheme or $(X, \mathcal{O}_{X})$ be a ringed space.
+    An sheaf ideal on X is an $\mathcal{O}_{X}$-submodule of $\mathcal{O}_{X}$.
+\end{definition}
+\begin{definition}[\textbf{\emph{Tensor Products}}]
+    Let $X$ be a scheme or $(X, \mathcal{O}_{X})$ be a ringed space, $\mathcal{F},\mathcal{G}$ two $\mathcal{O}_{X}$-modules.
+    Define tensor product $\mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{G}$ to be the sheafification of $U \longmapsto \mathcal{F}(U) \otimes_{\mathcal{O}_{X}(U)} \mathcal{G}(U)$.
+\end{definition}
+\begin{remark}
+    The stalk of $\mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{G}$ at $x\in X$ is just $\mathcal{F}_{x} \otimes_{\mathcal{O}_{X, x}} \mathcal{G}_{x}$.
+\end{remark}
+\begin{definition}[\textbf{\emph{Free $\mathcal{O}_{X}$-modules}}]
+    Let $X$ be a scheme or $(X, \mathcal{O}_{X})$ be a ringed space, $\mathcal{F}$ an $\mathcal{O}_{X}$-module.
+    We say that $\mathcal{F}$ is free if $\mathcal{F}$ is isomorphic to a direct sum of $\mathcal{O}_{X}$.
+    In addition, we say that $\mathcal{F}$ is free of rank r if $\mathcal{F} \cong \mathcal{O}_{X}^{r}$.
+\end{definition}
+\begin{definition}[\textbf{\emph{Locally Free $\mathcal{O}_{X}$-modules}}]
+    Let $X$ be a scheme or $(X, \mathcal{O}_{X})$ be a ringed space, $\mathcal{F}$ an $\mathcal{O}_{X}$-module.
+    We say that $\mathcal{F}$ is locally free if X can be covered by open subsets $\{U_{i}\}_{i\in I}$ such that $\mathcal{F}\big{|}_{U_{i}}$ is free as $\mathcal{O}_{U_{i}}$-module.
+    In addition, we say that $\mathcal{F}$ is locally free of rank r if X can be covered by open subsets $\{U_{i}\}_{i\in I}$ such that $\mathcal{F}\big{|}_{U_{i}} \cong \mathcal{O}_{U_{i}}^{r}$ as $\mathcal{O}_{U_{i}}$-module.
+\end{definition}
+\begin{definition}[\textbf{\emph{Invertible $\mathcal{O}_{X}$-modules}}]
+    Let $X$ be a scheme or $(X, \mathcal{O}_{X})$ be a ringed space, $\mathcal{F}$ an $\mathcal{O}_{X}$-module.
+    We say that $\mathcal{F}$ is invertible if it is locally free of rank 1.
+\end{definition}
+\begin{remark}
+    If take $\mathcal{G} = \sheafhom_{\mathcal{O}_{X}}(\mathcal{F}, \mathcal{O}_{X})$, then $\mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{G} \cong \mathcal{O}_{X}$.
+\end{remark}
+\begin{lemma}
+    Let $f: X \longrightarrow Y$ be a morphism of schemes or ringed spaces, $\mathcal{F}$ an $\mathcal{O}_{X}$-module, $\mathcal{G}$ an $\mathcal{O}_{Y}$-module.
+    Then the direct image $f_{\ast}\mathcal{F}$ of $\mathcal{F}$ is an $\mathcal{O}_{Y}$-module induced by $f^{\sharp}$.
+    On the other hand, the inverse image $f^{\ast}\mathcal{G} = f^{-1}\mathcal{G} \otimes_{f^{-1}\mathcal{O}_{Y}} \mathcal{O}_{X}$ of $\mathcal{G}$ is an $\mathcal{O}_{X}$-module where $f^{-1}\mathcal{O}_{Y} \longrightarrow \mathcal{O}_{X}$ is induced by $f^{\sharp}$.
+    \label{Lemma 1.1}
+\end{lemma}
+
+\subsection{Vector bundles}
+\label{subsection:Vector_Bundles_Vector_bundles}
+
+Let $X$ be an algebraic variety which we mean a separated scheme of finite type over $\mathbb{C}$.
+And all morphisms mentioned are morphisms of varieties.
+\begin{definition}
+    A complex linear fibration over $X$ is a surjection $p: E \twoheadrightarrow X$ from variety $E$ such that for all $x\in X$, 
+    the fiber $E_{x}$ is an affine space.
+    In convention, we call $E$ the total space and $X$ the base variety.
+\end{definition}
+\begin{example}
+    We call $X \times \mathbb{A}_{\mathbb{C}}^{r} \rightarrow X$ the trivial fibration of rank $r$.
+\end{example}
+\begin{lemma}
+    Given a linear fibration $p: E \rightarrow X$, for any open subset $U \subseteq X$,
+    the restriction $p^{-1}(U) \rightarrow U$ is also a linear fibration.
+    Denote $E\big{|}_{U} = p^{-1}(U)$.
+    \label{Lemma 1.2}
+\end{lemma}
+\begin{definition}
+    Given two linear fibrations $E \overset{p}{\rightarrow} X$ and $F \overset{q}{\rightarrow} X$,
+    a morphism $f: E \rightarrow F$ is said to be a morphism of linear fibrations if the following diagram commutes
+    \begin{equation}
+        \begin{tikzcd}
+            E \arrow[rr, "f"] \arrow[dr, "p" swap] &&
+            F \arrow[dl, "q"] \\
+            & X &
+        \end{tikzcd}
+    \end{equation}
+    and for all $x\in X$, $E_{x} \overset{f_{x}}{\rightarrow} F_{x}$ is a linear transformation.
+\end{definition}
+\begin{definition}
+    An algebraic vector bundle of rank $r$ on $X$ is a linear fibration $E \overset{p}{\rightarrow} X$ which is locally trivial i.e. for all $x\in X$,
+    there is an open neighbourhood $U$ of $x$ and isomorphism of linear fibrations $\varphi_{U}$ such that the following diagram commutes
+    \begin{equation}
+        \begin{tikzcd}
+            E\big{|}_{U} \arrow[rr, "\varphi_{U}"] \arrow[dr, "p" swap] &&
+            U \times \mathbb{A}_{\mathbb{C}}^{r} \arrow[dl] \\
+            & U &
+        \end{tikzcd}
+    \end{equation}
+    where $\varphi_{U}$ are called the local charts or local trivialization.
+    \par
+    And for two such $U_{i}$ and $U_{j}$ with local charts $\varphi_{i}$ and $\varphi_{j}$,
+    there is an invertible matrix $g_{ij}$ with entries regular functions on $U_{ij}$, called transition function,
+    satisfying that $g_{ii} = I_{r}$, $g_{ij} \cdot g_{jk} = g_{ik}$ and for all affine open subset $W \subseteq U_{ij}$,
+    $\varphi_{i} \circ \varphi_{j}^{-1}\big{|}_{W}$ is linear transformation defined by $g_{ij}\big{|}_{W}$.
+    Equivalently, $g_{ij}$ would correspond to a morphism $\widetilde{g}_{ij}: U_{ij} \rightarrow \generallineargroup{r}{\mathcal{O}_{X}(U_{ij})}$.
+\end{definition}
+\begin{lemma}
+    Given data $\{g_{ij}\}$ satisfies that $g_{ii} = I_{r}$ and $g_{ij} \cdot g_{jk} = g_{ik}$, we can recover a vector bundle.
+    \label{Lemma 1.3}
+\end{lemma}
+\begin{proof}
+    Construct $E$ by gluing up $U_{i} \times \mathbb{A}_{\mathbb{C}}^{r}$ along $U_{ij} \times \mathbb{A}_{\mathbb{C}}^{r} \overset{\varphi_{ij}}{\rightarrow} U_{ij} \times \mathbb{A}_{\mathbb{C}}^{r}$ defined by $g_{ij}$.
+\end{proof}
+\begin{definition}
+    Let $E, F$ be two vector bundles on $X$ of rank $r$ and $s$ respectively.
+    We say a morphism $f: E \rightarrow F$ of linear fibrations is a morphism of vector bundles if there is a $r \times s$ matrix $g_{U}$ with entries regular functions on $U$ such that for all affine open subset $W \subseteq U$, 
+    restriction of the following morphism to $W$ is linear transformation defined by $g_{U}\big{|}_{W}$
+    \begin{equation}
+        U \times \mathbb{A}_{\mathbb{C}}^{r} \overset{\varphi_{U}^{-1}}{\rightarrow} E\big{|}_{U} \overset{f\big{|}_{U}}{\rightarrow} F\big{|}_{U} \overset{\psi_{U}}{\rightarrow} U \times \mathbb{A}_{\mathbb{C}}^{s}
+    \end{equation}
+    where $\varphi_{U}$ and $\psi_{U}$ are local charts.
+    Equivalently, $g_{U}$ would correspond to a morphism $\widetilde{g}_{U}: U \rightarrow \generallineargroup{r}{\mathcal{O}_{X}(U)}$.
+\end{definition}
+\begin{remark}
+    With Lemma \ref{Lemma 1.3}, we can easily define $E \oplus F$, $E \otimes F$, $\sheafhom(E, F)$, $E^{\vee}$, $\wedge^{k} E$ and $S^{k} E$.
+\end{remark}
+\begin{proposition}
+    Let $f: E \rightarrow F$ be a morphism of vector bundles.
+    Assume that for $x_{0}\in X$, $f_{x_{0}}: E_{x_{0}} \rightarrow F_{x_{0}}$ is invertible.
+    Then there exists an open neighbourhood $U_{0}$ of $x_{0}$ such that $f\big{|}_{U}: E\big{|}_{U} \rightarrow F\big{|}_{U}$ is an isomorphism.
+    \label{Proposition 1.5}
+\end{proposition}
+\begin{proof}
+    Assume $x_{0}\in U$ with local charts $\varphi_{U}: E\big{|}_{U} \rightarrow U \times \mathbb{A}_{\mathbb{C}}^{r}$ and $\psi_{U}: F\big{|}_{U} \rightarrow \mathbb{A}_{\mathbb{C}}^{s}$.
+    By definition, there is a matrix $g_{U}$ and $f_{x_{0}}$ is defined by $g_{U}(x_{0})$.
+    This immediately comes from the fact that there exists an open neighbourhood $U_{0} \subseteq U$ of $x_{0}$ such that $g_{U}\big{|}_{U_{0}}$ is invertible.
+\end{proof}
+\begin{definition}
+    Let $E$ be a vector bundle of rank $r$ on $X$.
+    A subbundle of rank $m$ of $E$ is a subvariety $F \subseteq E$ such that fiber $F_{x}$ is an $m$-dimensional affine subspace of $E_{x}$ and the induced fibration $p\big{|}_{F}: F \rightarrow X$ is locally trivial.
+\end{definition}
+\begin{example}
+    Let $X = \mathbb{P}_{\mathbb{C}}^{n}$ be $n$-dimensional projective space with homogeneous coordinate $x_{0}, \cdots, x_{n}$.
+    Consider the subvariety $\Sigma := V(x_{i}y_{j} - x_{j}y_{i})$ of $X \times \mathbb{A}_{\mathbb{C}}^{n + 1}$,
+    where $y_{0}, \cdots, y_{n}$ are coordinate of $\mathbb{A}_{\mathbb{C}}^{n + 1}$.
+    Then the fiber is a $1$-dimensional affine space and hence $\Sigma$ is a subbundle of rank $1$ of the trivial bundle, denoted by $\mathcal{O}(-1)$.
+\end{example}
+\end{document}
