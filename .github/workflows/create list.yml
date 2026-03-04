@@ -1,0 +1,59 @@
+name: Generate txt files for tex updates
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.tex'
+
+permissions:
+  contents: write
+
+jobs:
+  generate-txt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 关键修复：让 Git 以原始 UTF-8 输出文件名，避免转义
+      - name: Configure Git to output UTF-8 filenames
+        run: git config --global core.quotepath false
+
+      - name: Generate txt files for modified tex files
+        run: |
+          mkdir -p list
+
+          # 使用 IFS= read -r 确保完整读取每一行（包含空格、特殊字符）
+          git diff --name-only --diff-filter=ACMRT ${{ github.event.before }} ${{ github.sha }} -- '*.tex' | while IFS= read -r tex_file; do
+            # 提取文件名（不含路径和 .tex 扩展名）
+            base_name=$(basename "$tex_file" .tex)
+            txt_file="list/${base_name}.txt"
+
+            if [ ! -f "$txt_file" ]; then
+              touch "$txt_file"
+              echo "✅ Created: $txt_file"
+            else
+              echo "⏭️  Skipped (already exists): $txt_file"
+            fi
+          done
+
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          git add list/
+
+          if git diff --staged --quiet; then
+            echo "ℹ️ No new .txt files to commit."
+            exit 0
+          fi
+
+          git commit -m "Auto-generate txt files for tex updates [skip ci]"
+
+          git remote set-url origin https://x-access-token:${{ secrets.UPDATE_TEX_FILE }}@github.com/${{ github.repository }}.git
+          git push
