@@ -1,0 +1,73 @@
+name: manual-build-and-release
+
+on:
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  detect-and-process:
+    runs-on: ubuntu-latest
+    outputs:
+      files: ${{ steps.detect.outputs.files }}  # 将检测到的文件列表传递给后续作业
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.UPDATE_TEX_FILE }}  # 使用 secret 以便后续提交
+
+      - name: Detect .txt files in list folder
+        id: detect
+        run: |
+          cd list
+          # 查找所有 .txt 文件，生成 JSON 数组
+          files=$(ls *.txt 2>/dev/null | jq -R -s -c 'split("\n")[:-1]')
+          if [ "$files" == "[]" ] || [ -z "$files" ]; then
+            echo "No .txt files found. Exiting."
+            echo "files=[]" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "files=$files" >> $GITHUB_OUTPUT
+          echo "Detected files: $files"
+
+      - name: Display files (debug)
+        run: echo '${{ steps.detect.outputs.files }}'
+
+  build-and-release:
+    needs: detect-and-process
+    if: needs.detect-and-process.outputs.files != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file: ${{ fromJson(needs.detect-and-process.outputs.files) }}  # 对每个文件并行执行
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.UPDATE_TEX_FILE }}
+
+      - name: Build and release for ${{ matrix.file }}
+        run: |
+          echo "Processing file: ${{ matrix.file }}"
+          # 在这里添加您的构建/发布命令，例如：
+          # pdflatex ${{ matrix.file }}
+          # 或者调用其他脚本
+          # 示例：模拟构建过程
+          sleep 5
+          echo "Build completed for ${{ matrix.file }}"
+
+      - name: Remove processed file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git rm list/${{ matrix.file }}  # 从 Git 中删除文件
+          # 如果文件不在 Git 跟踪中，则使用 rm 命令
+          # rm -f list/${{ matrix.file }}
+
+      - name: Commit and push changes
+        run: |
+          git commit -m "Remove processed file: ${{ matrix.file }} [skip ci]" || echo "No changes to commit"
+          git push origin main
+
+  # 可选：如果需要在所有文件处理完成后执行一次提交（避免多次提交），可以添加一个汇总作业
+  # 但上面每个文件单独提交更简单，且符合“不要做过多的检测”的要求
