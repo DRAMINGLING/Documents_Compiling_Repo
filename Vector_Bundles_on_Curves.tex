@@ -463,7 +463,7 @@ And all morphisms mentioned are morphisms of varieties.
 \end{proof}
 \begin{definition}
     Let $E$ be a vector bundle of rank $r$ on $X$.
-    A subbundle of rank $m$ of $E$ is a subvariety $F \subseteq E$ such that fiber $F_{x}$ is an $m$-dimensional affine subspace of $E_{x}$ and the induced fibration $p\big{|}_{F}: F \rightarrow X$ is locally trivial.
+    A subbundle of rank $m$ of $E$ is a subvariety $F \subseteq E$ such that fiber $F_{x}$ is an $m$-dimensional affine linear subspace of $E_{x}$ and the induced fibration $p\big{|}_{F}: F \rightarrow X$ is locally trivial.
 \end{definition}
 \begin{example}
     Let $X = \mathbb{P}_{\mathbb{C}}^{n}$ be $n$-dimensional projective space with homogeneous coordinate $x_{0}, \cdots, x_{n}$.
@@ -471,4 +471,57 @@ And all morphisms mentioned are morphisms of varieties.
     where $y_{0}, \cdots, y_{n}$ are coordinate of $\mathbb{A}_{\mathbb{C}}^{n + 1}$.
     Then the fiber is a $1$-dimensional affine space and hence $\Sigma$ is a subbundle of rank $1$ of the trivial bundle, denoted by $\mathcal{O}(-1)$.
 \end{example}
-\end{document}
+\begin{proposition}
+    Let $F \subseteq E$ be a subbundle of rank $m$.
+    Then there exists unique vector bundle structure on $E/F$ satisfying the universal property that any map of vector bundles $E \rightarrow G$ vanishing over $F$ would factor through $E/F$ uniquely.
+    \label{Proposition 1.6}
+\end{proposition}
+\begin{proof}
+    Firstly cover $X$ with affine open subsets trivializing $F$ and $E$, we may assume that $X = \spec A$, $E = \mathbb{A}_{A}^{n}$ and $F = \mathbb{A}_{A}^{m}$.
+    Since $F \subseteq E$ is a subbundle, by definition, for all $x\in X$,
+    $E_{x} = \mathbb{A}_{k(x)}^{n}$ and $F_{x} = \mathbb{A}_{k(x)}^{m}$ with coordinates $x_{1}, \cdots, x_{n}$ and $y_{1}, \cdots, y_{m}$ respectively,
+    satisfying that $y_{i}$ can be linearly represented by $x_{i}$.
+    \par
+    It is clear that these relations still hold over a neighbourhood $U = D(f)$ of $x$.
+    Then we extend $y_{i}$ to a basis $y_{1}, \cdots, y_{m}, z_{1}, \cdots, z_{n - m}$ and hence $\spec A_{f}[x_{1}, \cdots, x_{n}]/(y_{1}, \cdots, y_{m}) \cong \spec A_{f}[z_{1}, \cdots, z_{n - m}]$ is a linear subspace.
+    For different $D(f)$ and $D(g)$, since $z_{1}, \cdots, z_{n - m}$ and $z_{1}', \cdots, z_{n - m}'$ span same linear subspace,
+    there is an invertible transformation matrix $M\in \matrices{n - m}{A_{fg}}$ i.e. the transition function.
+    Thus we defines a vector bundle structure on $E/F$.
+    \par
+    Now given a map of vector bundles $E \rightarrow G$ vanishing over $F$.
+    Still assume that $X = \spec A$ trivializing all those bundles.
+    Then $E \rightarrow G$ corresponds to a linear transformation $\varphi: A[w_{1}, \cdots, w_{r}] \rightarrow A[x_{1}, \cdots, x_{n}]$,
+    which is defined by an $n \times r$ matrix with entries in $A$.
+    By assumption, we know $y_{i}$ are not in the image of $\varphi$ and hence $\im \varphi$ lies in the subspace spanned by $z_{i}$.
+    Thus $\varphi$ factors a canonical map $A[w_{1}, \cdots, w_{r}] \rightarrow A[z_{1}, \cdots, z_{n - m}]$.
+    Finally, by universal property, we know the vector bundle structure on $E/F$ is also unique.
+\end{proof}
+\begin{proposition}[\textbf{\emph{Rigidity Property}}]
+    Let $f: E \rightarrow F$ be a map of vector bundles.
+    Suppose that rank of fiber morphisms $f_{x}$ is constant as $x$ varies over $X$.
+    Then $\ker f$ and $\im f$ are subbundles of $E$ and $F$ respectively.
+    \label{Proposition 1.7}
+\end{proposition}
+\begin{proof}
+    Here we only show $\ker f$ is a subbundle of $E$ and similar argument makes sense for $\im f$.
+    We may assume that $X = \spec A$ trivializing both $E$ and $F$.
+    Now $f$ corresponds to a linear transformation $\varphi: A[y_{1}, \cdots, y_{m}] \rightarrow A[x_{1}, \cdots, x_{n}]$ defined by an $n \times m$ matrix $M$ with entries in $A$.
+    \par
+    Since the rank of fiber morphism is constant, we know both the dimensions of $\im \varphi_{x}$ are constant, denoted by $n - r$.
+    Then we may choose $y_{1}, \cdots, y_{r}$ spanning the complementary subspace of $\im \varphi_{x}$, which can be linearly represented by $x_{i}$.
+    And these relation still hold over an neighbourhood $U = D(f)$ of $x$.
+    For different $D(f)$ and $D(g)$, since both $y_{1}, \cdots, y_{r}$ and $y_{1}', \cdots, y_{r}'$ span complementary subspace of $\im \varphi_{fg}$,
+    there is an invertible transformation matrix $M\in \matrices{r}{A_{fg}}$ i.e. the transition function.
+    Thus we give a subbundle structure on $\ker f$.
+\end{proof}
+\begin{remark}
+    Though proof for $\im f$ follows by similar argument, there is still a little tricky thing in that case.
+    When we talk about $\ker f_{x}$, it is clear the points living outside $\im \varphi_{x}$.
+    But when we talk about $\im f_{x}$, what are they?
+    As $X$ is locally noetherian, by a proposition in Some Useful Results, we know they are just the points living in coimage of $\varphi_{x}$.
+    \par
+    In addition, since this note is translated by me from language of varieties to language of schemes,
+    there must be some ambiguity about the terminology.
+    For example, here by $\ker f$, we possibly mean the subset of points whoes image under $f$ are same to image of the origin.
+\end{remark}
+\end{document}1
