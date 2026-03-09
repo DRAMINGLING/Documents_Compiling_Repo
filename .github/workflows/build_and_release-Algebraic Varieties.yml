@@ -1,4 +1,4 @@
-name: Build LaTeX and Release PDF
+name: Build LaTeX and Release PDF-Algebraic Varieties
 
 on: workflow_dispatch
 
