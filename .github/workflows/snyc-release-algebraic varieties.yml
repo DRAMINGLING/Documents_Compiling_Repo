@@ -10,7 +10,7 @@ on:
       target_filename:
         description: '目标文件名（不含扩展名）'
         required: true
-        default: 'Algebraic_Varieties'
+        default: 'Algebraic Varieties'
 
   workflow_run:
     workflows: ["Build LaTeX and Release PDF-Algebraic Varieties"]
@@ -55,7 +55,7 @@ jobs:
           find ./downloaded-assets -name "*.pdf" -type f | while read file; do
             echo "找到文件: $file"
             # 使用输入的文件名，如果没有输入则使用默认值
-            TARGET_FILENAME="${{ github.event.inputs.target_filename || 'Algebraic_Varieties' }}"
+            TARGET_FILENAME="${{ github.event.inputs.target_filename || 'Algebraic Varieties' }}"
             # 复制并重命名文件到目标仓库目录
             cp "$file" "./target-repo/${TARGET_FILENAME}.pdf"
             echo "文件已复制并重命名为: ${TARGET_FILENAME}.pdf"
