@@ -1,0 +1,2956 @@
+\documentclass{ctexart}
+\usepackage[a4paper,left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{amssymb,amsfonts,amsmath,amsthm}
+\usepackage{anyfontsize}
+\usepackage{graphicx}
+\usepackage{tikz-cd}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage{mathrsfs}
+\usepackage[colorlinks = true,      % 启用彩色链接而非带框链接
+            linkcolor = blue,       % 内部链接（如目录、交叉引用）颜色
+            urlcolor = blue,        % 外部链接颜色
+            citecolor = blue]{hyperref} % 参考文献链接颜色
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{setting}{Setting}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{reason}{Reason}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{exercise}{Exercise}[section]
+
+\renewcommand{\proofname}{\textit{Proof}}
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\refname}{References}
+\renewcommand{\hom}{\operatorname{Hom}}
+
+\newcommand{\leftquotes}{``}
+\newcommand{\rightquotes}{''}
+
+\newcommand{\mapsfrom}{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+\newcommand{\longmapsfrom}{\mathrel{\reflectbox{\ensuremath{\longmapsto}}}}
+\newcommand{\groupaction}{\mathrel{\text{\scalebox{1.5}{\rotatebox[origin=c]{90}{$\circlearrowright$}}}}}
+
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\identity}{\operatorname{id}}
+\newcommand{\trdeg}{\operatorname{trdeg}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\depth}{\operatorname{depth}}
+\newcommand{\height}{\operatorname{height}}
+\newcommand{\projdim}{\dim_{\operatorname{proj}}}
+\newcommand{\characteristic}{\operatorname{Char}}
+
+\newcommand{\derivation}{\operatorname{Der}}
+\newcommand{\ext}{\operatorname{Ext}}
+\newcommand{\mor}{\operatorname{Mor}}
+\newcommand{\aut}{\operatorname{Aut}}
+\newcommand{\homend}{\operatorname{End}}
+
+\newcommand{\sheafhom}{\mathcal{H}\kern -.5pt om}
+\newcommand{\sheaftor}{\mathcal{T}\kern -.5pt or}
+\newcommand{\sheafext}{\mathcal{E}\kern -.5pt xt}
+\newcommand{\sheafend}{\mathcal{E}\kern -.5pt nd}
+
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\coim}{\operatorname{coim}}
+\newcommand{\cone}{\operatorname{cone}}
+\newcommand{\exceptionallocus}{\operatorname{Ex}}
+\newcommand{\totalcomplex}{\operatorname{Tot}}
+
+\newcommand{\spec}{\operatorname{Spec}}
+\newcommand{\proj}{\operatorname{Proj}}
+\newcommand{\spf}{\operatorname{Spf}}
+\newcommand{\fraction}{\operatorname{Frac}}
+\newcommand{\singular}{\operatorname{Sing}}
+\newcommand{\support}{\operatorname{Supp}}
+
+\newcommand{\reduction}{\operatorname{red}}
+\newcommand{\normalization}{\operatorname{nor}}
+\newcommand{\regular}{\operatorname{reg}}
+\newcommand{\smooth}{\operatorname{sm}}
+\newcommand{\analytification}{\operatorname{an}}
+
+\newcommand{\inverselimit}{\underset{\longleftarrow}{\lim}} 
+\newcommand{\colimit}{\underset{\longrightarrow}{\lim}}
+\newcommand{\derivedotimes}{\overset{\llcorner}{\otimes}}
+
+\newcommand{\grassmannianscheme}[2]{\operatorname{Gr}(#1, #2)}
+\newcommand{\grassmanmianfunctor}[2]{\mathcal{G}\kern -.5pt r(#1, #2)}
+\newcommand{\hilbertscheme}{\operatorname{Hilb}}
+\newcommand{\hilbertfunctor}{\mathcal{H}\kern -.5pt ilb}
+\newcommand{\picardscheme}{\operatorname{Pic}}
+\newcommand{\picardfunctor}{\mathcal{P}\kern -.5pt ic}
+\newcommand{\isomorphismscheme}{\operatorname{Isom}}
+\newcommand{\isomorphismfunctor}{\mathcal{I}\kern -.5pt som}
+
+\newcommand{\abeliangroups}{\mathbf{Ab}}
+\newcommand{\rings}{\mathbf{Ring}}
+\newcommand{\commutativerings}{\mathbf{CRing}}
+
+\newcommand{\module}{\operatorname{Mod}}
+\newcommand{\algebra}{\operatorname{Alg}}
+\newcommand{\scheme}{\operatorname{Sch}}
+
+\newcommand{\matrices}[2]{\operatorname{Mat}_{#1}(#2)}
+\newcommand{\generallineargroup}[2]{\operatorname{GL}_{#1}(#2)}
+\newcommand{\speciallineargroup}[2]{\operatorname{SL}_{#1}(#2)}
+\newcommand{\projectivespeciallineargroup}[2]{\operatorname{PSL}_{#1}(#2)}
+
+\newcommand{\order}{\operatorname{ord}}
+\newcommand{\divisor}{\operatorname{div}}
+\newcommand{\annihilator}{\operatorname{ann}}
+
+\title{代数簇}
+\author{Taught by Zhi Jiang}
+\date{}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Affine Variety}
+
+\subsection{Zariski topology}
+\label{subsection:Affine_Variety_Zariski_topology}
+
+\begin{definition}
+    Let $k$ be a field.
+    Define the affine space over $k$ of dimension $n$ to be $\mathbb{A}_{k}^{n} := k^{\oplus n}$.
+\end{definition}
+\begin{definition}
+    Let $\mathbb{A}_{k}^{n}$ be affine space.
+    Assume $S \subset k[x_{1}, \cdots, x_{n}]$ be a set of polynomials.
+    Define $V(S) := \{x\in \mathbb{A}_{k}^{n} \big{|} f(x) = 0, \forall f\in S\}$.
+    Such a set is called an algebraic set.
+\end{definition}
+\begin{lemma}
+    Let $\mathbb{A}_{k}^{n}$ be affine space.
+    Then algebraic sets have following properties 
+    \begin{itemize}
+        \item For two subset $S_{1}, S_{2} \subset k[x_{1}, \cdots, x_{n}]$, $V(S_{1}) \cup V(S_{2}) = V(S_{1}S_{2})$,
+        where $S_{1}S_{2} = \{fg \big{|} f\in S_{1}, g\in S_{2}\}$
+        \item For any collection $\{S_{i}\}$, $\cap_{i} V(S_{i}) = V(\cup_{i} S_{i})$
+    \end{itemize}
+    \label{Lemma 1.1}
+\end{lemma}
+\vspace{-\baselineskip} % 减少一行间距
+\begin{remark}
+    With this lemma, we immediately have that algebraic sets give a topological structure on $\mathbb{A}_{k}^{n}$ as closed subsets, called the Zariski topology.
+\end{remark}
+
+\subsection{Affine variety}
+\label{subsection:Affine_Variety_Affine_variety}
+
+From now on, we would rename algebraic variety in affine space as affine variety.
+\begin{definition}
+    Let $\mathbb{A}_{k}^{n}$ be affine space, $V \subseteq \mathbb{A}_{k}^{n}$ an affine subvariety.
+    Define the associated ideal of $V$ to be $I(V) := \{f\in k[x_{1}, \cdots, x_{n}] \big{|} f(x) = 0, \forall x\in V\}$
+\end{definition}
+\begin{remark}
+    It is easy to see that $V \subseteq V(I(V))$.
+\end{remark}
+\begin{theorem}[\textbf{\emph{Hilbert Nullstellensatz Theorem}}]
+    Let $k$ be an algebraically closed field, $I \subseteq k[x_{1}, \cdots, x_{n}]$.
+    Assume that $f\in k[x_{1}, \cdots, x_{n}]$ vanish at all points of $V(I)$.
+    Then $f^{r}\in I$ for some $r > 0$.
+    \label{Theorem 1.1}
+\end{theorem}
+\begin{corollary}
+    Let $k$ be an algebraically closed field.
+    Then there are some one-to-one correspondences
+    \begin{equation*}
+        \begin{split}
+            \text{radical ideals of $k[x_{1}, \cdots, x_{n}]$} & \leftrightsquigarrow \text{affine varieties} \\ 
+            \text{prime ideals of $k[x_{1}, \cdots, x_{n}]$} & \leftrightsquigarrow \text{irreducible affine varieties} \\ 
+            \text{maximal ideals of $k[x_{1}, \cdots, x_{n}]$} & \leftrightsquigarrow \text{one-point affine varieties} 
+        \end{split}
+    \end{equation*}
+    \label{Corollary 1.1}
+\end{corollary}
+\vspace{-\baselineskip} % 减少一行间距
+\begin{definition}
+    Let $V \subseteq \mathbb{A}_{k}^{n}$ be an affine variety, $I = I(V)$.
+    Define the affine coordinate ring of $V$ to be $A_{V} := k[x_{1}, \cdots, x_{n}]/I$.
+\end{definition}
+\begin{corollary}
+    Every finitely generated reduced $k$-algebra is the coordinate function ring of some affine variety.
+    \label{Corollary 1.2}
+\end{corollary}
+
+\subsection{Regular maps}
+\label{subsection:Affine_Variety_Regular_maps}
+
+\begin{definition}
+    Let $V, W$ be two affine varieties.
+    Assume that $V \subseteq \mathbb{A}_{k}^{n}$ with coordinate $x_{1}, \cdots, x_{n}$and $W \subseteq \mathbb{A}_{k}^{m}$ with coordinate $y_{1}, \cdots, y_{m}$.
+    A regular map from $V$ to $W$ is a map $\phi: V \rightarrow W$ satisfying there exist polynomials $f_{1}, \cdots, f_{m}\in k[x_{1}, \cdots, x_{n}]$ such that $\phi = (f_{i})_{1 \le i \le n}\big{|}_{V}$.
+\end{definition}
+\begin{remark}
+    Given a regular map $\phi: V \rightarrow W$, there is a morphism $\phi^{\ast}: A_{W} \rightarrow A_{V}$ mapping $f$ to $f \circ \phi$.
+\end{remark}
+\begin{proposition}
+    Let $V, W$ be two affine varieties.
+    Assume that $V \subseteq \mathbb{A}_{k}^{n}$ with coordinate $x_{1}, \cdots, x_{n}$and $W \subseteq \mathbb{A}_{k}^{m}$ with coordinate $y_{1}, \cdots, y_{m}$.
+    The correspondence $\phi \leftrightsquigarrow \phi^{\ast}$ is one-to-one.
+    In fact, $\phi = (\phi^{\ast}(y_{1}), \cdots, \phi^{\ast}(y_{m}))$.
+    \label{Proposition 1.1}
+\end{proposition}
+\begin{definition}
+    Let $V, W$ be two affine varieties, $\phi: V \rightarrow W$ a regular map.
+    We say $\phi$ is isomorphic if there exists regular map $\psi: W \rightarrow V$ such that $\psi \circ \phi = \identity_{V}$ and $\phi \circ \psi = \identity_{W}$.
+\end{definition}
+\begin{corollary}
+    Let $V, W$ be two affine varieties, $\phi: V \rightarrow W$ a regular map.
+    Then $\phi$ is isomorphic if and only if $\phi^{\ast}$ is isomorphic.
+    \label{Corollary 1.3}
+\end{corollary}
+\begin{definition}
+    Let $\phi: V \rightarrow W$ be a regular map of affine varieties.
+    We say that $\phi$ is dominant if $\phi(V)$ is dense in $W$.
+\end{definition}
+\begin{proposition}
+    Let $\phi: V \rightarrow W$ be a regular map of affine varieties.
+    Then $\phi$ is dominant if and only if $\phi^{\ast}$ is injective.
+    In addition, if $\phi^{\ast}$ is surjective, then $\phi$ is injective.
+    \label{Proposition 1.2}
+\end{proposition}
+\begin{proof}
+    Assume that $\phi$ is dominant.
+    Suppose that $\phi^{\ast}$ is not injective, then there exist different $f,g\in A_{W}$ such that $f \circ \phi = g \circ \phi$.
+    Since there exist $y\in W$ and an open neighbourhood $W \supseteq U\ni y$ such that $f\big{|}_{U} \neq g\big{|}_{U}$ everywhere in $U$.
+    But $\phi(V)$ is dense in $W$, we get $x\in V$ such that $\phi(x)\in U$, contradiction!
+    \par
+    For the converse, assume that $\phi^{\ast}$ is injective.
+    Suppose that $\phi$ is nor dominant.
+    Then $\overline{\phi(V)} \subsetneq W$ so that $I(W) \subsetneq I(\overline{\phi(V)})$.
+    Hence we can choose nonzero $f\in A_{W}$ s.t. $f$ vanish at all points of $\phi(V)$.
+    Thus $\phi^{\ast}(f) = 0 = \phi^{\ast}(0)$ contradicting to $\phi^{\ast}$ is injective.
+    \par
+    Assume that $\phi^{\ast}$ is surjective.
+    For any two points $x_{1}, x_{2}\in V$, there exists $F\in A_{V}$ such that $F(x_{1}) \neq F(x_{2})$.
+    As $\phi^{\ast}$ is surjective, there exists $f\in A_{W}$ such that $F = f \circ \phi$.
+    Thus $F(x_{1}) = f(\phi(x_{1}))$ and $F(x_{2}) = f(\phi(x_{2}))$ so that $\phi(x_{1}) \neq \phi(x_{2})$.
+    Hence $\phi$ is injective.
+\end{proof}
+
+\section{Projective Variety}
+\label{section:Projective_Variety}
+
+\subsection{Zariski topology}
+\label{subsection:Projective_Variety_Zariski_topology}
+
+\begin{definition}
+    Let $k$ be a field.
+    Define the projective space over $k$ of dimension $n$ to be $\mathbb{P}_{k}^{n} := \{k^{\oplus n + 1} \setminus \{0\}\}/\sim$,
+    where $x \sim y$ if and only if $x = ay$ for some $a\in k^{\times}$.
+    Element in $\mathbb{P}_{k}^{n}$ is of the form $[a_{0}, a_{1}, \cdots, a_{n}]$.
+\end{definition}
+\begin{remark}
+    To define algebraic set in $\mathbb{P}_{k}^{n}$, we cannot directly use set of polynomials since for general polynomial $f$ and $x \sim y\in k^{\oplus n + 1} \setminus \{0\}$,
+    $f(x) = 0 \iff f(y) = 0$ is not always correct.
+    However, if $f$ is homogeneous, then $f(x) = a^{n + 1}f(y)$ for some $a\in k^{\times}$ so that $f(x) = 0 \iff f(y) = 0$.
+\end{remark}
+\begin{definition}
+    Let $\mathbb{P}_{k}^{n}$ be projective space.
+    Assume $S \subset k[x_{0}, x_{1}, \cdots, x_{n}]$ be a set of homogeneous polynomials.
+    Define $V(S) := \{x\in \mathbb{P}_{k}^{n} \big{|} f(x) = 0, \forall f\in S\}$.
+    Such a set is called an algebraic set.
+\end{definition}
+\begin{lemma}
+    Let $\mathbb{P}_{k}^{n}$ be projective space.
+    Then algebraic sets have following properties 
+    \begin{itemize}
+        \item For two subset $S_{1}, S_{2} \subset k[x_{0}, x_{1}, \cdots, x_{n}]$ of homogeneous polynomials,
+        $V(S_{1}) \cup V(S_{2}) = V(S_{1}S_{2})$, where $S_{1}S_{2} = \{fg \big{|} f\in S_{1}, g\in S_{2}\}$.
+        \item For any collection $\{S_{i}\}$, $\cap_{i} V(S_{i}) = V(\cup_{i} S_{i})$
+    \end{itemize}
+    \label{Lemma 2.1}
+\end{lemma}
+\vspace{-\baselineskip} % 减少一行间距
+\begin{remark}
+    With this lemma, we immediately have that algebraic sets give a topological structure on $\mathbb{P}_{k}^{n}$ as closed subsets, called the Zariski topology.
+\end{remark}
+
+\subsection{Projective variety}
+\label{subsection:Projective_Variety_Projective_variety}
+
+From now on, we would rename algebraic variety in projective space as projective variety.
+\begin{definition}
+    Let $\mathbb{P}_{k}^{n}$ be projective space, $V \subseteq \mathbb{A}_{k}^{n}$ a projective subvariety.
+    Define the associated homogeneous ideal $I(V)$ of $V$ to be the ideal generated by $\{\text{homogeneous } f\in k[x_{0}, x_{1}, \cdots, x_{n}] \big{|} f(x) = 0, \forall x\in V\}$
+\end{definition}
+Similarly, by Theorem \ref{Theorem 1.1}, we get some correspondences.
+\begin{corollary}
+    Let $k$ be an algebraically closed field.
+    Then there are some one-to-one correspondences
+    \begin{equation*}
+        \begin{split}
+            \text{radical homogeneous ideals of $k[x_{1}, \cdots, x_{n}]$} & \leftrightsquigarrow \text{projective varieties} \\ 
+            \text{prime homogeneous ideals of $k[x_{1}, \cdots, x_{n}]$} & \leftrightsquigarrow \text{irreducible projective varieties} \\ 
+            \text{maximal homogeneous ideals of $k[x_{1}, \cdots, x_{n}]$} & \leftrightsquigarrow \text{one-point projective varieties} 
+        \end{split}
+    \end{equation*}
+    \label{Corollary 2.1}
+\end{corollary}
+\vspace{-\baselineskip} % 减少一行间距
+\begin{lemma}
+    Let $\mathbb{P}_{k}^{n}$ be projective space over $k$ with coordinate $x_{0}, x_{1}, \cdots, x_{n}$.
+    Then for all $0 \le i \le n$, the open subset $D_{+}(x_{i}) := \{x_{i} \neq 0\}$ is homeomorphic to affine space $\mathbb{A}_{k}^{n}$ with Zariski topology.
+    \label{Lemma 2.2}
+\end{lemma}
+Hence, we can always embed affine variety into projective space.
+In particular, we have that $\mathbb{P}_{k}^{0} \cong \mathbb{A}_{k}^{1}$.
+Thus after that we would generally state propositions of projective varieties without explanation for affine case.
+\par
+In addition, the above lemma indicates that open subset in Zariski topology would also have some special properties.
+So we here give it a formal definition.
+\begin{definition}
+    Let $k$ be a field.
+    An open subset $U$ of projective (resp. affine) space is called a quasi-projective (resp. affine) variety.
+\end{definition}
+
+\subsection{Regular functions and regular maps}
+\label{subsection:Projective_Variety_Regular_functions_and_regular_maps}
+
+\begin{definition}
+    Let $X$ be a (quasi-)projective subvariety of $\mathbb{P}_{k}^{n}$.
+    A function $f: X \rightarrow k$ is said to be regular at $x\in X$ if there exist homogeneous polynomials $G, H$ of same degree such that $f = \frac{G}{H}$ in an open neighbourhood $U$ of $x$ and $H(p) \neq 0$ for all $p\in U$.
+    \par
+    We say that $f$ is a regular function if it is regular at all points of $X$.
+    Denote $A(X)$ to be the ring of regular functions on $X$.
+\end{definition}
+\begin{remark}
+    Regular functions are continuous map since locally they are defined as rational fractions.
+\end{remark}
+\begin{theorem}
+    Let $k$ be an algebraically closed, $X$ irreducible (quasi-)affine subvariety of $\mathbb{A}_{k}^{n}$.
+    Then a regular function $f: X \rightarrow k$ is defined by a polynomial i.e. regular function ring is just coordinate ring.
+    \label{Theorem 2.1} 
+\end{theorem}
+\begin{proof}
+    Take open covering $\{U_{i}\}$ such that $f\big{|}_{U_{i}}$ is defined as $\frac{G_{i}}{F_{i}}$, 
+    where $G_{i}$ and $F_{i}$ are homogeneous polynomials of same degree.
+    Hence $F_{i}G_{j} = F_{j}G_{i}$ on each $U_{i} \cap U_{j}$.
+    Note that $U_{i} \cap U_{j}$ is nonempty open in $X$ which is irreducible, so we have that $X = \overline{U_{i} \cap U_{j}} \subseteq V(F_{i}G_{j} - F_{j}G_{i})$.
+    \par
+    Now $F_{i}G_{j} = F_{j}G_{i}$ on $X$ for all $i,j$.
+    As $U_{i}$ cover $X$ and $H_{i}$ has no root in $U_{i}$, there is no common root of all $H_{i}$.
+    Thus by Hilbert Nullstellensatz, there exist polynomials $a_{i}$ such that $\sum a_{i}H_{i} = 1$ on $X$.
+    Take $g = \sum a_{j}G_{j}$, then 
+    \begin{equation}
+        H_{i}g = H_{i}\sum a_{j}G_{j} = \sum a_{j}H_{j}G_{i} = G_{i}
+    \end{equation}
+    get $\frac{G_{i}}{H_{i}} = g$ on $X$ for all $i$ so that $f$ is defined by $g$.
+\end{proof}
+\begin{remark}
+    With this theorem, now we can identify regular function ring and coordinate ring of affine varieties.
+    From now on, we would use same notation $A(X)$ for them.
+    \par
+    In addition, the irreducible condition is not required. 
+    However, now we have not enough knowledge to give a proof.
+\end{remark}
+\begin{definition}
+    Let $X, Y$ be (quasi-)projective varieties.
+    Wa say a map $\varphi: X \rightarrow Y$ is regular if 
+    \begin{itemize}
+        \item $\varphi$ is continuous
+        \item for all regular function $f: U \rightarrow k$ with $U \subseteq Y$ open,
+        $f \circ \varphi: \varphi^{-1}(U) \rightarrow k$ is a regular function
+    \end{itemize}
+\end{definition}
+\begin{example}
+    For homogeneous polynomial $F_{0}, \cdots, F_{m}$ of same degree with no common root,
+    we can define a regular map $\mathbb{P}_{k}^{n} \longrightarrow \mathbb{P}_{k}^{m}$ defined by
+    \begin{equation}
+        [x_{0}, x_{1}, \cdots, x_{n}] \longmapsto [F_{0}(x_{0}, \cdots, x_{n}), F_{1}(x_{0}, \cdots, x_{n}), \cdots, F_{m}(x_{0}, \cdots, x_{n})]
+    \end{equation}
+    In particular, if we take $F_{0} = x_{0}^{d}$, $F_{1} = x_{0}^{d - 1}x_{1}$, $\cdots$ and $F_{N} = x_{n}^{d}$ where $N = \binom{n + d}{d} - 1$,
+    the corresponding map $v_{d}: \mathbb{P}_{k}^{n} \rightarrow \mathbb{P}_{k}^{N}$ is called the $d$th Veronese map.
+\end{example}
+\begin{lemma}
+    Let $V, W$ be two affine varieties.
+    Then the above definition of regular map from $V$ to $W$ is equivalent to our original definition.
+    \label{Lemma 2.3}
+\end{lemma}
+\begin{reason}
+    By Proposition \ref{Proposition 1.1}, it is clear that the two definitions are same.
+\end{reason}
+\begin{proposition}
+    Let $X$ be a (quasi-)projective subvariety of $\mathbb{P}_{k}^{m}$, $\varphi: X \rightarrow \mathbb{P}_{k}^{m}$ a regular map.
+    Then for every $x\in X$, there exists affine open neighbourhood $U$ of $x$ and polynomials $F_{0}, \cdots, F_{m}\in A(U)$ such that $\varphi(y) = [F_{0}(y), \cdots, F_{n}(y)]$ for all $y\in U$.
+    \label{Proposition 2.1}
+\end{proposition}
+\begin{proof}
+    For $x\in X$, take affine open neighbourhood $D_{+}(x_{i})$.
+    Without loss of generality, we may assume that $x\in D_{+}(x_{0}) \cong \mathbb{A}_{k}^{m}$ with coordinate $x_{1}, \cdots, x_{m}$.
+    In addition, we can also take affine open neighbourhood of $\varphi(x)$ in $\mathbb{P}_{k}^{n}$, say $\mathbb{A}_{k}^{n}$ with coordinate $y_{1}, \cdots, y_{n}$.
+    \par
+    Now $U := X \cap D_{+}(x_{0}) \cap \varphi^{-1}(\mathbb{A}_{k}^{n})$ is an (quasi-)affine subvariety of $\mathbb{A}_{k}^{m}$.
+    By Theorem \ref{Theorem 2.1}, $y_{i} \circ \varphi\big{|}_{U}: U \rightarrow \mathbb{A}_{k}^{n} \rightarrow k$ is defined by a polynomial $F_{i}$.
+    Hence $\varphi\big{|}_{U} = [1, F_{1}, \cdots, F_{n}]$.
+\end{proof}
+\begin{example}
+    Such local polynomials cannot glue up in general.
+    Take $Z = V(xz - y^{2})$.
+    Consider the following map $Z \rightarrow \mathbb{P}_{k}^{1}$ defined by 
+    \begin{equation}
+        [x, y, z] \longmapsto
+        \left\{
+            \begin{aligned}
+               & [x, y] & x \neq 0 \text{ or } y \neq 0 \\
+               & [y, z] & z \neq 0
+            \end{aligned}
+        \right.
+    \end{equation}
+\end{example}
+
+\subsection{Rational maps}
+\label{subsection:Projective_Variety_Rational_maps}
+
+\begin{definition}
+    Let $X, Y$ be (quasi-)projective varieties.
+    Consider pairs $(U, f_{U})$ where $U \subset X$ is an open dense subset and $f_{U}: U \rightarrow Y$ is a regular map.
+    We $(U, f_{U}) \sim (V, f_{V})$ if $f_{U}\big{|}_{U \cap V} = f_{V}\big{|}_{U \cap V}$.
+    Such an equivalence class is called a rational map $X \dashrightarrow Y$.
+    In particular, if $Y$ is $k$, then rational map $X \dashrightarrow k$ is called a rational function.
+\end{definition}
+\begin{remark}
+    For any rational map $f: X \dashrightarrow Y$, there exists maximal open subset $U$ of $X$ such that $f\big{|}_{U}: U \dashrightarrow Y$ is a regular map,
+    called the domain of definition of $f$.
+\end{remark}
+\begin{lemma}
+    Let $X$ be an affine subvariety of $\mathbb{A}_{k}^{n}$.
+    Then for any polynomial $f\in k[x_{1}, \cdots, x_{n}]$. the open set $D(f) \cap X$ is an affine subvariety of $\mathbb{A}_{k}^{n + 1}$,
+    which is defined by $I(X)$ and $x_{n + 1}f - 1$, with coordinate ring $A(D(f) \cap X) = A(X)_{f}$.
+    \label{Lemma 2.4}
+\end{lemma}
+\begin{remark}
+    The proof is easy.
+    Note that by this lemma, it is not necessary for us to define the notion of quasi-affine variety.
+    Hence from now on, we would omit the prefix of quasi-affine variety.
+    Also, for convenience, we mean (quasi-)projective variety when we say variety.
+\end{remark}
+\begin{proposition}
+    Let $X$ be a variety.
+    Then \\
+    (a)$\{f: X \dashrightarrow k\}$ form a $k$-algebra, denoted by $K(X)$. \\
+    (b)$\forall U \subset X$ open dense subset, we have that $K(X) = K(U)$. \\
+    (c)If $X$ is irreducible, then $K(X)$ is a field. \\
+    (d)If $X$ is affine and irreducible, then $K(X)$ is the fraction field of $A(X)$.
+    \label{Proposition 2.2}
+\end{proposition}
+\begin{proof}
+    (a), (b) are both obvious. Here we only prove (c) and (d).
+    For (c), assume $f: X \dashrightarrow k$ is nonzero element in $K(X)$.
+    Take its domain of definition $U$, then there exists open subset $U' \subseteq U$ such that $f\big{|}_{U'}$ is defnied by some polynomial $P$.
+    Since $X$ is irreducible, $U'$ is dense so that $P: U' \rightarrow k$ also represents $f$.
+    \par
+    Consider the open subset $W = \{x\in X \big{|} P(x) \neq 0\}$.
+    As $f$ is nonzero element, $W \cap U' \neq \varnothing$.
+    Define $g: W \rightarrow k$ mapping $x$ to $\frac{1}{P(x)}$, which is a regular function and hence a regular map.
+    Thus we get inverse of $f$ in $K(X)$.
+    Conclude that $K(X)$ is a field.
+    \par
+    For (d), assume that $f: X \dashrightarrow k$ can be represented by $P: U \rightarrow k$.
+    By definition of Zariski topology, we can take open subset $U' \subseteq U$ of the form $D(H)$ for some $H\in A(X)$.
+    Hence by Lemma \ref{Lemma 2.4}, $f\in A(U') = A(X)_{H}$.
+    Thus $K(X) \subseteq \cup_{H} A(X)_{H} = \fraction(A(X))$.
+    The converse containment is obvious so that $K(X) = \fraction(A(X))$.
+\end{proof}
+\begin{remark}
+    For irreducible variety $X$, taking affine open dense subset $U \subseteq X$,
+    by (c), $K(X) = K(U) = \fraction(A(U))$ is computable.
+\end{remark}
+\begin{example}
+    Let $X \subseteq \mathbb{P}_{k}^{m}$ be a variety.
+    Assume that homogeneous polynomials $F_{0}, \cdots, F_{n}\in k[x_{0}, \cdots, x_{m}]$ satisfy that $V(F_{0}, \cdots, F_{n})$ does not contain any irreducible component of $X$,
+    then $X \setminus V(F_{0}, \cdots, F_{n})$ is dense in $X$ and we have a rational map $X \dashrightarrow \mathbb{P}_{k}^{n}$ defined by
+    \begin{equation}
+        x \longmapsto [F_{0}(x), \cdots, F_{n}(x)]
+    \end{equation}
+\end{example}
+\vspace{-\baselineskip} % 减少一行间距
+\begin{definition}
+    Let $X, Y$ be varieties.
+    We say a regular map $f: X \rightarrow Y$ is dominant if image of $f$ is dense in $Y$.
+    \par
+    We say a rational map $f: X \dashrightarrow Y$ is dominant if $f$ can be represented by some dominant regular map $f\big{|}_{U}: U \rightarrow Y$.
+\end{definition}
+\begin{remark}
+    In general, we cannot directly define composition of two rational maps.
+    But for a dominant rational map $f: X \dashrightarrow Y$ and any rational map $g: Y \dashrightarrow Z$,
+    $g \circ f$ is a well defined rational map.
+    \par
+    In addition, for a dominant rational map $f: X \dashrightarrow Y$, 
+    it induces a canonical map $f^{\ast}: K(Y) \rightarrow K(X)$ mapping $g$ to $g \circ f$, which is a homomorphism of $k$-algebras.
+\end{remark}
+\begin{proposition}
+    Assume that $X, Y$ are irreducible varieties.
+    Then \\
+    (1)There is a one-to-one correspondence 
+    \begin{equation*}
+        f: X \dashrightarrow Y \text{ dominant rational map} \leftrightsquigarrow K(Y) \hookrightarrow K(X) \text{ extension of fields}
+    \end{equation*}
+    (2)If there exists an isomorphism $\iota: K(Y) \overset{\sim}{\rightarrow} K(X)$,
+    then there exists open dense subset $U \subseteq X$ and $V \subseteq Y$ such that $U \overset{\sim}{\rightarrow} V$ under the corresponding dominant rational map.
+    \label{Proposition 2.3}
+\end{proposition}
+
+\subsection{Birational equivalence}
+\label{subsection:Projective_Variety_Birational_equivalence}
+
+\begin{definition}
+    Let $X, Y$ be varieties.
+    We say that $X, Y$ are birational if there exists open dense susbets $U \subseteq X$ and $V \subseteq Y$ such that $U \overset{\sim}{\rightarrow} V$.
+\end{definition}
+\begin{definition}
+    Let $f: X \dashrightarrow Y$ be a dominant rational map.
+    We say that $f$ is birational if there exists a dominant rational map $g: Y \dashrightarrow X$ such that $g \circ f = \identity_{X}$ and $f \circ g = \identity_{Y}$.
+\end{definition}
+\begin{corollary}
+    Let $X, Y$ be varieties.
+    Then $X$ and $Y$ are birational if and only if there exists a birational map $f: X \dashrightarrow Y$.
+    \label{Corollary 2.2}
+\end{corollary}
+\begin{corollary}
+    Let $X, Y$ be irreducible varieties.
+    Then there exists one-to-one correspondence 
+    \begin{equation*}
+        f: X \dashrightarrow Y \text{ birational map} \leftrightsquigarrow \text{isomorphism from $K(Y)$ to $K(X)$ over $k$}
+    \end{equation*}
+    \label{Corollary 2.3}
+\end{corollary}
+\vspace{-\baselineskip} % 减少一行间距
+\vspace{-\baselineskip} % 减少一行间距
+\begin{proposition}
+    Let $X$ be an irreducible variety.
+    Then there exists a hypersurface in $\mathbb{A}_{k}^{n + 1}$ birational to $X$,
+    where $n = \trdeg_{k}K(X)$.
+    \label{Proposition 2.4}
+\end{proposition}
+\begin{proof}
+    Let $X$ be an irreducible variety.
+    Since the problem is local, we can assume that $X$ is affine.
+    Then $A(X)$ is finitely generated $k$-algebra.
+    By Noetherian Normalization Theorem, there exists transcendental basis $x_{1}, \cdots, x_{n}$ of $K(X)$ over $k$ such that $K(X)/k(x_{1}, \cdots, x_{n})$ is a finite extension.
+    \par
+    Since every finite extension of fields is a simple extension,
+    there exists some $\alpha\in K(X)$ such that
+    \begin{equation}
+        \begin{split}
+            K(X) & = k(x_{1}, \cdots, x_{n})[\alpha] \\
+            & \cong k(x_{1}, \cdots, x_{n})[x_{n + 1}]/(f_{\alpha})
+        \end{split}
+    \end{equation}
+    where $f_{\alpha}$ is the minimal polynomial of $\alpha$ in $k(x_{1}, \cdots, x_{n})$.
+    Assume that $f_{\alpha} = x^{d} + P_{1}x^{d - 1} + \cdots + P_{d}$, where $P_{i} = \frac{A_{i}}{B_{i}}$ for some polynomial $A_{i}, B_{i}$.
+    \par
+    Take $B = \prod_{i} B_{i}$, then $f_{\alpha}$ can be viewed as an element in $k[x_{1}, \cdots, x_{n}]_{B}[x_{n + 1}] = k[x_{1}, \cdots, x_{n + 1}]_{B}$.
+    Now $K(X) \cong \fraction(k[x_{1}, \cdots, x_{n + 1}]_{B}/(f_{\alpha}))$.
+    Hence by Proposition \ref{Proposition 2.3}, $X$ is birational to the hypersurface $V(f_{\alpha}) \subset \mathbb{A}_{k}^{n + 1}$.
+\end{proof}
+
+\section{Blow Up}
+\label{section:Blow_Up}
+
+Blow up is a tool to resolute the singular point i.e. for variety $X$ with singularities,
+by blowing up, we can find variety $Y$ with possibly less singularities and a regular map $Y \rightarrow X$.
+
+\subsection{Segre embedding}
+\label{subsection:Blow_Up_Segre_embedding}
+
+\begin{definition}
+    For projective space $\mathbb{P}_{k}^{m}$ with coordinate $x_{0}, \cdots, x_{m}$ and $\mathbb{P}_{k}^{n}$ with coordinate $y_{0}, \cdots, y_{n}$,
+    there is a map $\mathbb{P}_{k}^{m} \times \mathbb{P}_{k}^{n} \rightarrow \mathbb{P}_{k}^{mn + m + n}$ defined by
+    \begin{equation}
+        ([x_{0}, \cdots, x_{m}], [y_{0}, \cdots, y_{n}]) \longmapsto [x_{i}y_{j}]_{i, j}
+    \end{equation}
+    called the Segre embedding.
+    \par
+    Set coordinate $z_{ij}$ for $\mathbb{P}_{k}^{mn + m + n}$.
+    Then $[z_{ij}]$ is in the image of Segre embedding if and only if the following matrix is of rank $1$
+    \begin{equation}
+        \begin{pmatrix}
+            z_{00} & \cdots & z_{0n} \\
+            z_{10} & \cdots & z_{1n} \\
+            \vdots & \ddots & \vdots \\
+            z_{m0} & \cdots & z_{mn} 
+        \end{pmatrix}
+    \end{equation}
+    which is equivalent to determinants of submatrix of the form
+    $
+    \begin{pmatrix}
+        z_{ij} & z_{ij'} \\
+        z_{i'j} & z_{i'j'} 
+    \end{pmatrix}
+    $
+    all vanish.
+    Thus the image of Segre embedding is the subvariety cut out by $\{z_{ij}z_{i'j'} - z_{i'j}z_{ij'} \big{|} \forall i, j, i', j'\}$.
+\end{definition}
+\begin{definition}
+    Let $f\in k[x_{1}, \cdots, x_{m}, y_{1}, \cdots, y_n]$ be a polynomial.
+    We say that $f$ is bihomogenous of degree $(d, e)$ if $\forall u,v\in k$, we have that 
+    \begin{equation}
+        f(ux_{1}, \cdots, ux_{m}, vy_{1}, \cdots, vy_n) = u^{d}v^{e}f(x_{1}, \cdots, x_{m}, y_{1}, \cdots, y_{n})
+    \end{equation}
+    In fact, $f$ should be of the form $\sum_{i, j} a_{ij}x_{1}^{i_{1}}\cdots x_{m}^{i_{m}}y_{1}^{j_{1}}\cdots y_{n}^{j_{n}}$,
+    where $i_{1} + \cdots + i_{m} = d$ and $j_{1} + \cdots + j_{n} = e$ for all $i, j$.
+\end{definition}
+\begin{proposition}
+    Zariski closed subset of $\mathbb{P}_{k}^{m} \times \mathbb{P}_{k}^{n}$ is of the form $V(f_{1}, \cdots, f_{r})$ with $f_{i}$ bihomogenous.
+    In particular, when $m = n$, the diagonal set $\Delta_{\mathbb{P}_{k}^{n}}$ defined by $\{x_{i}y_{j} - x_{j}y_{i}\}_{0 \le i,j \le n}$ is a Zariski closed subset.
+    \label{Proposition 3.1}
+\end{proposition}
+\begin{remark}
+    In fact, since each closed subset of $\mathbb{P}_{k}^{m} \times \mathbb{P}_{k}^{n}$ under product topology can be written as $\cap_{i} (V_{i} \times \mathbb{P}_{k}^{n} \cup \mathbb{P}_{k}^{m} \times V_{i}')$,
+    where $V_{i} \subseteq \mathbb{P}_{k}^{m}$ and $V_{i}' \subseteq \mathbb{P}_{k}^{n}$ are closed subsets, it is clear that Zariski topology is finer than product topology.
+    In particular, $(\mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{m}, \text{ product topology}) \rightarrow (\mathbb{P}_{k}^{mn + m + n}, \text{ Zariski topology})$ is a continuous map.
+    Thus the image is also irreducible.
+\end{remark}
+Now embed general varieties into projective spaces, we can define product of varieties.
+\begin{definition}
+    Let $X, Y$ be varieties.
+    Assume $X \subseteq \mathbb{P}_{k}^{n}$ and $Y \subseteq \mathbb{P}_{k}^{m}$.
+    Define the product $X \times Y$ with subspace topology of $\mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{m}$.
+\end{definition}
+\begin{remark}
+    In particular, when $X = \mathbb{A}_{k}^{n}$ and $Y = \mathbb{A}_{k}^{m}$,
+    we have that $\mathbb{A}_{k}^{n} \times \mathbb{A}_{k}^{m} \cong \mathbb{A}_{k}^{m + n}$.
+\end{remark}
+\begin{proposition}
+    Let $X, Y$ be varieties.
+    Then \\
+    (1)Projections $p_{1}: X \times Y \rightarrow X$ and $p_{2}: X \times Y \rightarrow Y$ are regular maps. \\
+    (2)Given a map $f: Z \rightarrow X \times Y$ of varieties, $f$ is a regular map if and only if $p_{1} \circ f$ and $p_{2} \circ f$ are both regular maps.
+    \label{Proposition 3.2}
+\end{proposition}
+\begin{definition}
+    Let $f: X \rightarrow \mathbb{P}_{k}^{n}$ be a regular map.
+    Define the graph $\Gamma_{f} \subseteq X \times \mathbb{P}_{k}^{n}$ of $f$ to be $\{(x, f(x)) \big{|} x\in X\}$.
+\end{definition}
+\begin{lemma}
+    Let $f: X \rightarrow \mathbb{P}_{k}^{n}$ be a regular map.
+    Then $\Gamma_{f}$ is closed.
+    \label{Lemma 3.1}
+\end{lemma}
+\begin{reason}
+    In fact, if consider regular map $X \times \mathbb{P}_{k}^{n} \rightarrow \mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{n}$ mapping $(x, y)$ to $(f(x), y)$.
+    then $\Gamma_{f}$ is preimage of $\Delta_{\mathbb{P}_{k}^{n}}$ and hence closed.
+\end{reason}
+\begin{remark}
+    As any variety can be embedded into some projective space as a locally closed subset,
+    we can also define graph for general regular map $X \rightarrow Y$.
+\end{remark}
+
+\subsection{Blow up of a point}
+\label{subsection:Blow_Up_Blow_up_of_a_point}
+
+Given a point in $\mathbb{P}_{k}^{n}$.
+By coordinate transformation, without loss of generality, can assume the point is just origin $0 = [1, 0, \cdots, 0]$.
+Consider the projection $\pi_{0}: \mathbb{P}_{k}^{n} \dashrightarrow \mathbb{P}_{k}^{n - 1}$ sending $[x_{0}, \cdots, x_{n}]$ to $[x_{1}, \cdots, x_{n}]$,
+which is a regular map outside $0$.
+\par
+Set $U = \mathbb{P}_{k}^{n} \setminus \{0\}$.
+Consider the closure of $\Gamma_{\pi_{0}}$ in $\mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{n - 1}$, called the blow up of $\mathbb{P}_{k}^{n}$ at $0$ and denoted by $Bl_{0}\mathbb{P}_{k}^{n}$.
+\begin{lemma}
+    Denote coordinate of $\mathbb{P}_{k}^{n}$ by $x_{0}, \cdots, x_{n}$ and coordinate of $\mathbb{P}_{k}^{n - 1}$ by $y_{1}, \cdots, y_{n}$.
+    Then $Bl_{0}\mathbb{P}_{k}^{n} \subseteq \mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{n - 1}$ is defined by the bihomogenous polynomials $\{x_{i}y_{j} - x_{j}y_{i} \big{|} 0 \le i,j \le n\}$.
+    \label{Lemma 3.2}
+\end{lemma}
+\begin{proof}
+    Obviously, $Bl_{0}\mathbb{P}_{k}^{n} \subseteq V(\{x_{i}y_{j} - x_{j}y_{i}\})$.
+    Want to show that there is a covering consisting of irreducible subsets $V_{i} \subseteq V(\{x_{i}y_{j} - x_{j}y_{i}\})$ such that $\Gamma_{\pi_{0}} \cap V_{i}$ contains some nonempty open subset of $V_{i}$.
+    \par
+    Consider projection maps
+    \begin{equation}
+        \begin{tikzcd} 
+            & V(\{x_{i}y_{j} - x_{j}y_{i}\}) \subseteq \mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{n - 1} \arrow[dr, "p_{2}"] \arrow[dl, "p_{1}" swap] & \\
+            \mathbb{P}_{k}^{n} && \mathbb{P}_{k}^{n - 1}
+        \end{tikzcd}
+    \end{equation}
+    For every $\beta = [b_{1}, \cdots, b_{n}]\in \mathbb{P}_{k}^{n - 1}$, 
+    its preimage $p_{2}^{-1}(\beta)$ is the closed subset cut out by $x_{i}b_{j} - x_{j}b_{i}$.
+    It is clear that $p_{1} \circ p_{2}^{-1}(\beta)$ is the line connecting $0$ and $[0, b_{1}, \cdots, b_{n}]$.
+    \par
+    For each $U_{i} = D_{+}(y_{i}) \subseteq \mathbb{P}_{k}^{n - 1}$, 
+    since $x_{i}y_{j} - x_{j}y_{i} = y_{i}(x_{i}\frac{y_{j}}{y_{i}} - x_{j})$ for all $j$, we have that
+    \begin{equation}
+        \begin{split}
+            p_{2}^{-1}(U_{i}) & \cong p_{1} \circ p_{2}^{-1}(U_{i}) \\
+            & = \{[x_{0}, x_{i}\frac{y_{1}}{y_{i}}, \cdots, x_{i}\frac{y_{n}}{y_{i}}]\} \\
+            & \cong \{[x_{0}, x_{i}] \times (\frac{y_{1}}{y_{i}}, \cdots, \frac{y_{n}}{y_{i}})\} \\
+            & = \mathbb{P}_{k}^{1} \times U_{i}
+        \end{split}
+    \end{equation}
+    which is an open subset of $\mathbb{P}_{k}^{1} \times \mathbb{P}_{k}^{n - 1}$ hence irreducible. 
+    Thus $p_{2}^{-1}(U_{i})$ is irreducible for all $i$.
+    \par
+    For each $\alpha = [a_{0}, \cdots, a_{n}] \neq 0$, we have that $p_{1}^{-1}(\alpha) = \alpha \times [a_{1}, \cdots, a_{n}]$.
+    Hence $p_{1}^{-1}(W_{i}) \overset{\sim}{\rightarrow} W_{i}$, where $W_{i} = D_{+}(x_{i}) \subseteq \mathbb{P}_{k}^{n}$.
+    Note that $p_{1}^{-1}(W_{i}) \subseteq \Gamma_{\pi_{0}} \cap p_{2}^{-1}(U_{i})$ is open in $\mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{n - 1}$, done!
+\end{proof}
+\begin{remark}
+    Above argument also shows that $p_{1}$ is an isomorphism over $\mathbb{P}_{k}^{n} \setminus \{0\}$.
+\end{remark}
+\begin{definition}
+    Let $X$ be a subvariety of $\mathbb{P}_{k}^{n}$, $x\in X$.
+    Define blow up of $X$ at $x$ to be $Bl_{x}X := \overline{p_{1}^{-1}(X \setminus \{x\})}$ with a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            Bl_{x}X \arrow[r, hookrightarrow] \arrow[d, "p_{X}"] &
+            Bl_{x}\mathbb{P}_{k}^{n} \arrow[d, "p_{1}"] \\
+            X \arrow[r, hookrightarrow] &
+            \mathbb{P}_{k}^{n}
+        \end{tikzcd}
+    \end{equation}
+    Similarly, $p_{X}$ is an isomorphism over $X \setminus \{x\}$ and $p_{X}^{-1}(x) \subseteq x \times \mathbb{P}_{k}^{n - 1}$.
+\end{definition}
+
+\subsection{Resoluting singularities}
+\label{subsection:Blow_Up_Resoluting_singularities}
+
+\begin{example}
+    (1)Take curve $C = V(x_{0}x_{1}^{2} - x_{2}^{2}(x_{0} - x_{2})) \subseteq \mathbb{P}_{k}^{2}$ with $0\in C$.
+    Consider $U_{0} = D_{+}(x_{0})$.
+    Then $C \cap U_{0} = V(x_{1/0}^{2} - x_{2/0}^{2} + x_{2/0}^{3})$.
+    It is clear that $0$ is a singular point.
+    By blow up at $0$, we would get $p_{1}^{-1}(0)$ is nonsingular.
+    \\
+    (2)For rational map $u: \mathbb{P}_{k}^{2} \rightarrow \mathbb{P}_{k}^{2}$ mapping $[x, y, z]$ to $[\frac{1}{x}, \frac{1}{y}, \frac{1}{z}] = [yz, zx, xy]$.
+    Then $u$ is not regular at $p_{1} = [1, 0, 0]$, $p_{2} = [0, 1, 0]$ and $p_{3} = [0, 0, 1]$.
+    By blowing up one by one, we would get $Bl_{p_{1}, p_{2}, p_{3}}\mathbb{P}_{k}^{2}$ such that there exists regular birational map $\phi$ making the following diagram commutative
+    \begin{equation}
+        \begin{tikzcd}
+            Bl_{p_{1}, p_{2}, p_{3}}\mathbb{P}_{k}^{2} \arrow[dr, rightarrow, "\phi"] \arrow[d] & \\
+            \mathbb{P}_{k}^{2} \arrow[r, dashrightarrow, "u"] &
+            \mathbb{P}_{k}^{2}
+        \end{tikzcd}
+    \end{equation}
+\end{example}
+\begin{theorem}[\textbf{\emph{Hironaka}}]
+    Let $k$ be an algebraically closed field of characteristic $0$.
+    Then \\
+    (1)For all variety $X$, there exists a series of blow-ups 
+    \begin{equation}
+        X_{n} \longrightarrow X_{n - 1} \longrightarrow \cdots \longrightarrow X_{1} \longrightarrow X_{0} = X
+    \end{equation}
+    such that $X_{n}$ is smooth. \\
+    (2)For all rational map $f: X \dashrightarrow Y$, there exists a series of blow-ups 
+    \begin{equation}
+        \pi: X_{n} \longrightarrow X_{n - 1} \longrightarrow \cdots \longrightarrow X_{1} \longrightarrow X_{0} = X
+    \end{equation}
+    such that $f \circ \pi: X_{n} \rightarrow Y$ is regular.
+    \label{Theorem 3.1}
+\end{theorem}
+For the second example above, we can say more things about birational maps of $\mathbb{P}_{k}^{2}$.
+Set $Cr(\mathbb{P}_{k}^{2}) := \{f: \mathbb{P}_{k}^{2} \dashrightarrow \mathbb{P}_{k}^{2} \text{ birational}\}$, called Cremona group.
+By Corollary \ref{Corollary 2.3}, there is a one-to-one correspondence between $Cr(\mathbb{P}_{k}^{2})$ and $\aut(K(\mathbb{P}_{k}^{2})/k)$, 
+where $K(\mathbb{P}_{k}^{2}) = K(\mathbb{A}_{k}^{2}) = k(x, y)$.
+\par
+Then it is clear that $u\in Cr(\mathbb{P}_{k}^{2})$ is an involution and $SL_{k}(3) \subseteq Cr(\mathbb{P}_{k}^{2})$.
+In fact, by the following Theorem, $Cr(\mathbb{P}_{k}^{2})$ is just generated by these elements.
+\begin{theorem}[\textbf{\emph{Noether-Castelnuovo}}]
+    Any birational map $\varphi\in Cr(\mathbb{P}_{k}^{2})$ is of the form $u^{s} \circ M_{1} \circ u \circ M_{2} \circ \cdots M_{n} \circ u^{t}$,
+    where $M_{i}\in SL_{k}(3)$ and $s,t\in \{0, 1\}$.
+    \label{Theorem 3.2}
+\end{theorem}
+
+\subsection{Images of regular maps}
+\label{subsection:Blow_Up_Images_of_regular_maps}
+
+\begin{theorem}
+    Assume that $X$ is a variety and $Y$ is a projective variety.
+    Then the projection $p: X \times Y \rightarrow X$ is a closed map.
+    \label{Theorem 3.3}
+\end{theorem}
+\begin{proof}
+    Recall that resultant of polynomials $F = a_{0} + a_{1}x + \cdots + a_{s}x^{s}$ and $G = b_{0} + b_{1}x + \cdots + b_{t}x^{t}$ is a matrix of degree $s + t$
+    \begin{equation}
+        Res(F, G) = 
+        \begin{pmatrix}
+            a_{0} & a_{1} & \cdots & a_{s} &&& \\
+            & a_{0} & a_{1} & \cdots & a_{s} && \\
+            &&&& \ddots && \\
+            &&& a_{0} & a_{1} & \cdots & a_{s} \\
+            b_{0} & b_{1} & \cdots & b_{t} &&& \\
+            & b_{0} & b_{1} & \cdots & b_{t} && \\
+            &&&& \ddots && \\
+            &&& b_{0} & b_{1} & \cdots & b_{t}
+        \end{pmatrix}
+    \end{equation}
+    \par
+    Step 1: Take $Y = \mathbb{P}_{k}^{1}$ and $X = \mathbb{P}_{k}^{m}$, want to show that $\pi: \mathbb{P}_{k}^{m} \times \mathbb{P}_{k}^{1} \rightarrow \mathbb{P}_{k}^{m}$ is closed.
+    Let $Z \subseteq \mathbb{P}_{k}^{m} \times \mathbb{P}_{k}^{1}$ be a closed subset, defined by bihomogenous polynomials $F_{i}(x_{0}, \cdots, x_{m}, y_{0}, y_{1})$ for $1 \le i \le h$. 
+    Define $\overline{F_{i}} = F_{i}(x_{0}, \cdots, x_{m}, 1, Y)\in k[x_{0}, \cdots, x_{m}][Y]$.
+    Claim that $\pi(Z) \subseteq \mathbb{P}_{k}^{m}$ is the closed subset defined by $Res(\overline{F_{i}}, \overline{F_{j}})\in k[x_{0}, \cdots, x_{m}]$ for $1 \le i,j \le h$.
+    \par
+    For $\alpha\in \pi(Z)$, there exists $[\beta_{0}, \beta_{1}]\in \mathbb{P}_{k}^{1}$ such that $\alpha \times [\beta_{0}, \beta_{1}]\in Z$ so that $F_{i}(\alpha, \beta_{0}, \beta_{1}) = 0$ for all $i$.
+    If $\beta_{0} \neq 0$, then replace $[\beta_{0}, \beta_{1}]$ by $[1, \frac{\beta_{1}}{\beta_{0}}]$ and hence $\frac{\beta_{1}}{\beta_{0}}$ is common root of all $\overline{F_{i}}(\alpha, Y)$.
+    Thus $Res(\overline{F_{i}}, \overline{F_{j}}) = 0$ for all $i,j$.
+    \par
+    If $\beta_{0} = 0$, then leading coefficients of $\overline{F_{i}}(\alpha, Y)$ are all $0$ and hence $Res(\overline{F_{i}}, \overline{F_{j}})(\alpha) = 0$ for all $i,j$. 
+    Thus we get $\pi(Z) \subseteq V(Res(\overline{F_{i}}, \overline{F_{j}}))$.
+    \par
+    Conversely, assume that all resultants vanish at $\alpha\in \mathbb{P}_{k}^{m}$.
+    We need to show that $\alpha\in \pi(Z)$.
+    If $\alpha$ is common root of all the leading coefficients of $\overline{F_{i}}$,
+    then obviously $\alpha \times [0, 1]\in Z$ and hence $\alpha\ni \pi(Z)$.
+    \par
+    Suppose that there exists some $F\in I(Z)$ whose leading coefficient does not vanish at $\alpha$.
+    Note that $\overline{F}(\alpha, 1, Y)$ has only finitely many roots, denoted by $\gamma_{1}, \cdots, \gamma_{N}$.
+    Since $Res(\overline{F}, \overline{G})(\alpha) = 0$ and leading coefficient of $\overline{F}(\alpha, Y)$ is nonzero,
+    we have that $G(\alpha, 1, Y)$ vanish at least one point in $\gamma_{1}, \cdots, \gamma_{N}$.
+    \par
+    Suppose that all $\alpha \times [1, \gamma_{i}]$ are not in $Z$.
+    Then there exist $G_{i}$ such that $G(\alpha, 1, \gamma_{i}) \neq 0$.
+    Multiplied by some power of $y$ and $x_{j}$, where $\alpha\in D_{+}(x_{j})$,
+    we may assume that all $G_{i}$ are of same bidegree.
+    \par
+    Then for all $a_{i}$, bihomogenous polynomial $\sum_{i} a_{i}G_{i}\in I(Z)$ has some root in $\{\gamma_{1}, \cdots, \gamma_{N}\}$.
+    Consider linear map $\phi: k^{N} \rightarrow k^{N}$ defined by 
+    \begin{equation}
+        (a_{1}, \cdots, a_{n}) \longmapsto (\sum_{i} a_{i}G_{i}(\alpha, 1, \gamma_{1}), \cdots, \sum_{i} a_{i}G_{i}(\alpha, 1, \gamma_{N}))
+    \end{equation}
+    Note that $\im \phi \subseteq \cup_{i} H_{i}$ where $H_{i} = \{a_{i} = 0\}$.
+    While $\im \phi$ is vector space over infinite field $k$, 
+    it cannot be covered by finitely many proper subspaces so that $\im \phi \subseteq H_{i}$ for some $i$,
+    while implies that all $G_{j}(\alpha, 1, \gamma_{i}) = 0$.
+    In particular, we get that $G_{i}(\alpha, 1, \gamma_{i}) = 0$, contradiciton!
+    \par
+    Step 2: For general variety $X$, want to show that $X \times \mathbb{P}_{k}^{1} \rightarrow X$ is closed.
+    In this case, embed $X$ into some $\mathbb{P}_{k}^{m}$ and consider a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            X \times \mathbb{P}_{k}^{1} \arrow[r, "\pi_{X}"] \arrow[d, hookrightarrow] &
+            X \arrow[d, hookrightarrow] \\
+            \mathbb{P}_{k}^{m} \times \mathbb{P}_{k}^{1} \arrow[r, "\pi"] &
+            \mathbb{P}_{k}^{m}
+        \end{tikzcd}
+    \end{equation}
+    Let $Z$ be a closed subset.
+    Then there exists closed subset $Z' \subseteq \mathbb{P}_{k}^{m}$ such that $z' \cap X = Z$.
+    Clearly, $\pi_{X}(Z) = \pi(Z') \cap X$ is still closed in $X$.
+    \par
+    Step 3: For general variety $X$, want to show that $X \times \mathbb{P}_{k}^{n} \rightarrow X$ is closed.
+    Recall that for all $x\in \mathbb{P}_{k}^{n}$, we can blow up at $x$.
+    For all standard affine open subset $U_{i} \subseteq \mathbb{P}_{k}^{n - 1}$, we have a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            U_{i} \times \mathbb{P}_{k}^{1} \cong q^{-1}(U_{i}) \arrow[r, hookrightarrow] \arrow[d] &
+            Bl_{x}\mathbb{P}_{k}^{n} \arrow[r, "p"] \arrow[d, "q"] &
+            \mathbb{P}_{k}^{n} \\
+            U_{i} \arrow[r, hookrightarrow] &
+            \mathbb{P}_{k}^{n - 1} & 
+        \end{tikzcd}
+    \end{equation}
+    Taking product by $X$ over $k$, we get a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            X \times U_{i} \times \mathbb{P}_{k}^{1} \arrow[r, hookrightarrow] \arrow[d] &
+            X \times Bl_{x}\mathbb{P}_{k}^{n} \arrow[r, "\identity \times p"] \arrow[d, "\identity \times q"] &
+            X \times \mathbb{P}_{k}^{n} \arrow[d, "\pi_{X}"] \\
+            X \times U_{i} \arrow[r, hookrightarrow] &
+            X \times \mathbb{P}_{k}^{n - 1} \arrow[r] & 
+            X
+        \end{tikzcd}
+    \end{equation}
+    For all closed subset $Z \subseteq \mathbb{P}_{k}^{n}$, 
+    set $\widetilde{Z} = (\identity \times p)^{-1}(Z)$ which is a closed subset of $X \times Bl_{x}\mathbb{P}_{k}^{n}$.
+    Then $Z_{i} := \widetilde{Z} \cap (\identity \times q)^{-1}(X \times U_{i})$ is closed in $(\identity \times q)^{-1}(X \times U_{i})$.
+    \par
+    By step 1, $X \times U_{i} \times \mathbb{P}_{k}^{1} \rightarrow X \times U_{i}$ is closed so that $(\identity \times q)(Z_{i})$ is closed in $X \times U_{i}$ for all $i$.
+    Thus $(\identity \times q)(\widetilde{Z})$ is closed in $X \times \mathbb{P}_{k}^{n - 1}$.
+    By induction on $n$, $X \times \mathbb{P}_{k}^{n - 1}$ is closed so that $\pi_{X}(Z)$ is closed.
+    \par
+    Step 4: For general variety $X$ and projective $Y$, want to show that $X \times Y \rightarrow X$ is closed.
+    Since $Y$ is projective, we can embed it into $\mathbb{P}_{k}^{n}$ as a closed subset for some $n$.
+    Consider the following commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            X \times Y \arrow[r, "\pi_{X}"] \arrow[d, hookrightarrow] &
+            X \arrow[d, equal] \\
+            X \times \mathbb{P}_{k}^{n} \arrow[r, "\pi"] &
+            X
+        \end{tikzcd}
+    \end{equation}
+    As $X \times Y$ is a closed subset of $X \times \mathbb{P}_{k}^{n}$ and $\pi$ is closed,
+    it is clear that $\pi_{X}$ is also closed.
+\end{proof}
+\begin{corollary}
+    Let $Y$ be a projective variety.
+    Then any regular map $f: Y \rightarrow Z$ is closed.
+    \label{Corollary 3.1}
+\end{corollary}
+\begin{reason}
+    For all closed subset $W \subseteq Y$, $\Gamma_{f} \cap (W \times Z) \hookrightarrow Y \times Z \rightarrow Z$ has closed image.
+\end{reason}
+\begin{corollary}
+    Any regular function on a connected projective variety $X$ is constant.
+    \label{Corollary 3.2}
+\end{corollary}
+\begin{proof}
+    Let $f: X \rightarrow \mathbb{A}_{k}^{1}$ be a regular function.
+    Then $\widetilde{f}: X \rightarrow \mathbb{A}_{k}^{1} \hookrightarrow \mathbb{P}_{k}^{1}$ is a regular map.
+    Hence $\widetilde{f}$ is closed and $\widetilde{f}(X)$ is closed in $\mathbb{P}_{k}^{1}$.
+    Note that $\widetilde{f}(X) \neq \mathbb{P}_{k}^{1}$ since $\mathbb{A}_{k}^{1} \hookrightarrow \mathbb{P}_{k}^{1}$ is not surjective.
+    Thus $\widetilde{f}(X)$ is a finite set and by connectivity, $f$ is constant.
+\end{proof}
+\begin{corollary}
+    Let $X \subseteq \mathbb{P}_{k}^{n}$ be a closed subvariety.
+    Assume that $X$ is connected and $X$ is not a one-point set.
+    Then for all hypersurface $H \subseteq \mathbb{P}_{k}^{n}$, $X$ meets $H$.
+    \label{Corollary 3.3}
+\end{corollary}
+\begin{proof}
+    Say $H = V(F)$ where $F$ is a homogeneous polynomial of degree $d$.
+    Consider $d$th Veronese map $V_{d}: \mathbb{P}_{k}^{n} \hookrightarrow \mathbb{P}_{k}^{\binom{n + d}{d} - 1}$.
+    Denote $N = \binom{n + d}{d} - 1$.
+    Suppose that $F = \sum_{I} a_{I}x^{I}$, where $I$ varies over $(a_{0}, a_{1}, \cdots, a_{n})$ satisfying that $\sum a_{i} = d$ and $x_{I} = \prod_{i} x_{i}^{a_{i}}$.
+    Take $\widetilde{H}$ to be the hypersurface in $\mathbb{P}_{k}^{N}$ defined by $\sum_{I} a_{I}x_{I}$.
+    Then $v_{d}^{-1}(\mathbb{P}_{k}^{N} \setminus \widetilde{H}) = \mathbb{P}_{k}^{n} \setminus H$.
+    \par
+    Suppose that $X \cap H = \varnothing$, then $X \subseteq \mathbb{P}_{k}^{n} \setminus H$.
+    Now for all homogeneous polynomial $G$ of degree $d$, $\frac{G}{F}\big{|}_{X}$ defines a regular function on $X$.
+    As $X$ is connected projective variety, by Corollary \ref{Corollary 3.2}, $\frac{G}{F}\big{|}_{X}$ is constant.
+    Note that $\frac{G}{F}\big{|}_{X}$ can also be viewed as a regular function on $v_{d}(X)$.
+    Taking $G$ varies over $x^{I}$ for all $I$, it is clear that $v_{d}(X)$ is a point.
+    While $v_{d}$ is injective, contradiction!
+\end{proof}
+
+\section{Dimension Theory}
+\label{section:Dimension_Theory}
+ 
+\subsection{Dimension}
+\label{subsection:Dimension_Theory_Dimension}
+
+\begin{definition}
+    Let $X$ be a topological space.
+    The dimension of $X$ denoted by $\dim X$ is the supremum of $n$ such that there exists a chain of irreducible closed sbusets of length $n$.
+\end{definition}
+\begin{proposition}
+    Let $X$ be a topological space, $Y \subseteq X$ subspace with induced topology.
+    Then we have that \\
+    (1)$\dim Y \le \dim X$ \\
+    (2)If $X$ is irreducible of finite dimension and $Y$ is proper subset, then $\dim Y < \dim X$. \\
+    (3)If $X = \cup_{i} X_{i}$ is union of finitely many closed subsets, where $X_{i}$ are closed, then $\dim X = \max_{i} \{\dim X_{i}\}$.
+    \label{Proposition 4.1}
+\end{proposition}
+\begin{corollary}
+    Let $X$ be a variety.
+    Assume that $\dim X = 0$, then $X$ is union of finitely many points.
+    \label{Corollary 4.1}
+\end{corollary}
+\begin{reason}
+    Since $X$ can be written as union of finitely many irreducible components,
+    by previous proposition, we would get each component of $X$ is of dimension $0$ and hence is one-point set.
+\end{reason}
+\begin{remark}
+    If each irreducible component of $X$ is of dimension $n$, 
+    then we say that $X$ is pure of dimension $n$ (or say that $X$ is equidimensional of dimension $n$).
+    \par
+    Given $x\in X$, define the dimension of $X$ at $x$ to be $\dim_{X} x := \sup \{n \big{|} \exists \{x\} \subsetneq X_{1} \subsetneq \cdots \subsetneq X_{n} \text{ chain of irreducible closed subsets}\}$.
+    Clearly, $\dim X \ge \dim_{X} x$.
+\end{remark}
+\begin{proposition}
+    Let $X$ be an irreducible affine variety, $A(X)$ coordinate ring.
+    Then $\dim X = \dim A(X)$.
+    \label{Proposition 4.2}
+\end{proposition}
+\begin{reason}
+    Immediately comes from the one-to-one correspondence between irreducible subvarieties and prime ideals.
+\end{reason}
+\begin{theorem}
+    Let $A$ be an integral domain over field $k$ (not necessarily algebraically closed).
+    Then $\dim A = \trdeg(\fraction(A)/k)$ the Krull dimension of $A(X)$.
+    \label{Theorem 4.1}
+\end{theorem}
+\begin{corollary}
+    $\dim \mathbb{A}_{k}^{n} = n$.
+    \label{Corollary 4.2}
+\end{corollary}
+\begin{theorem}
+    Let $A$ be an integral domain of finite type over field $k$ (not necessarily algebraically closed).
+    Then for all prime ideal $\mathfrak{p}$ of $A$, we have that $\height (\mathfrak{p}) + \dim A/\mathfrak{p} = \dim A$.
+    \label{Theorem 4.2}
+\end{theorem}
+\vspace{-\baselineskip} % 减少一行间距
+\begin{corollary}
+    Let $X$ be an irreducible variety.
+    Then for all irreducible subvariety $Y \subseteq X$, $\dim Y + \codim Y = \dim X$.
+    In particular, $\dim_{X} x = \dim X$ for all $x\in X$.
+    \label{Corollary 4.3}
+\end{corollary}
+\begin{reason}
+    By taking affine open subset $U$ meeting $Y$, we can reduce to the case that $X$ is affine.
+    Then apply preceding theorem to $A(X)$, we are done.
+\end{reason}
+\begin{proposition}
+    Let $X$ be a variety.
+    Then $\dim X$ is finite and for all open dense subset $U \subseteq X$, we have that $\dim U = \dim X$.
+    \label{Proposition 4.3}
+\end{proposition}
+\begin{example}
+    (1)$\dim \mathbb{P}_{k}^{n} = n$ since $D_{+}(x_{i}) \cong \mathbb{A}_{k}^{n}$ is an open dense subset. \\
+    (2)$\dim (\mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{m}) = n + m$. \\
+    (3)Assume that $X$ is irreducible, then $\dim X = \trdeg(K(X)/k)$ since we can take affine open dense subset $U \subseteq X$ and hence
+    \begin{equation}
+        \dim X = \dim U = \trdeg(K(U)/k) = \trdeg(K(X)/k)
+    \end{equation}
+    (4)Let $f: X \dashrightarrow Y$ be a dominant rational map between irreducible varieties.
+    Then $f$ would correspond to a field extension $K(Y) \hookrightarrow K(X)$.
+    Hence $\dim Y = \trdeg (K(Y)/k) \le \trdeg (K(X)/k) = \dim X$.
+    \label{example:some_elementary_examples_in_dimension_theory}
+\end{example}
+Though $K(X)$ may be not a field when $X$ is not irreducible,
+we can generalize the last entry in Example \ref{example:some_elementary_examples_in_dimension_theory}.
+\begin{proposition}
+    Let $f: X \dashrightarrow Y$ be a dominant rational map.
+    Then for all irreducible component $W$ of $Y$, there is a dominant rational map $\widetilde{f}: \cup_{i} V_{i} \dashrightarrow W$,
+    where $V_{i}$ are all irreducible components of $X$ meeting $f^{-1}(W)$.
+    Moreover, we have that $\dim W \le \max_{i} \{\dim V_{i}\}$ and in particular, $\dim Y \le \dim X$.
+    \label{Proposition 4.4}
+\end{proposition}
+\begin{proof}
+    Assume $U$ is the domain of definition of $f$.
+    Then $f^{-1}(W)$ would be union of some irreducible components of $U$, say $f^{-1}(W) = \cup_{i} (V_{i} \cap U)$.
+    And we get a dominant rational map $\widetilde{f}: \cup_{i} V_{i} \dashrightarrow W$.
+    \par
+    Note that $W = \overline{\cup_{i} f(V_{i} \cap U)} = \cup_{i} \overline{f(V_{i} \cap U)}$.
+    As $W$ is irreducible, $W = \overline{f(V_{i} \cap U)}$ for some $i$.
+    Then by same argument as (4) in Example \ref{example:some_elementary_examples_in_dimension_theory},
+    we get that $\dim W \le \dim V_{i} \le \max_{i} \{\dim V_{i}\}$. 
+\end{proof}
+
+\subsection{Dimension and defining equations}
+\label{subsection:Dimension_Theory_Dimension_and_defining_equations}
+
+\begin{theorem}[\textbf{\emph{Krull's Principal Ideal Theorem}}]
+    Let $A$ be a noetherian domain, $f\in A$ nonzero.
+    Then all minimal prime ideals in $V(f)$ are of height $1$.
+    \label{Theorem 4.3}
+\end{theorem}
+\begin{remark}
+    For noetherian ring $A$ and $f\in A$, we also has Krull's Principal Ideal Theorem that all minimal prime ideals in $V(f)$ are of height at most $1$ and take equality if $f$ is not zero-divisor.
+\end{remark}
+\begin{theorem}
+    Let $X \subseteq \mathbb{P}_{k}^{n}$ be a quasi-projective subvariety, $F_{1}, \cdots, F_{r}$ homogeneous polynomials.
+    Then we have that \\
+    (1)If $X$ is of pure dimension $n$ and $X \cap V(F_{1}, \cdots, F_{r})$ is nonempty, 
+    then each irreducible component of $X \cap V(F_{1}, \cdots, F_{r})$ is of dimension $\ge n - r$. \\
+    (2)If $X$ is closed of dimension $n$ and $r \le n$, then $X \cap V(F_{1}, \cdots, F_{r}) \neq \varnothing$.
+    \label{Theorem 4.4} 
+\end{theorem}
+\begin{remark}
+    For (2), recall that by Corollary \ref{Corollary 3.3}, 
+    for projective $X$ which is not one-point set, $X \cap V(F) \neq \varnothing$.
+    This is just the $r = 1$ case.
+\end{remark}
+\begin{corollary}
+    Hypersurfaces $V(F)$ of $\mathbb{A}_{k}^{n}$ (resp. $\mathbb{P}_{k}^{n}$) are exactly the closed subvarieties of pure dimension $n - 1$.
+    \label{Corollary 4.4}
+\end{corollary}
+\begin{reason}
+    Assume that $F = \prod_{i} F_{i}$ is the irreducible factorization.
+    Then $V(F) = \cup_{i} V(F_{i})$ and by Krull's Principal Theorem and Proposition \ref{Proposition 4.1}, 
+    $\dim V(F) = \max_{i} \{\dim V(F_{i})\} = \max_{i} \{n - 1\} = n - 1$.
+    \par
+    Conversely, assume that $Y \subseteq \mathbb{A}_{k}^{n}$ is an irreducible closed subvariety of dimension $n - 1$.
+    Take some $F = \prod_{i} F_{i} \neq 0\in I(Y)$.
+    Then $Y \subseteq V(F) = \cup_{i} V(F_{i})$.
+    As $Y$ is irreducible, we may assume that $Y \subseteq V(F_{1})$ which is also of dimension $n - 1$ so that $Y = V(F_{1})$.
+\end{reason}
+\begin{example}
+    Let $\mathbb{P}_{k}^{3}$ be projective space with coordinate $x, y, z, w$, 
+    $F_{1} = xw - yz$, $F_{2} = xz - y^2$ and $F_{3} = yw - z^2$.
+    Then $\dim V(F_{1}, F_{2}, F_{3}) = 1 > 3 - 3 = 0$.
+    This is because $F_{3}$ is zero-divisor in $k[x, y, z, w]/(F_{1}, F_{2})$.
+\end{example}
+
+\subsection{Generically finite morphism}
+\label{subsection:Dimension_Theory_Generically_finite_morphism}
+
+From now on, by a morphism of varieties, we mean a regular map.
+\begin{definition}
+    Let $f: X \rightarrow Y$ be a morphism of varieties.
+    Assume $\mathcal{P}$ is a property of fibers.
+    We say that a general fiber of $f$ satisfies property $\mathcal{P}$ if there exists open dense subset $U \subseteq Y$ such that for all $y\in U$,
+    fiber $f^{-1}(y)$ satisfies property $\mathcal{P}$.
+\end{definition}
+\begin{definition}
+    Let $f: X \rightarrow Y$ be a morphism of varieties, $\sharp k$ uncountable.
+    Assume $\mathcal{P}$ is a property of fibers.
+    We say that a very general fiber of $f$ satisfies property $\mathcal{P}$ if there exist countably many proper closed subset $V_{i} \subseteq Y$ such that for all $y\in \cup_{i} V_{i}$,
+    fiber $f^{-1}(y)$ satisfies property $\mathcal{P}$.
+\end{definition}
+\begin{theorem}
+    Let $X, Y$ be irreducible affine varieties, $f: X \rightarrow Y$ a dominant morphism.
+    Then a general fiber of $f$ is finite if and only if the corresponding field extension $f^{\ast}: K(Y) \hookrightarrow K(X)$ is a finite extension.
+    \label{Theorem 4.5}
+\end{theorem}
+\begin{proof}
+    Assume $X \subseteq \mathbb{A}_{k}^{n}$ and $Y \subseteq \mathbb{A}_{k}^{m}$.
+    Consider graph $\Gamma_{f}$ of $f$, there is a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            \Gamma_{f} \arrow[rr, hookrightarrow] \arrow[dr, "\sim"] &&
+            X \times Y \arrow[rr, hookrightarrow] \arrow[dr] \arrow[dl] &&
+            \mathbb{A}_{k}^{n + m} \arrow[dr] & \\
+            & X \arrow[rr, "f"] &&
+            Y \arrow[rr, hookrightarrow] &&
+            \mathbb{A}_{k}^{m}
+        \end{tikzcd}
+    \end{equation}
+    Replacing $X$ and $f$ by $\Gamma_{f}$ and $\Gamma_{f} \overset{\sim}{\rightarrow} X \overset{f}{\rightarrow} Y$ respectively,
+    then the new $f$ is still a morphism induced by the canonical projection $\mathbb{A}_{k}^{n + m} \rightarrow \mathbb{A}_{k}^{m}$.
+    \par
+    Induct on $n$. 
+    For $n = 1$, denote coordinate of $\mathbb{A}_{k}^{1 + m}$ by $x, y_{1}, \cdots, y_{m}$.
+    Then $A(X)$ is generated by $\overline{x}$ over $A(Y)$.
+    If $x$ is algebraic over $K(Y)$, assume $G(T)\in K(Y)[T]$ is the minimal polynomial of $x$.
+    Write $G(T) = T^{d} + a_{1}T^{d - 1} + \cdots + a_{d}$, where $a_{i}\in K(Y)$.
+    Multiplied by product of dominators, we get $\widetilde{G}(T) = b_{0}T^{d} + b_{1}T^{d - 1} + b_{d}$, where $b_{i}\in A(Y)$ and $b_{0} \neq 0$.
+    \par
+    For all $y\in Y$ and $(\alpha, y)\in f^{-1}(y)$, as soon as $b_{0}(y) \neq 0$,
+    $\alpha$ would be zero of the equation $\widetilde{G}(T, y)$ hence $f^{-1}(y)$ is a finite set with $\sharp f^{-1}(y) \le d = [K(X) : K(Y)]$.
+    Moreover, if $K(X)$ is separable over $K(Y)$, then the equality holds.
+    \par
+    If $x$ is transcendental over $K(Y)$, then for all $F\in I(X)$,
+    written as $b_{0}(y_{1}, \cdots, y_{m})x^{d} + b_{1}(y_{1}, \cdots, y_{m})x^{d - 1} + \cdots + b_{d}(y_{1}, \cdots, y_{m})$,
+    we have that $b_{j}(y) = 0$ for all $y\in Y$ so that $b_{j}(y_{1}, \cdots, y_{m})\in I(Y)$ for all $j$.
+    Thus for all $y\in Y$ and all $a\in k$, $F(a, y) = 0$.
+    Conclude that $\mathbb{A}_{k}^{1} \times \{y\} \subseteq X$ and hence $f^{-1}(y) = \mathbb{A}_{k}^{1} \times \{y\}$.
+    \par
+    For $n > 1$, consider following commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            \mathbb{A}_{k}^{n + m} \arrow[r] &
+            \mathbb{A}_{k}^{n - 1 + m} \arrow[r] &
+            \mathbb{A}_{k}^{n - 2 + m} \arrow[r] &
+            \cdots \arrow[r] &
+            \mathbb{A}^{m} \\
+            X = Y_{0} \arrow[u, hookrightarrow] \arrow[r] &
+            Y_{1} \arrow[u, hookrightarrow] \arrow[r] &
+            Y_{2} \arrow[u, hookrightarrow] \arrow[r] &
+            \cdots \arrow[r] &
+            Y_{n} = Y \arrow[u, hookrightarrow]
+        \end{tikzcd}
+    \end{equation}
+    By induction, we complete the proof.
+\end{proof}
+\begin{remark}
+    When we replace $X$ by $\Gamma_{f}$, we in fact transfer imformation about $f$ into $I(X)$ while the new $f$ becomes trivial.
+    In addition, $\dim X = \dim Y$ and for general $y$, $\sharp f^{-1}(y) \le [K(X) : K(Y)]$ taking equality when $\characteristic k = 0$.
+\end{remark}
+\begin{example}
+    For the case that $\characteristic k = p$,
+    take morphism $f: X = \mathbb{A}_{k}^{1} \rightarrow Y = \mathbb{A}_{k}^{1}$ sending $x$ to $x^{p}$.
+    Then for all $\alpha\in \mathbb{A}_{k}^{1}$, $f^{-1}(\alpha) = \alpha^{\frac{1}{p}}$ is a unique point while $[K(X) : K(Y)] = p$.
+\end{example}
+\begin{lemma}
+    Let $X, Y$ be irreducible varieties, $f: X \rightarrow Y$ a dominant morphism.
+    Assume that $U$ is an affine open dense subset of $Y$ and $V \subseteq f^{-1}(U)$ is an affine open dense subset of $X$.
+    Then a general fiber of $f$ is finite if and only if a general fiber of $f\big{|}_{V}$ is finite.
+    \label{Lemma 4.1}
+\end{lemma}
+\begin{proof}
+    The $\leftquotes \Rightarrow \rightquotes$ arrow is trivial since for all $y\in U$, $f\big{|}_{V}^{-1}(y) \subseteq f^{-1}(y)$.
+    For the converse, since a general fiber of $f\big{|}_{V}$ is finite, by Theorem \ref{Theorem 4.5}, $\dim X = \dim V = \dim U = \dim Y$.
+    Take $W = V^{c}$, then $W$ is a proper subset of $X$ and hence $\dim W < dim X$.
+    As $f\big{|}_{W}: W \rightarrow \overline{f(W)}$ is dominant, $\dim \overline{f(W)} \le \dim W < \dim X = \dim Y$ so that $\overline{f(W)}$ is a proper subset.
+    Now take $\overline{f(W)}^{c} \cap U$, we would see that for all $y\in \overline{f(W)}^{c} \cap U$, $f^{-1}(y) \subseteq V$, done!
+\end{proof}
+\begin{corollary}
+    Let $X, Y$ be irreducible varieties, $f: X \rightarrow Y$ a dominant morphism.
+    Then a general fiber of $f$ is finite if and only if the corresponding field extension $f^{\ast}: K(Y) \hookrightarrow K(X)$ is a finite extension.
+    \label{Corollary 4.5}
+\end{corollary}
+\begin{proof}
+    Take affine open dense subset $U \subseteq Y$ and affine open dense subset $V \subseteq f^{-1}(U)$.
+    Then $f\big{|}_{V}: V \rightarrow U$ is a dominant morphism between affine varieties.
+    Hence a general fiber of $f\big{|}_{V}$ is finite if and only if $K(U) = K(Y)$ is finite over $K(V) = K(X)$.
+    Then by Lemma \ref{Lemma 4.1}, done!
+\end{proof}
+\begin{corollary}
+    Let $X$ be an irreducible variety of dimension $n$.
+    Then there exists a dominant morphism $f: X \rightarrow \mathbb{P}_{k}^{n}$ with all fibers finite.
+    \label{Corollary 4.6}
+\end{corollary}
+\begin{proof}
+    We may assume that $X \subseteq \mathbb{P}_{k}^{N}$ is a closed subset for some $N \ge n$.
+    When $N = n$, the only closed subset of $\mathbb{P}_{k}^{n}$ of dimension $n$ is itself hence we can take the identity map.
+    Otherwise, when $N > n$, $X \subsetneq \mathbb{P}_{k}^{N}$.
+    Pick $x\in \mathbb{P}_{k}^{N} \setminus X$, may assume $x = [1, 0, \cdots, 0]$.
+    Take $\pi: \mathbb{P}_{k}^{N} \dashrightarrow \mathbb{P}_{k}^{N - 1}$ to be the projection from $x$.
+    Then $\pi\big{|}_{X}: X \rightarrow \mathbb{P}_{k}^{N - 1}$ is a morphism.
+    \par
+    For all $p\in \mathbb{P}_{k}^{N - 1}$, $\pi\big{|}_{X}^{-1}(p) = X \cap L_{p}$,
+    where $L_{p}$ is the line connecting $p$ and $x$.
+    Since $L_{p} \not\subset X$, there exists $f\in I(X)$ which is not in $I(L_{p})$,
+    Hence by Krull's Principal Ideal Theorem, $V(f) \cap L_{p}$ is of codimension $1$ in $L_{p}$ so that $X \cap L_{p} \subseteq V(f) \cap L_{p}$ is a finite set.
+    \par
+    Let $Y = \overline{\pi(X)} \subseteq \mathbb{P}_{k}^{N - 1}$.
+    By Theorem \ref{Theorem 4.5}, $\dim Y = \dim X = n$.
+    Hence by induction, there exists a dominant morphism $Y \rightarrow \mathbb{P}_{k}^{n}$ with all fibers finite.
+    Now, $X \rightarrow Y \rightarrow \mathbb{P}_{k}^{n}$ is our desired morphism.
+\end{proof}
+\begin{corollary}
+    Let $X, Y$ be varieties.
+    Then $\dim X \times Y = \dim X + \dim Y$.
+    \label{Corollary 4.7}
+\end{corollary}
+\begin{proof}
+    May assume that $X, Y$ irreducible.
+    Then there exist $f: X \rightarrow \mathbb{P}_{k}^{\dim X}$ dominant with all fibers finite and $g: X \rightarrow \mathbb{P}_{k}^{\dim Y}$ dominant with all fibers finite.
+    Consider $f \times g: X \times Y \rightarrow \mathbb{P}_{k}^{\dim X} \times \mathbb{P}_{k}{\dim Y}$,
+    which is dominant with all fibers finite.
+    Note that $\dim \mathbb{P}_{k}^{\dim X} \times \mathbb{P}_{k}{\dim Y} = \dim \mathbb{A}_{k}^{\dim X} \times \mathbb{A}_{k}{\dim Y} = \dim \mathbb{A}_{k}^{\dim X + \dim Y} = \dim X + \dim Y$.
+    Thus by Theorem \ref{Theorem 4.5}, $\dim X \times Y = \dim X + \dim Y$.
+\end{proof}
+\begin{corollary}
+    Let $X,Y \subseteq \mathbb{P}_{k}^{n}$ be varieties.
+    Then \\
+    (1)If $X, Y$ are irreducible, then any nonempty irreducible component of $X \cap Y$ has dimension $\ge \dim X + \dim Y - n$. \\
+    (2)If $X, Y$ are closed and $\dim X + \dim Y \ge n$, then $X \cap Y$ is nonempty.
+    \label{Corollary 4.8}
+\end{corollary}
+\begin{proof}
+    (1)Consider $p: \mathbb{A}_{k}^{n + 1} \rightarrow \mathbb{P}_{k}^{n}$ sending to $(x_{0}, \cdots, x_{n})$ to $[x_{0}, \cdots, x_{n}]$.
+    Then for all $x\in \mathbb{P}_{k}^{n}$, denote $C^{0}(X) = p^{-1}(X)$ of dimension $\dim X + 1$ and $C^{0}(X \cap Y) = C^{0}(X) \cap C^{0}(Y)$.
+    Note that $C^{0}(X) \cap C^{0}(Y) = (C^{0}(X) \times C^{0}(Y)) \cap \Delta_{\mathbb{A}_{k}^{n + 1}}$ and by Corollary \ref{Corollary 4.7}, $\dim (C^{0}(X) \times C^{0}(Y)) = \dim X + \dim Y + 2$,
+    we get that $\dim C^{0}(X \cap Y) \ge \dim X + \dim Y - n + 1$ so that $\dim X \cap Y \ge \dim X + \dim Y - n$.
+    \par
+    (2)Take $\overline{C^{0}(X)} = C^{0}(X) \cup \{0\}$.
+    Then 
+    \begin{equation}
+        \begin{split}
+            \dim (\overline{C^{0}(X)} \cap \overline{C^{0}(Y)}) & \ge \dim (C^{0}(X) \cap C^{0}(Y)) \\
+            & \ge n + 2 - n + 1 \\
+            & = 1
+        \end{split}
+    \end{equation}
+    Thus $\overline{C^{0}(X)} \cap \overline{C^{0}(Y)}$ is not just $\{0\}$ so that $X \cap Y \neq \varnothing$.
+\end{proof}
+
+\subsection{Morphism and dimension}
+\label{subsection:Dimension_Theory_Morphism_and_dimension}
+
+\begin{example}
+    Recall blow up of $\mathbb{P}_{k}^{n}$ at $x$ with projection $p: Bl_{x}\mathbb{P}_{k}^{n} \rightarrow \mathbb{P}_{k}^{n}$.
+    Then $p^{-1}(\mathbb{P}_{k}^{n} \setminus \{x\}) \overset{p}{\rightarrow} \mathbb{P}_{k}^{n} \setminus \{x\}$ is an isomorphism and $p^{-1}(x) \cong \mathbb{P}^{n - 1}$.
+\end{example}
+\begin{definition}
+    Let $\varphi: X \rightarrow Y$ be a morphism.
+    Define $X_{x} := \varphi^{-1}(\varphi(x))$ to be the fiber of $\varphi$ containing $x$.
+\end{definition}
+\begin{lemma}
+    Let $Y$ be an affine variety of pure dimension $d$.
+    Then for all $y\in Y$, there exist $F_{1}, \cdots, F_{d}\in A(Y)$ such that $y\in V(F_{1}, \cdots, F_{d})$ and $Y \cap V(F_{1}, \cdots, F_{d})$ is a finite set.
+    \label{Lemma 4.2}
+\end{lemma}
+\begin{proof}
+    Induct on $d$.
+    For $d = 0$, $Y = V(I(Y))$ satisfies condition.
+    For $d > 0$, note that for all $y\in Y$ and $y' \neq y$, there exists hyperplane $H_{y, y'}$ through $y$ but not $y'$.
+    Hence the intersection of all hyperplanes through $y$ is just $\{y\}$.
+    \par
+    Similarly, since $d > 0$, for all irreducible component $Y_{i}$ of $Y$,
+    we can find $y_{i}'\in Y_{i} \setminus \{y\}$ and there exists hyperplane $H_{y}$ such that $H_{y}$ does not contain $y_{i}'$ for all $i$.
+    Hence $Y_{i} \cap H_{y}$ is of dimension $d - 1$ for all $Y_{i}$ containing $y$.
+    Then take $Y' = \cup_{Y_{i}\ni y} (Y_{i} \cap H)$ which is of pure dimension $d - 1$.
+    By induction, done!
+\end{proof}
+\begin{remark}
+    In fact, with argument above, we get a stronger result that we can take $F_{1}, \cdots, F_{d}$ to be linear equations.
+\end{remark}
+\begin{theorem}
+    Let $\varphi: X \rightarrow \mathbb{P}_{k}^{n}$ be a morphism.
+    Consider the function $\delta: X \rightarrow \mathbb{N}$ sending $x$ to $\dim_{X_{x}} x$.
+    Then $\delta$ is upper semicontinuous i.e. for all $r$, $X(r) := \{x\in X \big{|} \delta(x) \ge r\}$ is closed.
+    Moreover, if $X$ is irreducible, then $\dim X = \dim \overline{\varphi(X)} + \min_{x\in X} \delta(x)$.
+    \label{Theorem 4.6}
+\end{theorem}
+\begin{proof}
+    Write $X = X_{1} \cup \cdots \cup X_{r}$, where $X_{i}$ are irreducible components.
+    Denote $\varphi_{i}: X_{i} \hookrightarrow X \rightarrow \mathbb{P}_{k}^{n}$.
+    Then $X_{x} = \cup_{i} (X_{x} \cap X_{i})$ and $X(r) = \cup_{i} X_{i}(r)$.
+    Thus we may assume $X$ is irreducible.
+    \par
+    Set $Y = \overline{\varphi(X)}$, then $\varphi: X \rightarrow Y$ is dominant between irreducible varieties.
+    For all $x\in X$ mapping to some $y\in Y$, by Lemma \ref{Lemma 4.2}, 
+    there exists affine open neighbourhood $V$ of $y$ and regular functions $F_{1}, \cdots, F_{d}$ on $V$ vanishing at $y$ and $\dim (V \cap V(F_{1}, \cdots, F_{d})) = 0$,
+    where $d = \dim Y$.
+    Note that $\{y\}$ is a connected component of $V \cap V(F_{1}, \cdots, F_{d})$, we get $X_{x} = \varphi^{-1}(y)$ is a union of some irreducible components of $\varphi^{-1}(V) \cap V(\varphi^{\ast}F_{1}, \cdots, \varphi^{\ast}F_{d})$.
+    \par
+    By Theorem \ref{Theorem 4.2} and Krull's Principal Ideal Theorem, each irreducible component has dimension $\ge \dim X - d$.
+    Thus for all $x\in X$, $\delta(x) \ge \dim X - d = \dim X - \dim Y$.
+    Claim that there exists open dense subset $U \subseteq X$ such that for all $x\in U$, $\delta(x) = \dim X - \dim Y$.
+    \par
+    Firstly consider affine case.
+    By similar argument as proof of Theorem \ref{Theorem 4.5}, we replace $X$ by graph $\Gamma_{f}$ of $f$ and there is a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            \mathbb{A}_{k}^{n + m} \arrow[r] &
+            \mathbb{A}_{k}^{n - 1 + m} \arrow[r] &
+            \mathbb{A}_{k}^{n - 2 + m} \arrow[r] &
+            \cdots \arrow[r] &
+            \mathbb{A}^{m} \\
+            X = Y_{0} \arrow[u, hookrightarrow] \arrow[r] &
+            Y_{1} \arrow[u, hookrightarrow] \arrow[r] &
+            Y_{2} \arrow[u, hookrightarrow] \arrow[r] &
+            \cdots \arrow[r] &
+            Y_{n} = Y \arrow[u, hookrightarrow]
+        \end{tikzcd}
+    \end{equation}
+    For $Y_{i} \rightarrow Y_{i + 1}$, if $K(Y_{i})/K(Y_{i + 1})$ is transcendental,
+    then fiber of all $y_{i + 1}\in Y_{i + 1}$ is isomorphic to projective line of dimension $1 = \dim Y_{i} - \dim Y_{i + 1}$.
+    If $K(Y_{i})/K(Y_{i + 1})$ is algebraic, then a general fiber of $Y_{i} \rightarrow Y_{i + 1}$ is finite hence is of dimension $0 = \dim Y_{i} - \dim Y_{i + 1}$.
+    Conclude that our claim holds for affine case.
+    \par
+    For general case, take affine open subset $U \subseteq Y$ and $V \subseteq \varphi^{-1}(U)$ affine open subset of $X$.
+    Then there exists open dense subset $V' \subseteq V$ such that for all $x\in V'$, $\delta(x) = \dim V - \dim U = \dim X - \dim Y$.
+    Since $V'$ is also dense in $X$, we complete proof of the claim.
+    \par
+    For $r \le \dim X - \dim Y$, we have seen that $X(r) = X$.
+    For $r > \dim X - \dim Y$, there exists closed subvariety $F \subsetneq X$ such that $X(r) \subseteq F$.
+    Consider $F(r)$, clearly $F(r) \subseteq X(r)$.
+    Conversely, for all $x\in X(r)$, there exists some irreducible component $X'$ of $X_{x}$ containing $x$ such that $\dim X' \ge r$.
+    Hence $X' \subseteq X(r) \subseteq F$ so that $X' \subseteq F_{x}$ and $x\in F(r)$.
+    Now $F(r) = X(r)$.
+    Note that $\dim F < \dim X$, by induction, we are done!
+\end{proof}
+\begin{corollary}
+    Let $X$ be an irreducible variety, $\varphi: X \rightarrow Y$ dominant morphism.
+    Then \\
+    (1)for all $y\in \im \varphi$, any irreducible component of $\varphi^{-1}(y)$ has dimension $\ge \dim X - \dim Y$. \\
+    (2)there exists nonempty open subset $U \subseteq Y$ such that for all $y\in U$, $\varphi^{-1}(y)$ is of pure dimension $\dim X - \dim Y$.
+    \label{Corollary 4.9}
+\end{corollary}
+\begin{proof}
+    (1)For all irreducible component $X'$ of $\varphi^{-1}(y)$,
+    there exists $x'\in X'$ such that $X'$ is the only irreducible component containing $x'$.
+    Hence $\dim X' = \dim_{\varphi^{-1}(y)} x' = \dim_{X_{x'}} x' \ge \dim X - \dim Y$.
+    \par
+    (2)We show that for all irreducible component $Z$ of $X(\dim X - \dim Y + 1)$, 
+    the closure of its image in $Y$ is a proper subset i.e. $\overline{\varphi(Z)} \subsetneq Y$.
+    For $x\in Z$ such that $x$ is not contained in any other irreducible component of $X(\dim X - \dim Y + 1)$,
+    there is some irreducible component $X'$ of $X_{x}$ containing $x$ have dimension $\ge \dim X - \dim Y + 1$.
+    \par
+    Thus $X' \subseteq X(\dim X - \dim Y + 1)$ and $X' \subseteq Z$ as $X'$ irreducible.
+    If we take $U = X \setminus (\cup Z')$, where $Z'$ varies over all irreducible components of $X(\dim X - \dim Y + 1)$ except $Z$,
+    then for all $x\in U$, we get $\dim_{Z_{x}} x = \dim_{X_{x}} x \ge \dim X - \dim Y + 1$.
+    \par
+    Consider $\varphi\big{|}_{Z}: Z \rightarrow Y$.
+    By claim in the proof of previous theorem, there exists open dense subset $U' \subseteq Z$ such that for all $x'\in U'$,
+    $\delta(x') = \dim Z - \dim \overline{\varphi(Z)}$.
+    As $Z$ is irreducible, $U \cap U' \neq \varnothing$ hence $\dim \overline{\varphi(Z)} \le \dim Z - \dim X + \dim Y - 1 < \dim Y$.
+    Thus $\dim (\cup_{Z} \overline{\varphi(Z)}) = \max_{Z} \{\dim \overline{\varphi(Z)}\} < \dim Y$.
+    And $W = (\cup_{Z} \overline{\varphi(Z)})^{c}$ is our desired set.
+\end{proof}
+\begin{remark}
+    Part (2) in fact tells that for a dominant map from irreducible variety,
+    there would be some nonempty open subset contained in the image.
+\end{remark}
+\begin{proposition}
+    Let $\varphi: X \rightarrow Y$ be a closed morphism.
+    Then $Y(r) := \{y\in Y \big{|} \dim \varphi^{-1}(y) \ge r\}$ is a closed subset of $Y$.
+    \label{Proposition 4.5}
+\end{proposition}
+\begin{reason}
+    Note that $Y(r) = \varphi(X(r))$.
+\end{reason}
+\begin{example}
+    Consider $\varphi: \mathbb{A}_{k}^{3} \rightarrow \mathbb{A}_{k}^{3}$ sending $(x, y, z)$ to $(x, (xy - 1)y, (xy - 1)z)$.
+    Easy to check that $\varphi$ is dominant and a general fiber of $\varphi$ is finite (the corresponding field extension is finite).
+    Assume $\alpha = (\alpha_{1}, \alpha_{2}, \alpha_{3})\in Y(1)$.
+    Then for all $(x, y, z)\in \varphi^{-1}(\alpha)$, we have that
+    \begin{equation}
+        \left\{
+            \begin{aligned}
+                & x = \alpha_{1} \\
+                & (xy - 1)y = \alpha_{2} \\
+                & (xy - 1)z = \alpha_{3}
+            \end{aligned}
+        \right.
+        \label{equation:defining_equations_of_fiber_at_alpha}
+    \end{equation}
+    Since $\varphi^{-1}(\alpha)$ has dimension $\ge 1$, the above system of equations cannot only have finitely many solutions.
+    Hence $Y(1) \subseteq \{(a, 0, 0) \big{|} a \neq 0\}$.
+    In fact, the equality holds so that $Y(1)$ is not closed in $\mathbb{A}_{k}^{3}$.
+\end{example}
+\begin{proposition}
+    Let $\varphi: X \rightarrow Y$ be a closed dominant morphism.
+    Assume that $Y$ is irreducible and all fibers of $\varphi$ are irreducible of dimension $r$.
+    Then $X$ is irreducible and of dimension $\dim Y + r$.
+    \label{Proposition 4.6}
+\end{proposition}
+\begin{proof}
+    Assume $X_{i}$ are irreducible components of $X$.
+    For all $y\in Y$, let $d_{i}(y)$ be the dimension of the fiber of $\varphi\big{|}_{X_{i}}$ at $y$.
+    When $y\notin \im \varphi\big{|}_{X_{i}}$, set $d_{i}(y) = -1$.
+    Then $r = \max_{i} \{d_{i}(y)\}$ so that $Y = \cup_{i} \{y\in Y \big{|} d_{i}(y) \ge r\}$.
+    \par
+    By Proposition \ref{Proposition 4.5}, each $\{y\in Y \big{|} d_{i}(y) \ge r\}$ is closed.
+    Since $Y$ is irreducible, there exists some $i$ such that $Y = \{y\in Y \big{|} d_{i}(y) \ge r\}$.
+    Hence for all $y\in Y$, $\varphi^{-1}(y) = \varphi\big{|}_{X_{i}}^{-1}(y)$.
+    Conclude that $X = X_{i}$ irreducible.
+    For dimension, by the claim, we get $\dim X - \dim Y = r$.
+\end{proof}
+
+\subsection{Applications}
+\label{subsection:Dimension_Theory_Applications}
+
+\begin{lemma}[\textbf{\emph{Rigidity Lemma}}]
+    Let $X$ be an irreducible projective variety over $Y$, $y_{0}\in Y$.
+    Consider a morphism $\varphi: X \times Y \rightarrow Z$ between varieties.
+    Assume that $\varphi(X \times \{y_{0}\})$ is one-point set $\{z_{0}\}$.
+    Then for all $y\in Y$, $\varphi(X \times \{y\})$ is also one-point set.
+    \label{Lemma 4.3} 
+\end{lemma}
+\begin{example}
+    This example shows that projectiveness is necessary.
+    For $\varphi: \mathbb{A}_{k}^{1} \times \mathbb{A}_{k}^{1} \rightarrow \mathbb{A}_{k}^{1}$ sending $(x, y)$ to $xy$,
+    $\varphi$ contracts $\mathbb{A}_{k}^{1} \times \{0\}$ to $0$ but not contracts $\mathbb{A}_{k}^{1} \times \{y\}$ to $0$.
+\end{example}
+\begin{proof}
+    Let $\Gamma_{f}$ be the graph of $\varphi$.
+    Then $\Gamma_{\varphi} \subseteq (X \times Y) \times Z$ is a closed subvariety.
+    Consider another projection $(X \times Y) \times Z \rightarrow Y \times Z$.
+    Since $X$ is projective, $q$ is a closed morphism so that $q(\Gamma_{\varphi})$ is closed subset in $Y \times Z$.
+    \par
+    Consider $\psi: q(\Gamma_{\varphi}) \rightarrow Y \times Z \overset{p}{\rightarrow} Y$ which is clearly a surjection.
+    Note that $\psi^{-1}(y_{0}) = (y_{0}, z_{0})$ of dimension $0 \ge \dim q(\Gamma_{\varphi}) - \dim Y$, we get that $\dim Y = \dim q(\Gamma_{\varphi})$.
+    For all $\alpha\in q(\Gamma_{\varphi})$, we have that
+    \begin{equation}
+        \begin{split}
+            \dim q\big{|}_{\Gamma_{\varphi}}^{-1}(\alpha) & \ge \dim \Gamma_{\varphi} - \dim q(\Gamma_{\varphi}) \\
+            & = \dim X + \dim Y - \dim Y \\
+            & = \dim X
+        \end{split}
+    \end{equation}
+    while for all $\alpha\in q(\Gamma_{\varphi}) \subseteq Y \times Z$, $q^{-1}(\alpha) = X \times \{\alpha\}$.
+    Since $q^{-1}(\alpha)$ also has dimension $\dim X$,
+    we get that $q^{-1}(\alpha) = q\big{|}_{\Gamma_{\varphi}}^{-1}(\alpha)$.
+    In particular, for all $y$ and $z = \varphi(0, y)$, take $\alpha = (y, z)$ and we get $q^{-1}(\alpha) = X \times \{y\} \times \{z\}$.
+    Conclude that $X \times \{y\}$ is contracted to $\{z\}$.
+\end{proof}
+\begin{definition}
+    Let $X$ be a variety.
+    Assume that $X$ admits a group structure $(X, \cdot, \iota, e)$,
+    where multiplication $\cdot: X \times X \rightarrow X$, inverse $\iota: X \rightarrow X$ and identity $e$ satisfy group structure.
+    Then we call $X$ an algebraic group.
+\end{definition}
+\begin{example}
+    (1)$(\mathbb{A}_{k}^{1}, +)$ \\
+    (2)$({\mathbb{A}_{k}^{1}}^{\ast}, \cdot)$ \\
+    (3)$(GL_{n}(k), \cdot)$ \\
+    (4)$(O_{n}(k), \cdot)$, where $O_{n}(k) := \{A\in GL_{n}(k) \big{|} A^{\dagger}A = I_{n}\}$.
+\end{example}
+\begin{definition}
+    Let $X$ be an irreducible projective algebraic group.
+    We call that $X$ an abelian variety.
+\end{definition}
+\begin{theorem}
+    The group operation of abelian variety is commutative.
+    \label{Theorem 4.7}
+\end{theorem}
+\begin{proof}
+    Let $X$ be an abelian variety.
+    Consider map $\varphi: X \times X \rightarrow X$ sending $(x, y)$ to $x^{-1}yx$.,
+    which is in fact a morphism as composition of morphisms
+    \begin{equation}
+        \begin{gathered}
+            X \times X \\
+            (x, y)
+        \end{gathered}
+        \rightarrow
+        \begin{gathered}
+            X \times X \times X \\
+            (x, y, x)
+        \end{gathered}
+        \rightarrow
+        \begin{gathered}
+            X \times X \times X \\
+            (x^{-1}, y, x)
+        \end{gathered}
+        \rightarrow
+        \begin{gathered}
+            X \\
+            x^{-1}yx
+        \end{gathered}
+    \end{equation}
+    Take the identity element $e_{X}$.
+    Then $\varphi$ contracts $X \times \{e_{X}\}$.
+    By rigidity lemma, for all $y$, $X \times \{y\}$ is contracted by $\varphi$.
+    Hence $x^{-1}ax = e_{X}^{-1}ae_{X} = a$ and $ax = xa$.
+\end{proof}
+\begin{example}
+    Let $X \subseteq \mathbb{P}_{k}^{2}$ be a general cubic curve.
+    Then $X$ is a one-dimensional abelian variety whose group structure can be intuitively given as following.
+    For $x_{1},x_{2}\in X$, the two points determines a line $L$ which should meet $X$ at three points counting multiplicity, denoted by $x_{1}, x_{2}, x_{3}$.
+    We define the multiplication by sending $(x_{1}, x_{2})$ to $x_{3}$.
+\end{example}
+\begin{proposition}
+    Let $X$ be an abelian variety, $Y$ an abelian group.
+    Assume that $\varphi: X \rightarrow Y$ is a morphism such that $\varphi(e_{X}) = e_{Y}$.
+    Then $\varphi$ is also a group homomorphism.
+    \label{Proposition 4.7}
+\end{proposition}
+\begin{proof}
+    Consider map $\psi: X \times X \rightarrow Y$ sending $(x, x')$ to $\varphi(x)\varphi(x')\varphi(xx')^{-1}$,
+    which is a morphism as composition of morphisms
+    \begin{equation}
+        \begin{gathered}
+            X \times X \\
+            (x, x')
+        \end{gathered}
+        \rightarrow
+        \begin{gathered}
+            X \times X \times X \\
+            (x, x', xx')
+        \end{gathered}
+        \rightarrow
+        \begin{gathered}
+            Y \times Y \times Y \\
+            (\varphi(x), \varphi(x'), \varphi(xx'))
+        \end{gathered}
+        \rightarrow
+        \begin{gathered}
+            Y \\
+            \varphi(x)\varphi(x')\varphi(xx')^{-1}
+        \end{gathered}
+    \end{equation}
+    As $\psi(X \times \{e_{X}\}) = \{e_{Y}\}$, by rigidity lemma,
+    $\psi(X \times \{x'\})$ is a one-point set for all $x'\in X$.
+    Hence we have
+    \begin{equation}
+        \varphi(x)\varphi(x')\varphi(xx')^{-1} = \varphi(e_{X})\varphi(x')\varphi(x')^{-1} = e_{Y}
+    \end{equation}
+    Thus $\varphi(x)\varphi(x') = \varphi(xx')$, done!
+\end{proof}
+\begin{definition}
+    Let $X$ be a variety.
+    A subset $S$ of $X$ is said to be constructible if it is a finite union of locally closed subsets i.e. $S = \cup_{i} (U_{i} \cap V_{i})$,
+    where $U_{i}$ are open and $V_{i}$ are closed.
+\end{definition}
+\begin{remark}
+    Moreover, $S$ can be written as $\cup_{i} S_{i}$, 
+    where $S_{i}$ is open dense in $\overline{S_{i}}$ and $S_{i} = U_{i} \cap V_{i}$ for $V_{i}$ irreducible.
+\end{remark}
+\begin{theorem}[\textbf{\emph{Chevalley's Theorem}}]
+    Let $\varphi:X \rightarrow Y$ be a morphism.
+    Then the image of $X$ is a constructible subset of $Y$.
+    \label{Theorem 4.8}
+\end{theorem}
+\begin{proof}
+    We may assume $X$ is irreducible and $\varphi$ is dominant.
+    By Corollary \ref{Corollary 4.9}, there exists nonempty open subset $U \subseteq Y$ such that for all $y\in Y$,
+    fiber at $y$ is of dimension $\dim X - \dim Y \ge 0$ hence nonempty.
+    Thus $U \subseteq \im(\varphi)$.
+    \par
+    Let $F = Y \setminus U$.
+    Then $\varphi(X) = U \cup \varphi(\varphi^{-1}(F))$ where $\varphi^{-1}(F) \subsetneq X$ is a subvariety of lower dimension.
+    We finish the proof by induction on $\dim X$.
+    For the case that $\dim X = 0$, image is just a one-point set hence constructible.
+\end{proof}
+
+\subsection{Finite morphisms}
+\label{subsection:Dimension_Theory_Finite_morphisms}
+
+\begin{theorem}
+    Let $\varphi: X \rightarrow Y$ be a morphism.
+    Assume that all fibers of $\varphi$ is finite and $X$ is projective.
+    Then for all $y\in Y$, there exists affine open neighbourhood $V$ of $y$ such that $U := \varphi^{-1}(V) $ is affine and $A(U)$ is finite over $A(V)$.
+    \label{Theorem 4.9}
+\end{theorem}
+\begin{remark}
+    More generally, in fact we have that quasi-finiteness $+$ universally closedness would imply finiteness.
+    In addition, finiteness is local on the base i.e. if there exists an affine open covering satisfying the condition,
+    then all affine open cover would satisfy the condition.
+\end{remark}
+\begin{example}
+    Let $\varphi: \mathbb{A}_{k}^{1} \setminus \{0\} \hookrightarrow \mathbb{A}_{k}^{1}$ be the natural inclusion.
+    Then $\varphi$ is quasi-finite but not finite since $k[t] \rightarrow k[t, \frac{1}{t}]$ is not finite homomorphism.
+\end{example}
+\begin{proof}
+    Since $X$ is projective, we can embed it into some projective space $\mathbb{P}_{k}^{N}$ as a closed subset.
+    Consider the following commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            \Gamma_{\varphi} \arrow[r, hookrightarrow] \arrow[d, "\sim"] & 
+            Y \times X \arrow[r, hookrightarrow] &
+            Y \times \mathbb{P}_{k}^{N} \arrow[d, "p"] \\
+            X \arrow[rr, "\varphi"] && 
+            Y
+        \end{tikzcd}
+    \end{equation}
+    Replace $X$ by graph which is a closed subvariety of $Y \times \mathbb{P}_{k}^{N}$.
+    For all $y_{0}\in Y$, $\varphi^{-1}(y_{0})$ is a finite set.
+    Hence we can choose a hyperplane $H$ such that $X \cap (\{y_{0}\} \times H) = \varnothing$.
+    Note that $p$ is closed map, $p((Y \times H) \cap X)$ is a closed subset of $Y$ not containing $y_{0}$.
+    There exists nonempty affine open neighbourhood $V\ni y_{0}$ such that $V \cap p((Y \times H) \cap X) = \varnothing$.
+    \par
+    Now we get $U := \varphi^{-1}(V) \subseteq Y \times H^{c}$, where $H^{c} \cong \mathbb{A}_{k}^{N}$ and there is a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            U \arrow[r, hookrightarrow] \arrow[d] &
+            Y \times \mathbb{A}_{k}^{N} \arrow[d, "p"] \\
+            V \arrow[r, hookrightarrow] &
+            Y 
+        \end{tikzcd}
+    \end{equation}
+    Note that $U = X \cap (V \times H^{c})$ is a closed subvariety of $V \times \mathbb{A}_{k}^{N}$,
+    where $V$ is affine, we get $V \times \mathbb{A}_{k}^{N}$ and $U$ both affine.
+    Want to show $A(U)$ is finite $A(V)$-module.
+    We already know that $A(U)$ is finitely generated as $A(V)$-algebra.
+    Remains to show that $A(U)$ is integral over $A(V)$.
+    \par
+    Denote coordinate of $\mathbb{A}_{k}^{N}$ by $x_{1}, \cdots, x_{N}$.
+    By Theorem \ref{Theorem 3.3}, $\varphi$ is universally closed.
+    For all $a\in A(U)$, consider $U \times \mathbb{A}_{k}^{1} \overset{\varphi \times \identity}{\rightarrow} V \times \mathbb{A}_{k}^{1}$.
+    Let $Z \subseteq U \times \mathbb{A}_{k}^{1}$ be the subvariety defined by $ax - 1$.
+    Then $\varphi \times \identity(Z)$ is closed in $V \times \mathbb{A}_{k}^{1}$.
+    \par
+    Denote $J = I(\varphi \times \identity(Z))$.
+    There is a ring homomorphism $A(V)[x]/J \rightarrow A(U)[x]/(ax - 1)$.
+    For all $g\in J$, write $g = \sum_{i = 0}^{m} a_{i}x^{i}$, where $a_{i}\in A(V)$.
+    Then $g$ is mapping to $(ax - 1)(\sum_{i = 0}^{m - 1} b_{i}x^{i})$ for some $b_{i}\in A(U)$.
+    Hence $\varphi^{\ast}(a_{i}) = ab_{i - 1} - b_{i}$, where $b_{m} = 0$.
+    \par
+    For $n > m$, let $f(T) = \sum_{i = 0}^{m} \varphi^{\ast}(a_{i})T^{n - i}$.
+    Clearly, we have that $f(a) = 0$.
+    So it suffices to show that there exists $g\in J$ such that $a_{0} = 1$,
+    which is equivalent to 
+    \begin{equation}
+        \begin{split}
+            & (J, x) = A(V)[x] \\
+            \iff & V(J) \cap V(X) = \varnothing \\
+            \iff & \varphi \times \identity(Z) \cap (V \times \{0\}) = \varnothing \\
+            \iff & Z \cap (U \times \{0\}) = \varnothing
+        \end{split}
+    \end{equation}
+    By definition of $Z$, we are done!
+\end{proof}
+
+\section{Smooth Points and Smooth Morphisms}
+\label{section:Smooth_Points_and_Smooth_Morphisms}
+
+\subsection{Zariski tangent space}
+\label{subsection:Smooth_Points_and_Smooth_Morphisms_Zariski_tangent_space}
+
+\begin{definition}
+    Let $X \subseteq \mathbb{A}_{k}^{N}$ be an affine variety, $p\in X$.
+    Define the Zariski tangent space $T_{p}X$ of $X$ at $p$ to be the subspace defined by the linear equations $\{\sum_{i} \frac{\partial F}{\partial x_{i}}(p)x_{i} = 0 \big{|} \forall F\in I(X)\}$.
+\end{definition}
+\begin{definition}
+    Let $X \subseteq \mathbb{A}_{k}^{N}$ be an affine variety, $p\in X$.
+    A derivation of $X$ at $p$ is a $k$-linear map $D: A(X) \rightarrow k$ satisfying that for all $f,g\in A(X)$, $D(fg) = D(f)g(p) + f(p)D(g)$.
+\end{definition}
+For $X = \mathbb{A}_{k}^{n}$ with $A(X) = k[x_{1}, \cdots, x_{n}]$,
+a derivation $D$ of $X$ at $p$ is determined by $D(x_{i})$ in the sense that $D = \sum_{i} D(x_{i})\frac{\partial f}{\partial x_{i}}(p)$.
+Hence each $a\in T_{p}X$ correspondends to a derivation with $D(x_{i}) = a_{i}$.
+\par
+For general affine variety $X$ with $A(X) = k[x_{1}, \cdots, x_{n}]/I(X)$, 
+a derivation $D$ of $X$ at $p$ is exactly a derivation of $\mathbb{A}_{k}^{n}$ at $p$ which kills all $F\in I(X)$,
+whose corresponding point is contained in $T_{p}X$. 
+\par
+We can also identify $T_{p}X$ with $(\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2})^{\vee}$,
+where $\mathfrak{m}_{p}$ is the maximal ideal of $A(X)$ corresponding to $p$.
+Given derivation $D: A(X) \rightarrow k$ at $p$, since $D(fg) = D(f)g(p) + f(p)D(g)$, 
+we have that $D\big{|}_{\mathfrak{m}_{p}^{2}} = 0$ and $D\big{|}_{\mathfrak{m}_{p}}$ gives a $k$-linear function $\theta: \mathfrak{m}_{p}/\mathfrak{m}_{p}^{2} \rightarrow k$.
+\par
+Conversely, given $\theta: \mathfrak{m}_{p}/\mathfrak{m}_{p}^{2} \rightarrow k$.
+Let $D_{\theta}: A(X) \rightarrow k$ be the map defined by $f \mapsto \theta(f - f(p))$.
+Easy to $D_{\theta}$ satisfies Leibniz's Law and hence is a derivation.
+\begin{definition}
+    Let $X$ be a variety, $p\in X$.
+    Take an affine open neighbourhood $U$ of $p$.
+    Define $T_{p}X := T_{p}U = (\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2})^{\vee}$.
+\end{definition}
+\begin{remark}
+    In fact, for $\mathcal{O}_{X, p} := A(X)_{\mathfrak{m}_{p}}$,
+    if we denote $\widetilde{\mathfrak{m}_{p}} = \mathfrak{m}_{p}\mathcal{O}_{X, p}$,
+    then we have a canonical isomorphism $\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2} \cong \widetilde{\mathfrak{m}_{p}}/\widetilde{\mathfrak{m}_{p}}^{2}$.
+    Hence the definition is independent to our choice of affine open neighbourhood.
+\end{remark}
+\begin{example}
+    Let $X, Y$ be two varieties, $(x, y)\in X \times Y$.
+    Then $T_{(x, y)}(X \times Y) = T_{x}X \oplus T_{y}Y$.
+\end{example}
+
+\subsection{Smooth points and singular points}
+\label{subsection:Smooth_Points_and_Smooth_Morphisms_Smooth_points_and_singular_points}
+
+\begin{proposition}
+    Let $X$ be a variety.
+    Then the function $X \rightarrow \mathbb{N}$ sending $x$ to $\dim_{k} T_{x}X$ is upper semicontinuous.
+    \label{Proposition 5.1}
+\end{proposition}
+\begin{reason}
+    By taking affine cover, we may assume $X$ is affine.
+    Then $X \subseteq \mathbb{A}_{k}^{N}$ for some $N$.
+    For all $x\in X$, $T_{x}X = \{(a_{1}, \cdots, a_{n}) \big{|} \sum_{i} a_{i}\frac{\partial F}{\partial x_{i}}(x) = 0, \forall F\in I(X)\}$.
+    Assume $I(X) = (F_{1}, \cdots, F_{n})$.
+    Then
+    \begin{equation}
+        \begin{split}
+            & X_{r} = \{x\in X \big{|} \dim_{k} \ker (\frac{\partial F_{i}}{x_{j}}(x)) \ge r\} \\
+            \iff & \rank(\frac{\partial F_{i}}{\partial x_{j}}(x)) \le N - r \\
+            \iff & \text{ for all $(N - r + 1)$-minor, determinant vanishes}
+        \end{split}
+    \end{equation}
+    \vspace{-\baselineskip} % 减少一行间距
+\end{reason}
+\begin{proposition}
+    Let $X$ be an irreducible variety.
+    Then for all $x\in X$, $\dim_{k} T_{x}X \ge \dim X$ and there exists open dense subset $U$ of $X$ such that for all $x\in U$, $\dim_{k} T_{x}X = \dim X$.
+    \label{Proposition 5.2}
+\end{proposition}
+\begin{proof}
+    When $X \subseteq \mathbb{A}_{k}^{n + 1}$ is a hypersurface defined by an irreducible polynomial $0 \neq F$, then $\dim X = n$.
+    For all $p\in X$, $T_{p}X$ is defined by a linear polynomial $\sum_{i} \frac{\partial F}{\partial x_{i}}(p)x_{i}$.
+    Thus $\dim_{k} T_{p}X = n$ or $n + 1$.
+    \par
+    By previous proposition, $X_{n + 1}$ is a closed subset of $X$.
+    If $X_{n + 1} = X$, then $\frac{\partial F}{\partial x_{i}}$ vanish at all $x\in X$ so that $\frac{\partial F}{\partial x_{i}} = 0$.
+    Since $F$ is irreducible, we get $\characteristic k = p$ and $F = G(x_{1}^{p}, \cdots, x_{n + 1}^{p})$ for some polynomial $G$.
+    As $k$ is algebraically closed, there exists $G_{1}$ such that $G_{1}^{p} = F$, contradicting to the assumption that $F$ is irreducible.
+    Hence $X_{n + 1} \subsetneq X$ and $U = X_{n + 1}^{c}$ is our desired open subset.
+    \par
+    In general, we may assume that $X$ is affine and $n = \dim X = \trdeg (K(X)/k)$.
+    By Proposition \ref{Proposition 2.4}, there exists some hypersurface $X' \subseteq \mathbb{A}_{k}^{n + 1}$ birational to $X$.
+    Then there exists open dense subset $U \subseteq X$ and $U' \subseteq X'$ such that $U \overset{\sim}{\rightarrow} U'$.
+    \par
+    Suppose that $X_{n}^{c}$ is nonempty.
+    Then since $X$ is irreducible, $X_{n}^{c} \cap U$ is also irreducible, contradicting to ${X'_{n}}^{c} = \varnothing$.
+    Hence for all $x\in X$, $\dim_{k} T_{x}X \ge n$.
+    And by discussion above, there exists open dense subset $U'' \subseteq X'$ such that for all $x'\in U''$, $\dim_{k} T_{x'}X' = n$.
+    As $X'$ is irreducible, $U' \cap U''$ is nonempty whose inverse image in $X$ is our desired open dense subset.
+\end{proof}
+\begin{definition}
+    Let $X$ be a variety.
+    We say that $x\in X$ is a smooth point if $\dim_{k} T_{x}X = \dim_{X} x$.
+    Otherwise, we would say that $x\in X$ is a singular point. 
+\end{definition}
+\begin{corollary}
+    Let $X$ be a variety.
+    If $X$ is smooth at $x$, then $\dim_{k} T_{x}X = \dim X$.
+    Moreover, if $X$ is irreducible, then the converse also holds.
+    \label{Corollary 5.1}
+\end{corollary}
+\begin{reason}
+    By Proposition \ref{Proposition 5.2}, we immediately get that $\dim X \le \dim_{k} T_{x}X = \dim_{X} x \le \dim X$.
+    When $X$ is irreducible, by Corollary \ref{Corollary 4.3}, we get $\dim_{X} x = \dim X$ for all $x$.
+\end{reason}
+\begin{remark}
+    Combining Proposition \ref{Proposition 5.3} and Corollary \ref{Corollary 5.1},
+    we get that for any irreducible variety $X$, there is always an open dense subset of $X$ consists of smooth points in $X$.
+\end{remark}
+\begin{example}
+    (1)Let $X \subseteq \mathbb{A}_{k}^{3}$ be the subvariety defined by $(xy, yz)$.
+    Then $\singular X = \{0\}$. \\
+    (2)Let $X, Y$ be two varieties.
+    Then $\singular (X \times Y) = (\singular X \times Y) \cup (X \times \singular Y)$. \\
+    (3)Let $X \subseteq \mathbb{A}_{k}^{n + 1}$ be the subvariety defined by $F$.
+    Then $\singular X$ is the subvariety defined by $(F, \frac{\partial F}{\partial x_{1}}, \cdots, \frac{\partial F}{\partial x_{n + 1}})$.
+    In particular, if $X = \cup V(F_{i})$ where $F_{i}$ are irreducible,
+    then for all $i \neq j$, $V(F_{i}) \cap V(F_{j}) \subseteq \singular X$. \\
+    (4)Assume that $X \subseteq \mathbb{A}_{k}^{n}$ is an irreducible closed subvariety with $I(X) = (F_{1}, \cdots, F_{r})$.
+    Then $p\in X$ is a smooth point if and only if $(\frac{\partial F_{i}}{\partial x_{j}}(p))$ has corank $\dim X$. \\
+    (5)Assume that $X \subseteq \mathbb{P}_{k}^{n}$ is a hypersurface defined by homogeneous $F(x_{0}, \cdots, x_{n + 1})$.
+    Then $\singular X$ is defined by $(\frac{\partial F}{\partial x_{0}}, \cdots, \frac{\partial F}{\partial x_{n}})$ since $\sum_{i} x_{i}\frac{\partial F}{\partial x_{i}} = dF$ where $d$ is the degree of $F$. 
+\end{example}
+\begin{lemma}
+    Let $X$ be a variety.
+    Then the set of singular points in $X$ is closed, denoted by $\singular X$.
+    \label{Lemma 5.1}
+\end{lemma}
+\begin{reason}
+    By taking affine cover, we may assume $X$ is affine.
+    Hence by Jacobian criterion, we are done.
+\end{reason}
+\begin{lemma}
+    Let $X$ be a variety.
+    Assume $V$ and $U$ are two closed subvarieties of $X$.
+    Then $(V \cup U)^{\smooth} \subseteq V^{\smooth} \cup U^{\smooth}$.
+    \label{Lemma 5.2}
+\end{lemma}
+\begin{proof}
+    We may assume that $X$ is affine.
+    For all $x\in (V \cup U)^{\smooth}$, we have that $\dim_{V \cup U} x = \max \{\dim_{V} x, \dim_{U} x\}$.
+    Note that defining equations of $T_{x}(V \cup U)$ are
+    \begin{equation}
+        \{\sum \frac{\partial F}{\partial x_{j}}(x)x_{j} \big{|} F\in I(V) \cap I(U)\}
+    \end{equation}
+    Hence $\max \{\dim_{V} x, \dim_{U} x\} \le \max \{\dim_{k} T_{x}V, \dim_{k} T_{x}U\} \le \dim_{k} T_{x}(V \cup U) = \dim_{V \cup U} x$.
+    Thus all the equalities hold so that $x\in V^{\smooth} \cup U^{\smooth}$ and $(V \cup U)^{\smooth} \subseteq V^{\smooth} \cup U^{\smooth}$.
+\end{proof}
+\begin{example}
+    Let $X = \mathbb{A}_{k}^{2}$ be the affine space.
+    Then $x$-axis and $y$-axis are both smooth, while the union of two axis is singular at the origin.
+    Hence the equality in Lemma \ref{Lemma 5.2} does not necessarily hold.
+\end{example}
+
+\subsection{Regular rings}
+\label{subsection:Smooth_Points_and_Smooth_Morphisms_Regular_rings}
+
+\begin{lemma}
+    Let $A$ be a noetherian local ring with residue field $k$, $\mathfrak{m}_{A}$ the maximal ideal.
+    Then we always have that $\dim_{k} (\mathfrak{m}_{A}/\mathfrak{m}_{A}^{2}) \ge \dim A$.
+    \label{Lemma 5.3}
+\end{lemma}
+\begin{reason}
+    By Krull's Principal Ideal Theorem.
+\end{reason}
+\begin{definition}
+    Let $A$ be a noetherian local ring with residue field $k$, $\mathfrak{m}_{A}$ the maximal ideal.
+    We say that $A$ is a regular local ring if $\dim_{k} (\mathfrak{m}_{A}/\mathfrak{m}_{A}^{2}) = \dim A$.
+\end{definition}
+\begin{lemma}
+    Let $A$ be a noetherian integral domain.
+    Then $A$ is UFD if and only if all prime ideals of height $1$ are principal ideals.
+    \label{Lemma 5.4}
+\end{lemma}
+\begin{theorem}
+    A regular local ring is a UFD.
+    \label{Theorem 5.1}
+\end{theorem}
+\begin{proof}
+    Here is a sketch of the proof
+    \begin{itemize}
+        \item Let $R$ be an integral domain.
+        Then $R$ is a UFD if and only if for all $f,g \neq 0$, $(f) : (g) := \{h\in R \big{|} gh\in (f)\}$ is a principal ideal.
+        \item Let $R$ be a regular local of dimension $n$.
+        Then $\widehat{R} \cong k[[x_{1}, \cdots, x_{n}]]$. 
+        \item $R$ is UFD if and only if $\widehat{R}$ is UFD. 
+    \end{itemize}
+    \vspace{-1.5\baselineskip} % 减少一行间距
+\end{proof}
+\begin{corollary}
+    Let $X$ be a variety.
+    If $X$ is smooth at $x$, then $\mathcal{O}_{X, x}$ is a UFD.
+    \label{Corollary 5.2}
+\end{corollary}
+\begin{example}
+    Let $R = k[x_{1}, \cdots, x_{n}]/(x_{1}^{2} + \cdots + x_{n}^{2})$ and $\characteristic k \neq 2$.
+    \begin{itemize}
+        \item when $n = 2$, as $x_{1}^{2} + x_{2}^{2} = (x_{1} + ix_{2})(x_{1} - ix_{2})$, $R$ is not an integral domain.
+        \item when $n = 3$, $x_{1}^{2} + x_{2}^{2} + x_{3}^{2}$ is irreducible in $R$, 
+        but $R$ is not a UFD as $x_{3}^{2} = -(x_{1} + ix_{2})(x_{1} - ix_{2})$.
+        \item when $n = 4$, $x_{1}^{2} + x_{2}^{2} + x_{3}^{2} + x_{4}^{2}$ is irreducible in $R$,
+        but $R$ is not a UFD as $(x_{1} + ix_{2})(x_{1} - ix_{2}) = -(x_{3} + ix_{4})(x_{3} - ix_{4})$.
+        \item when $n \ge 5$, $R$ is a UFD.
+    \end{itemize} 
+    \label{example:singularity_of_quotient_ring_by_square_sum}
+\end{example}
+\begin{lemma}[\textbf{\emph{Nagata's Lemma}}]
+    Let $R$ be an integral domain.
+    Assume $(x)$ is a prime ideal of $R$.
+    Then if $R[\frac{1}{x}]$ is a UFD, so is $R$.
+    \label{Lemma 5.5}
+\end{lemma}
+\begin{proof}
+    Let $\mathfrak{p}$ be a prime ideal of $R$ of height $1$.
+    If $\mathfrak{p} = (x)$, then $\mathfrak{p}$ is principal.
+    Otherwise, $\mathfrak{p}R[\frac{1}{x}]$ is a prime ideal of $R[\frac{1}{x}]$ of height $1$.
+    As $R[\frac{1}{x}]$ is a UFD, by Lemma \ref{Lemma 5.4} there exists some $y\in R[\frac{1}{x}]$ such that $\mathfrak{p}R[\frac{1}{x}] = (y)$.
+    \par
+    Assume that $y = y_{0}x^{n}$ where $y_{0}\in R \setminus (x)$.
+    Note that $\mathfrak{p}R[\frac{1}{x}] \cap R = \mathfrak{p}$, 
+    we get that $\mathfrak{p} = yR[\frac{1}{x}] \cap R = y_{0}R[\frac{1}{x}] \cap R = (y_{0})$ also principal.
+    Again \ref{Lemma 5.4}, we conclude that $R$ is UFD.
+\end{proof}
+With Lemma \ref{Lemma 5.5}, we give a proof of the $n \ge 5$ case in Example \ref{example:singularity_of_quotient_ring_by_square_sum}.
+\begin{lemma}
+    Let $R = k[x_{1}, \cdots, x_{n}]/(x_{1}^{2} + \cdots + x_{n}^{2})$ and $\characteristic k \neq 2$.
+    If $n \ge 5$, then $R$ is a UFD.
+    \label{Lemma 5.6}
+\end{lemma}
+\begin{proof}
+    Denote $x = x_{n - 1} + ix_{n}$ and $y = x_{n - 1} - ix_{n}$.
+    As $x_{n - 1}^{2} + x_{n}^{2} = xy$, we can rewrite $R$ as $k[x_{1}, \cdots, x_{n - 2}, x, y]/(x_{1}^{2} + \cdots + x_{n - 2}^{2} + xy)$.
+    Since $R/(x) \cong k[x_{1}, \cdots, x_{n - 2}, x, y]/(x_{1}^{2} + \cdots + x_{n - 2}^{2}, x) \cong k[x_{1}, \cdots, x_{n - 2}, y]/(x_{1}^{2} + \cdots + x_{n - 2}^{2})$ is integral domain, $(x)$ is a prime ideal of $R$.
+    Taking localization at $x$, we get $R[\frac{1}{x}] \cong k[x_{1}, \cdots, x_{n - 2}, x]$ is a UFD.
+    By Nagata's Lemma, $R$ is also a UFD.
+\end{proof}
+Theorem \ref{Theorem 5.1} is too hard to give a complete proof here. 
+But we can prove for a much more easier but useful result.
+\begin{lemma}
+    A regular local ring is an integral domain.
+    \label{Lemma 5.7}
+\end{lemma}
+\begin{proof}
+    Induct on dimension of $R$.
+    When $\dim R = 0$, we immediately get that $R$ is a field and hence an integral domain.
+    Assume $\dim R > 0$ so that $\mathfrak{m}^{2} \subsetneq \mathfrak{m}$ otherwise by Nakayama's Lemma, $\mathfrak{m} = 0$.
+    Since noetherian local ring has finitely many minimal prime ideals, 
+    we can take some $x\in \mathfrak{m}^{2}/\mathfrak{m}$ and $x\notin \mathfrak{p}$ for all minimal prime ideal $\mathfrak{p}$.
+    \par
+    Then $R/(x)$ with maximal ideal $\mathfrak{m}/(x)$ would be a regular local ring of dimension $\dim R - 1$.
+    By induction, $R/(x)$ is an integral domain so that $(x)$ is prime ideal of $R$.
+    Hence $(x)$ should contain some minimal prime ideal $\mathfrak{q}$.
+    For all $y\in \mathfrak{q}$, $y = ax$ for some $a\in R$.
+    Note that $x\notin \mathfrak{q}$, we get $a\in \mathfrak{q}$ so that $\mathfrak{q} \subseteq (x)\mathfrak{q} \subseteq \mathfrak{m}\mathfrak{q}$.
+    By Nakayama's Lemma, $\mathfrak{q}$ is zero ideal.
+    Conclude that $R$ is an integral domain.
+\end{proof}
+\begin{remark}
+    If $X$ is smooth at $x$, then $x$ cannot be contained in two distinct irreducible components since $\mathcal{O}_{X, x}$ is a regular local ring,
+    which by the previous lemma is an integral domain with unique minimal prime ideal $(0)$.
+\end{remark}
+\begin{proposition}
+    Let $X$ be an irreducible variety of dimension $n$.
+    Assume that $Y \subseteq X$ be a closed subvariety of pure dimension $n - 1$.
+    If $y\in Y$ is a smooth point in $X$, 
+    then there exists an open affine neighbourhood $U$ of $y$ in $X$ and regular function $f\in A(U)$ such that $I(U \cap Y) = (f)$ in $U$ and $f$ is irreducible in $\mathcal{O}_{X, y}$. 
+    \label{Proposition 5.3}
+\end{proposition}
+\begin{proof}
+    Assume $X$ is affine and $Y$ is irreducible.
+    Then $Y$ is defined by a prime ideal $\mathfrak{p} \subseteq A(X)$ and $\mathfrak{p}\mathcal{O}_{X, y}$ is still a prime ideal of $\mathcal{O}_{X, y}$ of height $1$.
+    By Corollary \ref{Corollary 5.2}, $\mathcal{O}_{X, y}$ is a UFD.
+    Hence $\mathfrak{p}\mathcal{O}_{X, y}$ is generated by some irreducible element $\frac{f}{1}$.
+    \par
+    Consider $(\frac{f}{1})\mathcal{O}_{X, y} \cap A(X)$ which is an ideal of $A(X)$.
+    Assume $f_{1}, \cdots, f_{r}$ generate the ideal.
+    Then there exist $\frac{h_{i}}{g_{i}}\in \mathcal{O}_{X, y}$ such that $\frac{f_{i}}{1} = \frac{h_{i}}{g_{i}} \cdot \frac{f}{1}$.
+    Take $g = \prod_{i} g_{i}$ and we have that $A(X)_{g} \cap (\frac{f}{1})\mathcal{O}_{X, y} = (\frac{f}{1})A(X)_{g}$.
+    Let $U = D(g)$ and we are done.
+\end{proof}
+\begin{example}
+    Let $X = V(x_{1}x_{2} - x_{3}x_{4}) \subseteq \mathbb{A}_{k}^{4}$.
+    Easy to verify that $X$ is irreducible of dimension $3$.
+    Consider $I = (x_{1}, x_{3})$.
+    Then $V(I) \subseteq X$ is isomorphic to $\mathbb{A}_{k}^{2}$ of dimension $2$.
+    But around origin $o$, $I\mathcal{O}_{X, o}$ is not principal.
+    Hence smoothness is necessary in the previous proposition.
+\end{example}
+
+\subsection{Zariski's Main Theorem}
+\label{subsection:Smooth_Points_and_Smooth_Morphisms_Zariski's_Main_Theorem}
+
+\begin{theorem}
+    Let $\varphi: X \rightarrow Y$ be a birational morphism between irreducible varieties of dimension $n$.
+    Assume that $Y$ is smooth (or factorial).
+    Then there exists open dense subset $U \subseteq Y$ such that 
+    \begin{itemize}
+        \item $\varphi^{-1}(U) \overset{\sim}{\rightarrow} U$
+        \item If $X \setminus \varphi^{-1}(U)$ is not empty, write $X \setminus \varphi^{-1}(U) = \cup_{i} E_{i}$ as union of irreducible components.
+        Then $\dim E_{i} = n - 1$ and $\dim \overline{\varphi(E_{i})} \le n - 2$.
+    \end{itemize}
+    \label{Theorem 5.3}
+\end{theorem}
+\begin{proof}
+    For $y\in Y$, take an affine open neighbourhood $U_{y}$.
+    For $x\in X$ mapping to $y$, take an affine open neighbourhood $U_{x} \subseteq \varphi^{-1}(U_{y})$.
+    Then $\varphi$ induces map
+    \begin{equation}
+        \begin{tikzcd}
+            A(U_{y}) \arrow[r, "\varphi^{\ast}"] \arrow[d, hookrightarrow] &
+            A(U_{x}) \arrow[d, hookrightarrow] \\
+            \mathcal{O}_{Y, y} \arrow[r, "\varphi^{\ast}"] \arrow[d, hookrightarrow] &
+            \mathcal{O}_{X, x} \arrow[d, hookrightarrow] \\
+            K(Y) \arrow[r, "\varphi^{\ast}", "\sim" swap] &
+            K(X)
+        \end{tikzcd}
+    \end{equation}
+    hence all the $\varphi^{\ast}$ are injections.
+    \par
+    For the case that $\varphi^{\ast}: \mathcal{O}_{Y, y} \rightarrow \mathcal{O}_{X, x}$ is surjective,
+    assume that $t_{1}, \cdots, t_{m}$ generate $A(U_{x})$ over $k$.
+    Then there exists $\frac{a_{i}}{b_{i}}\in \mathcal{O}_{Y, y}$ such that $\varphi^{\ast}(\frac{a_{i}}{b_{i}}) = t_{i}$,
+    where $a_{i},b_{i}\in A(U_{y})$ and $b_{i}(y) \neq 0$.
+    Take $b = \prod_{i} b_{i}$.
+    Then $\varphi^{\ast}: A(U_{y})_{b} \rightarrow A(U_{x})_{\varphi^{\ast}(b)}$ is bijective and hence $D(\varphi^{\ast}(b))$ is isomorphic to $D(b)$.
+    \par
+    For the case that $\varphi^{\ast}$ is not surjective, for $t\in \widetilde{\mathfrak{m}_{x}}$ which is not in $\im \varphi^{\ast}$,
+    there exists $a,b\in \widetilde{\mathfrak{m}_{y}}$ such that $\varphi^{\ast}(\frac{a}{b}) = t$.
+    Since $Y$ is smooth, $\mathcal{O}_{Y, y}$ is UFD.
+    We may assume that $a,b$ are coprime.
+    After shrinking $U_{y}$, we may assume that $a,b\in A(U_{y})$.
+    \par
+    Take closed subvarieties $E_{1} = V(a)$ and $E_{2} = V(b)$ both of pure dimension $n - 1$.
+    They have no common irreducible component through $y$.
+    Shrinking $U_{y}$ again, we may assume $E_{1}$ and $E_{2}$ have no common irreducible component.
+    Then $\dim (E_{1} \cap E_{2}) \le n - 2$.
+    \par
+    Consider $E = V(\varphi^{\ast}(b))$ of dimension $n - 1$.
+    Note that $\varphi^{\ast}(a) = t\varphi^{\ast}(b)$, we get that $\varphi(E) \subseteq E_{1} \cap E_{2}$.
+    Hence $\dim \overline{\varphi(E)} \le \dim (E_{1} \cap E_{2}) \le n - 2$, done!
+\end{proof}
+\begin{remark}
+    Through this proof, it is clear that when apply Zariski's Main Theorem,
+    we can take $U$ to be the unique maximal one.
+\end{remark}
+\begin{example}
+    Let $X = V(x_{1}x_{2} - x_{3}x_{4}) \subseteq \mathbb{A}_{k}^{4}$.
+    Then $\mathcal{O}_{X, 0}$ is not UFD.
+    Consider $\varphi: \mathbb{A}_{k}^{3} \rightarrow X$ sending $(y_{1}, y_{2}, y_{3})$ to $(y_{1}, y_{2}y_{3}, y_{2}, y_{1}y_{3})$.
+    Note the field extension $\varphi^{\ast}: K(X) \rightarrow K(y_{1}, y_{2}, y_{3})$ is an isomorphism and hence $\varphi$ is birational morphism.
+    Take $U \subseteq X$ defined by $\{(x_{1}, x_{2}, x_{3}, x_{4}) \big{|} (x_{1}, x_{3}) \neq 0\}$,
+    then $\varphi^{-1}(U) = \{(y_{1}, y_{2}, y_{3}) \big{|} (y_{1}, y_{2}) \neq 0\}$ and $\dim (\mathbb{A}_{k}^{3} \setminus \varphi^{-1}(U)) = 1$.
+    Thus Zariski's Main Theorem fails if without factoriality.
+\end{example}
+\begin{corollary}
+    Let $\varphi: X \rightarrow Y$ be a quasi-finite birational morphism between irreducible varieties.
+    Assume that $Y$ is smooth.
+    Then $\varphi$ is an open immersion.
+    In particular, $X$ is also smooth.
+    \label{Corollary 5.3}
+\end{corollary}
+\begin{proof}
+    By Zariski's Main Theorem, there exists an open dense subset $U \subseteq Y$ such that $\varphi^{-1}(U) \overset{\sim}{\rightarrow} U$.
+    If $X \neq \varphi^{-1}(U)$, then for all $y\in \im \varphi \setminus U$, 
+    since $\varphi$ is quasi-finite, $\varphi^{-1}(y) \subseteq X \setminus \varphi^{-1}(U)$ is union of some irreducible components of $X \setminus \varphi^{-1}(U)$.
+    Hence all irreducible components $E_{i}$ of $X \setminus \varphi^{-1}(U)$ would be of dimension $0$.
+    By Zariski's Main Theorem, $\dim \overline{\varphi(E_{i})} \le -1$ which is ridiculous, contradiction.
+    Thus $X = \varphi^{-1}(U)$ and hence $\varphi$ is an open immersion.
+\end{proof}
+\begin{corollary}
+    Let $X$ be a smooth irreducible variety and $\varphi: X \dashrightarrow \mathbb{P}_{k}^{n}$ be a rational map.
+    Then $\varphi$ is defined over $U \subseteq X$ with $\codim_{X} (X \setminus U) \ge 2$.
+    \label{Corollary 5.4}
+\end{corollary}
+\begin{proof}
+    Let $U$ be the definition of domain of $\varphi$ and $\Gamma_{\varphi|_{U}}$ be the graph.
+    Consider its closure $\overline{\Gamma_{\varphi|_{U}}}$ in $X \times \mathbb{P}_{k}^{n}$ and projection $p: \overline{\Gamma_{\varphi|_{U}}} \rightarrow X$.
+    Then $p$ is a birational morphism.
+    Note that continuous map preserves irreducibility, $\overline{\Gamma_{\varphi|_{U}}}$ is irreducible.
+    \par
+    By Zariski's Main Theorem, there exists open dense subset $V \subseteq X$ such that $p^{-1}(V) \overset{\sim}{\rightarrow} V$ and $\dim \overline{p(\overline{\Gamma_{\varphi|_{U}}} \setminus p^{-1}(V))} \le \dim X - 2$.
+    Hence $\codim_{X} (X \setminus V) \ge \codim \overline{p(\overline{\Gamma_{\varphi|_{U}}} \setminus p^{-1}(V))} \ge 2$.
+    While $p^{-1}$ is defined over $V$, we get $V \overset{p^{-1}}{\rightarrow} \overline{\Gamma_{\varphi|_{U}}} \rightarrow \mathbb{P}_{k}^{n}$ is a morphism coinciding with $\varphi\big{|}_{U}$ on $U \cap V$.
+    Hence by definition, $V \subseteq U$ and $\codim (X \setminus U) \ge \codim (X \setminus V) \ge 2$.
+\end{proof}
+\begin{corollary}
+    Let $C$ be an irreducible smooth curve.
+    Assume that $\varphi: C \dashrightarrow \mathbb{P}_{k}^{n}$ is a rational map.
+    Then $\varphi$ is a morphism.
+    \label{Corollary 5.5}
+\end{corollary}
+\begin{reason}
+    By Corollary \ref{Corollary 5.4}, $\varphi$ is defined over $U$ with $\codim (X \setminus U) \ge 2$.
+    While $\dim C = 1$, we get $X \setminus U = \varnothing$ so that $\varphi$ is a morphism. 
+\end{reason}
+
+\subsection{Smooth morphisms}
+\label{subsection:Smooth_Points_and_Smooth_Morphisms_Smooth_morphisms}
+
+Let $\varphi: X \rightarrow Y$ be a morphism between varieties, $x\in X$, $y = \varphi(x)$.
+We may assume that $X$ and $Y$ are affine.
+Then there is an induced homomorphism $\varphi^{\ast}: A(Y) \rightarrow A(X)$ such that ${\varphi^{\ast}}^{-1}(\mathfrak{m}_{x}) = \mathfrak{m}_{y}$.
+Recall that $T_{x}X = (\mathfrak{m}_{x}/\mathfrak{m}_{x}^{2})^{\vee}$ and $T_{y}Y = (\mathfrak{m}_{y}/\mathfrak{m}_{y}^{2})^{\vee}$.
+There is also an induced tangent map $T_{x}\varphi: T_{x}X \rightarrow T_{y}Y$.
+\begin{example}
+    Consider $\varphi: \mathbb{A}_{k}^{m} \rightarrow \mathbb{A}_{k}^{n}$ sending $(x_{1}, \cdots, x_{m})$ to $(f_{1}, \cdots, f_{n})$,
+    where polynomials $f_{1}, \cdots, f_{n}\in k[x_{1}, \cdots, x_{m}]$.
+    For all $\alpha = (\alpha_{1}, \cdots, \alpha_{m})\in \mathbb{A}_{k}^{m}$,
+    the tangent map $T_{\alpha}\varphi$ is defined by $(\frac{\partial f_{i}}{\partial x_{j}}(\alpha))$.
+\end{example}
+\begin{lemma}
+    Given morphisms $X \overset{\varphi}{\rightarrow} Y \overset{\psi}{\rightarrow} Z$,
+    then $T_{x}(\psi \circ \varphi) = T_{\varphi(x)}\psi \circ T_{x}\varphi$ for all $x\in X$.
+    \label{Lemma 5.8}
+\end{lemma}
+\begin{lemma}
+    Let $\varphi: X \rightarrow Y$ be a morphism, $x\in X$.
+    Assume that $X'$ is the connected component of $X_{x}$ containing $x$.
+    Then $T_{x}X' \subseteq \ker T_{x}\varphi$.
+    \label{Lemma 5.9}
+\end{lemma}
+\begin{proof}
+    As definition of Zariski tangent space is local, we may assume $X$ and $Y$ are affine.
+    Now there is an induced homomorphism $\varphi^{\ast}: A(Y) \rightarrow A(X)$.
+    Denote $y = \varphi(x)$.
+    Since $A(X') = A(X)/I$ for some radical ideal containing $\varphi^{\ast}(\mathfrak{m}_{y})$,
+    we get the composition $\mathfrak{m}_{y} \overset{\varphi^{\ast}}{\rightarrow} \mathfrak{m}_{x} \twoheadrightarrow \mathfrak{m}_{x}/I$ is zero map.
+    Hence by definition, $T_{x}X' \subseteq \ker T_{x}\varphi$.
+\end{proof}
+\begin{remark}
+    It is not necessary to take the connected component here.
+    In fact, $T_{x}X_{x} \subseteq \ker T_{x}\varphi$.
+\end{remark}
+\begin{proposition}
+    Let $\varphi: X \rightarrow Y$ be a morphism.
+    Then the function $X \rightarrow \mathbb{N}$ sending $x$ to $\dim_{k} (\ker T_{x}\varphi)$ is upper semicontinuous i.e. for all $r\in \mathbb{N}$,
+    $X(r) := \{x\in X \big{|} \dim_{k} (\ker T_{x}\varphi) \ge r\}$ is closed.
+    \label{Proposition 5.4}
+\end{proposition}
+\begin{proof}
+    We may assume that $X \subseteq \mathbb{A}_{k}^{n}$ is a subvariety defined by $F_{1}, \cdots, F_{s}$.
+    And $\varphi$ is restriction of a polynomial map $\mathbb{A}_{k}^{n} \rightarrow \mathbb{A}_{k}^{m}$ sending $(x_{1}, \cdots, x_{n})$ to $(G_{1}, \cdots, G_{m})$.
+    Note that for all $\alpha\in X$, $T_{\alpha}X$ is the variety defined by $\{\sum_{j} \frac{\partial F_{i}}{\partial x_{j}}(\alpha)x_{j}\}_{i}$ and $T_{\alpha}\varphi$ is defined by $(\frac{\partial G_{i}}{\partial x_{j}}(\alpha))$,
+    we get that $\alpha\in X(r)$ if and only if rank of the following matrix is less than or equal to $n - r$
+    \begin{equation}
+        \begin{pmatrix}
+            \frac{\partial F_{1}}{\partial x_{1}}(\alpha) & \cdots & \frac{\partial F_{1}}{\partial x_{n}}(\alpha) \\
+            \vdots & \ddots & \vdots \\
+            \frac{\partial F_{s}}{\partial x_{1}}(\alpha) & \cdots & \frac{\partial F_{s}}{\partial x_{n}}(\alpha) \\
+            \frac{\partial G_{1}}{\partial x_{1}}(\alpha) & \cdots & \frac{\partial G_{1}}{\partial x_{n}}(\alpha) \\
+            \vdots & \ddots & \vdots \\
+            \frac{\partial G_{m}}{\partial x_{1}}(\alpha) & \cdots & \frac{\partial G_{m}}{\partial x_{n}}(\alpha)
+        \end{pmatrix}
+    \end{equation}
+    which is a closed condition so that $X(r)$ is closed.
+\end{proof}
+\begin{example}
+    Consider $\varphi: \mathbb{A}_{k}^{3} \rightarrow \mathbb{A}_{k}^{2}$ sending $(x, y, z)$ to $(z, x^{2}z + y)$.
+    For $\alpha = (\alpha_{1}, \alpha_{2}, \alpha_{3})\in \mathbb{A}_{k}^{3}$, $T_{\alpha}\varphi: k^{3} \rightarrow k^{2}$ is defined by
+    \begin{equation}
+        \begin{pmatrix}
+            0 & 0 & 1 \\
+            2\alpha_{1}\alpha_{3} & 2\alpha_{2} & \alpha_{1}^{2}
+        \end{pmatrix}
+    \end{equation}
+    which is of rank at least $1$.
+    Hence $X(2) = \{\alpha\in \mathbb{A}_{k}^{3} \big{|} \dim_{k} (\ker T_{\alpha}\varphi) \ge 2\} = \{(0, 0, \alpha_{3}) \big{|} \alpha_{3}\in k\} \cup \{(\alpha_{1}, 0, 0) \big{|} \alpha_{1}\in k\}$.
+    As $\varphi(X(2)) = \{(z, 0) \big{|} z\in k\}$, for all $(s, t)\in \mathbb{A}_{k}^{2}$ such that $t \neq 0$,
+    by Jacobian criterion, we have that $\varphi^{-1}((s, t))$ is smooth.
+\end{example}
+\begin{definition}
+    Let $X, Y$ be smooth irreducible varieties.
+    We say a morphism $\varphi: X \rightarrow Y$ is smooth at $x\in X$ if $T_{x}\varphi$ is surjective.
+    If $\varphi$ is smooth at all points in $X$, then we say $\varphi$ is smooth.
+\end{definition}
+\begin{remark}
+    By Proposition \ref{Proposition 5.4}, for morphism $\varphi$ between smooth varieties, 
+    the set of points where $\varphi$ is not smooth is a closed subset of $X$.
+\end{remark}
+\begin{lemma}
+    Let $X$ be an irreducible variety, $Z$ irreducible subvariety of $X$ of codimension $r$.
+    Assume $X$ and $Z$ are both smooth at $x\in Z$.
+    Then there exists affine open neighbourhood $U\ni x$ and a regular sequence $f_{1}, \cdots, f_{r}$ in $A(U)$ such that $Z \cap U$ is an irreducible component of $V(f_{1}, \cdots, f_{r}) \subseteq U$.
+    \label{Lemma 5.10}
+\end{lemma}
+\begin{proof}
+    We may assume that $X$ is affine.
+    Then $Z$ is defined by some prime ideal $\mathfrak{p}$ of $A(X)$ of height $r$.
+    As $X$ and $Z$ are both smooth at $x$, we get that $A(X)_{\mathfrak{m}_{x}}$ and $(A(X)/\mathfrak{p})_{\mathfrak{m}/\mathfrak{p}}$ are both regular local ring.
+    Since $A(X)$ is integral, by Theorem \ref{Theorem 4.2}, $\dim A(X)/\mathfrak{p} = \dim A(X) - r$.
+    \par
+    Assume $\dim A(X) = n$.
+    Denote $\overline{\mathfrak{m}_{x}} = \mathfrak{m}_{x}/\mathfrak{p}$.
+    Take a basis $a_{1}, \cdots, a_{n - r}$ of $\overline{\mathfrak{m}_{x}}/\overline{\mathfrak{m}_{x}}^{2} \cong \mathfrak{m}_{x}/(\mathfrak{m}_{x}^{2} + \mathfrak{p})$.
+    Then we can extend it to a basis $a_{1}, \cdots, a_{n - r}, b_{1}, \cdots, b_{r}$ of $\mathfrak{m}_{x}/\mathfrak{m}_{x}^{2}$.
+    Then for all $i$, there exist $\frac{\alpha_{ij}}{\beta_{ij}}\in A(X)_{\mathfrak{m}_{x}}$ and $c_{i}\in \mathfrak{m}_{x}^{2}$ such that $f_{i} := \frac{b_{i}}{1} + \sum_{j} \frac{\alpha_{ij}}{\beta_{ij}}\frac{a_{j}}{1} - \frac{c}{1}$ is contained in $\mathfrak{p}$.
+    \par
+    Now we get $f_{i}\in \mathfrak{p}$ which is clearly a regular sequence.
+    Taking appropriate $s$, we get $f_{i}\in U := D(s)$.
+    By Krull's Principal Ideal Theorem, minimal prime ideals in $V(f_{1}, \cdots, f_{r})$ would have height $r$.
+    Note that $Z \cap U$ also has codimension $r$ and $Z \cap U \subseteq V(f_{1}, \cdots, f_{r})$.
+    We conclude that $Z \cap U$ is an irreducible component of $V(f_{1}, \cdots, f_{r})$.
+\end{proof}
+\begin{proposition}
+    Let $X$ and $Y$ be smooth irreducible varieties, $\varphi: X \rightarrow Y$ morphism.
+    Then \\
+    (1)All nonempty fiber of $\varphi$ has pure dimension $\dim X - \dim Y$ and $\varphi$ is dominant. \\
+    (2)Assume that $Z \subseteq Y$ is a smooth closed subvariety,
+    then $\varphi^{-1}(Z)$ is also smooth.
+    \label{Proposition 5.5}
+\end{proposition}
+\begin{proof}
+    (1)For all $x\in X$, take $X'$ to be the connected component of $X_{x}$ containing $x$.
+    Then by Proposition \ref{Proposition 5.2} and Theorem \ref{Theorem 4.5}, $\dim_{k} T_{x}X' \ge \dim X' \ge \dim X - \dim \overline{\varphi(X)} \ge \dim X - \dim Y$.
+    On the other hand, as $\varphi$ is smooth, $T_{x}\varphi$ is surjective.
+    Hence $\dim_{k} T_{x}X' \le \dim_{k} (\ker T_{x}\varphi) = \dim_{k} T_{x}X - \dim_{k} T_{\varphi(x)}Y$.
+    Since $X$ and $Y$ are both smooth, by Corollary \ref{Corollary 5.1}, we have that $\dim_{k} T_{x}X - \dim_{k} T_{\varphi(x)}Y = \dim X - \dim Y$.
+    Thus all equalities hold and $\dim \overline{\varphi(X)} = \dim Y$ so that $\varphi$ is dominant.
+    \par
+    (2)We may assume that $Z \subseteq Y$ is smooth, irreducible and of codimension $r$.
+    For all $z\in \varphi^{-1}(Z)$, $T_{z}\varphi(T_{z}\varphi^{-1}(Z)) \subseteq T_{\varphi(z)}Z$.
+    Hence 
+    \begin{equation}
+        \begin{split}
+            \dim_{k} T_{z}\varphi^{-1}(Z) & \le \dim_{k} T_{\varphi(z)}Z + \dim_{k} (\ker T_{z}\varphi) \\
+            & = \dim Z + \dim X - \dim Y \\
+            & = \dim X - r
+        \end{split}
+    \end{equation}
+    On the other hand, for all $y\in Z$, by Lemma \ref{Lemma 5.10},
+    there exist affine open neighbourhood $U\ni y$ and a regular sequence $f_{1}, \cdots, f_{r}$ in $A(U)$ such that $Z \cap U$ is an irreducible component of $V(f_{1}, \cdots, f_{r})$.
+    As continuous map sending irreducible sets to irreducible sets, $\varphi^{-1}(Z \cap U)$ would be union of some irreducible components of $\varphi^{-1}(V(f_{1}, \cdots, f_{r})) = V(f_{1} \circ \varphi, \cdots, f_{r} \circ \varphi_{r})$.
+    By Krull's Principal Ideal Theorem, those irreducible components should be of codimension at most $r$ in $\varphi^{-1}(U)$.
+    \par
+    Note that for each irreducible component $Z_{0}$ of $\varphi^{-1}(Z)$ with $z\in Z_{0}$ mapping to $y$,
+    $Z_{0} \cap \varphi^{-1}(U)$ is an irreducible component of $\varphi^{-1}(Z \cap U)$.
+    Hence $\codim Z_{0} = \codim Z_{0} \cap \varphi^{-1}(U) \le r$ in $X$.
+    Since $X$ is irreducible, by Theorem \ref{Theorem 4.2}, $\dim_{k} T_{z}\varphi^{-1}(Z) \ge \dim \varphi^{-1}(Z) \ge \dim X - r$.
+    Thus $\dim_{k} T_{z}\varphi^{-1}(Z) = \dim \varphi^{-1}(Z) = \dim X - r$.
+    As $X$ is irreducible, $\varphi^{-1}(Z)$ is smooth.
+\end{proof}
+\begin{remark}
+    For $\varphi: X \rightarrow Y$ between smooth projective varieties,
+    it is very rare that $\varphi$ is smooth, except for some trivial case such as projection $Y \times Z \rightarrow Y$.
+\end{remark}
+\begin{proposition}[\textbf{\emph{Generic Smoothness}}]
+    Assume $\characteristic k = 0$.
+    Let $\varphi: X \rightarrow Y$ be a dominant morphism between irreducible varieties.
+    Then there exist open dense subsets $V \subseteq Y$ and $U \subseteq X$ such that $\varphi\big{|}_{U}: U \rightarrow V$ is a smooth morphism.
+    \label{Proposition 5.6}
+\end{proposition}
+\begin{proof}
+    We can reduce the problem to affine case.
+    Assume that $X \subseteq \mathbb{A}_{k}^{n}$ and $Y \subseteq \mathbb{A}_{k}^{m}$.
+    Moreover, by replacing $X$ by graph of $\varphi$, $\varphi$ is restriction of the projection $\mathbb{A}_{k}^{n + m} \rightarrow \mathbb{A}_{k}^{m}$.
+    By induction, we consider the case that $n = 1$ with projection $\mathbb{A}_{k}^{m + 1} \rightarrow \mathbb{A}_{k}^{m}$ sending $(x_{1}, \cdots, x_{m + 1})$ to $(x_{1}, \cdots, x_{m})$.
+    \par
+    When $x_{m + 1}$ is transcendental over $K(Y)$, $X \cong Y \times \mathbb{A}_{k}^{1}$.
+    Since $\varphi$ is the projection, $\varphi$ is smooth.
+    When $x_{m + 1}$ is algebraic over $K(Y)$.
+    Let $G(T) = a_{d}(y)T^{d} + a_{d - 1}(y)T^{d - 1} + \cdots + a_{0}(y)$ be the minimal polynomial of $x_{m + 1}$ over $K(Y)$, where $a_{i}\in K(Y)$.
+    Taking $V = D(a_{d})$, we may assume that leading coefficient of $G(T)$ is $1$.
+    \par
+    By definition, $G(x_{m + 1})\in I(X)$.
+    In addition, since $\varphi$ is the projection,
+    by Euclidean division, we get $I(X) = (I(Y), G(x_{m + 1}))$ so that $\dim X = \dim Y$.
+    By Proposition \ref{Proposition 5.2}, 
+    there is always an open dense subset $V$ of $Y$ consisting of smooth points in $Y$.
+    \par
+    For all $\alpha = (\beta, t)$ in $\varphi^{-1}(V)$, we get that $T_{\alpha}X$ is defined by equations $S \cup \{\sum_{j} \frac{\partial G}{\partial x_{j}}(\alpha)x_{j}\}$,
+    where $S$ is the set of defining equations of $T_{\beta}Y$.
+    Take $U = D(\frac{\partial G}{\partial x_{m + 1}}) \cap \varphi^{-1}(V)$.
+    As $G$ is the minimal polynomial of $x_{m + 1}$ over $K(Y)$, 
+    $\frac{\partial G}{\partial x_{m + 1}}$ would not vanish on $X$ so that $U$ is nonempty.
+    \par
+    Hence for $\alpha\in U$, $\dim_{k} T_{\alpha}X = \dim_{k} T_{\beta}Y$. 
+    Thus $\dim X = \dim Y = \dim_{k} T_{\beta}Y = \dim_{k} T_{\alpha}X$ so that $X$ is smooth at $\alpha$.
+    In addition, for all $\alpha\in U$, the following matrix has rank $m + 1$
+    \begin{equation}
+        \begin{pmatrix}
+            M & 0 \\
+            \cdots & \frac{\partial G}{\partial x_{m + 1}}(\alpha) \\
+            I_{m} & 0
+        \end{pmatrix}
+    \end{equation}
+    where $M$ are the defining equations in $S$.
+    Hence $\ker T_{\alpha}\varphi = 0$.
+    As $\dim_{k} T_{\alpha}X = \dim_{k} T_{\beta}Y$, $T_{\alpha}\varphi$ is surjective for all $\alpha\in U$.
+    Conclude that $\varphi\big{|}_{U}: U \rightarrow V$ is a smooth morphism.
+\end{proof}
+\begin{example}
+    When $\characteristic k = p$, generic smoothness would fail.
+    For instance, the tangent map of $\varphi: \mathbb{A}_{k}^{1} \rightarrow \mathbb{A}_{k}^{1}$ sending $x$ to $x^{p}$ is zero map everywhere.
+\end{example}
+\begin{theorem}[\textbf{\emph{Generic Smoothness}}]
+    Assume $\characteristic k = p$.
+    Let $\varphi: X \rightarrow Y$ be a dominant morphism between irreducible varieties.
+    Then there exists smooth open dense subset $V \subseteq Y$ such that $\varphi^{-1}(V) \cap X^{\smooth} \overset{\varphi}{\rightarrow} V$ is a smooth morphism,
+    where $\varphi^{-1}(V) \cap X^{\smooth}$ is the schemetic intersection i.e. the subvariety with ideal sheaf generated by union of the original two.
+    \label{Theorem 5.4}
+\end{theorem}
+\begin{proof}
+    We may assume that $X$ and $Y$ are smooth.
+    Let $Z = \{x\in X \big{|} \varphi \text{ is not smooth at } x\}$ which by Proposition \ref{Proposition 5.4} is closed in $X$.
+    If $Z = \varnothing$, then take $V = Y$ and we are done.
+    \par
+    For all irreducible component $Y'$ of $\overline{\varphi(Z)}$, $\varphi^{-1}(Y')$ is union of some irreducible components of $Z$.
+    by irreducibility of $Y'$, we can pick some irreducible component $X'$ of $Z$ such that $\overline{\varphi(X')} = Y'$ and hence $\varphi\big{|}_{X'}$ is dominant.
+    By Proposition \ref{Proposition 5.6}, there exist smooth open dense subsets $U' \subseteq X'$ and $V' \subseteq Y'$ such that $\varphi\big{|}_{U'}: U' \rightarrow V'$ is a smooth morphism.
+    \par
+    Hence for $x\in U'$, $\dim Y' = \dim_{k} T_{\varphi(x)}V' = \dim_{k} T_{x}\varphi\big{|}_{U'}(T_{x}U') \le \dim_{k} T_{x}\varphi(T_{x}X) < \dim_{k} T_{\varphi(y)}Y = \dim Y$.
+    Thus $\overline{\varphi(Z)} \subsetneq Y$.
+    Take $V = Y \setminus \overline{\varphi(Z)}$.
+    Want to show that $\varphi^{-1}(V) \overset{\varphi}{\rightarrow} V$ is a smooth morphism.
+    In fact, for all $x\in \varphi^{-1}(V)$, the tangent map is just $T_{x}\varphi$ which is surjective as $\varphi^{-1}(V) \cap Z = \varnothing$.
+\end{proof}
+\begin{example}
+    Assume $\characteristic k = 0$.
+    Consider $\varphi: \mathbb{A}_{k}^{2} \rightarrow \mathbb{A}_{k}^{1}$ sending $(x, y)$ to $x^{2} - y^{p}$.
+    For all $b\in \mathbb{A}_{k}^{1}$, $(0, \beta)\in \varphi^{-1}(b)$, where $\beta^{p} = -b$,
+    is a singular point in $\varphi^{-1}(b)$.
+    Hence there does not exist smooth open dense subset $V\subseteq Y$ such that $\varphi^{-1}(V) \rightarrow V$ is smooth.
+\end{example}
+
+\subsection{Bertini's Theorem}
+\label{subsection:Smooth_Points_and_Smooth_Morphisms_Bertini's_Theorem}
+
+\begin{theorem}[\textbf{\emph{Bertini's Theorem}}]
+    Assume $\characteristic k = 0$.
+    Let $X$ be a smooth variety, $\varphi: X \rightarrow \mathbb{P}_{k}^{n}$ morphism.
+    Then for a general hyperplane $H$ of $\mathbb{P}_{k}^{n}$ i.e. for $H$ in some nonempty open subset of ${\mathbb{P}_{k}^{n}}^{\vee}$, $\varphi^{-1}(H)$ is smooth.
+    \label{Theorem 5.5}
+\end{theorem}
+\begin{proof}
+    Since $X$ is smooth, $X$ is disjoint union of irreducible components.
+    We may assume $X$ is irreducible of dimension at least $1$.
+    Then consider the incident variety $I_{X} := \{(x, [H])\in X \times {\mathbb{P}_{k}^{n}}^{\vee} \big{|} \varphi(x)\in H\}$ and morphism $\varphi \times \identity: X \times {\mathbb{P}_{k}^{n}}^{\vee} \rightarrow \mathbb{P}_{k}^{n} \times {\mathbb{P}_{k}^{n}}^{\vee}$.
+    Clearly, $I_{X}$ is preimage of the universal hyperplane $I = \{(\alpha, [H])\in \mathbb{P}_{k}^{n} \times {\mathbb{P}_{k}^{n}}^{\vee} \big{|} \alpha\in H\}$.
+    \par
+    For all $x\in X$, preimage of $x$ under projection $I_{X} \overset{p_{1}}{\rightarrow} X$ is isomorphic to $\mathbb{P}_{k}^{n - 1}$.
+    Hence by Proposition \ref{Proposition 4.6}, $I_{X}$ is irreducible and $\dim I_{X} = \dim X + n - 1$.
+    For all $P = (x, [H])\in I_{X}$, want to show that $\dim_{k} T_{P}I_{X} = \dim X + n - 1$.
+    \par
+    Denote coordinate of $\mathbb{P}_{k}^{n}$ by $y_{1}, \cdots, y_{n}$ and coordinate of ${\mathbb{P}_{k}^{n}}^{\vee}$ by $z_{1}, \cdots, z_{n}$.
+    By coordinate transformation, We may assume that $\varphi(x) = [1, 0, \cdots, 0]$ and $[H] = [0, \cdots, 0, 1]$.
+    By Proposition \ref{Proposition 2.1}, there exists affine open neighbourhood $V$ of $x$ such that $\varphi\big{|}_{V}$ is defined by polynomial $f_{1}, \cdots, f_{n}\in A(U)$.
+    \par
+    Thus $I_{X} \cap (V \times D_{+}(z_{n}))$ is defined by $z_{0/n} + z_{1/n}f_{1} + \cdots + z_{n - 1/n}f_{n - 1} + f_{n}$ in $V \times D_{+}(z_{n})$,
+    whose partial derivation with respect to $z_{0/n}$ is constantly $1$.
+    Hence $T_{P}I_{X} \subseteq T_{P}(V \times D_{+}(z_{n}))$ and $\dim_{k} T_{P}I_{X} \le \dim_{k} T_{P}(V \times D_{+}(z_{n})) - 1 = \dim X + n - 1 = \dim I_{X}$.
+    We get that $I_{X}$ is smooth.
+    \par
+    Now apply generic smoothness to $I_{X} \overset{p_{2}}{\rightarrow} {\mathbb{P}_{k}^{n}}^{\vee}$,
+    there exists open dense subset $U \subseteq {\mathbb{P}_{k}^{n}}^{\vee}$ such that $I_{X} \cap p_{2}^{-1}(U) \overset{p_{2}}{\rightarrow} U$ is a smooth morphism.
+    And for all $[H]\in U$, by Proposition \ref{Proposition 5.5}, the fiber $p_{2}^{-1}([H]) = \varphi^{-1}(H) \times \{[H]\} \cong \varphi^{-1}(H)$ is smooth since $[H]$ is smooth as a one-point set.
+\end{proof}
+\begin{theorem}[\textbf{\emph{Bertini's Theorem}}]
+    Let $X \hookrightarrow \mathbb{P}_{k}^{n}$ be an irreducible smooth subvariety.
+    Then for a general hyperplane $H$ of $\mathbb{P}_{k}^{n}$, $H$ does not contain $X$ and $X \cap H$ is smooth.
+    \label{Theorem 5.6}
+\end{theorem}
+\begin{proof}
+    Consider $S_{X} := \{(x, [H])\in X \times {\mathbb{P}_{k}^{n}}^{\vee} \big{|} X \subseteq H \text{ or } x\in \singular(X \cap H)\}$.
+    Suffices to show that $S$ is closed and of dimension $< n$.
+    Denote coordinate of $\mathbb{P}_{k}^{n}$ by $y_{1}, \cdots, y_{n}$ and coordinate of ${\mathbb{P}_{k}^{n}}^{\vee}$ by $z_{1}, \cdots, z_{n}$.
+    \par
+    We may assume that $X$ is irreducible.
+    Consider $S_{X} \overset{p_{1}}{\rightarrow} X$.
+    For $x\in X$ and $(x, [H])\in p_{1}^{-1}(x)$, by coordinate transformation assume that $x = [1, 0, \cdots, 0]$.
+    Then we can replace $X$ by $X \cap D_{+}(y_{0})$ and $[H]\in V(z_{0})$.
+    \par 
+    When $X \subseteq H$, the defining equation $F$ of $H$ should be contained in $I(X)$.
+    When $H$ does not contain whole $X$, $\dim X \cap H = \dim X - 1 = \dim_{k} T_{x}X - 1$.
+    Since $X \cap H$ is singular at $x$, $\dim_{k} T_{x}(X \cap H) > \dim X \cap H$.
+    Note that the defining equations of $T_{x}(X \cap H)$ are
+    \begin{equation}
+        S \cup \{\sum \frac{\partial F}{\partial y_{j/0}}(x)y_{j/0}\}
+    \end{equation}
+    where $S$ are the defining equations of $T_{x}X$.
+    Hence $\dim_{k} T_{x}X \ge \dim_{k} T_{x}(X \cap H) > \dim_{k} T_{x}X - 1$.
+    Thus $F = \sum \frac{\partial F}{\partial y_{j/0}}(x)y_{j/0}$ is always contained in the linear subspace spanned by $S$, denoted by $\langle S \rangle$.
+    In fact, $\dim_{k} \langle S \rangle = n - \dim_{k} T_{x}X = n - \dim X$,
+    \par
+    Now $\langle S \rangle$ is a subvariety of ${\mathbb{P}_{k}^{n}}^{\vee}$ of dimension $n - \dim X$.
+    Assume $G_{1}, \cdots, G_{n - \dim X}$ generate $I(X)$.
+    Hence $(x, [H])\in p_{1}^{-1}(x)$ if and only if $F\in V(z_{0})$ and the rank of the following matrix is equal to the rank of the submatrix of the first $n - \dim X$ rows
+    \begin{equation}
+        \begin{pmatrix}
+            \frac{\partial G_{1}}{\partial y_{1/0}}(x) & \cdots & \frac{\partial G_{1}}{\partial y_{n/0}}(x) \\
+            \vdots & \ddots & \vdots \\
+            \frac{\partial G_{n - \dim X}}{\partial y_{1/0}}(x) & \cdots & \frac{\partial G_{n - \dim X}}{\partial y_{n/0}}(x) \\
+            \frac{\partial F}{\partial y_{1/0}}(x) & \cdots & \frac{\partial F}{\partial y_{n/0}}(x)
+        \end{pmatrix}
+    \end{equation}
+    which is a closed condition, so that $S_{X}$ is closed.
+    Thus $p_{1}^{-1}(x)$ is a projective subspace of ${\mathbb{P}_{k}^{n}}^{\vee}$ of codimension $\dim X + 1$.
+    Hence by Proposition \ref{Proposition 4.6}, $S_{X}$ is irreducible and $\dim S_{X} = n - 1$.
+    Conclude that $\overline{p_{2}(S_{X})} \neq {\mathbb{P}_{k}^{n}}^{\vee}$ and for all $[H]\in {\mathbb{P}_{k}^{n}}^{\vee} \setminus \overline{p_{2}(S_{X})}$, $X \cap H$ is smooth.
+\end{proof}
+\begin{theorem}[\textbf{\emph{Bertini's Theorem}}]
+    Let $X$ be an irreducible variety, $\varphi: X \rightarrow \mathbb{P}_{k}^{n}$ a morphism and $\dim \overline{\varphi(X)} \ge 2$.
+    Then for a general hyperplane $H$ of $\mathbb{P}_{k}^{n}$, $\varphi^{-1}(H)$ is irreducible.
+    \label{Theorem 5.7}
+\end{theorem}
+
+\section{Some Interesting Varieties}
+\label{section:Some_Interesting_Varieties}
+
+\subsection{Grassmannian}
+\label{subsection:Some_Interesting_Varieties_Grassmannian}
+
+Given an $n$-dimensional $k$-linear space $V$, define Grassmannian variety to be $\grassmannianscheme{m}{V} := \{W \subseteq V \big{|} \dim W = m\}$,
+or denoted by $\grassmannianscheme{m}{n}$ when there is no confusion.
+There are two trivial cases
+\begin{itemize}
+    \item when $m = 1$, $\grassmannianscheme{1}{n} \cong \mathbb{P}_{k}^{n - 1}$
+    \item when $m = n - 1$, $\grassmannianscheme{n - 1}{n} \cong {\mathbb{P}_{k}^{n - 1}}^{\vee}$
+\end{itemize}
+Just as the trivial cases, $\grassmannianscheme{m}{n}$ and $\grassmannianscheme{n - m}{n}$ are dual spaces for all $m$.
+In the following, we are going to show that $\grassmannianscheme{m}{n}$ are really a variety.
+\par
+Consider $m$-wedge, there is a natural map
+\begin{equation}
+    \begin{split}
+        \mathcal{P}: \grassmannianscheme{m}{n} & \longrightarrow \grassmannianscheme{1}{\binom{n}{m}} \\
+        W & \longmapsto \wedge^{m}W
+    \end{split}
+\end{equation}
+called Plucher embedding.
+Observe that for $w\in \wedge^{m}V$ and $e \neq 0$ in $V$, $e \wedge w = 0$ if and only if there exists $w_{1}\in \wedge^{m - 1}V$ such that $w = e \wedge w_{1}$.
+Then we see that $\mathcal{P}$ is injective.
+Indeed $W \subseteq V$ is spanned by all the vectors $e$ such that $e \wedge \mathcal{P}(W) = 0$.
+\par
+We say that $w\in \wedge^{m}W$ is totally decomposable if $w\in \im \mathcal{P}$, 
+namely there exist $e_{1}, \cdots, e_{m}$ linearly independent such that $w = e_{1} \wedge \cdots \wedge e_{m}$.
+\begin{lemma}
+    Then $w$ is totally decomposable if and only if the linear map $\varphi(w): V \rightarrow \wedge^{m + 1}V$ sending $e$ to $e \wedge w$ has rank $\le n - m$ if and only if $\dim_{k} (\ker \varphi(w)) \ge m$.
+    \label{Lemma 6.1}
+\end{lemma}
+\begin{proof}
+    "$\Rightarrow$": Assume $w$ is totally decomposable and $w = e_{1} \wedge \cdots \wedge e_{m}$, where $e_{1}, \cdots, e_{m}$ are linearly independent.
+    Then $\langle e_{1}, \cdots, e_{m} \rangle \subseteq \ker \varphi(w)$ so that $\dim_{k} (\ker \varphi(w)) \ge m$.
+    \par
+    "$\Leftarrow$": Assume that $\dim_{k} (\ker \varphi(w)) \ge m$.
+    Take sequence $e_{1}, \cdots, e_{m}$ linearly independent in $\ker \varphi(w)$.
+    Then $e_{1} \wedge w = 0$ and there exists $w_{1}\in \wedge^{m - 1}V$ such that $w = e_{1} \wedge w_{1}$.
+    Hence $e_{2} \wedge e_{1} \wedge w_{1} = e_{2} \wedge w = 0$.
+    \par
+    Note that $e_{1}$ does not appear in $e_{2} \wedge w_{1}$, we get $e_{2} \wedge w_{1} = 0$.
+    By induction, we get $w = e_{1} \wedge \cdots \wedge e_{n}$ so that $w$ is totally decomposable.
+\end{proof}
+\begin{remark}
+    Through the proof, it is clear that the inequality in the statement can be replaced by equality.
+\end{remark}
+Consider matrix representation $M(w)$ of $\varphi(w)$.
+Then $\mathcal{P}(\grassmannianscheme{m}{n})$ is defined by all $(n - m + 1)$-minors of $M(w)$ and hence closed.
+In fact, $\grassmannianscheme{m}{n}$ is intersection of the quadric surfaces cut out by Plucher relations.
+\begin{theorem}
+    $\grassmannianscheme{m}{n}$ is an irreducible and smooth variety of dimension $(n - m)m$.
+    \label{Theorem 6.1}
+\end{theorem}
+\begin{proof}
+    Consider the incident variety $I = \{([W], [H])\in \grassmannianscheme{m}{n} \times \grassmannianscheme{1}{n} \big{|} H \subseteq W\}$ and projections $p_{1}: I \rightarrow \grassmannianscheme{m}{n}$ and $p_{2}: I \rightarrow \grassmannianscheme{1}{n} \cong \mathbb{P}_{k}^{n - 1}$.
+    Then $p_{1}^{-1}([W]) \cong \grassmannianscheme{1}{W} \cong \mathbb{P}_{k}^{m - 1}$.
+    And $p_{2}^{-1}([H]) \cong \grassmannianscheme{m - 1}{V/H}$.
+    \par
+    Hence by induction, applying Proposition \ref{Proposition 4.6}, we get that $I$ is irreducible of dimension $\dim \grassmannianscheme{m - 1}{n - 1} + (n - 1) = (n - m)(m - 1) + (n - 1)$.
+    Note that $p_{1}$ is surjective, $\grassmannianscheme{m}{n} = p_{1}(I)$ is also irreducible.
+    Again by Proposition \ref{Proposition 4.6}, $\dim \grassmannianscheme{m}{n} + (m - 1) = (n - m)(m - 1) + (n - 1)$.
+    Thus $\dim \grassmannianscheme{m}{n} = (n - m)m$.
+    \par
+    Consider group action $\generallineargroup{m}{k} \groupaction \grassmannianscheme{m}{n}$.
+    Clearly, this is transitive.
+    Fix $W_{0}\in \grassmannianscheme{m}{n}$, define map $\generallineargroup{m}{k} \rightarrow \grassmannianscheme{m}{n}$ sending $M$ to $MW_{0}$,
+    which is in fact a morphism between varieties.
+    \par
+    Combining Proposition \ref{Proposition 5.3} and Corollary \ref{Corollary 5.1}, there is an open dense subset $U \subseteq \grassmannianscheme{m}{n}$ consisting of smooth points.
+    Since $\generallineargroup{m}{k}$ acts transitively, conclude that $\grassmannianscheme{m}{n}$ is smooth everywhere.
+\end{proof}
+\begin{example}
+    Consider Plucher embedding $\mathcal{P}: \grassmannianscheme{2}{4} \hookrightarrow \mathbb{P}_{k}^{5}$.
+    Take basis $e_{1}, \cdots, e_{4}$ of $V$.
+    Then $e_{1} \wedge e_{2}, e_{1} \wedge e_{3}, e_{1} \wedge e_{4}, e_{2} \wedge e_{3}, e_{2} \wedge e_{4}, e_{3} \wedge e_{4}$ is a basis of $\mathbb{P}_{k}^{5}$.
+    And $w = \sum x_{ij}e_{i} \wedge e_{j}$ is totally decomposable if and only if $w \wedge w = 0$ if and only if $x_{12}x_{34} - x_{13}x_{24} + x_{14}x_{23} = 0$.
+    In fact, for all $n$, $\mathcal{P}: \grassmannianscheme{2}{n} \hookrightarrow \mathbb{P}_{k}^{\binom{n}{2} - 1}$ is always defined by $w \wedge w = 0$. 
+\end{example}
+\begin{definition}
+    A variety $X$ birational to projective space $\mathbb{P}_{k}^{n}$ for some $n$ is called a rational variety.
+    In particular, for $n = 1$, we say $X$ is a rational curve.
+\end{definition}
+\begin{example}
+    Assume $\characteristic k = 0$
+    Then all quadric hypersurface is rational.
+    Let $X$ be a smooth cubic hypersurface
+    \begin{itemize}
+        \item when $n = 2$, $X$ is not rational
+        \item when $n = 3$, $X$ is rational
+        \item when $n = 4$, $X$ is not rational
+        \item when $n = 5$, when $X$ is very good, $X$ is rational
+    \end{itemize}
+\end{example}
+\begin{theorem}
+    $\grassmannianscheme{m}{n}$ is a rational variety i.e. birational to a projective space.
+    \label{Theorem 6.2}
+\end{theorem}
+\begin{proof}
+    We can explicitly write down an affine open subset of $\grassmannianscheme{m}{n}$, which is isomorphic to $\mathbb{A}_{k}^{m(n - m)}$.
+    Consider Plucher embedding $\mathcal{P}: \grassmannianscheme{m}{n} \hookrightarrow \grassmannianscheme{1}{n}$.
+    Take basis $e_{1}, \cdots, e_{n}$ of $V$ and $\Gamma := \langle e_{m + 1}, \cdots, e_{n} \rangle$.
+    Then $w_{\Gamma} = e_{m + 1} \wedge \cdots \wedge e_{n}$ is the image of $\Gamma$ under Plucher embedding.
+    \par
+    Consider the natural map $\varphi: \wedge^{m}V \rightarrow \wedge^{n}V$ sending $w$ to $w \wedge w_{\Gamma}$.
+    Want to show that $\mathcal{P}(\grassmannianscheme{m}{n}) \setminus \ker \varphi$ is isomorphic to $\mathbb{A}_{k}^{m(n - m)}$.
+    For all $w\in \mathcal{P}(\grassmannianscheme{m}{n})$, as $w$ is totally decomposable,
+    there exist linearly independent $f_{1}, \cdots, f_{m}$ such that $\mathcal{P}^{-1}(w)$ is spanned by $f_{1}, \cdots, f_{m}$.
+    And there is a matrix $M(w)\in \matrices{m \times n}{k}$ such that
+    \begin{equation}
+        \begin{pmatrix}
+            f_{1} \\
+            \cdots \\
+            f_{m}
+        \end{pmatrix}
+        =
+        M(w)
+        \begin{pmatrix}
+            e_{1} \\
+            \cdots \\
+            e_{n}
+        \end{pmatrix}        
+    \end{equation}
+    Then $w\notin \ker \varphi$ if and only if the determinant of the first $m$ columns does not vanish.
+    By definition, we may assume that the first $m$ columns is just $I_{m}$.
+    Then $\mathcal{P}(\grassmannianscheme{m}{n}) \setminus \ker \varphi$ is parameterized by entries of the last $n - m$ columns.
+    Conclude that $\mathcal{P}(\grassmannianscheme{m}{n}) \setminus \ker \varphi \cong \mathbb{A}_{k}^{m(n - m)}$ which gives a birational map $\grassmannianscheme{m}{n} \dashrightarrow \mathbb{P}_{k}^{m(n - m)}$.
+\end{proof}
+\begin{example}
+    (1)Fix closed subvariety $X \subseteq \mathbb{P}V$,
+    define $F_{m}(X) = \{[W]\in \grassmannianscheme{m}{n} \big{|} \mathbb{P}W \subseteq X\}$,
+    called Fano varieties of dimension $m$.
+    Then $F_{m}(X)$ is naturally a closed subvariety of $\grassmannianscheme{m}{n}$.
+    \par
+    (2)Let $X, Y$ be subvarieties of $\mathbb{P}_{k}^{n}$.
+    Then we call $\mathcal{J}(X, Y) = \overline{\cup_{p\in X, q \neq p\in Y} L_{p, q}}$ the joint variety of $X$ and $Y$,
+    where $L_{p, q}$ is the line connecting $p$ and $q$.
+    In particular, when $Y = X$, we call $\mathcal{J}(X, X)$ the second variety of $X$.
+\end{example}
+
+\section{Divisors}
+\label{section:Divisors}
+
+\subsection{Line bundles}
+\label{subsection:Divisors_Line_bundles}
+
+\begin{definition}
+    Let $X$ be a variety.
+    A line bundle $L$ over $X$ is a morphism $P: L \rightarrow X$ such that
+    \begin{itemize}
+        \item $\exists$ open covering $\{U_{i}\}$ of $X$ with commutative diagrams
+        $
+        \begin{tikzcd}
+            P^{-1}(U_{i}) \arrow[r, "\psi_{i}", "\sim" swap] \arrow[rd, "P" swap] &
+            U_{i} \times \mathbb{A}_{k}^{1} \arrow[d, "projection"] \\
+            & U_{i}   
+        \end{tikzcd}
+        $
+        \item for all $i, j$, the map $\psi_{i} \circ \psi_{j}^{-1}: (U_{i} \cap U_{j}) \times \mathbb{A}_{k}^{1} \rightarrow (U_{i} \cap U_{j}) \times \mathbb{A}_{k}^{1}$ sending $(x, t)$ to $(x, g_{ij}(x)t)$ is linear i.e. $g_{ij}$ is an invertible regular function on $U_{i} \cap U_{j}$.
+    \end{itemize}
+    Usually, we call $\{g_{ij}\}$ transition functions.
+\end{definition}
+\begin{definition}
+    Let $P: L \rightarrow X$ and $P': L' \rightarrow X$ be two lines bundles over $X$.
+    We say $P$ and $P'$ (or $L$ and $L'$ when there is no confusion) are isomorphic if there is a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            L \arrow[r, "\phi", "\sim" swap] \arrow[d, "P" swap] &
+            L' \arrow[dl, "P'"] \\
+            X &
+        \end{tikzcd}
+    \end{equation}
+    and $\psi_{j}' \circ \phi \circ \psi_{i}^{-1}$ is linear.
+\end{definition}
+\begin{definition}
+    Let $P: L \rightarrow X$ be a line bundle over $X$.
+    A (resp. rational) section of $L$ is a regular (resp. rational) map $s: X \rightarrow L$ such that $P \circ s = id_{X}$.
+    Denote the set of all sections of $L$ on $X$ by $\Gamma(X, L)$.
+\end{definition}
+\begin{remark}
+    For all line bundle $L$, there is always a zero section $0_{L}: X \rightarrow L$ glued up by local morphisms $x \mapsto (x, 0)$.
+    Hence $\Gamma(X, L)$ is nonempty.
+\end{remark}
+\begin{lemma}
+    $\Gamma(X, L)$ is a $k$-linear space.
+    \label{Lemma 7.1}
+\end{lemma}
+\begin{lemma}
+    Let $\varphi: X \rightarrow Y$ be a morphism between varieties, $P: L \rightarrow Y$ line bundle over $Y$.
+    Set $\varphi^{\ast}L = X \times_{Y} L$.
+    Then the projection $\varphi^{\ast}L \rightarrow X$ is a line bundle over $X$.
+    Moreover, $\Gamma(\varphi): \Gamma(Y, L) \rightarrow \Gamma(X, \varphi^{\ast}L)$ is a $k$-linear map.
+    \label{Lemma 7.2}
+\end{lemma}
+\begin{proof}
+    Since $P: L \rightarrow Y$ is a line bundle over $Y$, there is an open covering $\{V_{i}\}$ of $Y$ with commutative diagrams
+    \begin{equation}
+        \begin{tikzcd}
+            P^{-1}(V_{i}) \arrow[r, "\psi_{i}", "\sim" swap] \arrow[rd, "P" swap] &
+            V_{i} \times \mathbb{A}_{k}^{1} \arrow[d, "projection"] \\
+            & V_{i}   
+        \end{tikzcd}
+    \end{equation}
+    Take $U_{i} = \varphi^{-1}(V_{i})$, then there are commutative diagrams
+    \begin{equation}
+        \begin{tikzcd}
+            & U_{i} \times \mathbb{A}_{k}^{-1} \arrow[rr] \arrow[ddl] &&
+            V_{i} \times \mathbb{A}_{k}^{-1} \arrow[ddl] \\
+            U_{i} \times P^{-1}(V_{i}) \arrow[ur, "\phi_{i}", "\sim" swap] \arrow[rr, crossing over] \arrow[d] && 
+            P^{-1}(V_{i}) \arrow[ur, "\psi_{i}", "\sim" swap] \arrow[d] & \\
+            U_{i}  \arrow[rr, "\varphi"] &&
+            V_{i} &
+        \end{tikzcd}
+    \end{equation}
+    such that all blocks are pull back.
+    As $\psi_{i} \circ \psi_{j}^{-1}$ sending $(y, t)$ to $(y, g_{ij}(y)t)$ is linear, $\phi_{i} \circ \phi_{j}^{-1}$ sending $(x, t)$ to $(x, g_{ij}(\varphi(x))t)$ is also linear.
+    Hence the projection $\varphi^{\ast}L \rightarrow X$ is a line bundle over $X$.
+\end{proof}
+\begin{example}
+    We call the projection $X \times \mathbb{A}_{k}^{1} \rightarrow X$ the trivial line bundle.
+    Then $P: L \rightarrow X$ is isomorphic to the trivial line bundle over $X$ if and only if there exists section $s\in \Gamma(X, L)$ such that $s$ does not meet the $0$-section everywhere i.e. $s(x) \neq (x, 0)$ for all $x\in X$.
+    \par
+    Given such a line bundle, note that we have canonical section sending $x$ to $(x, a)$ locally for all $a\in k$,
+    such a section does not meet $0$-section.
+    Conversely, given a section not meeting $0$-section,
+    we can construct an isomorphism $X \times \mathbb{A}_{k}^{1} \rightarrow L$ sending $(x, t)$ to $t \cdot s(x)$.
+    In fact, $\Gamma(X, X \times \mathbb{A}_{k}^{1}) = A(X)$.
+\end{example}
+\begin{example}
+    Let $V$ be a vector space over $k$ of dimension $n + 1$, $\mathbb{P}V$ parameterizing lines in $V$ through origin.
+    Set $L = \{([l], v)\in \mathbb{P}V \times V \big{|} v\in l\}$.
+    Denote coordinate of $\mathbb{P}V$ by $x_{0}, \cdots, x_{n}$.
+    Then for projection $p: L \rightarrow \mathbb{P}V$, there is a canonical isomorphism $p^{-1}(D_{+}(x_{i})) \overset{\sim}{\rightarrow} D_{+}(x_{i}) \times \mathbb{A}_{k}^{1}$ defined by $([l], v) \mapsto ([l], v_{i})$,
+    where $v_{i}$ is the $i$th coordinate of $v$.
+    In fact, for example, for all $[l] = [1, \alpha_{1}, \cdots, \alpha_{n}]\in D_{+}(x_{0})$ and $([l], v)\in p^{-1}([l])$,
+    $v$ is of the form $(v_{0}, \alpha_{1}v_{0}, \cdots, \alpha_{n}v_{0})$.
+    This line bundle $L$ with transition functions $g_{ij} = \frac{x_{i}}{x_{j}}$ is called the tautological line bundle over $\mathbb{P}_{k}^{n}$, usually denoted by $\mathcal{O}_{\mathbb{P}_{k}^{n}}(-1)$.
+\end{example}
+To introduce more interesting properties about line bundles,
+here we give an equivalent definition of line bundle first.
+\begin{definition}
+    A line bundle is an equivalence class of a collection of data 
+    \begin{itemize}
+        \item an open covering $\{U_{i}\}$ of $X$
+        \item transition functions $g_{ij}: U_{i} \cap U_{j} \rightarrow k^{\ast}$ satisfying the cocycle condition
+    \end{itemize}
+    under the equivalent relation that $(\{U_{i}\}, g_{ij}) \sim (\{V_{i'}\}, g_{i'j'}')$ if there exist regular functions $s_{ii'}: U_{i} \cap V_{i'} \rightarrow k^{\ast}$ such that $g_{i'j'}'s_{ii'} = g_{ij}s_{jj'}$ for all $i, j, i', j'$.
+\end{definition}
+\begin{remark}
+    More precisely, such an equivalence class would one-to-one correspond to an isomorphism class of our original definition instead of just a morphism.
+\end{remark}
+Given a line bundle $L = (\{U_{i}\}, g_{ij})$, then $L^{-1} := (\{U_{i}\}, g_{ij}^{-1})$ is a well defined line bundle.
+Given two line bundles $L_{1}$ and $L_{2}$, by taking refinement of open covering, 
+we may write $L_{1} = (\{U_{i}\}, g_{ij})$ and $L_{2} = (\{U_{i}\}, h_{ij})$.
+Then $L_{1} \otimes L_{2} := (\{U_{i}\}, g_{ij}h_{ij})$ is a well defined line bundle.
+\par
+Denote the set of isomorphism classes of line bundles over $X$ by $\picardscheme(X)$.
+With discussion above, we successfully give a group structure on $\picardscheme(X)$, called the Picard group of $X$.
+\begin{definition}
+    Let $L = (\{U_{i}\}, g_{ij})$ be a line bundle over $X$.
+    A (resp. rational) section of $L$ on $X$ is a set of regular (resp. rational) functions $\{s_{i}: U_{i} \rightarrow \mathbb{A}_{k}^{1}\}$ such that $s_{i} = g_{ij}s_{j}$ on $U_{i} \cap U_{j}$.
+\end{definition}
+\begin{example}
+    For projective space $\mathbb{P}_{k}^{n}$, denote $\mathcal{O}_{\mathbb{P}_{k}^{n}}(1) = \mathcal{O}_{\mathbb{P}_{k}^{n}}(-1)^{-1}$ and $\mathcal{O}_{\mathbb{P}_{k}^{n}}(d) = \mathcal{O}_{\mathbb{P}_{k}^{n}}(1)^{\oplus d}$,
+    then $\mathcal{O}_{\mathbb{P}_{k}^{n}}(1) = (\{D_{+}(x_{i})\}, \frac{x_{j}}{x_{i}})$.
+    Consider section $\{s_{i}\}$ given by $\frac{x_{0}}{x_{i}}$, corresponding to $x_{0}$.
+    We get that $S_{1} = \oplus_{i} kx_{i} \subseteq \Gamma(\mathbb{P}_{k}^{n}, \mathcal{O}_{\mathbb{P}_{k}^{n}}(1))$.
+\end{example}
+\begin{proposition}
+    Let $S = k[x_{0}, \cdots, x_{n}]$.
+    In fact, for all $d \ge 0$, $\Gamma(\mathbb{P}_{k}^{n}, \mathcal{O}_{\mathbb{P}_{k}^{n}}(d)) = S_{d}$.
+    Moreover, for all negative $d$, $\Gamma(\mathbb{P}_{k}^{n}, \mathcal{O}_{\mathbb{P}_{k}^{n}}(d)) = \{0\}$.
+    \label{Proposition 7.1}
+\end{proposition}
+\begin{proof}
+    Obviously, for all homogeneous polynomial $f$ of degree $d$, as $\frac{f}{x_{i}^{d}} = \frac{x_{j}^{d}}{x_{i}^{d}} \cdot \frac{f}{x_{j}^{d}}$,
+    we get $\{\frac{f}{x_{i}^{d}}\}$ is a section of $\mathcal{O}_{\mathbb{P}_{k}^{n}}(d)$.
+    Hence $S_{d} \subseteq \Gamma(\mathbb{P}_{k}^{n}, \mathcal{O}_{\mathbb{P}_{k}^{n}}(d))$.
+    On the other hand, given a section $\{s_{i}\}$.
+    Write $s_{i} = f_{i}(x_{0/i}, \cdots, x_{n/i})$, then $f_{i} = \frac{x_{j}^{d}}{x_{i}^{d}}f_{j}$.
+    Arguing about degree, we get that $f_{i} = \frac{g}{x_{i}^{d}}$ for some homogeneous polynomial $g\in k[x_{0}, \cdots, x_{n}]$ so that $\Gamma(\mathbb{P}_{k}^{n}, \mathcal{O}_{\mathbb{P}_{k}^{n}}(d)) = S_{d}$.
+    In particular, for $d$ negative, same argument tells us that the only possible $g$ is zero.
+\end{proof}
+\begin{remark}
+    There is another way to explain why there is only zero section when $d$ is negative.
+    Say $s$ is a section of $\mathcal{O}_{\mathbb{P}_{k}^{n}}(-r)$.
+    Note that $\mathcal{O}_{\mathbb{P}_{k}^{n}}(r) \otimes \mathcal{O}_{\mathbb{P}_{k}^{n}}(-r)$ is just the isomorphism class of trivial bundle,
+    $x_{t}s$ is section of the trivial bundle for all $t$.
+    While sections of trivial bundle are just $A(\mathbb{P}_{k}^{n}) = S_{0}$, as $x_{t}s$ would vanish on $V(x_{t})$, $x_{t}s$ is the zero section for all $t$.
+    Conclude that $s$ is zero section.
+\end{remark}
+\begin{proposition}
+    Let $L = (\{U_{r}\}, g_{rl})$ be a line bundle over irreducible variety $X$.
+    Assume $s_{0}, \cdots, s_{n}\in \Gamma(X, L)$ are not all zero sections, where $s_{i} = \{s_{ir}\}$.
+    Define a rational map $\phi_{L}: X \dashrightarrow \mathbb{P}_{k}^{n}$ by gluing up $U_{r} \dashrightarrow \mathbb{P}_{k}^{n}$ sending $x$ to $[s_{0r}(x), \cdots, s_{nr}(x)]$.
+    If for all $x\in X$, $s_{ir}(x) \neq 0$ for some $i, r$,
+    then $\phi_{L}$ is a well defined morphism.
+    And in this case, $L = \phi_{L}^{\ast}\mathcal{O}_{\mathbb{P}_{k}^{1}}(1)$.
+    \label{Proposition 7.2}
+\end{proposition}
+\begin{proof}
+    Clearly, $\phi_{L}$ is a morphism, want to show that $(\{\phi_{L}^{-1}(D_{+}(x_{i}))\}, \frac{x_{j}}{x_{i}} \circ \phi_{L}) \sim (\{U_{r}\}, g_{rl})$.
+    In fact, for all $x\in U_{r} \cap \phi_{L}^{-1}(D_{+}(x_{i}))$, by definition, $s_{ir}(x) \neq 0$.
+    Hence $s_{ir}$ is an invertible regular function on $U_{r} \cap \phi_{L}^{-1}(D_{+}(x_{i}))$.
+    And $g_{rl}s_{jl} = s_{jr} = \frac{s_{jr}}{s_{ir}} \cdot s_{ir} = (\frac{x_{j}}{x_{i}} \circ \phi_{L}) \cdot s_{ir}$, done!
+\end{proof}
+\begin{remark}
+    For reducible $X$, this construction of rational map also makes sense if $U_{r} \cap (\cup_{i} D(s_{ir}))$ is dense in $U_{r}$ for all $r$.
+\end{remark}
+\begin{example}
+    Recall that for projective spaces, we have Veronese map and Segre embedding.
+    Consider the $d$th Veronese map $v_{d}: \mathbb{P}_{k}^{n} \rightarrow \mathbb{P}_{k}^{\binom{n + d - 1}{d}}$.
+    In fact, $v_{d}$ is given by sections in $\Gamma(\mathbb{P}_{k}^{n}, \mathcal{O}_{\mathbb{P}_{k}^{n}}(d))$ that are monomial of degree $d$ with coefficient $1$.
+    \par
+    For Segre embedding $\mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{m} \hookrightarrow \mathbb{P}_{k}^{nm + n + m}$,
+    similarly, it is given by sections in $\Gamma(\mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{m}, \mathcal{O}_{\mathbb{P}_{k}^{n}}(1) \boxtimes \mathcal{O}_{\mathbb{P}_{k}^{m}}(1))$ that are $x_{i}y_{j}$,
+    where $\mathcal{O}_{\mathbb{P}_{k}^{n}}(1) \boxtimes \mathcal{O}_{\mathbb{P}_{k}^{m}}(1) := p^{\ast}\mathcal{O}_{\mathbb{P}_{k}^{n}}(1) \otimes q^{\ast}\mathcal{O}_{\mathbb{P}_{k}^{m}}(1)$ with $p, q$ projections.
+\end{example}
+
+\subsection{Weil divisors}
+\label{subsection:Divisors_Weil_divisors}
+
+\begin{definition}
+    Let $X$ be an irreducible variety.
+    A Weil divisor $D$ on $X$ is a finite sum $\sum_{i} a_{i}Y_{i}$,
+    where $a_{i}\in \mathbb{Z}$ and $Y_{i} \subseteq X_{i}$ are irreducible subvarieties of codimension $1$.
+    We say $D$ is effective if $a_{i} \ge 0$ for all $i$.
+\end{definition}
+Assume $\codim \singular (X) \ge 2$.
+Then for all regular function $f: X \rightarrow \mathbb{A}_{k}^{1}$,
+we can define vanishing order $v_{Y}(f)$ of $f$ along an irreducible subvariety $Y \subseteq X$ of codimension $1$.
+\par
+Since $\codim \singular (X) \ge 2$, a general point $y\in Y$ is a smooth point of $X$.
+Then by Proposition \ref{Proposition 5.3}, there exists an affine open neighbourhood $U$ of $y$ such that $Y \cap U$ is defined by a single equation $g$.
+As $\mathcal{O}_{X, y}$ is a UFD, we can write $f = hg^{n}$ in $\mathcal{O}_{X, y}$, where $g \nmid h$.
+And $v_{Y}(f) := n$ is our desired vanishing order.
+\begin{lemma}
+    The definition of $v_{Y}(f)$ is independent of choice of $y$.
+    \label{Lemma 7.3}
+\end{lemma}
+\begin{proof}
+    For two smooth points $y_{1}$ and $y_{2}$, assume $f = h_{i}g_{i}^{n_{i}}$ in $\mathcal{O}_{X, y_{i}}$.
+    We may assume that $n_{1} \le n_{2}$.
+    As $X$ is irreducible, we can take nonempty affine subset $U \subseteq X$ such that $f = h_{i}g_{i}^{n_{i}}$ in $A(U)$.
+    By definition above, we get that $I(U \cap Y) = (g_{i})$.
+    Hence $g_{1} = ag_{2}$ and $g_{2} = bg_{1}$ for some $a,b\in A(U)$.
+    As $A(U)$ is an integral domain, we get that $ab = 1$.
+    Then $h_{1}g_{1}^{n_{1}} = h_{1}a^{n_{1}}g^{n_{1}}$ and $h_{1} = h_{2}b^{n_{1}}g_{2}^{n_{2} - n_{1}}$.
+    Note that $g_{1} \nmid h_{1}$, we get that $g_{2} \nmid h_{1}$ so that $n_{1} = n_{2}$.
+\end{proof}
+\begin{remark}
+    Similarly, for rational function $f\in K(X)$, we can also define vanishing order $v_{Y}(f)$.
+\end{remark}
+\begin{lemma}
+    Let $X$ be an irreducible variety.
+    Then for all rational function $f\in K(X)^{\ast}$, $v_{Y}(f) = 0$ except for finitely many irreducible subvarieties $Y$ of codimension $1$.
+    \label{Lemma 7.4}
+\end{lemma}
+\begin{proof}
+    Assume $v_{Y}(f) \neq 0$.
+    For $y\in Y$ smooth, there exists an affine open neighbourhood $U$ such that $f = \frac{f_{1}}{f_{2}}$ with $f_{1},f_{2}\in A(U)$.
+    Then $v_{Y}(f_{1}) \neq v_{Y}(f_{2})$.
+    Suffices to show the result holds for regular function.
+    \par
+    Now $f$ is a regular function.
+    As $v_{Y}(f) \neq 0$, by definition, this is equivalent to $g \mid f$ so that $Y \cap U = V(g) \subseteq V(f)$ in $U$.
+    Take closure in $X$, then we get $Y \subseteq V(f)$.
+    Note that $V(f)$ has finitely many irreducible components, we are done. 
+\end{proof}
+Under the assumption $\codim \singular (X) \ge 2$, with lemmas above,
+for all rational function $f$, we can define a Weil divisor $\divisor (f) = \sum_{Y} v_{Y}(f)Y$.
+All these Weil divisors form an abelian subgroup of $Weil(X)$, called the group of principal Weil divisors on $X$.
+\begin{example}
+    (1)Let $S = V(xy - z^{2}) \subseteq \mathbb{A}_{k}^{3}$.
+    Then $\singular (S) = \{(0, 0, 0)\}$ is of codimension $2$.
+    As $V(x) = \{(0, a, 0) \big{|} a\in k\} \cong \mathbb{A}_{k}^{1}$ is irreducible, $\divisor (x) = v_{D}(x)D$.
+    Since $D$ is defined by $z$ in $D(y)$, we get $x = \frac{z^{2}}{y}$ and $v_{D}(x) = 2$. \\
+    (2)Let $\mathbb{P}_{k}^{n}$ be projective space.
+    Then $\divisor (\frac{x_{i}}{x_{j}}) = V(x_{i}) - V(x_{j})$. 
+\end{example}
+\begin{corollary}
+    Let $X$ be an irreducible variety.
+    Then for all rational function $f\in K(X)^{\ast}$ such that $\divisor (f) = nV$ with $n > 0$,
+    we have that $f$ is a regular function and $V(f) = V$.
+    In particular, when $n = 1$, locally the ideal of $A(X)$ corresponding $V$ is generated by $f$.
+    \label{Corollary 7.1} 
+\end{corollary}
+\begin{reason}
+    Similar to proof of Lemma \ref{Lemma 7.4}, we know $f$ is a nonzero regular function and $V$ is the only irreducible subvariety of $X$ of codimension $1$, which is contained in $V(f)$.
+    By Krull's Principal Theorem, we know that $V(f)$ is of pure codimension $1$ so that $V(f) = V$.
+    \par
+    When $n = 1$, take any affine open subset $U$ meeting $V$, 
+    if $g\in I(V \cap U) \subseteq A(U)$, then $V \cap U \subseteq \divisor (g)$ so that $\divisor (g) - V \cap U$ is an effective divisor on $V \cap U$.
+    Note that $\divisor (f)\big{|}_{U}$ is just $V \cap U$, we get $\divisor (\frac{g}{f}) = \divisor (g) - V \cap U$ is effective.
+    Hence $\frac{g}{f}$ is regular.
+    Conclude that $I(V \cap U) = (f)$.
+\end{reason}
+
+\subsection{Cartier divisors}
+\label{subsection:Divisors_Cartier_divisors}
+
+\begin{definition}
+    Let $X$ be an irreducible variety.
+    A Cartier divisor on $X$ is an equivalence class of a collection of data
+    \begin{itemize}
+        \item an open covering $\{U_{i}\}$ of $X$.
+        \item rational functions $f_{i}: U_{i} \dashrightarrow \mathbb{A}_{k}^{1}$ not vanishing on each irreducible component of $U_{i}$ such that $\frac{f_{i}}{f_{j}}$ is a regular function on $U_{i} \cap U_{j}$ nowhere vanishing
+    \end{itemize}
+    under the equivalent relation that $(\{U_{i}\}, f_{i}) \sim (\{V_{j}\}, g_{j})$ if $\frac{f_{i}}{g_{j}}$ is a regular function on $U_{i} \cap V_{j}$ nowhere vanishing.
+\end{definition}
+Just as we did for line bundles, it is natural to give a group structure on the set of Cartier divisors, denoted by $Catier(X)$.
+We say a Cartier divisor is effective if it can be represented by $(\{U_{i}\}, f_{i})$ with $f_{i}$ all regular functions.
+We say a Cartier divisor is principal if it can be represented by $(X, f)$ with $f\in K(X)$.
+And there is also an abelian group consisting of principal divisors.
+\par
+Under the assumption $\codim \singular (X) \ge 2$,
+there is a natural group homomorphism $\pi: Catier(X) \rightarrow Weil(X)$ sending $(\{U_{i}\}, f_{i})$ to $\sum v_{Y}(D)Y$,
+where $v_{Y}(D) := v_{U_{i} \cap Y}(f_{i})$ for $Y$ meeting $U_{i}$.
+Clearly, this is well defined.
+In particular, $\pi((X, f)) = \divisor (f)$.
+\begin{remark}
+    In general, $\pi$ is neither injective nor surjective.
+    \begin{itemize}
+        \item when $X$ is smooth, $\pi$ is isomorphic.
+        \item when $X$ is normal, $\pi$ is injective.
+    \end{itemize}
+\end{remark}
+\begin{theorem}
+    Let $X$ be an irreducible variety.
+    Then $Catier(X)/Pr(X) \overset{\sim}{\rightarrow} \picardscheme (X)$.
+    \label{Theorem 7.1}
+\end{theorem}
+\begin{proof}
+    Let $D = (\{U_{i}\}, f_{i})$ be a Cartier divisor.
+    Set $g_{ij} = \frac{f_{i}}{f_{j}}$.
+    Note that $g_{ij}g_{jk} = \frac{f_{i}}{f_{j}} \cdot \frac{f_{j}}{f_{k}} = \frac{f_{i}}{f_{k}}$,
+    $\mathcal{L}(D) = (\{U_{i}\}, g_{ij})$ is a line bundle, called the associated line bundle of $D$.
+    And we can define map $\mathcal{L}(\cdot): Cartier(X) \rightarrow \picardscheme (X)$ by sending $D$ to $\mathcal{L}(D)$.
+    \par
+    Given a line bundle $L = (\{U_{i}\}, g_{ij})$, fix $i_{0}\in I$,
+    then for all $i\in I$, $g_{ii_{0}}: U_{i} \cap U_{i_{0}} \rightarrow \mathbb{A}_{k}^{1}$ is a regular map.
+    As $X$ is irreducible, $U_{i} \cap U_{i_{0}}$ is dense in $U_{i}$ and hence $g_{ii_{0}}$ is also a rational function on $U_{i}$.
+    Since $\frac{g_{ii_{0}}}{g_{ji_{0}}} = g_{ij}$ is a regular function on $U_{i} \cap U_{j}$ vanishing nowhere, $D = (\{U_{i}\}, g_{ii_{0}})$ is a Cartier divisor and $\mathcal{L}(D) = L$.
+    Thus $\mathcal{L}(\cdot)$ is surjective.
+    \par
+    Finally, given $D = (\{U_{i}\}, f_{i})$ with $\mathcal{L}(D)$ trivial.
+    There is a section $s = \{s_{i}\}$ of $\mathcal{L}(D)$ not meeting the zero section.
+    As $s_{i}$ is a regular function on $U_{i}$ vanishing nowhere and $\frac{f_{i}}{s_{i}} = \frac{f_{j}}{s_{j}}$ for all $i,j$, 
+    $D = (\{U_{i}\}, f_{i}) = (\{U_{i}\}, \frac{f_{i}}{s_{i}}) = (X, F)$ for some $F\in K(X)$, which is principal.
+    \par
+    Conversely, for any principal divisor $D = (X, f)$,
+    $\mathcal{L}(D) = (X, 1)$ is just the trivial line bundle.
+    Conclude that $\ker \varphi = Pr(X)$ and $Catier(X)/Pr(X) \overset{\sim}{\rightarrow} \picardscheme (X)$.
+\end{proof}
+\begin{remark}
+    When $X$ is smooth in codimension $1$ i.e. $\codim \singular (X) \ge 2$,
+    denote $Cl(X) = Weil(X)/Pr(X)$, called the class group of $X$.
+\end{remark}
+\begin{lemma}
+    Let $X$ be an irreducible variety, $D = (\{U_{i}\}, f_{i})$ a Cartier divisor, $\mathcal{L}(D)$ the associated line bundle of $X$.
+    Then $\Gamma(X, \mathcal{L}(D)) \overset{\sim}{\rightarrow} \{f\in K(X) \big{|} f = 0 \text{ or } \divisor (f) + D \text{ effective}\}$.
+    \label{Lemma 7.5}
+\end{lemma}
+\vspace{-1.5\baselineskip} % 减少一行间距
+\begin{proof}
+    For all nonzero section $s = \{s_{i}\}$ of $\mathcal{L}(D)$, as $\frac{s_{i}}{f_{i}} = \frac{s_{j}}{f_{j}}$ is a rational function on $X$,
+    denoted by $F$, $\divisor (F) + D = (\{U_{i}\}, s_{i})$ is an effective Cartier divisor.
+    Then we can define a map $\varphi: \Gamma(X, \mathcal{L}(X)) \rightarrow \{f\in K(X) \big{|} f = 0 \text{ or } \divisor (f) + D \text{ effective}\}$ by sending $s$ to $F$.
+    Since $s$ nonzero, $F = \varphi(s)$ also nonzero so that $\varphi$ is injective.
+    \par
+    Assume $D' := \divisor (F) + D$ is effective, say $D' = (\{U_{i}\}, s_{i})$.
+    Then $s_{i} = Ff_{i}$ is a regular function on $U_{i}$ and $s_{i} = Ff_{i} = Ff_{j}g_{ij} = Fs_{j}$.
+    Hence $s = \{s_{j}\}$ is a nonzero section of $\mathcal{L}(D)$ and $\varphi(s) = F$.
+    Conclude that $\varphi$ is bijective.
+\end{proof}
+\begin{example}
+    (1)Let $X = \mathbb{A}_{k}^{n}$ be n-dimensional affine space.
+    As all irreducible hypersurfaces of $X$ are of the form $V(F)$ for some irreducible polynomial $F$, we get all divisors on $X$ are principal.
+    Hence $\picardscheme (X) = Cl(X) = 0$.
+    Similarly, for smooth variety $X$ with $A(X)$ UFD, $\picardscheme (X) = Cl(X) = 0$. \\
+    (2)Let $X = \mathbb{P}_{k}^{n}$ be n-dimensional projective space.
+    As irreducible hypersurface $H$ of $X$ is of the form $V(F)$ for some irreducible homogeneous polynomial $F$ of degree $d$,
+    $\frac{F}{x_{0}^{d}}$ is a rational function on $X$ and $\divisor (\frac{F}{x_{0}^{d}}) = H - dH_{0}$ where $H_{0} = V(x_{0})$.
+    Hence $\picardscheme (X) = Cl(X)$ can be generated by $H_{0}$.
+    As $\mathcal{O}_{\mathbb{P}_{k}^{n}}(m)$ are nontrivial for all $m \neq 0$, conclude that $\picardscheme (X) = Cl(X) \cong \mathbb{Z}$. \\
+    (3)Let $H \subseteq \mathbb{P}_{k}^{n}$ be a hypersurface of degree $d$, defined by $F$.
+    Set $U = \mathbb{P}_{k}^{n} \setminus H = D_{+}(F)$ which is affine.
+    Note that any irreducible subvariety of $U$ of codimension $1$ is the restriction of some irreducible hypersurface of $\mathbb{P}_{k}^{n}$,
+    there is a natural surjection $\pi: \picardscheme (\mathbb{P}_{k}^{n}) \twoheadrightarrow \picardscheme (U)$.
+    \par
+    And for regular function $\frac{x_{0}^{d}}{F}$ on $U$, we get that $\divisor (\frac{x_{0}^{d}}{F}) = d(H_{0} \cap U)$ is principal.
+    Hence $\langle dH_{0} \rangle \le \ker \pi$.
+    In fact, the equality holds and $\picardscheme (U) \cong \mathbb{Z}/d\mathbb{Z}$.
+    Assume that $\mathcal{O}_{\mathbb{P}_{k}^{n}}\in \ker \pi$, then $d'(H_{0} \cap U)$ is an effective principal Cartier divisor.
+    Since $A(U) = \{\frac{f}{F^{m}} \big{|} m\in \mathbb{N} \text{ and } f\in k[x_{0}, \cdots, x_{n}] \text{ homogeneous of degree} md\}$,
+    we can write $d'(H_{0} \cap U) = \divisor (\frac{f}{F^{m}})$ so that $H_{0}$ is the only irreducible component of $V(f)$ and hence $f = x_{0}^{md}$.
+    Conclude that $\ker \pi = \langle dH_{0} \rangle$. \\
+    (4)As irreducible hypersurface $H$ of $\mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{m}$ are defined by some bihomogenous polynomial $F$ of bihomogenous $(s, t)$,
+    we get $\frac{F}{x_{0}^{s}y_{0}^{t}}$ is a rational function on $\mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{m}$ and $\divisor (\frac{F}{x_{0}^{s}y_{0}^{t}}) = H - sV_{+}(x_{0}) - tV_{+}(y_{0})$ is principal.
+    Conclude that $\picardscheme (\mathbb{P}_{k}^{n} \times \mathbb{P}_{k}^{m}) \cong \mathbb{Z} \times \mathbb{Z}$.
+    \label{example:picard_group}
+\end{example}
+\begin{remark}
+    In general, for smooth projective varieties $X$ and $Y$, 
+    we do not have that $\picardscheme (X \times Y) = \picardscheme (X) \times \picardscheme (Y)$.
+    And the following proposition would give us an example.
+\end{remark}
+\begin{lemma}
+    Let $X$ be a smooth projective irreducible curve.
+    Then there exists affine open covering $\{U_{i}\}$ of $X$ with local coordinate $t_{i}$.
+    \label{Lemma 7.6}
+\end{lemma}
+\begin{proof}
+    Firstly we cover $X$ with $D_{+}(x_{i})$.
+    Assume that $X$ is defined by irreducible homogeneous polynomial $f$ in $\mathbb{P}_{k}^{2}$.
+    Then $X \cap D_{+}(x_{i}) = V(f(x_{0/i}, x_{1/i}, x_{2/i}))$.
+    We only need argue for the case that $i = 0$.
+    \par
+    Now $X \cap D_{+}(x_{i})$ can be covered by $D(\frac{\partial f}{\partial x_{1/0}})$ and $D(\frac{\partial f}{\partial x_{2/0}})$.
+    Since $x_{2/0} \cdot \frac{\partial f}{\partial x_{2/0}} - \deg (f) \cdot f\in (x_{1/0})$, we get that $x_{1/0}$ is just a local coordinate of $X \cap D(\frac{\partial f}{\partial x_{2/0}})$, done.
+\end{proof}
+\begin{proposition}
+    Let $X$ be a smooth projective irreducible curve not isomorphic to projective line $\mathbb{P}_{k}^{1}$.
+    Then $\Delta_{X} \subseteq X \times X$ is an irreducible subvariety of codimension $1$ and the associated line bundle $\mathcal{L}(\Delta_{X})$ does not come from $\picardscheme (X) \times \picardscheme (X)$.
+    \label{Proposition 7.3}
+\end{proposition}
+\begin{proof}
+    Since $X \subseteq \mathbb{P}_{k}^{2}$ is a smooth projective curve not isomorphic to projective line,
+    we may assume that $X = V(f)$ for some irreducible homogeneous polynomial $f$ of degree greater than $1$.
+    Denote coordinate of $\mathbb{P}_{k}^{2} \times \mathbb{P}_{k}^{2}$ by $x_{0}, x_{1}, x_{2}, y_{0}, y_{1}, y_{2}$.
+    Then $X \times X$ is defined by $\{f(x_{0}, x_{1}, x_{2}), f(y_{0}, y_{1}, y_{2})\}$.
+    \par
+    Note that $\Delta_{X}$ is isomorphic to $X$ and is defined by $\{f(x_{0}, x_{1}, x_{2}), f(y_{0}, y_{1}, y_{2}), x_{0}y_{1} - x_{1}y_{0}, x_{0}y_{2} - x_{2}y_{0}, x_{1}y_{2} - x_{2}y_{1}\}$,
+    we get that $\delta_{X}$ is an irreducible subvariety of $X \times X$ of codimension $1$.
+    To better interpret $\mathcal{L}(\Delta_{X})$ by transition functions, consider $\Delta_{X} \hookrightarrow \cup_{i} (U_{i} \times U_{i}) \hookrightarrow X \times X$,
+    where $U_{i}$ cover $X$ with local coordinate $t_{i}$ given by previous lemma.
+    It suffices to show that $\mathcal{L}(\Delta_{X})$ on $\cup_{i} (U_{i} \times U_{i})$ does not come from $\picardscheme (X) \times \picardscheme (X)$.
+    \par
+    Suppose that $\mathcal{L}(\Delta_{X}) = L_{1} \boxtimes L_{2}$.
+    Then transition functions of $\mathcal{L}(\Delta_{X})$ should be of the form $\alpha_{ij}(x)\beta_{ij}(y)$.
+    while $\mathcal{L}(\Delta_{X}) = (\{U_{i} \times U_{i}'\}, \frac{t_{i} - t_{i}'}{t_{j} - t_{j}'})$, contradiciton!
+    Hence $\mathcal{L}(\Delta_{X})$ on $X \times X$ does not come from $\picardscheme (X) \times \picardscheme (X)$.
+\end{proof}
+Let $X$ be a smooth projective irreducible curve.
+Then any divisor $D$ on $X$ is a finite sum $\sum_{i} n_{i}p_{i}$ with $p_{i}$ points in $X$.
+Set $\deg D = \sum_{i} n_{i}$.
+\begin{proposition}
+    If $D$ is principal, then $\deg D = 0$.
+    \label{Proposition 7.4}
+\end{proposition}
+\begin{reason}
+    For $D = \divisor (f)$ principal, $f$ would give a rational map $X \overset{f}{\dashrightarrow} \mathbb{A}_{k}^{1} \hookrightarrow \mathbb{P}_{k}^{1}$, denoted by $\varphi$.
+    By Corollary \ref{Corollary 5.5}, $\varphi$ is in fact a morphism.
+    Consider rational map $\frac{x_{0}}{x_{1}}$ on $\mathbb{P}_{k}^{1}$.
+    Then $\varphi^{\ast}(\frac{x_{0}}{x_{1}}) = \frac{x_{0}}{x_{1}} \circ \varphi = f$ and hence $\divisor (f) = \divisor (\varphi^{\ast}(\frac{x_{0}}{x_{1}})) = \varphi^{\ast}[1, 0] - \varphi^{\ast}[0, 1]$.
+    Thus $\deg D = 0$.
+\end{reason}
+\begin{corollary}
+    There is a well defined map $\deg: \picardscheme (X) \rightarrow \mathbb{Z}$ sending $\mathcal{O}_{X}(D)$ to $\deg D$.
+    \label{Corollary 7.2}
+\end{corollary}
+We call kernel of the $\deg$ map the Jacobian variety of $X$, denoted by $J(X)$.
+\begin{proposition}
+    $\deg$ is injective if and only if $X \cong \mathbb{P}_{k}^{1}$.
+    \label{Proposition 7.5}
+\end{proposition}
+\begin{proof}
+    The $\leftquotes \Leftarrow \rightquotes$ arrow have been discussed in Example \ref{example:picard_group}.
+    We only need prove for the other arrow.
+    For all $x, y\in X$, the divisor $D = [x] - [y]$ has degree $0$ and by assumption, $\mathcal{O}_{X}(D)$ is trivial.
+    Hence by Theorem \ref{Theorem 7.1}, $D = \divisor (f)$ for some rational function $f\in K(X)$.
+    \par
+    Similar to proof of Proposition \ref{Proposition 7.4}, $f$ gives a rational map $X \overset{f}{\dashrightarrow} \mathbb{A}_{k}^{1} \hookrightarrow \mathbb{P}_{k}^{1}$, 
+    denoted by $\varphi$, which by Corollary \ref{Corollary 5.5} is a morphism.
+    In addition, as $\divisor (f) = \divisor (\varphi^{\ast}(\frac{x_{0}}{x_{1}}))$, we have that $x = \varphi^{\ast}[1, 0]$ and $y = \varphi^{\ast}[0, 1]$.
+    Conclude that $X$ is of degree $1$ and hence isomorphic to $\mathbb{P}_{k}^{1}$.  
+\end{proof}
+\begin{example}
+    Let $X \subseteq \mathbb{P}_{k}^{2}$ be the subvariety defined by $x_{1}^{2}x_{2} - x_{0}^{3} + x_{0}x_{2}^{2}$, $p_{0} = [0, 1, 0]\in X$.
+    Set $H = V(x_{2})$.
+    Then $H \cap X$ is exactly $p_{0}$.
+    As $\varphi^{\ast}H = 3p_{0}$, for any irreducible hypersurface $H'$ of $\mathbb{P}_{k}^{2}$, we have $\varphi^{\ast}H' \sim 3p_{0}$ and hence $\varphi^{\ast}H'$ is an effective divisor of degree $3$.
+    In particular, if $P, Q, R$ are $3$ distinct points contained in a line $L$, then $\varphi^{\ast}L = P + Q + R \sim 3p_{0}$.
+    \par
+    Claim that there is a bijection $X \rightarrow J(X)$ sending $x$ to $x - p_{0}$.
+    For surjectivity, assume $D = \sum_{i} n_{i}p_{i}\in J(X)$.
+    As $\deg D = 0$, we can rewrite $D = \sum_{i} n_{i}(p_{i} - p_{0})$.
+    For all distinct $p$ and $q$, taking the line $L$ connecting $p$ and $q$, we have that $\varphi^{\ast}L = p + q + s \sim 3p_{0}$ for some $s\in X$.
+    \par
+    Then for all $i$ with $n_{i}$ negative, there exists some $q_{i}\in X$ such that $p_{i} + p_{0} + q_{i} \sim 3p_{0}$ so that $p_{i} - p_{0} \sim p_{0} - q_{i}$.
+    Thus we may assume that $n_{i} > 0$ for all $i$.
+    While for different $i$ and $j$, there is also $q\in X$ such that $p_{i} + p_{j} + q \sim 3p_{0}$.
+    Repeatedly running this process, we get $D \sim n(p_{1} - p_{0})$ with $n > 0$.
+    \par
+    When $n \neq 1$, since $X$ is smooth at $p_{1}$, the Zariski tangent space $T_{p_{1}}X$ is one-dimensional.
+    Hence we get $p_{2}\in X$ such that $\varphi^{\ast}T_{p_{1}}X = 2p_{1} + p_{2} \sim 3p_{0}$ so that $n(p_{1} - p_{0}) \sim (n - 2)(p_{1} - p_{0}) + (p_{0} - p_{2})$.
+    Thus by this process, we can finally decrease $n$ to $1$ so that $X \rightarrow J(X)$ is surjective.
+    \par
+    For injectivity, if $p_{1} - p_{0} \sim p_{2} - p_{0}$, then $p_{1} - p_{2}$ is principal.
+    Similar to proof of Proposition \ref{Proposition 7.5}, we would see that $\deg X = 1$ contradicting to our assumption that $\deg X = 3$.
+    Conclude that the map is bijective.
+\end{example}
+\end{document}1
