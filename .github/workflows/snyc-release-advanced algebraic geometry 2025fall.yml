@@ -10,7 +10,7 @@ on:
       target_filename:
         description: '目标文件名（不含扩展名）'
         required: true
-        default: 'Advanced_Algebraic_Geometry_2025fall'
+        default: 'Advanced Algebraic Geometry 2025fall'
 
   workflow_run:
     workflows: ["Build LaTeX and Release PDF-Advanced Algebraic Geometry 2025fall"]
