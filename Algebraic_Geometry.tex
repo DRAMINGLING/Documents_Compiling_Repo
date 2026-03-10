@@ -4020,12 +4020,12 @@ There are some special functors in Algebraic Geometry.
 \begin{theorem}[\textbf{\emph{Comparison Theorem}}]
     Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of X with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on X.
     Suppose that for all p and all $i_{0}, \cdots, i_{p}$, we have that $H^{q}(U_{i_{0}, \cdots, i_{p}}, \mathcal{F}\big{|}_{U_{i_{0}, \cdots, i_{p}}}) = 0$ for all $q > 0$.
-    Then the natural homomorphism $\check{H}^{p}(\mathcal{U}, \mathcal{F}) \longrightarrow H^{p}(X, \mathcal{F})$ is isomorphic for all p.
+    Then the natural homomorphism $\check{H}^{r}(\mathcal{U}, \mathcal{F}) \longrightarrow H^{r}(X, \mathcal{F})$ is isomorphic for all $r \ge 0$.
     \label{Theorem 7.5}
 \end{theorem}
 \begin{proof}
-    For $p = 0$, the natural homomorphism is identity map of global sections of $\mathcal{F}$.
-    For $p > 0$, embed $\mathcal{F}$ into an injective sheaf $\mathcal{I}$.
+    For $r = 0$, the natural homomorphism is identity map of global sections of $\mathcal{F}$.
+    For $r > 0$, embed $\mathcal{F}$ into an injective sheaf $\mathcal{I}$.
     There is an exact sequence
     \begin{equation*}
         0 \longrightarrow \mathcal{F} \longrightarrow \mathcal{I} \longrightarrow \mathcal{G} \longrightarrow 0
@@ -4041,10 +4041,10 @@ There are some special functors in Algebraic Geometry.
     \end{equation*}
     By Homological Algebra, there is an long exact sequence of cohomological groups
     \begin{equation*}
-        \cdots \longrightarrow \check{H}^{p - 1}(\mathcal{U}, \mathcal{F}) \longrightarrow \check{H}^{p - 1}(\mathcal{U}, \mathcal{I}) \longrightarrow \check{H}^{p - 1}(\mathcal{U}, \mathcal{G}) \longrightarrow \check{H}^{p}(\mathcal{U}, \mathcal{F}) \longrightarrow \cdots
+        \cdots \longrightarrow \check{H}^{r}(\mathcal{U}, \mathcal{F}) \longrightarrow \check{H}^{r}(\mathcal{U}, \mathcal{I}) \longrightarrow \check{H}^{r}(\mathcal{U}, \mathcal{G}) \longrightarrow \check{H}^{r + 1}(\mathcal{U}, \mathcal{F}) \longrightarrow \cdots
     \end{equation*}
-    Since $\mathcal{I}$ is injective, get $\mathcal{I}$ is flasque and $\check{H}^{p}(\mathcal{U}, \mathcal{I}) = 0$ for all $p > 0$.
-    Thus $\check{H}^{p}(\mathcal{U}, \mathcal{F}) = \check{H}^{p - 1}(\mathcal{U}, \mathcal{G})$.
+    Since $\mathcal{I}$ is injective, get $\mathcal{I}$ is flasque and $\check{H}^{r}(\mathcal{U}, \mathcal{I}) = 0$ for all $r > 0$.
+    Thus $\check{H}^{r + 1}(\mathcal{U}, \mathcal{F}) = \check{H}^{r}(\mathcal{U}, \mathcal{G})$ for all $r \ge 1$.
     By induction, done!
 \end{proof}
 \begin{corollary}
@@ -7557,4 +7557,4 @@ Now, with this idea, we take 5 steps to complish our proof.
     Want $\widetilde{g}$ which is one-to-one corresponding to a closed subscheme $\overline{V} \subseteq X \times_{S} \spec(R)$ flat over $R$ with fiberwise Hilbert polynomial $P$ whose restriction to $X \times_{S} \spec K$ is $V$.
     And this is given by a proposition in Hartshorne Chapter III 9.8.
 \end{proof}
-\end{document}1
+\end{document}
