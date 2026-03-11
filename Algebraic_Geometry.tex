@@ -4030,11 +4030,21 @@ There are some special functors in Algebraic Geometry.
     \begin{equation*}
         0 \longrightarrow \mathcal{F} \longrightarrow \mathcal{I} \longrightarrow \mathcal{G} \longrightarrow 0
     \end{equation*}
-    By assumption, for all $i_{0}, \cdots, i_{p}$,
+    On the one hand, by definition of Čech sheaf resolution, we have an exact sequence of complexes
     \begin{equation*}
-        0 \longrightarrow \mathcal{F}(U_{i_{0}, \cdots, i_{p}})\longrightarrow \mathcal{I}(U_{i_{0}, \cdots, i_{p}}) \longrightarrow \mathcal{G}(U_{i_{0}, \cdots, i_{p}}) \longrightarrow 0
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{F} \arrow[r] \arrow[d] &
+            \mathcal{I} \arrow[r] \arrow[d] &
+            \mathcal{G} \arrow[r] \arrow[d] &
+            0 \\
+            0 \arrow[r] &
+            \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{F}) \arrow[r] &
+            \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{I}) \arrow[r] &
+            \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{G}) \arrow[r] &
+            0
+        \end{tikzcd}
     \end{equation*}
-    is exact.
     Taking products, get
     \begin{equation*}
         0 \longrightarrow C^{\ast}(\mathcal{U}, \mathcal{F}) \longrightarrow C^{\ast}(\mathcal{U}, \mathcal{I}) \longrightarrow C^{\ast}(\mathcal{U}, \mathcal{G}) \longrightarrow 0
@@ -4055,6 +4065,19 @@ There are some special functors in Algebraic Geometry.
         \end{tikzcd}
     \end{equation*}
     is an exact sequence of complexes and $\mathcal{I}_{\mathcal{I}}^{i} = \mathcal{I}_{\mathcal{F}}^{i} \oplus \mathcal{I}_{\mathcal{G}}^{i}$ for all $i \ge 0$.
+    Then by Comparison Theorem for injective resolution, 
+    we get morphism of chain complexes $\alpha: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{F}) \rightarrow \mathcal{I}_{\mathcal{F}}^{\bullet}$ and $\gamma: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{G}) \rightarrow \mathcal{I}_{\mathcal{G}}^{\bullet}$,
+    which are unique up to homotopy.
+    Define $\beta: \mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \rightarrow \mathcal{I}_{\mathcal{I}}^{i} = \mathcal{I}_{\mathcal{F}}^{i} \oplus \mathcal{I}_{\mathcal{G}}^{i}$ by
+    \begin{equation*}
+        \beta(U): s \longmapsto (\alpha(U)(s - ))
+    \end{equation*}
+    \par
+    By assumption, for all $i_{0}, \cdots, i_{p}$,
+    \begin{equation*}
+        0 \longrightarrow \mathcal{F}(U_{i_{0}, \cdots, i_{p}})\longrightarrow \mathcal{I}(U_{i_{0}, \cdots, i_{p}}) \longrightarrow \mathcal{G}(U_{i_{0}, \cdots, i_{p}}) \longrightarrow 0
+    \end{equation*}
+    is exact.
     Taking global sections, get
     \begin{equation*}
         \begin{tikzcd}
