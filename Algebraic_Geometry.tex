@@ -4087,7 +4087,19 @@ There are some special functors in Algebraic Geometry.
             0
         \end{tikzcd}
     \end{equation*}
-    Also, 
+    Also, we need to check if $\beta$ gives a chain map.
+    There are two cases.
+    For diagram
+    \begin{equation*}
+        \begin{tikzcd}
+            & \mathcal{I} \arrow[rr, hookrightarrow] \arrow[dddr, "u"] &&
+            \mathcal{C}^{0}(\mathcal{U}, \mathcal{I}) \arrow[dd, "\beta"] \arrow[dddl, "v"] \\
+            \mathcal{F} \arrow[ur, hookrightarrow] \arrow[rr, hookrightarrow] \arrow[ddrr, hookrightarrow] &&
+            \mathcal{C}^{0}(\mathcal{U}, \mathcal{F}) \arrow[ur, hookrightarrow] & \\
+            &&& \mathcal{I}_{\mathcal{I}}^{0} \\
+            && \mathcal{I}_{\mathcal{F}}^{0} \arrow[ur, hookrightarrow] &
+        \end{tikzcd}
+    \end{equation*}
     \par
     By assumption, for all $i_{0}, \cdots, i_{p}$,
     \begin{equation*}
