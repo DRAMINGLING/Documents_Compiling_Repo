@@ -4112,8 +4112,26 @@ There are some special functors in Algebraic Geometry.
         \end{tikzcd}
     \end{equation*}
     Since $\mathcal{I}$ is injective, get $\mathcal{I}$ flasque and $\check{H}^{r}(\mathcal{U}, \mathcal{I}) = 0$ for all $r > 0$.
-    Thus $\check{H}^{r + 1}(\mathcal{U}, \mathcal{F}) = \check{H}^{r}(\mathcal{U}, \mathcal{G})$ for all $r \ge 1$.
-    By induction, done!
+    Thus $\check{H}^{r + 1}(\mathcal{U}, \mathcal{F}) = \check{H}^{r}(\mathcal{U}, \mathcal{G})$ and $H^{r + 1}(X, \mathcal{F}) = H^{r}(X, \mathcal{G})$ for all $r \ge 1$.
+    In particular, we have commutative diagram with exact rows
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \check{H}^{0}(\mathcal{U}, \mathcal{F}) \arrow[r] \arrow[d, equal] &
+            \check{H}^{0}(\mathcal{U}, \mathcal{I}) \arrow[r] \arrow[d, equal] &
+            \check{H}^{0}(\mathcal{U}, \mathcal{G}) \arrow[r] \arrow[d, equal] &
+            \check{H}^{1}(\mathcal{U}, \mathcal{F}) \arrow[r] \arrow[d] &
+            0 \\
+            \cdots \arrow[r] &
+            H^{0}(X, \mathcal{F}) \arrow[r] &
+            H^{0}(X, \mathcal{I}) \arrow[r] &
+            H^{0}(X, \mathcal{G}) \arrow[r] &
+            H^{1}(X, \mathcal{F}) \arrow[r] &
+            0
+        \end{tikzcd}
+    \end{equation*}
+    Hence by 5 Lemma, we get the natural map $\check{H}^{1}(\mathcal{U}, \mathcal{F}) \rightarrow H^{1}(X, \mathcal{F})$ is isomorphic.
+    Finally, by induction, done!
 \end{proof}
 \begin{corollary}
     Let $X$ be a (noetherian) separated scheme, $\mathcal{U}$ affine open covering of X, $\mathcal{F}$ quasi-coherent sheaf on X.
