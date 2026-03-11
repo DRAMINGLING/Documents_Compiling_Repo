@@ -4068,10 +4068,26 @@ There are some special functors in Algebraic Geometry.
     Then by Comparison Theorem for injective resolution, 
     we get morphism of chain complexes $\alpha: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{F}) \rightarrow \mathcal{I}_{\mathcal{F}}^{\bullet}$ and $\gamma: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{G}) \rightarrow \mathcal{I}_{\mathcal{G}}^{\bullet}$,
     which are unique up to homotopy.
-    Define $\beta: \mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \rightarrow \mathcal{I}_{\mathcal{I}}^{i} = \mathcal{I}_{\mathcal{F}}^{i} \oplus \mathcal{I}_{\mathcal{G}}^{i}$ by
+    \par
+    Since $\mathcal{I}_{\mathcal{F}}^{i}$ is injective, we get $\alpha$ factors through $\mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \rightarrow \mathcal{I}_{\mathcal{I}_{\mathcal{F}}^{i}}$.
+    In addition, there is a composition $\mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \rightarrow \mathcal{C}^{i}(\mathcal{U}, \mathcal{G}) \overset{\gamma}{\rightarrow} \mathcal{I}_{\mathcal{G}}^{i}$.
+    And these two maps define $\beta: \mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \rightarrow \mathcal{I}_{\mathcal{I}}^{i} = \mathcal{I}_{\mathcal{F}}^{i} \oplus \mathcal{I}_{\mathcal{G}}^{i}$.
+    It is clear that the following diagram commutes for all $i$
     \begin{equation*}
-        \beta(U): s \longmapsto (\alpha(U)(s - ))
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{C}^{i}(\mathcal{U}, \mathcal{F}) \arrow[r] \arrow[d, "\alpha"] &
+            \mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \arrow[r] \arrow[d, "\beta"] &
+            \mathcal{C}^{i}(\mathcal{U}, \mathcal{G}) \arrow[r] \arrow[d, "\gamma"] &
+            0 \\
+            0 \arrow[r] &
+            \mathcal{I}_{\mathcal{F}}^{i} \arrow[r] &
+            \mathcal{I}_{\mathcal{I}}^{i} \arrow[r] &
+            \mathcal{I}_{\mathcal{G}}^{i} \arrow[r] &
+            0
+        \end{tikzcd}
     \end{equation*}
+    Also, 
     \par
     By assumption, for all $i_{0}, \cdots, i_{p}$,
     \begin{equation*}
