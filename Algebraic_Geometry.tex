@@ -4092,14 +4092,16 @@ There are some special functors in Algebraic Geometry.
     For diagram
     \begin{equation*}
         \begin{tikzcd}
-            & \mathcal{I} \arrow[rr, hookrightarrow] \arrow[dddr, "u"] &&
+            & \mathcal{I} \arrow[rr, hookrightarrow, "\tau"] \arrow[dddr, "u"] &&
             \mathcal{C}^{0}(\mathcal{U}, \mathcal{I}) \arrow[dd, "\beta"] \arrow[dddl, "v"] \\
-            \mathcal{F} \arrow[ur, hookrightarrow] \arrow[rr, hookrightarrow] \arrow[ddrr, hookrightarrow] &&
-            \mathcal{C}^{0}(\mathcal{U}, \mathcal{F}) \arrow[ur, hookrightarrow] & \\
+            \mathcal{F} \arrow[ur, hookrightarrow, "\sigma"] \arrow[rr, hookrightarrow] \arrow[ddrr, hookrightarrow] &&
+            \mathcal{C}^{0}(\mathcal{U}, \mathcal{F}) \arrow[ur, hookrightarrow] \arrow[dd, "\alpha"] & \\
             &&& \mathcal{I}_{\mathcal{I}}^{0} \\
             && \mathcal{I}_{\mathcal{F}}^{0} \arrow[ur, hookrightarrow] &
         \end{tikzcd}
     \end{equation*}
+    it suffices to show $v \circ \tau = u$.
+    
     \par
     By assumption, for all $i_{0}, \cdots, i_{p}$,
     \begin{equation*}
