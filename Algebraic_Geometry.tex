@@ -3971,11 +3971,11 @@ There are some special functors in Algebraic Geometry.
 \subsection{Comparison Theorem}
 \begin{definition}
     Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of X with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on X.
-    Define complex of sheaves on X $\mathcal{C}^{\ast}(\mathcal{U}, \mathcal{F})$ to be
+    Define a complex of sheaves on $X$, denoted by $\mathcal{C}^{\ast}(\mathcal{U}, \mathcal{F})$, as followingiwollof
     \begin{equation*}
         \mathcal{C}^{p}(\mathcal{U}, \mathcal{F}) = \prod_{i_{0}, \cdots, i_{p}} f_{\ast}(\mathcal{F}\big{|}_{U_{i_{0}, \cdots, i_{p}}})
     \end{equation*}
-    where f is the inclusion, with coboundary map
+    where $f$ is the inclusion, with coboundary map
     \begin{equation*}
         d^{p}: \mathcal{C}^{p}(\mathcal{U}, \mathcal{F}) \longrightarrow \mathcal{C}^{p + 1}(\mathcal{U}, \mathcal{F})
     \end{equation*}
@@ -4039,6 +4039,38 @@ There are some special functors in Algebraic Geometry.
     \begin{equation*}
         0 \longrightarrow C^{\ast}(\mathcal{U}, \mathcal{F}) \longrightarrow C^{\ast}(\mathcal{U}, \mathcal{I}) \longrightarrow C^{\ast}(\mathcal{U}, \mathcal{G}) \longrightarrow 0
     \end{equation*}
+    On the other hand, by Horseshoe Lemma, we may take injective resolution $\mathcal{I}_{\mathcal{F}}^{\bullet}$, $\mathcal{I}_{\mathcal{I}}^{\bullet}$ and $\mathcal{I}_{\mathcal{G}}^{\bullet}$ of $\mathcal{F}$, $\mathcal{I}$ and $\mathcal{G}$ respectively such that
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{F} \arrow[r] \arrow[d] &
+            \mathcal{I} \arrow[r] \arrow[d] &
+            \mathcal{G} \arrow[r] \arrow[d] &
+            0 \\
+            0 \arrow[r] &
+            \mathcal{I}_{\mathcal{F}}^{\bullet} \arrow[r] &
+            \mathcal{I}_{\mathcal{I}}^{\bullet} \arrow[r] &
+            \mathcal{I}_{\mathcal{G}}^{\bullet} \arrow[r] &
+            0
+        \end{tikzcd}
+    \end{equation*}
+    is an exact sequence of complexes and $\mathcal{I}_{\mathcal{I}}^{i} = \mathcal{I}_{\mathcal{F}}^{i} \oplus \mathcal{I}_{\mathcal{G}}^{i}$ for all $i \ge 0$.
+    Taking global sections, get
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \Gamma(X, \mathcal{F}) \arrow[r] \arrow[d] &
+            \Gamma(X, \mathcal{I}) \arrow[r] \arrow[d] &
+            \Gamma(X, \mathcal{G}) \arrow[r] \arrow[d] &
+            0 \\
+            0 \arrow[r] &
+            \Gamma(X, \mathcal{I}_{\mathcal{F}}^{\bullet}) \arrow[r] &
+            \Gamma(X, \mathcal{I}_{\mathcal{I}}^{\bullet}) \arrow[r] &
+            \Gamma(X, \mathcal{I}_{\mathcal{G}}^{\bullet}) \arrow[r] &
+            0
+        \end{tikzcd}
+    \end{equation*}
+    also an exact sequence of complexes.
     By Homological Algebra, there is an long exact sequence of cohomological groups
     \begin{equation*}
         \cdots \longrightarrow \check{H}^{r}(\mathcal{U}, \mathcal{F}) \longrightarrow \check{H}^{r}(\mathcal{U}, \mathcal{I}) \longrightarrow \check{H}^{r}(\mathcal{U}, \mathcal{G}) \longrightarrow \check{H}^{r + 1}(\mathcal{U}, \mathcal{F}) \longrightarrow \cdots
