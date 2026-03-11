@@ -4066,71 +4066,54 @@ There are some special functors in Algebraic Geometry.
     \end{equation*}
     is an exact sequence of complexes and $\mathcal{I}_{\mathcal{I}}^{i} = \mathcal{I}_{\mathcal{F}}^{i} \oplus \mathcal{I}_{\mathcal{G}}^{i}$ for all $i \ge 0$.
     Then by Comparison Theorem for injective resolution, 
-    we get morphism of chain complexes $\alpha: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{F}) \rightarrow \mathcal{I}_{\mathcal{F}}^{\bullet}$ and $\gamma: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{G}) \rightarrow \mathcal{I}_{\mathcal{G}}^{\bullet}$,
+    we get morphism of chain complexes $\alpha: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{F}) \rightarrow \mathcal{I}_{\mathcal{F}}^{\bullet}$, $\beta: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{I}) \rightarrow \mathcal{I}_{\mathcal{I}}^{\bullet}$ and $\gamma: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{G}) \rightarrow \mathcal{I}_{\mathcal{G}}^{\bullet}$,
     which are unique up to homotopy.
     \par
-    Since $\mathcal{I}_{\mathcal{F}}^{i}$ is injective, we get $\alpha$ factors through $\mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \rightarrow \mathcal{I}_{\mathcal{I}_{\mathcal{F}}^{i}}$.
-    In addition, there is a composition $\mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \rightarrow \mathcal{C}^{i}(\mathcal{U}, \mathcal{G}) \overset{\gamma}{\rightarrow} \mathcal{I}_{\mathcal{G}}^{i}$.
-    And these two maps define $\beta: \mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \rightarrow \mathcal{I}_{\mathcal{I}}^{i} = \mathcal{I}_{\mathcal{F}}^{i} \oplus \mathcal{I}_{\mathcal{G}}^{i}$.
-    It is clear that the following diagram commutes for all $i$
+    Consider the following diagram
     \begin{equation*}
         \begin{tikzcd}
             0 \arrow[r] &
-            \mathcal{C}^{i}(\mathcal{U}, \mathcal{F}) \arrow[r] \arrow[d, "\alpha"] &
-            \mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \arrow[r] \arrow[d, "\beta"] &
+            \mathcal{C}^{i}(\mathcal{U}, \mathcal{F}) \arrow[r, hookrightarrow, "f"] \arrow[d, "\alpha"] &
+            \mathcal{C}^{i}(\mathcal{U}, \mathcal{I}) \arrow[r, "g"] \arrow[d, "\beta"] &
             \mathcal{C}^{i}(\mathcal{U}, \mathcal{G}) \arrow[r] \arrow[d, "\gamma"] &
             0 \\
             0 \arrow[r] &
-            \mathcal{I}_{\mathcal{F}}^{i} \arrow[r] &
-            \mathcal{I}_{\mathcal{I}}^{i} \arrow[r] &
+            \mathcal{I}_{\mathcal{F}}^{i} \arrow[r, hookrightarrow, "u"] &
+            \mathcal{I}_{\mathcal{I}}^{i} \arrow[r, "v"] &
             \mathcal{I}_{\mathcal{G}}^{i} \arrow[r] &
             0
         \end{tikzcd}
     \end{equation*}
-    Also, we need to check if $\beta$ gives a chain map.
-    There are two cases.
-    For diagram
-    \begin{equation*}
-        \begin{tikzcd}
-            & \mathcal{I} \arrow[rr, hookrightarrow, "\tau"] \arrow[dddr, "u"] &&
-            \mathcal{C}^{0}(\mathcal{U}, \mathcal{I}) \arrow[dd, "\beta"] \arrow[dddl, "v"] \\
-            \mathcal{F} \arrow[ur, hookrightarrow, "\sigma"] \arrow[rr, hookrightarrow] \arrow[ddrr, hookrightarrow] &&
-            \mathcal{C}^{0}(\mathcal{U}, \mathcal{F}) \arrow[ur, hookrightarrow] \arrow[dd, "\alpha"] & \\
-            &&& \mathcal{I}_{\mathcal{I}}^{0} \\
-            && \mathcal{I}_{\mathcal{F}}^{0} \arrow[ur, hookrightarrow] &
-        \end{tikzcd}
-    \end{equation*}
-    it suffices to show $v \circ \tau = u$.
-    
+    Want to modify $\alpha$, $\beta$ and $\gamma$.
+    Since the bottom row is split, we have inclusion $\sigma: \mathcal{I}_{\mathcal{G}}^{\bullet} \rightarrow \mathcal{I}_{\mathcal{I}}^{\bullet}$ and projection $\pi: \mathcal{I}_{\mathcal{I}}^{\bullet} \rightarrow \mathcal{I}_{\mathcal{F}}^{\bullet}$.
+    Take $\beta' = \beta + \pi \circ (\gamma \circ g - v \circ \beta)$ and $\alpha' = \sigma \circ (\beta' \circ f - u \circ \alpha)$.
+    Then by our choice of $\alpha$, $\beta$ and $\gamma$, it is clear that the new diagram is commutative.
     \par
     By assumption, for all $i_{0}, \cdots, i_{p}$,
     \begin{equation*}
         0 \longrightarrow \mathcal{F}(U_{i_{0}, \cdots, i_{p}})\longrightarrow \mathcal{I}(U_{i_{0}, \cdots, i_{p}}) \longrightarrow \mathcal{G}(U_{i_{0}, \cdots, i_{p}}) \longrightarrow 0
     \end{equation*}
     is exact.
-    Taking global sections, get
+    Taking global sections and by Homological Algebra, there is commutative daigram between two long exact sequences
     \begin{equation*}
         \begin{tikzcd}
-            0 \arrow[r] &
-            \Gamma(X, \mathcal{F}) \arrow[r] \arrow[d] &
-            \Gamma(X, \mathcal{I}) \arrow[r] \arrow[d] &
-            \Gamma(X, \mathcal{G}) \arrow[r] \arrow[d] &
-            0 \\
-            0 \arrow[r] &
-            \Gamma(X, \mathcal{I}_{\mathcal{F}}^{\bullet}) \arrow[r] &
-            \Gamma(X, \mathcal{I}_{\mathcal{I}}^{\bullet}) \arrow[r] &
-            \Gamma(X, \mathcal{I}_{\mathcal{G}}^{\bullet}) \arrow[r] &
-            0
+            \cdots \arrow[r] &
+            \check{H}^{r}(\mathcal{U}, \mathcal{F}) \arrow[r] \arrow[d] &
+            \check{H}^{r}(\mathcal{U}, \mathcal{I}) \arrow[r] \arrow[d] &
+            \check{H}^{r}(\mathcal{U}, \mathcal{G}) \arrow[r] \arrow[d] &
+            \check{H}^{r + 1}(\mathcal{U}, \mathcal{F}) \arrow[r] \arrow[d] &
+            \cdots \\
+            \cdots \arrow[r] &
+            H^{r}(X, \mathcal{F}) \arrow[r] &
+            H^{r}(X, \mathcal{I}) \arrow[r] &
+            H^{r}(X, \mathcal{G}) \arrow[r] &
+            H^{r + 1}(X, \mathcal{F}) \arrow[r] &
+            \cdots
         \end{tikzcd}
     \end{equation*}
-    also an exact sequence of complexes.
-    By Homological Algebra, there is an long exact sequence of cohomological groups
-    \begin{equation*}
-        \cdots \longrightarrow \check{H}^{r}(\mathcal{U}, \mathcal{F}) \longrightarrow \check{H}^{r}(\mathcal{U}, \mathcal{I}) \longrightarrow \check{H}^{r}(\mathcal{U}, \mathcal{G}) \longrightarrow \check{H}^{r + 1}(\mathcal{U}, \mathcal{F}) \longrightarrow \cdots
-    \end{equation*}
-    Since $\mathcal{I}$ is injective, get $\mathcal{I}$ is flasque and $\check{H}^{r}(\mathcal{U}, \mathcal{I}) = 0$ for all $r > 0$.
+    Since $\mathcal{I}$ is injective, get $\mathcal{I}$ flasque and $\check{H}^{r}(\mathcal{U}, \mathcal{I}) = 0$ for all $r > 0$.
     Thus $\check{H}^{r + 1}(\mathcal{U}, \mathcal{F}) = \check{H}^{r}(\mathcal{U}, \mathcal{G})$ for all $r \ge 1$.
-    By induction, done!(need to repair)
+    By induction, done!
 \end{proof}
 \begin{corollary}
     Let $X$ be a (noetherian) separated scheme, $\mathcal{U}$ affine open covering of X, $\mathcal{F}$ quasi-coherent sheaf on X.
