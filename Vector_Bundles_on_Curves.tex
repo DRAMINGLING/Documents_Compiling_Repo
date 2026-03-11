@@ -93,8 +93,10 @@
 \newcommand{\commutativerings}{\mathbf{CRing}}
 
 \newcommand{\module}{\operatorname{Mod}}
+\newcommand{\vectorspace}{\operatorname{Vect}}
 \newcommand{\algebra}{\operatorname{Alg}}
 \newcommand{\scheme}{\operatorname{Sch}}
+\newcommand{\vectorbundle}{\underline{\operatorname{Vect}}}
 
 \newcommand{\matrices}[2]{\operatorname{Mat}_{#1}(#2)}
 \newcommand{\generallineargroup}[2]{\operatorname{GL}_{#1}(#2)}
@@ -524,4 +526,60 @@ And all morphisms mentioned are morphisms of varieties.
     there must be some ambiguity about the terminology.
     For example, here by $\ker f$, we possibly mean the subset of points whoes image under $f$ are same to image of the origin.
 \end{remark}
+\begin{corollary}
+    Let $f: E \rightarrow F$ be a map of vector bundles.
+    When $f$ is surjective, $\ker f$ is a subbundle of $E$.
+    And when $f$ is injective, $\im f$ is a subbundle of $F$.
+    \label{Corollary 1.1}
+\end{corollary}
+\begin{reason}
+    When $f$ is surjective, as remark above, we know $\ker \varphi = 0$ so that rank of $f_{x}$ is constant.
+    When $f$ is injective, as proof above, we know $\im \varphi = k[x_{1}, \cdots, x_{n}]$ so that rank of $f_{x}$ is constant.
+\end{reason}
+\begin{definition}
+    Let $p: E \rightarrow X$ be a vector bundle on $X$ of rank $r$.
+    A (regular) section of $E$ over open subset $U \subseteq X$ is a morphism $s: U \rightarrow E$ such that $(p \circ s)\big{|}_{U} = \identity_{U}$.
+    Denote $\Gamma(U, E) = \{\text{regular sections of $E$ over $U$}\}$.
+\end{definition}
+\begin{lemma}
+    Let $p: E \rightarrow X$ be a vector bundle on $X$ of rank $r$.
+    Then $\Gamma(U, E)$ naturally admits an $\mathcal{O}(U)$-module structure
+    \begin{equation}
+        \mathcal{O}(U) \times \Gamma(U, E) \longrightarrow \Gamma(U, E)
+    \end{equation}
+    Moreover, $\mathcal{O}_{X}(E)(U) = \Gamma(U, E)$ gives a locally free sheaf $\mathcal{O}_{X}(E)$ of rank $r$.
+    \label{Lemma 1.4}
+\end{lemma}
+\begin{proof}
+    For $\alpha\in \mathcal{O}(U)$ and section $s: U \rightarrow E$, locally $s$ is defined by a homomorphism $\varphi: A[x_{1}, \cdots, x_{r}] \rightarrow A$.
+    Define $\alpha \cdot s$ by gluing up $\alpha \cdot \varphi: x_{i} \mapsto \alpha \cdot \varphi(x_{i})$.
+    In particular, locally $\Gamma(U, E) \cong A^{\oplus r}$ hence $\mathcal{O}_{X}(E)$ is a locally free sheaf of rank $r$. 
+\end{proof}
+\begin{proposition}
+    Let $\mathcal{C}$ be the category of locally free sheaves of finite rank.
+    There is a functor $\theta: \vectorbundle_{X} \rightarrow \mathcal{C}$ sending $E$ to $\mathcal{O}_{X}(E)$ and $E \rightarrow F$ to $\{\Gamma(U, E) \rightarrow \Gamma(U, F)\}$,
+    which is an equivalence of category.
+    \label{Proposition 1.8}
+\end{proposition}
+\begin{proof}
+    First to prove $\theta$ fully faithful i.e. $\hom_{\vectorbundle_{X}}(E, F) \rightarrow \hom_{\mathcal{O}_{X}}(\mathcal{O}_{X}(E), \mathcal{O}_{X}(F))$ is bijection for all $E, F$.
+    We may assume that $X = \spec A$ and $E, F$ are both trivial.
+    Then $f: \mathbb{A}_{A}^{n} \rightarrow \mathbb{A}_{A}^{m}$ corresponds to a matrix $M\in \matrices{n \times m}{A}$.
+    Also, $(s: U \rightarrow E) \rightarrow (f \circ s: U \rightarrow F)$ also corresponds to such a matrix.
+    Hence the bijection is clear.
+    \par
+    Next to prover $\theta$ dense (or say essentially surjective) i.e. given $\mathcal{E}\in \mathcal{C}$, there exists $E\in \vectorbundle_{X}$ with isomorphism $\mathcal{O}_{X}(E) \overset{\sim}{\rightarrow} \mathcal{E}$.
+    Assume $U_{i} = \spec A_{i}$ is an affine cover of $X$ trivializing $\mathcal{E}$.
+    Denote the trivialization $\varphi_{i}: \mathcal{E}\big{|}_{U_{i}} \rightarrow \mathbb{A}_{A_{i}}^{n}$.
+    Consider the transition functions $g_{ij} = \varphi_{i} \circ \varphi_{j}^{-1}\big{|}_{U_{ij}}$.
+    Then thoes transition functions give a vector bundle $E$.
+    \par
+    Define $\psi_{i}: \mathcal{O}_{X}(E)(U_{i}) = \Gamma(U_{i}, E) \rightarrow \mathcal{E}\big{|}_{U_{i}}$ sending $s: U_{i} \rightarrow \mathbb{A}_{U_{i}}^{n}$ to $\varphi_{i}^{-1}(v_{s})$,
+    where $v_{s}$ is the vector defining $s$.
+    Then 
+    \begin{equation}
+        \psi_{i}\big{|}_{U_{ij}}(s\big{|}_{U_{ij}}) = \varphi_{i}^{-1}(v_{s}) = \varphi_{i}^{-1}(g_{ij}v_{s}') = \varphi_{i}^{-1} \circ \varphi_{i} \circ \varphi_{j}^{-1}(v_{s}') = \varphi_{j}^{-1}(v_{s}') = \psi_{j}\big{|}_{U_{ij}}(s\big{|}_{U_{ij}})
+    \end{equation}
+    Hence $\psi_{i}$ glue up and get our desired isomorphism.
+\end{proof}
 \end{document}
