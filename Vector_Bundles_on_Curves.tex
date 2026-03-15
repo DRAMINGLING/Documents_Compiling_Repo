@@ -33,7 +33,6 @@
 
 \newcommand{\mapsfrom}{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 \newcommand{\longmapsfrom}{\mathrel{\reflectbox{\ensuremath{\longmapsto}}}}
-\newcommand{\groupaction}{\mathrel{\text{\scalebox{1.5}{\rotatebox[origin=c]{90}{$\circlearrowright$}}}}}
 
 \newcommand{\rank}{\operatorname{rank}}
 \newcommand{\im}{\operatorname{im}}
@@ -582,4 +581,40 @@ And all morphisms mentioned are morphisms of varieties.
     \end{equation}
     Hence $\psi_{i}$ glue up and get our desired isomorphism.
 \end{proof}
+
+\subsection{Bundles associated to a representation}
+\label{subsection:Vector_Bundles_Bundles_associated_to_a_representation}
+
+\begin{lemma}
+    Let $f: Y \rightarrow X$ be a morphism, $p: E \rightarrow X$ vector bundle of rank $r$ on $X$.
+    Consider the fibered product $F = Y \times_{X} E$.
+    Then the first projection $q: F \rightarrow Y$ gives a bundle on $Y$ of rank $r$ and $\mathcal{O}_{Y}(F) = f^{\ast}\mathcal{O}_{X}(E)$.
+    \label{Lemma 1.5}
+\end{lemma}
+\begin{proof}
+    Locally we have trivializations $\varphi_{i}: E\big{|}_{U_{i}} \rightarrow U_{i} \times \mathbb{A}_{\mathbb{{C}}}^{r}$ and transition functions $g_{ij}: U_{ij} \times \mathbb{A}_{\mathbb{{C}}}^{r} \rightarrow U_{ij} \times \mathbb{A}_{\mathbb{{C}}}^{r}$ satisfying cocycle condition.
+    Then after base change we get $\widetilde{\varphi}_{i}: F\big{|}_{V_{i}} \rightarrow V_{i} \times \mathbb{A}_{\mathbb{{C}}}^{r}$ and $\widetilde{g}_{ij}: U_{ij} \times \mathbb{A}_{\mathbb{{C}}}^{r} \rightarrow U_{ij} \times \mathbb{A}_{\mathbb{{C}}}^{r}$ still satisfying cocycle condition.
+    Hence $q: F \rightarrow Y$ defines a bundle on $Y$ of rank $r$.
+    \par
+    Now for all open subset $V \subseteq Y$, define $\sigma(V): f^{\ast}\mathcal{O}_{X}(E)(V) \rightarrow \mathcal{O}_{Y}(F)(V)$ sending $(U, s) \otimes 1$ to $\widetilde{s}\big{|}_{V}$,
+    where $\widetilde{s}: f^{-1}(U) \rightarrow F$ is the pull back of $s: U \rightarrow E$.
+    For all $y\in Y$, want to show that $\sigma_{y}: \mathcal{O}_{X}(E)_{f(y)} \otimes_{\mathcal{O}_{X, f(y)}} \mathcal{O}_{Y, y} \rightarrow \mathcal{O}_{Y}(F)_{y}$ is isomorphism.
+    \par
+    For injectivity, if $\sum_{i = 1}^{r} (U, s_{i}) \otimes b_{i}\in \ker \sigma_{y}$,
+    then locally we get $\sum_{i = 1}^{r} b_{i} \cdot f^{\sharp} \circ s_{i}^{\sharp}(x_{j}) = 0$ for all $1 \le j \le r$,
+    so that also $\sum_{i = 1}^{r} (s_{i}^{\sharp}(x_{1}), \cdots, s_{i}^{\sharp}(x_{r})) \otimes b_{i} = 1 \otimes (\sum_{i = 1}^{r} b_{i} \cdot f^{\sharp} \circ s_{i}^{\sharp}(x_{1}), \cdots, \sum_{i = 1}^{r} b_{i} \cdot f^{\sharp} \circ s_{i}^{\sharp}(x_{r})) = 0$.
+    Then $(U, s) = \oplus_{i = 1}^{r} a_{i} \otimes 1 = 0$.
+    For surjectivity, given $(b_{1}, \cdots, b_{r})\in B^{\oplus r}$,
+    clearly it is the image of $\sum_{i = 1}^{r} (U, s_{i}) \otimes b_{i}$ where $s_{i}$ is defined by $e_{i}\in A^{\oplus r}$.
+\end{proof}
+Let $p: E \rightarrow X$ be a vector bundle of rank $r$.
+Consider the variety $R = X \times \generallineargroup{r}{\mathbb{C}}$.
+Here the $\generallineargroup{r}{\mathbb{C}}$ is the open subset $D(\det)$ of $\mathbb{A}_{\mathbb{C}}^{n^{2}}$.
+And there is an group action of $G$ on $R$ defined locally as following
+\begin{equation}
+    \begin{split}
+        M: A \times \generallineargroup{r}{\mathbb{C}} & \rightarrow A \times \generallineargroup{r}{\mathbb{C}}
+    \end{split}
+\end{equation}
+corresponding to the homomorphism defined by $M$.
 \end{document}
