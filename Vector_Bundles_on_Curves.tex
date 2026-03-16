@@ -67,6 +67,7 @@
 \newcommand{\fraction}{\operatorname{Frac}}
 \newcommand{\singular}{\operatorname{Sing}}
 \newcommand{\support}{\operatorname{Supp}}
+\newcommand{\framebundle}{\operatorname{Fr}}
 
 \newcommand{\reduction}{\operatorname{red}}
 \newcommand{\normalization}{\operatorname{nor}}
@@ -90,12 +91,13 @@
 \newcommand{\abeliangroups}{\mathbf{Ab}}
 \newcommand{\rings}{\mathbf{Ring}}
 \newcommand{\commutativerings}{\mathbf{CRing}}
+\newcommand{\sets}{\mathbf{Set}}
 
-\newcommand{\module}{\operatorname{Mod}}
-\newcommand{\vectorspace}{\operatorname{Vect}}
-\newcommand{\algebra}{\operatorname{Alg}}
-\newcommand{\scheme}{\operatorname{Sch}}
-\newcommand{\vectorbundle}{\underline{\operatorname{Vect}}}
+\newcommand{\module}{\mathbf{Mod}}
+\newcommand{\vectorspace}{\mathbf{Vect}}
+\newcommand{\algebra}{\mathbf{Alg}}
+\newcommand{\scheme}{\mathbf{Sch}}
+\newcommand{\vectorbundle}{\underline{\mathbf{Vect}}}
 
 \newcommand{\matrices}[2]{\operatorname{Mat}_{#1}(#2)}
 \newcommand{\generallineargroup}[2]{\operatorname{GL}_{#1}(#2)}
@@ -608,13 +610,45 @@ And all morphisms mentioned are morphisms of varieties.
     clearly it is the image of $\sum_{i = 1}^{r} (U, s_{i}) \otimes b_{i}$ where $s_{i}$ is defined by $e_{i}\in A^{\oplus r}$.
 \end{proof}
 Let $p: E \rightarrow X$ be a vector bundle of rank $r$.
+To avoid ambiguity, we denote the general linear group by $G_{r}$ and the group variety by $\generallineargroup{r}{\mathbb{C}}$,
+which is the open subset $D(\det)$ of $\mathbb{A}_{\mathbb{C}}^{r^{2}}$.
 Consider the variety $R = X \times \generallineargroup{r}{\mathbb{C}}$.
-Here the $\generallineargroup{r}{\mathbb{C}}$ is the open subset $D(\det)$ of $\mathbb{A}_{\mathbb{C}}^{n^{2}}$.
-And there is an group action of $G$ on $R$ defined locally as following
+We have a group action of $G_{r}$ on $R$ defined locally as following, for $M = (a_{ij})$
 \begin{equation}
     \begin{split}
-        M: A \times \generallineargroup{r}{\mathbb{C}} & \rightarrow A \times \generallineargroup{r}{\mathbb{C}}
+        \identity \times (\circ M^{-1}): A \times \generallineargroup{r}{\mathbb{C}} \rightarrow A \times \generallineargroup{r}{\mathbb{C}}
     \end{split}
 \end{equation}
-corresponding to the homomorphism defined by $M$.
+where $\circ M^{-1}$ corresponds to the homomorphism defined by $(x_{ij}) \mapsto (\sum_{k} x_{ik}a_{kj})$.
+Then $R/G_{r} = X$ and the orbits can be identified with the fibers of $R \rightarrow X$.
+In addition, each matirx $M$ gives a morphism $\mathbb{A}_{\mathbb{C}}^{r} \rightarrow E\big{|}_{U}$ satisfying that composition with trivialization $\varphi_{U}$ is a linear transformation defined by $M$.
+Then it is natural to consider transition function $g_{ij} \otimes I_{r}$ which gives a $\generallineargroup{r}{\mathbb{C}}$-bundle on $X$, denoted by $\framebundle (E)$, the frame bundle of $E$.
+And there is an group action of $G_{r}$ on $R \times \mathbb{A}_{\mathbb{C}}^{r}$ defined locally as following, for $M = (a_{ij})$
+\begin{equation}
+    \begin{split}
+        \identity \times (\circ M^{-1}) \times M: A \times \generallineargroup{r}{\mathbb{C}} \times \mathbb{A}_{\mathbb{C}}^{r} \rightarrow A \times \generallineargroup{r}{\mathbb{C}} \times \mathbb{A}_{\mathbb{C}}^{r}
+    \end{split}
+\end{equation}
+where $M$ corresponds to the linear transformation defined by $M$.
+\par
+Now given a representation $\psi: G_{r} \rightarrow G_{m}$,
+consider the group action of $G_{r}$ on $R \times \mathbb{A}_{\mathbb{C}}^{m}$ defined locally as following, for $M = (a_{ij})$
+\begin{equation}
+    \begin{split}
+        \identity \times (\circ M^{-1}) \times \psi(M): A \times \generallineargroup{r}{\mathbb{C}} \times \mathbb{A}_{\mathbb{C}}^{m} \rightarrow A \times \generallineargroup{r}{\mathbb{C}} \times \mathbb{A}_{\mathbb{C}}^{m}
+    \end{split}
+\end{equation}
+Then locally the quotient scheme is isomorphic to $\mathbb{A}_{A}^{m}$ with natural transition functions.
+These information give a vector bundle $E_{\psi}$ of rank $m$ on $X$, called the bundle associated to representation $\psi$.
+\begin{remark}
+    The idea of frame bundle also comes from moduli thery.
+    Consider functor $\mathcal{F}: \scheme_{X} \rightarrow \sets$ defined as following
+    \begin{equation}
+        (f: T \rightarrow X) \longmapsto \{f^{\ast}\mathcal{O}(E) \overset{\sim}{\rightarrow} \mathcal{O}_{T}^{r}\}
+    \end{equation}
+    And in fact this functor is representable by frame bundle above.
+\end{remark}
+
+\section{Riemann-Roch Formula}
+\label{section:Riemann-Roch_Formula}
 \end{document}
