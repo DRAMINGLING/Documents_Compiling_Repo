@@ -67,6 +67,7 @@
 \newcommand{\fraction}{\operatorname{Frac}}
 \newcommand{\singular}{\operatorname{Sing}}
 \newcommand{\support}{\operatorname{Supp}}
+\newcommand{\framebundle}{\operatorname{Fr}}
 
 \newcommand{\reduction}{\operatorname{red}}
 \newcommand{\normalization}{\operatorname{nor}}
@@ -90,12 +91,15 @@
 \newcommand{\abeliangroups}{\mathbf{Ab}}
 \newcommand{\rings}{\mathbf{Ring}}
 \newcommand{\commutativerings}{\mathbf{CRing}}
+\newcommand{\sets}{\mathbf{Set}}
 
-\newcommand{\module}{\operatorname{Mod}}
-\newcommand{\vectorspace}{\operatorname{Vect}}
-\newcommand{\algebra}{\operatorname{Alg}}
-\newcommand{\scheme}{\operatorname{Sch}}
-\newcommand{\vectorbundle}{\underline{\operatorname{Vect}}}
+\newcommand{\module}{\mathbf{Mod}}
+\newcommand{\vectorspace}{\mathbf{Vect}}
+\newcommand{\algebra}{\mathbf{Alg}}
+\newcommand{\scheme}{\mathbf{Sch}}
+\newcommand{\vectorbundle}{\underline{\mathbf{Vect}}}
+\newcommand{\coherent}{\mathbf{Coh}}
+\newcommand{\quasicoherent}{\mathbf{Qcoh}}
 
 \newcommand{\matrices}[2]{\operatorname{Mat}_{#1}(#2)}
 \newcommand{\generallineargroup}[2]{\operatorname{GL}_{#1}(#2)}
@@ -3015,14 +3019,14 @@ With this definition, we can state definition of abstract variety over general f
 \label{subsection:Sheaves_of_Modules_Quasi-coherent_and_coherent_sheaves}
 
 \begin{definition}
-    Let $A$ be a ring, $X = \spec A$, $M\in Mod_{A}$.
-    Define an $\mathcal{O}_{X}$-module $\widetilde{M}$ on X by the same process as $\mathcal{O}_{X}$ replacing A by M.
+    Let $A$ be a ring, $X = \spec A$, $M\in \module_{A}$.
+    Define an $\mathcal{O}_{X}$-module $\widetilde{M}$ on $X$ by the same process as $\mathcal{O}_{X}$ replacing $A$ by $M$.
 \end{definition}
 \begin{remark}
-    The definition gives a fully faithful functor from $Mod_{A}$ to category of $\mathcal{O}_{Spec(A)}$-modules $M \longmapsto \widetilde{M}$.
+    The definition gives a fully faithful functor from $\module_{A}$ to category of $\mathcal{O}_{Spec(A)}$-modules $M \longmapsto \widetilde{M}$.
 \end{remark}
 \begin{proposition}
-    Let $A$ be a ring, $X = \spec A$, $M\in Mod_{A}$.
+    Let $A$ be a ring, $X = \spec A$, $M\in \module_{A}$.
     Then \\
     (1)$\widetilde{M}(X) = M$, \\
     (2)$\widetilde{M}(D(f)) = M_{f} = M \otimes_{A} A_{f}$ \\
@@ -3043,20 +3047,20 @@ With this definition, we can state definition of abstract variety over general f
     \label{Proposition 6.2}
 \end{proposition}
 \begin{definition}[\textbf{\emph{Quasi-coherent Sheaves}}]
-    Let $X$ be a scheme, $\mathcal{F}$ a sheaf of abelian groups on X.
+    Let $X$ be a scheme, $\mathcal{F}$ a sheaf of abelian groups on $X$.
     We say that $\mathcal{F}$ is quasi-coherent if for all affine open subset $U = \spec A \subseteq X$,
-    $\mathcal{F}\big{|}_{U} \cong \widetilde{M}$ for some $A$-module M.
+    $\mathcal{F}\big{|}_{U} \cong \widetilde{M}$ for some $A$-module $M$.
 \end{definition}
 \begin{definition}[\textbf{\emph{Coherent Sheaves}}]
-    Let $X$ be a noetherian scheme, $\mathcal{F}$ a sheaf of abelian groups on X.
+    Let $X$ be a noetherian scheme, $\mathcal{F}$ a sheaf of abelian groups on $X$.
     We say that $\mathcal{F}$ is coherent if for all affine open subset $U = \spec A \subseteq X$,
-    $\mathcal{F}\big{|}_{U} \cong \widetilde{M}$ for some finite $A$-module M.
+    $\mathcal{F}\big{|}_{U} \cong \widetilde{M}$ for some finite $A$-module $M$.
 \end{definition}
 \begin{theorem}
     Let $X$ be a scheme, $\mathcal{F}$ an $\mathcal{O}_{X}$-module.
-    Suppose X admits an affine open subset covering $\{U_{i} = \spec(A_{i})\}_{i}$ such that for all i, $\mathcal{F}\big{|}_{U_{i}} \cong \widetilde{M_{i}}$ for some $A_{i}$-module $M_{i}$.
+    Suppose $X$ admits an affine open subset covering $\{U_{i} = \spec(A_{i})\}_{i}$ such that for all $i$, $\mathcal{F}\big{|}_{U_{i}} \cong \widetilde{M_{i}}$ for some $A_{i}$-module $M_{i}$.
     Then $\mathcal{F}$ is quasi-coherent.
-    If moreover X is noetherian and $M_{i}$ are finite over $A_{i}$, then $\mathcal{F}$ is coherent.
+    If moreover $X$ is noetherian and $M_{i}$ are finite over $A_{i}$, then $\mathcal{F}$ is coherent.
     \label{Theorem 6.1} 
 \end{theorem}
 \begin{proof}
@@ -3082,13 +3086,13 @@ With this definition, we can state definition of abstract variety over general f
     \end{equation*}
     Similar to proof of Lemma \ref{Lemma 2.6}, get $\mathcal{F}$ is quasi-coherent.
     \par
-    Further if A is noetherian, $\mathcal{F} = \widetilde{M}$.
-    Can cover X by finitely many $\{D(f_{i})\}$ such that $\mathcal{F}(D(f_{i})) = M_{f_{i}}$ is finite over $A_{f_{i}}$
+    Further if $A$ is noetherian, $\mathcal{F} = \widetilde{M}$.
+    Can cover $X$ by finitely many $\{D(f_{i})\}$ such that $\mathcal{F}(D(f_{i})) = M_{f_{i}}$ is finite over $A_{f_{i}}$
     Assume $M_{f_{i}} = \sum_{j} \frac{m_{ij}}{1}A_{f_{i}}$.
     Take $N = \sum_{i,j} m_{i,j}A$.
-    Then N is a finitely generated A-submodule of M and for all i, $N_{f_{i}} = M_{f_{i}}$.
-    Thus there is a natural morphism $\widetilde{N} \longrightarrow \widetilde{M}$ and $\widetilde{N}\big{|}_{D(f_{i})} \overset{\sim}{\longrightarrow} \widetilde{M}\big{|}_{D(f_{i})}$ is isomorphic for all i.
-    As $d(f)_{i}$ cover X, get $\widetilde{N} \longrightarrow \widetilde{M}$ is isomorphic so that $N = M$ and M is finitely generated.
+    Then $N$ is a finitely generated A-submodule of $M$ and for all $i$, $N_{f_{i}} = M_{f_{i}}$.
+    Thus there is a natural morphism $\widetilde{N} \longrightarrow \widetilde{M}$ and $\widetilde{N}\big{|}_{D(f_{i})} \overset{\sim}{\longrightarrow} \widetilde{M}\big{|}_{D(f_{i})}$ is isomorphic for all $i$.
+    As $d(f)_{i}$ cover $X$, get $\widetilde{N} \longrightarrow \widetilde{M}$ is isomorphic so that $N = M$ and M is finitely generated.
     Thus $\mathcal{F}$ is coherent.
 \end{proof}
 \begin{proposition}
@@ -3100,7 +3104,7 @@ With this definition, we can state definition of abstract variety over general f
     \label{Proposition 6.3}
 \end{proposition}
 \begin{remark}
-    If X is moreover noetherian, then (1) and (3) still hold for coherent and (2) is also ok if the direct sum is finite.
+    If $X$ is moreover noetherian, then (1) and (3) still hold for coherent and (2) is also ok if the direct sum is finite.
 \end{remark}
 \begin{proposition}
     Let $X$ be an affine scheme.
@@ -3122,9 +3126,9 @@ With this definition, we can state definition of abstract variety over general f
     \begin{equation*}
         \mathcal{O}_{U}^{\oplus J} \longrightarrow \mathcal{O}_{U}^{\oplus I} \longrightarrow \mathcal{F}\big{|}_{U} \longrightarrow 0
     \end{equation*}
-    If moreover X is noetherian,
+    If moreover $X$ is noetherian,
     then $\mathcal{F}$ is coherent if and only if for all $x\in X$, 
-    there exists open neighbourhood $U\ni x$ such that there is an exact sequence with I,J finite
+    there exists open neighbourhood $U\ni x$ such that there is an exact sequence with $I,J$ finite
     \begin{equation*}
         \mathcal{O}_{U}^{\oplus J} \longrightarrow \mathcal{O}_{U}^{\oplus I} \longrightarrow \mathcal{F}\big{|}_{U} \longrightarrow 0
     \end{equation*}
@@ -3132,8 +3136,8 @@ With this definition, we can state definition of abstract variety over general f
 \end{proposition}
 \begin{proof}
     "$\Rightarrow$": For $\mathcal{F}$ quasi-coherent and all $x\in X$, 
-    there is affine open neighbourhood $U = \spec A\ni x$ such that $\mathcal{F}\big{|}_{U} \cong \widetilde{M}$ for some $A$-module M.
-    Note that there is an exact sequence for some index sets I,J
+    there is affine open neighbourhood $U = \spec A\ni x$ such that $\mathcal{F}\big{|}_{U} \cong \widetilde{M}$ for some $A$-module $M$.
+    Note that there is an exact sequence for some index sets $I,J$
     \begin{equation*}
         A^{\oplus J} \longrightarrow A^{\oplus I} \longrightarrow M \longrightarrow 0
     \end{equation*}
@@ -3146,7 +3150,7 @@ With this definition, we can state definition of abstract variety over general f
     \begin{equation*}
         \mathcal{O}_{U}^{\oplus J} \longrightarrow \mathcal{O}_{U}^{\oplus I} \longrightarrow \mathcal{F}\big{|}_{U} \longrightarrow 0
     \end{equation*}
-    Can assume that U is affine.
+    Can assume that $U$ is affine.
     By Proposition \ref{Proposition 6.4}, get exact sequence
     \begin{equation*}
         \mathcal{O}_{U}(U)^{\oplus J} \longrightarrow \mathcal{O}_{U}(U)^{\oplus I} \longrightarrow \mathcal{F}\big{|}_{U}(U) \longrightarrow 0
@@ -3164,11 +3168,11 @@ With this definition, we can state definition of abstract variety over general f
     Then locally free $\mathcal{O}_{X}$-modules are quasi-coherent. \\
     (2)Let $X$ be a noetherian scheme.
     Then locally free $\mathcal{O}_{X}$-modules of rank $< \infty$ are coherent. \\
-    (3)Let $i: Y \longrightarrow X$ be a closed immersion with X,Y noetherian.
-    Then $i_{\ast}\mathcal{O}_{Y}$ is coherent on X. \\
-    (4)Let $X$ be an integral noetherian scheme with function field K.
+    (3)Let $i: Y \longrightarrow X$ be a closed immersion with $X,Y$ noetherian.
+    Then $i_{\ast}\mathcal{O}_{Y}$ is coherent on $X$. \\
+    (4)Let $X$ be an integral noetherian scheme with function field $K$.
     Then constant sheaf $K_{X}$ is quasi-coherent but not coherent in general. \\
-    (5)Let $X$ be a scheme, $U \subseteq X$ open subset with inclusion $j: U \longrightarrow X$, $\mathcal{F}$ sheaf on U.
+    (5)Let $X$ be a scheme, $U \subseteq X$ open subset with inclusion $j: U \longrightarrow X$, $\mathcal{F}$ sheaf on $U$.
     Define $j_{!}\mathcal{F}$ to be the sheafification of $V \longmapsto
     \left\{
         \begin{aligned}
@@ -3185,7 +3189,7 @@ With this definition, we can state definition of abstract variety over general f
         \end{aligned}
     \right.
     $.
-    Now let $X = \spec A$ be an affine scheme with A integral domain, $U \subsetneq X$ nonempty open subset with inclusion $j: U \longrightarrow X$.
+    Now let $X = \spec A$ be an affine scheme with $A$ integral domain, $U \subsetneq X$ nonempty open subset with inclusion $j: U \longrightarrow X$.
     Then $j_{!}\mathcal{O}_{U}$ is an $\mathcal{O}_{X}$-module but not quasi-coherent.
 \end{example}
 
@@ -3210,7 +3214,7 @@ With this definition, we can state definition of abstract variety over general f
     \par
     Now we have ring homomorphisms $\mathcal{M}(V) \otimes_{\mathcal{O}_{Y}(V)} \mathcal{N}(V) \longrightarrow (\mathcal{M} \otimes_{\mathcal{O}_{Y}} \mathcal{N})(V)$ compatible with restriction maps for each open subset $V \supseteq f(U)$.
     By property of directed limit, there is an induced ring homomorphism $\underset{\underset{V \supseteq f(U)}{\longrightarrow}}{\lim} (\mathcal{M}(V) \otimes_{\mathcal{O}_{Y}(V)} \mathcal{N}(V)) \longrightarrow \underset{\underset{V \supseteq f(U)}{\longrightarrow}}{\lim} (\mathcal{M} \otimes_{\mathcal{O}_{Y}} \mathcal{N})(V)$.
-    For $U' \subseteq U$ inclusion of open subsets of X, it is easy to show the following diagram commutes
+    For $U' \subseteq U$ inclusion of open subsets of $X$, it is easy to show the following diagram commutes
     \begin{equation*}
         \begin{tikzcd}
             \underset{\underset{V \supseteq f(U)}{\longrightarrow}}{\lim} (\mathcal{M}(V) \otimes_{\mathcal{O}_{Y}(V)} \mathcal{N}(V)) \arrow[r] \arrow[d] & 
@@ -3240,19 +3244,19 @@ With this definition, we can state definition of abstract variety over general f
 \begin{proof}
     Can assume $X = \spec(B)$ and $Y = \spec A$.
     Then $\mathcal{G} = \widetilde{M}$ for some finitely generated $A$-module M so that $f^{\ast}\mathcal{G} = \widetilde{M \otimes_{A} B}$.
-    Since M is finitely generated $A$-module, get $M \otimes_{A} B$ finitely generated as $B$-module.
+    Since $M$ is finitely generated $A$-module, get $M \otimes_{A} B$ finitely generated as $B$-module.
     Get $f^{\ast}\mathcal{G}$ is a coherent $\mathcal{O}_{X}$-module.
 \end{proof}
 \begin{remark}
-    For direct image, if N is finitely generated $B$-module, we don't have that N is finitely generated as $A$-module in general.
+    For direct image, if $N$ is finitely generated $B$-module, we don't have that $N$ is finitely generated as $A$-module in general.
     Thus the similar property for direct image is much more complicated.
 \end{remark}
 \begin{theorem}
     Let $f: X \longrightarrow Y$ be a morphism of schemes.
-    Assume that either X is noetherian or f is quasi-compact and separated.
+    Assume that either $X$ is noetherian or $f$ is quasi-compact and separated.
     Then \\
-    (1)If $\mathcal{F}$ is quasi-coherent sheaf on X, then $f_{\ast}\mathcal{F}$ is quasi-coherent. \\
-    (2)If $\mathcal{F}$ is coherent on X with X,Y noetherian and f is finite, then $f_{\ast}\mathcal{F}$ is coherent.
+    (1)If $\mathcal{F}$ is quasi-coherent sheaf on $X$, then $f_{\ast}\mathcal{F}$ is quasi-coherent. \\
+    (2)If $\mathcal{F}$ is coherent on $X$ with $X,Y$ noetherian and $f$ is finite, then $f_{\ast}\mathcal{F}$ is coherent.
     \label{Theorem 6.2} 
 \end{theorem}
 \begin{proof}
@@ -3262,7 +3266,7 @@ With this definition, we can state definition of abstract variety over general f
     It suffices to show that $\mathcal{F}(X_{h}) = f_{\ast}\mathcal{F}(Y)_{g} = \mathcal{F}(X) \otimes_{A} A_{g}$.
     Note that $B \otimes_{A} A_{g} \cong B_{h}$, we have $\mathcal{F}(X) \otimes_{A} A_{g} \cong \mathcal{F}(X)_{h}$.
     Cover $X$ be affine open subsets $\{U_{i}\}$.
-    As either X is noetherian or f is quasi-compact and separated, the covering is finite.
+    As either $X$ is noetherian or $f$ is quasi-compact and separated, the covering is finite.
     There is a commutative diagram with exact rows,
     \begin{equation*}
         \begin{tikzcd}
@@ -3276,21 +3280,21 @@ With this definition, we can state definition of abstract variety over general f
             \prod_{i,j} \mathcal{F}(X_{h} \cap U_{i} \cap U_{j})
         \end{tikzcd}
     \end{equation*}
-    On the one hand, when X is noetherian, $U_{i} \cap U_{j}$ can still be covered by finitely many affine open subsets.
-    On the other hand, when f is quasi-compact and separated, $U_{i} \cap U_{j}$ is affine.
+    On the one hand, when $X$ is noetherian, $U_{i} \cap U_{j}$ can still be covered by finitely many affine open subsets.
+    On the other hand, when $f$ is quasi-compact and separated, $U_{i} \cap U_{j}$ is affine.
     Thus similar to proof of Lemma \ref{Lemma 2.6}, get $\mathcal{F}(X_{h}) \cong \mathcal{F}(X)_{h}$ so that $\mathcal{F}$ is quasi-coherent.
     \par
-    For finite case, can assume $X = \spec(B)$ and $Y = \spec A$ with B finite over A.
+    For finite case, can assume $X = \spec(B)$ and $Y = \spec A$ with $B$ finite over $A$.
     Since $\mathcal{F}$ is coherent, get $\mathcal{F} = \widetilde{N}$ for some finitely generated $B$-module.
     By Proposition \ref{Proposition 6.2}, get $f_{\ast}\mathcal{F} = f_{\ast}\widetilde{N} = \widetilde{N \text{ as $A$-module}}$.
-    While N is finitely generated and B is finite over A, get N is also finitely generated as $A$-module.
+    While $N$ is finitely generated and $B$ is finite over $A$, get $N$ is also finitely generated as $A$-module.
     Thus $f_{\ast}\mathcal{F}$ is coherent.
 \end{proof}
 \begin{example}[\textbf{\emph{Ideal Sheaves}}]
     Let $i: Y \longrightarrow X$ be a closed immersion.
-    Define the ideal sheaf of Y to be $I_{Y} = \ker(\mathcal{O}_{X} \longrightarrow i_{\ast}\mathcal{O}_{Y})$.
-    Then $I_{Y}$ is quasi-coherent and coherent if X,Y are noetherian.
-    Conversely, all quasi-coherent ideal sheaves $\mathcal{F}$ on X are of the form $I_{Y}$ for a uniquely determined closed subscheme Y.
+    Define the ideal sheaf of $Y$ to be $I_{Y} = \ker(\mathcal{O}_{X} \longrightarrow i_{\ast}\mathcal{O}_{Y})$.
+    Then $I_{Y}$ is quasi-coherent and coherent if $X,Y$ are noetherian.
+    Conversely, all quasi-coherent ideal sheaves $\mathcal{F}$ on $X$ are of the form $I_{Y}$ for a uniquely determined closed subscheme $Y$.
     Precisely, we have that $Y = \{x\in X \big{|} (\mathcal{O}_{X}/\mathcal{F})_{x} \neq 0\}$.
     \par
     In particular, if $X = \spec A$, there are some one-to-one correspondences
@@ -3302,35 +3306,38 @@ With this definition, we can state definition of abstract variety over general f
         \end{tikzcd}
     \end{equation*}
 \end{example}
-\subsection{Quasi-coherent Sheaves on Projective Schemes}
-Assume that S is a graded ring.
+
+\subsection{Quasi-coherent sheaves on projective schemes}
+\label{subsection:Sheaves_of_Modules_Quasi-coherent_sheaves_on_projective_schemes}
+
+Assume that $S$ is a graded ring.
 Let $M = \oplus_{d\in \mathbb{Z}} M_{d}$ be a graded $C$-module.
-Define $\widetilde{M}$ on $X = \proj(S)$ by the same process on $\mathcal{O}$ replacing S by M.
+Define $\widetilde{M}$ on $X = \proj(S)$ by the same process on $\mathcal{O}$ replacing $S$ by $M$.
 In particular, $\widetilde{M}\big{|}_{D_{+}(f)} = \widetilde{M_{(f)}}$ and $\widetilde{M}_{\mathfrak{p}} = M_{(\mathfrak{p})}$ for $\mathfrak{p}\in X$.
-Then $\widetilde{M}$ is quasi-coherent on X and coherent if X is noetherian and M is finitely generated.
-In addition, we should note that $\widetilde{M}$ doesn't determine M.
+Then $\widetilde{M}$ is quasi-coherent on $X$ and coherent if $X$ is noetherian and $M$ is finitely generated.
+In addition, we should note that $\widetilde{M}$ doesn't determine $M$.
 For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d}$ for some $d_{0} > 0$, then $\widetilde{M} = \widetilde{N}$.
 \begin{definition}[\textbf{\emph{Twisting}}]
-    Let S be a graded ring and $X = \proj(S)$, $\mathcal{F}$ an $\mathcal{O}_{X}$-module.
+    Let $S$ be a graded ring and $X = \proj(S)$, $\mathcal{F}$ an $\mathcal{O}_{X}$-module.
     Set $\mathcal{O}_{X}(n) = \widetilde{S(n)}$ where $S(n)$ is the graded $C$-module given by $S(n)_{d} = S_(n + d)$.
     Also set $\mathcal{F}(n) = \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{O}_{X}(n)$.
 \end{definition}
 \begin{proposition}
-    Let S be a graded ring and $X = \proj(S)$.
-    Assume that S is generated by $S_{1}$ as $S_{0}$-algebra.
+    Let $S$ be a graded ring and $X = \proj(S)$.
+    Assume that $S$ is generated by $S_{1}$ as $S_{0}$-algebra.
     Then $\mathcal{O}_{X}$ is an invertible sheaf.
-    In addition, For all M graded $S$-module, we have $\widetilde{M(n)} = \widetilde{M}(n)$.
+    In addition, For all graded $S$-module $M$, we have $\widetilde{M(n)} = \widetilde{M}(n)$.
     In particular, $\mathcal{O}_{X}(n) \otimes_{\mathcal{O}_{X}} \mathcal{O}_{X}(m) \cong \mathcal{O}_{X}(m + n)$.
     \label{Proposition 6.8}
 \end{proposition}
 \begin{proof}
-    Since S is generated by $S_{1}$ as $S_{0}$-algebra, $\{D_{+}(f)\}_{f\in S_{1}}$ cover X.
-    Suffice to show for all $f\in S_{1}$, $S(n)_{(f)}$ is free of rank 1 over $S_{(f)}$.
+    Since $S$ is generated by $S_{1}$ as $S_{0}$-algebra, $\{D_{+}(f)\}_{f\in S_{1}}$ cover $X$.
+    Suffice to show for all $f\in S_{1}$, $S(n)_{(f)}$ is free of rank $1$ over $S_{(f)}$.
     Note that there is a canonical isomorphism $S(n)_{(f)} \longrightarrow S_{(f)}\quad s \longmapsto f^{-n}s$, done! 
 \end{proof}
 \begin{lemma}[\textbf{\emph{qcqs Lemma}}]
-    Let $X$ be a scheme, $\mathcal{F}$ quasi-coherent sheaf on X, $\mathcal{L}$ invertible sheaf on X, $s\in \mathcal{L}(X)$.
-    Assume that X is either noetherian or quasi-compact and separated over $\spec(\mathbb{Z})$.
+    Let $X$ be a scheme, $\mathcal{F}$ quasi-coherent sheaf on $X$, $\mathcal{L}$ invertible sheaf on $X$, $s\in \mathcal{L}(X)$.
+    Assume that $X$ is either noetherian or quasi-compact and separated over $\spec(\mathbb{Z})$.
     Then \\
     (1)Let $f\in \mathcal{F}(X)$.
     If $f\big{|}_{X_{s}} = 0$, then there exists $n > 0$ such that $f \otimes s^{n} = 0$ in $(\mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n})(X)$,
@@ -3341,17 +3348,17 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
     \label{Lemma 6.3}
 \end{lemma}
 \begin{proof}
-    Cover X by finitely many affine open subsets $\{U_{i}\}$ such that $\mathcal{L}\big{|}_{U_{i}}$ is free and generated by $e_{i}\in \mathcal{L}(U_{i})$.
+    Cover $X$ by finitely many affine open subsets $\{U_{i}\}$ such that $\mathcal{L}\big{|}_{U_{i}}$ is free and generated by $e_{i}\in \mathcal{L}(U_{i})$.
     Then $s_{i} = s\big{|}_{U_{i}} = h_{i}e_{i}$ for some $h_{i}\in \mathcal{O}_{X}(U_{i})$.
     Get $X_{s} \cap U_{i} = D(h_{i}) \subseteq U_{i}$.  
     \par
     (1): Note that $\mathcal{F}\big{|}_{U_{i}} \cong \widetilde{\mathcal{F}(U_{i})}$.
     Since $f\big{|}_{D(h_{i})}$, there exists $n > 0$ such that for all i, $f_{i} = f\big{|}_{U_{i}}$ satisfies that $h_{i}^{n}f_{i} = 0$ in $\mathcal{F}(U_{i})$.
     Thus $(f \otimes s)\big{|}_{U_{i}} = f_{i} \otimes s_{i}^{n} = h_{i}^{n}f_{i} \otimes e_{i}^{n} = 0$.
-    As $U_{i}$ cover X, get $f \otimes s^{n} = 0$.
+    As $U_{i}$ cover $X$, get $f \otimes s^{n} = 0$.
     \par
     (2): Set $g_{i} = g\big{|}_{D(h_{i})}$,
-    Then there exists $m > 0$ such that for all i, there exists $g_{i}'\in \mathcal{F}(U_{i})$ such that $h_{i}^{m}g_{i} = g_{i}'$.
+    Then there exists $m > 0$ such that for all $i$, there exists $g_{i}'\in \mathcal{F}(U_{i})$ such that $h_{i}^{m}g_{i} = g_{i}'$.
     Set $t_{i} = g_{i}' \otimes e_{i}^{m}\in (\mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{m})(U_{i})$.
     Note that $t_{i}$ and $t_{j}$ coincide on $X_{s} \cap U_{i} \cap U_{j}$.
     Thus $(t_{i}\big{|}_{U_{i} \cap U_{j}} - t_{j}\big{|}_{U_{i} \cap U_{j}})\big{|}_{X_{s} \cap U_{i} \cap U_{j}}$.
@@ -3359,7 +3366,7 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
     While $(\mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{m})\big{|}_{U_{i} \cap U_{j}} \otimes_{\mathcal{O}_{U_{i} \cap U_{j}}} (\mathcal{L}\big{|}_{U_{i} \cap U_{j}})^{p} \cong (\mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{m + p})\big{|}_{U_{i} \cap U_{j}}$, 
     get $t_{i} \otimes s_{i}^{p}$ and $t_{j} \otimes s_{j}^{p}$ coincide on $U_{i} \cap U_{j}$.
     Thus we can glue them to obtain $t\in (\mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{m + p})(X)$ such that $t\big{|}_{X_{s}} = g \otimes (s\big{|}_{X_{s}}^{m + s})$.
-    Take $n_{0} = m + p$, done! 
+    Take $n_{0} = m + p$, done!
 \end{proof}
 \begin{definition}
     Let $X$ be a scheme, $\mathcal{F}$ an $\mathcal{O}_{X}$-module.
@@ -3370,13 +3377,13 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
     Note that $\mathcal{F}$ is generated by global sections if and only if $\mathcal{F}$ is a quotient of a free $\mathcal{O}_{X}$-module.
 \end{remark}
 \begin{example}
-    (1)Let $X = \mathbb{P}_{k}^{n}$ be projective k-scheme.
+    (1)Let $X = \mathbb{P}_{k}^{n}$ be projective $k$-scheme.
     Then $\mathcal{O}_{X}(-1)$ is not generated by global sections since there is no global sections at all. \\
     (2)Let $X = \spec A$ be an affine scheme.
-    Then all quasi-coherent sheaves on X are generated by global sections.
+    Then all quasi-coherent sheaves on $X$ are generated by global sections.
 \end{example}
 \begin{definition}
-    Let $A$ be a ring and $X$ be a projective scheme over A with commutative diagram
+    Let $A$ be a ring and $X$ be a projective scheme over $A$ with commutative diagram
     \begin{equation*}
         \begin{tikzcd}
             X \arrow[r, "i"] \arrow[dr] &
@@ -3388,7 +3395,7 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
     For $\mathcal{F}$ an $\mathcal{O}_{X}$-module, also set $\mathcal{F}(m) = \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{O}_{X}(n)$.
 \end{definition}
 \begin{lemma}[\textbf{\emph{Projection Formula for Affine Case}}]
-    Let $f: X \longrightarrow Y$ be an affine morphism, $\mathcal{F}$ a quasi-coherent sheaf on X, $\mathcal{G}$ a quasi-coherent sheaf on Y.
+    Let $f: X \longrightarrow Y$ be an affine morphism, $\mathcal{F}$ a quasi-coherent sheaf on $X$, $\mathcal{G}$ a quasi-coherent sheaf on $Y$.
     Then $f_{\ast}(\mathcal{F} \otimes_{\mathcal{O}_{X}} f^{\ast}\mathcal{G}) \cong f_{\ast}\mathcal{F} \otimes_{\mathcal{O}_{Y}} \mathcal{G}$.
     \label{Lemma 6.4}
 \end{lemma}
@@ -3401,7 +3408,7 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
     As $P \cong Q$, done!
 \end{proof}
 \begin{theorem}[\textbf{\emph{Serre's Theorem}}]
-    Let $A$ be a noetherian ring and $X$ be a projective scheme over A with commutative diagram, 
+    Let $A$ be a noetherian ring and $X$ be a projective scheme over $A$ with commutative diagram, 
     \begin{equation*}
         \begin{tikzcd}
             X \arrow[r, "i"] \arrow[dr] &
@@ -3409,23 +3416,23 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
             & \spec A
         \end{tikzcd}
     \end{equation*}
-    Assume that $\mathcal{F}$ is a coherent sheaf on X.
+    Assume that $\mathcal{F}$ is a coherent sheaf on $X$.
     Then there exists $n_{0} > 0$ such that for all $n \ge n_{0}$, $\mathcal{F}(n)$ is generated by finitely many global sections.
     \label{Theorem 6.3}
 \end{theorem}
 \begin{proof}
-    Since i is a closed immersion, i is finite so that $i_{\ast}\mathcal{F}$ is coherent.
+    Since $i$ is a closed immersion, $i$ is finite so that $i_{\ast}\mathcal{F}$ is coherent.
     By Lemma \ref{Lemma 6.4}, $i_{\ast}(\mathcal{F}(n)) \cong (i_{\ast}\mathcal{F})(n)$.
     Thus global sections of $i_{\ast}(\mathcal{F}(n))$ are equal to global sections of $(i_{\ast}\mathcal{F})(n)$ and stalks of $i_{\ast}(\mathcal{F}(n))$ are equal to stalks of $(i_{\ast}\mathcal{F})(n)$.
-    It suffices to prove Theorem for $X = \mathbb{P}_{A}^{d} = \proj(A[x_{0}, \cdots, x_{d}])$.
+    It suffices to prove for $X = \mathbb{P}_{A}^{d} = \proj(A[x_{0}, \cdots, x_{d}])$.
     \par
-    Cover X by $\{U_{i} = D_{+}(x_{i})\}$.
+    Cover $X$ by $\{U_{i} = D_{+}(x_{i})\}$.
     Each $\mathcal{F}\big{|}_{U_{i}}$ is generated by finitely many sections $g_{ij}\in \mathcal{F}(U_{i})$.
-    By Lemma \ref{Lemma 6.3}, there exists $n_{0} > 0$ such that $g_{ij} \otimes x_{i}^{n}$ extends to a global section for all i,j.
+    By Lemma \ref{Lemma 6.3}, there exists $n_{0} > 0$ such that $g_{ij} \otimes x_{i}^{n}$ extends to a global section for all $i,j$.
     Thus $\mathcal{F}(n)$ is generated by these extensions.
 \end{proof}
 \begin{corollary}
-    Let $A$ be a noetherian ring and $X$ be a projective scheme over A with commutative diagram, 
+    Let $A$ be a noetherian ring and $X$ be a projective scheme over $A$ with commutative diagram, 
     \begin{equation*}
         \begin{tikzcd}
             X \arrow[r, "i"] \arrow[dr] &
@@ -3433,7 +3440,7 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
             & \spec A
         \end{tikzcd}
     \end{equation*}
-    Assume that $\mathcal{F}$ is a coherent sheaf on X.
+    Assume that $\mathcal{F}$ is a coherent sheaf on $X$.
     Then there exists $m\in \mathbb{Z}$ and $r < \infty$ such that $\mathcal{F}$ is a quotient of $\mathcal{O}_{X}(m)^{\oplus r}$.
     \label{Corollary 6.1}
 \end{corollary}
@@ -3443,7 +3450,7 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
     Tensor by $\mathcal{O}_{X}(-n)$, done!
 \end{reason}
 \begin{definition}
-    Let S be a graded ring generated by finitely many elements of $S_{1}$ as $S_{0}$-algebra and $X = \proj(S)$, $\mathcal{F}$ an $\mathcal{O}_{X}$-module.
+    Let $S$ be a graded ring generated by finitely many elements of $S_{1}$ as $S_{0}$-algebra and $X = \proj(S)$, $\mathcal{F}$ an $\mathcal{O}_{X}$-module.
     Define a graded $C$-module $\Gamma_{\ast}(\mathcal{F}) = \oplus_{n\in \mathbb{Z}} \Gamma(X, \mathcal{F}(n))$.
 \end{definition}
 \begin{proposition}
@@ -3462,13 +3469,13 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
     $.
     Let $B = A[x_{0}, \cdots, x_{d}, x_{0}^{-1}, \cdots, x_{d}^{-1}]$.
     Then any global section  of $\mathcal{O}_{X}(n)$ gives an element $f\in B$ which is in $x_{0}^{n}\mathcal{O}_{X}(D_{+}(x_{0}))$ by restriction.
-    Thus f is of the form $\frac{P}{x_{0}^{m}}$ where P is a homogeneous polynomial.
-    But there is also a restriction in $x_{1}^{n}\mathcal{O}_{X}(D_{+}(x_{1}))$, get f is homogeneous polynomial of degree n if $n \ge 0$ and $f = 0$ if $n < 0$.
-    Conversely, such an f is obviously in $\Gamma(X, \mathcal{O}_{X}(n))$.
+    Thus $f$ is of the form $\frac{P}{x_{0}^{m}}$ where $P$ is a homogeneous polynomial.
+    But there is also a restriction in $x_{1}^{n}\mathcal{O}_{X}(D_{+}(x_{1}))$, get $f$ is homogeneous polynomial of degree $n$ if $n \ge 0$ and $f = 0$ if $n < 0$.
+    Conversely, such an $f$ is obviously in $\Gamma(X, \mathcal{O}_{X}(n))$.
 \end{proof}
 \begin{theorem}
-    Let S be a graded ring generated by finitely many elements of $S_{1}$ as $S_{0}$-algebra and $X = \proj(S)$.
-    Then for all quasi-coherent sheaf $\mathcal{F}$ on X, we have $\mathcal{F} \cong \widetilde{\Gamma_{\ast}(\mathcal{F})}$.
+    Let $S$ be a graded ring generated by finitely many elements of $S_{1}$ as $S_{0}$-algebra and $X = \proj(S)$.
+    Then for all quasi-coherent sheaf $\mathcal{F}$ on $X$, we have $\mathcal{F} \cong \widetilde{\Gamma_{\ast}(\mathcal{F})}$.
     \label{Theorem 6.4}
 \end{theorem}
 \begin{proof}
@@ -3487,17 +3494,18 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
 \end{proof}
 \begin{theorem}
     Let $A$ be a ring, $S = A[x_{0}, \cdots, x_{d}]$ with $d > 0$ and $X = \proj(S) = \mathbb{P}_{A}^{d}$.
-    Then any closed subscheme Z of X is of the form $\proj(S/I)$ for uniquely determined homogeneous ideal I.
+    Then any closed subscheme $Z$ of $X$ is of the form $\proj(S/I)$ for uniquely determined homogeneous ideal $I$.
     \label{Theorem 6.5}
 \end{theorem}
 \begin{proof}
     Can assume that $d > 0$ since when $d = 0$, $\proj(X) = D_{+}(x_{0})$ is just the affine case.
-    Take $\mathcal{I}$ to be the ideal sheaf of Z.
+    Take $\mathcal{I}$ to be the ideal sheaf of $Z$.
     Then $\mathcal{I}$ is quasi-coherent
     By Theorem \ref{Theorem 6.4}, $\mathcal{I} = \widetilde{I}$ where $I = \Gamma_{\ast}(\mathcal{I})$.
-    Since I is a homogeneous submodule of $\Gamma_{\ast}(\mathcal{O}_{X})$, by Theorem \ref{Theorem 6.3}, I is a homogeneous ideal of S.
+    Since $I$ is a homogeneous submodule of $\Gamma_{\ast}(\mathcal{O}_{X})$, by Theorem \ref{Theorem 6.3}, $I$ is a homogeneous ideal of $S$.
     Restrict to standard open subsets and by gluing lemma, we get $(Z, \mathcal{O}_{Z}) \cong (Proj(S/I), \mathcal{O}_{Proj(S/I)})$.
 \end{proof}
+
 \subsection{Ample and Very Ample Invertible Sheaves}
 \begin{proposition}
     Let $A$ be a ring, X an A-scheme, $Y = \proj(A[x_{0}, \cdots, x_{d}]) = \mathbb{P}_{A}^{d}$.
@@ -3638,57 +3646,59 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
 \end{remark}
 
 \section{Sheaf Cohomology}
-\label{section:Sheaf Cohomology}
+\label{section:Sheaf_Cohomology}
 
-\subsection{Cohomology Group}
+\subsection{Cohomology group}
+\label{subsection:Sheaf_Cohomology_Cohomology_group}
+
 There are lots of abelian categories in Algebraic Geometry.
 \begin{example}
-    (1)$Ab$ is the category of abelian groups. \\
-    (2)$Mod_{A}$ is the category of $A$-modules. \\
-    (3)$Ab(X)$ is the category of sheaves of abelian groups on a topological space X. \\
-    (4)$Mod(\mathcal{O}_{X})$ is the category of $\mathcal{O}_{X}$-modules on a ringed space $(X, \mathcal{O}_{X})$. \\
-    (5)$Qcoh(X)$ is the category of quasi-coherent sheaves on a scheme X. \\
-    (6)$Coh(X)$ is the category of coherent sheaves on a noetherian scheme X.
+    (1)$\abeliangroups$ is the category of abelian groups. \\
+    (2)$\module_{A}$ is the category of $A$-modules. \\
+    (3)$\abeliangroups (X)$ is the category of sheaves of abelian groups on a topological space $X$. \\
+    (4)$\module (\mathcal{O}_{X})$ is the category of $\mathcal{O}_{X}$-modules on a ringed space $(X, \mathcal{O}_{X})$. \\
+    (5)$\quasicoherent (X)$ is the category of quasi-coherent sheaves on a scheme $X$. \\
+    (6)$\coherent (X)$ is the category of coherent sheaves on a noetherian scheme $X$.
 \end{example}
 There are some special functors in Algebraic Geometry.
 \begin{example}
-    (1)$\hom_{\mathcal{C}}(A, \cdot): \mathcal{C} \longrightarrow Ab$ is left exact covariant functor. \\
-    (2)$\hom_{\mathcal{C}}(\cdot, A): \mathcal{C} \longrightarrow Ab$ is left exact contravariant functor. \\
-    (3)$\Gamma(X, \cdot): Ab(X) \longrightarrow Ab$ is left exact covariant functor. \\
-    (4)$M \otimes_{A} \cdot: Mod_{A} \longrightarrow Mod_{A}$ is right exact covariant functor.
-    In particular, $M \otimes_{A} \cdot$ is exact if and only if M is flat $A$-module. 
+    (1)$\hom_{\mathcal{C}}(A, \cdot): \mathcal{C} \longrightarrow \abeliangroups$ is left exact covariant functor. \\
+    (2)$\hom_{\mathcal{C}}(\cdot, A): \mathcal{C} \longrightarrow \abeliangroups$ is left exact contravariant functor. \\
+    (3)$\Gamma(X, \cdot): \abeliangroups (X) \longrightarrow \abeliangroups$ is left exact covariant functor. \\
+    (4)$M \otimes_{A} \cdot: \module_{A} \longrightarrow \module_{A}$ is right exact covariant functor.
+    In particular, $M \otimes_{A} \cdot$ is exact if and only if $M$ is flat $A$-module. 
 \end{example}
 \begin{definition}
     Let $\mathcal{C}$ be a category with enough injective objects, $\mathcal{F}$ a left exact covariant functor, $J\in \mathcal{C}$.
-    We say that J is acyclic for the functor $\mathcal{F}$ (or say $\mathcal{F}$-acyclic) if $R^{i}\mathcal{F}(J) = 0$ for all $i > 0$.
+    We say that $J$ is acyclic for the functor $\mathcal{F}$ (or say $\mathcal{F}$-acyclic) if $R^{i}\mathcal{F}(J) = 0$ for all $i > 0$.
 \end{definition}
 \begin{proposition}
     Let $\mathcal{C}$ be a category with enough injective objects, $\mathcal{F}$ a left exact covariant functor, $A\in \mathcal{C}$.
-    Assume that there is an $\mathcal{F}$-acyclic resolution $J^{\ast}$ of A i.e. $0 \longrightarrow A \longrightarrow J_{0} \longrightarrow J_{1} \longrightarrow \cdots$ exact with each $J_{i}$ $\mathcal{F}$-acyclic.
+    Assume that there is an $\mathcal{F}$-acyclic resolution $J^{\ast}$ of $A$ i.e. $0 \longrightarrow A \longrightarrow J_{0} \longrightarrow J_{1} \longrightarrow \cdots$ exact with each $J_{i}$ $\mathcal{F}$-acyclic.
     Then $R^{i}\mathcal{F}(A) \cong H^{i}(\mathcal{F}(J^{\ast}))$.
-    \label{Proposition 7.1} 
+    \label{Proposition 7.1}
 \end{proposition}
 \begin{proposition}
     Let $(X, \mathcal{O}_{X})$ be a ringed space.
-    Then $Mod(\mathcal{O}_{X})$ has enough injective objects.
-    In particular, $Ab(X)$ has enough injective objects if viewing X as $(X, \mathbb{Z}_{X})$ ringed space, where $\mathbb{Z}_{X}$ is the constant sheaf.
+    Then $\module (\mathcal{O}_{X})$ has enough injective objects.
+    In particular, $\abeliangroups (X)$ has enough injective objects if viewing X as $(X, \mathbb{Z}_{X})$ ringed space, where $\mathbb{Z}_{X}$ is the constant sheaf.
     \label{Proposition 7.2}
 \end{proposition}
 \begin{proof}
     Let $\mathcal{F}$ be an $\mathcal{O}_{X}$-module.
-    For all $x\in X$, can embed $\mathcal{F}_{x}$ in an injective $\mathcal{O}_{X, x}$-module $I_{x}$ since $Mod_{A}$ has enough injective objects for all ring A.
+    For all $x\in X$, can embed $\mathcal{F}_{x}$ in an injective $\mathcal{O}_{X, x}$-module $I_{x}$ since $\module_{A}$ has enough injective objects for all ring $A$.
     View $I_{x}$ as a sheaf on $\{x\}$.
     Set $\mathcal{I} = \prod_{x\in X} j_{\ast}I_{X}$ where $j: \{x\} \longrightarrow X$ is inclusion.
     For all $\mathcal{G}$ $\mathcal{O}_{X}$-module, we have $\hom_{\mathcal{O}_{X}}(\mathcal{G}, \mathcal{I}) = \prod_{x\in X} \hom_{\mathcal{O}_{X}}(\mathcal{G}, j_{\ast}I_{x}) = \prod_{x\in X} \hom_{\mathcal{O}_{X, x}}(\mathcal{G}_{x}, I_{x})$.
     With $\mathcal{F}_{x} \hookrightarrow I_{x}$, get a monomorphism $\mathcal{F} \longrightarrow \mathcal{I}$ with $\mathcal{I}$ injective.
 \end{proof}
 \begin{definition}[\textbf{\emph{Sheaf Cohomology}}]
-    Let $X$ be a topological space, $\Gamma(X, \cdot): Ab(X) \longrightarrow Ab$.
+    Let $X$ be a topological space, $\Gamma(X, \cdot): \abeliangroups (X) \longrightarrow \abeliangroups$.
     Define the cohomology functor $H^{i}(X, \cdot) = R^{i}\Gamma(X, \cdot)$.
-    For $\mathcal{F}\in Ab(X)$, we call $H^{i}(X, \mathcal{F})$ the ith cohomology group of $\mathcal{F}$.
+    For $\mathcal{F}\in \abeliangroups (X)$, we call $H^{i}(X, \mathcal{F})$ the ith cohomology group of $\mathcal{F}$.
 \end{definition}
 \begin{definition}
-    Let $X$ be a topological space, $\mathcal{F}\in Ab(X)$.
+    Let $X$ be a topological space, $\mathcal{F}\in \abeliangroups (X)$.
     We say that $\mathcal{F}$ is flasque if for all $V \subseteq U$ inclusion of open subsets,
     the restriction map $\mathcal{F}(U) \longrightarrow \mathcal{F}(V)$ is surjective.
 \end{definition}
@@ -3704,6 +3714,7 @@ There are some special functors in Algebraic Geometry.
     Let $(X, \mathcal{O}_{X})$ be a ringed space.
     Then every injective $\mathcal{O}_{X}$-module is flasque.
     \label{Proposition 7.4}
+    \vspace{-\baselineskip} % 减少一行间距
 \end{proposition}
 \begin{proof}
     Consider $U \subseteq X$ is an inclusion of open subsets.
@@ -3716,17 +3727,17 @@ There are some special functors in Algebraic Geometry.
 \end{proof}
 \begin{corollary}
     Let $X$ be a topological space.
-    Then every injective object in $Ab(X)$ is flasque by viewing X as ringed space $(X, \mathbb{Z}_{X})$ where $\mathbb{Z}_{X}$ is the constant sheaf.
+    Then every injective object in $\abeliangroups (X)$ is flasque by viewing $X$ as ringed space $(X, \mathbb{Z}_{X})$ where $\mathbb{Z}_{X}$ is the constant sheaf.
     \label{Corollary 7.1}
 \end{corollary}
 \begin{proposition}
     Let $X$ be a topological space.
-    Then every flasque sheaf on X is acyclic for the functor $\Gamma(X, \cdot)$.
+    Then every flasque sheaf on $X$ is acyclic for the functor $\Gamma(X, \cdot)$.
     \label{Proposition 7.5}
 \end{proposition}
 \begin{proof}
-    Let $\mathcal{F}$ be a flasque sheaf on X.
-    Consider exact sequence $0 \longrightarrow \mathcal{F} \longrightarrow \mathcal{I} \longrightarrow \mathcal{G} \longrightarrow 0$ where $\mathcal{I}$ is an injective object in $Ab(X)$.
+    Let $\mathcal{F}$ be a flasque sheaf on $X$.
+    Consider exact sequence $0 \longrightarrow \mathcal{F} \longrightarrow \mathcal{I} \longrightarrow \mathcal{G} \longrightarrow 0$ where $\mathcal{I}$ is an injective object in $\abeliangroups (X)$.
     By Corollary \ref{Corollary 7.1}, $\mathcal{I}$ is flasque.
     Thus $\mathcal{G}$ is flasque since it is quotient of flasque sheaf by flasque sheaf.
     Take the long exact sequence $0 \longrightarrow \mathcal{F}(X) \longrightarrow \mathcal{I}(X) \longrightarrow \mathcal{G}(X) \longrightarrow H^{1}(X, \mathcal{F}) \longrightarrow H^{1}(X, \mathcal{I}) \longrightarrow \cdots$.
@@ -3736,11 +3747,11 @@ There are some special functors in Algebraic Geometry.
 \end{proof}
 \begin{corollary}
     Let $(X, \mathcal{O}_{X})$ be a ringed space.
-    Then the right derived functor of $\Gamma(X, \cdot): Mod(\mathcal{O}_{X}) \longrightarrow Ab$ coincide with $H^{i}(X, \cdot)$.
+    Then the right derived functor of $\Gamma(X, \cdot): \module (\mathcal{O}_{X}) \longrightarrow \abeliangroups$ coincide with $H^{i}(X, \cdot)$.
     \label{Corollary 7.2}
 \end{corollary}
 \begin{reason}
-    Take injective resolution in $Mod(\mathcal{O}_{X})$.
+    Take injective resolution in $\module (\mathcal{O}_{X})$.
     By Proposition \ref{Proposition 7.4} and Proposition \ref{Proposition 7.5}, it is a $\Gamma(X, \cdot)$-acyclic resolution.
     Thus by Proposition \ref{Proposition 7.1}, the two right derived functors coincide.
 \end{reason}
@@ -3750,37 +3761,41 @@ There are some special functors in Algebraic Geometry.
     \label{Corollary 7.3}
 \end{corollary}
 \begin{reason}
-    Take injective resolution $J^{\ast}$ of $\mathcal{F}$ in $Ab(Y)$.
+    Take injective resolution $J^{\ast}$ of $\mathcal{F}$ in $\abeliangroups (Y)$.
     Then $f_{\ast}J^{\ast}$ is a flasque resolution of $f_{\ast}\mathcal{F}$.
 \end{reason}
 \begin{remark}[\textbf{\emph{Gabber Theorem}}]
     Let $X$ be a scheme.
-    Then $Qcoh(X)$ has enough injective objects.
+    Then $\quasicoherent (X)$ has enough injective objects.
 \end{remark}
 \begin{remark}
     Let $X$ be a scheme.
     Suppose that X is either noetherian or quasi-compact and separated.
-    Then the right derived functor of $\Gamma(X, \cdot): Qcoh(X) \longrightarrow Ab$ coincide with $H^{i}(X), \cdot$.
+    Then the right derived functor of $\Gamma(X, \cdot): \quasicoherent (X) \longrightarrow \abeliangroups$ coincide with $H^{i}(X), \cdot$.
     In fact, this property is equivalent to each injective object is $\Gamma(X, \cdot)$-acyclic.
 \end{remark}
-\begin{theorem}[\textbf{\emph{Grothendieck}}]
+\begin{theorem}[\textbf{\emph{Grothendieck Vanishing}}]
     Let $X$ be a noetherian topological space of dimension $n < \infty$.
-    Then for all $\mathcal{F}\in Ab(X)$, we have that $H^{i}(X, \mathcal{F}) = 0$ for all $i > n$.
+    Then for all $\mathcal{F}\in \abeliangroups (X)$, we have that $H^{i}(X, \mathcal{F}) = 0$ for all $i > n$.
     \label{Theorem 7.1}
 \end{theorem}
-\subsection{Cohomology of Noetherian Affine Schemes}
+
+\subsection{Cohomology of noetherian affine schemes}
+\label{subsection:Sheaf_Cohomology_Cohomology_of_noetherian_affine_schemes}
+
 \begin{theorem}[\textbf{\emph{Artin-Rees}}]
     Let $A$ be a noetherian ring, $M \subseteq N$ finitely generated $A$-modules, $\mathfrak{a} \subseteq A$ ideal.
     Then for all $n > 0$, there exists $m > n$ such that $\mathfrak{a}M \supseteq M \cap a^{m}N$.
+    \vspace{-\baselineskip} % 减少一行间距
     \label{Theorem 7.2}
 \end{theorem}
 \begin{remark}
-    This theorem says that the $\mathfrak{a}$-adci topology of M is compatible with the induced topology of $\mathfrak{a}$-adic topology of N on M. 
+    This theorem says that the $\mathfrak{a}$-adic topology of M is compatible with the induced topology of $\mathfrak{a}$-adic topology of $N$ on $M$. 
 \end{remark}
 \begin{lemma}
-    Let $A$ be a noetherian ring, I an injective $A$-module, $\mathfrak{a} \subseteq A$ ideal.
-    Assume $J \subseteq I$ is the A-submodule consist of $x\in I$ such that $\mathfrak{a}^{n}x= 0$ for some $n > 0$.
-    Then J is injective.
+    Let $A$ be a noetherian ring, $I$ an injective $A$-module, $\mathfrak{a} \subseteq A$ ideal.
+    Assume $J \subseteq I$ is the $A$-submodule consist of $x\in I$ such that $\mathfrak{a}^{n}x= 0$ for some $n > 0$.
+    Then $J$ is injective.
     \label{Lemma 7.1}
 \end{lemma}
 \begin{proof}
@@ -3794,39 +3809,39 @@ There are some special functors in Algebraic Geometry.
         \end{tikzcd}
     \end{equation*}
     \par
-    Since A is noetherian, B is finitely generated.
+    Since $A$ is noetherian, $B$ is finitely generated.
     Thus there exists $n > 0$ such that $\mathfrak{a}^{n}\varphi(\mathfrak{b}) = 0$.
     By Artin-Rees, there exists $m > n$ such that $\mathfrak{a}^{n}\mathfrak{b} \supseteq \mathfrak{b} \cap \mathfrak{a}^{m}$.
     Thus $\varphi(\mathfrak{b} \cap \mathfrak{a}^{m}) = 0$ so that $\varphi$ factors through $\mathfrak{b}/(\mathfrak{b} \cap \mathfrak{a}^{m})$.
     Consider $\varphi_{I}: \mathfrak{b}/(\mathfrak{b} \cap \mathfrak{a}^{m}) \longrightarrow J \hookrightarrow I$.
-    As I is injective, $\varphi_{I}$ extends to $\psi_{I}: A/\mathfrak{a}^{m} \longrightarrow I$.
+    As $I$ is injective, $\varphi_{I}$ extends to $\psi_{I}: A/\mathfrak{a}^{m} \longrightarrow I$.
     Note that $im(\psi_{I}) \subseteq J$ since $\mathfrak{a}^{m}im(\psi{I}) = 0$, get $\psi$. 
 \end{proof}
 \begin{lemma}
-    Let $A$ be a noetherian ring, I an injective $A$-module.
+    Let $A$ be a noetherian ring, $I$ an injective $A$-module.
     Then for all $f\in A$, the localization $\theta: I \longrightarrow I_{f}$ is surjective.
     \label{Lemma 7.2}
 \end{lemma}
 \begin{proof}
     For all $i > 0$, set $\mathfrak{b}_{i} = \annihilator_{A}(f^{i})$.
     Get an increasing sequence of ideals $\mathfrak{b}_{1} \subseteq \mathfrak{b}_{2} \subseteq \cdots$.
-    As A is noetherian, $\{\mathfrak{b}_{i}\}$ stabilize from $\mathfrak{b}_{r}$ for some $r < \infty$.
+    As $A$ is noetherian, $\{\mathfrak{b}_{i}\}$ stabilize from $\mathfrak{b}_{r}$ for some $r < \infty$.
     For $x\in I_{f}$, we can write $x = \frac{\theta(y)}{f^{n}}$ where $y\in I$ and $n > 0$.
     There is a canonical homomorphism $\varphi: (f^{n + r}) \longrightarrow I\quad f^{n + r} \longmapsto f^{r}y$.
     Easy to check that $\varphi$ is well defined.
-    Since I is injective, $\varphi$ extends to $\psi: A \longrightarrow I$.
+    Since $I$ is injective, $\varphi$ extends to $\psi: A \longrightarrow I$.
     Set $z = \psi(1)$, then $f^{n + r}z = f^{r}y$.
     Thus $\theta(z) = \frac{z}{1} = \frac{f^{n + r}z}{f^{n + r}} = \frac{f^{r}y}{f^{n + r}} = \frac{\theta(y)}{f^{n}} = x$ so that $\theta$ is surjective.
 \end{proof}
 \begin{proposition}
-    Let $A$ be a noetherian ring, I an injective $A$-module.
+    Let $A$ be a noetherian ring, $I$ an injective $A$-module.
     Then $\widetilde{I}$ is flasque on $X = \spec A$.
     \label{Proposition 7.6}
 \end{proposition}
 \begin{proof}
     Set $Y = Supp(\widetilde{I}) = \{x\in X \big{|} \widetilde{I}_{x} \neq 0\} \subseteq X$ closed.
     If $Y = \varnothing$, then $\widetilde{I}$ is flasque.
-    If $Y \neq \varnothing$, since A is noetherian, we can assume for all injective $A$-module J with support $Supp(\widetilde{J}) \subsetneq Y$, $\widetilde{J}$ is flasque.
+    If $Y \neq \varnothing$, since $A$ is noetherian, we can assume for all injective $A$-module $J$ with support $\support (\widetilde{J}) \subsetneq Y$, $\widetilde{J}$ is flasque.
     Want to show $\widetilde{I}(X) \longrightarrow \widetilde{I}(U)$ is surjective for all open subset $U \subseteq X$.
     \par
     If $Y \cap U = \varnothing$, then $\widetilde{I}(U) = 0$, done!
@@ -3834,23 +3849,23 @@ There are some special functors in Algebraic Geometry.
     Set $Z = X \setminus D(f)$.
     Let $s\in \widetilde{I}(U)$, then $s\big{|}_{D(f)} \subseteq \widetilde{I}(D(f)) = I_{f}$.
     By Lemma \ref{Lemma 7.2}, we can lift $s\big{|}_{D(f)}$ to $t\in \widetilde{I}(X) = I$.
-    Thus $(s - t\big{|}_{U})\big{|}_{D(f)} = 0$ so that $(s - t\big{|}_{U})\in \Gamma_{Z \cap U}(U, \widetilde{I}\big{|}_{U})$ i.e. support of it is in Z.
+    Thus $(s - t\big{|}_{U})\big{|}_{D(f)} = 0$ so that $(s - t\big{|}_{U})\in \Gamma_{Z \cap U}(U, \widetilde{I}\big{|}_{U})$ i.e. support of it is in $Z$.
     Remains to show $\Gamma_{Z}(X, \widetilde{I}) \longrightarrow \Gamma_{Z \cap U}(U, \widetilde{I}\big{|}_{U})$.
     \par
     Note that $J = \Gamma_{Z}(X, \widetilde{I})$ is exactly the submodule consist of $x\in I$ such that $f^{n}x = 0$ for some $n > 0$.
-    By Lemma \ref{Lemma 7.1}, J is injective $A$-module with $Supp(\widetilde{J}) \subsetneq Y$.
+    By Lemma \ref{Lemma 7.1}, $J$ is injective $A$-module with $Supp(\widetilde{J}) \subsetneq Y$.
     By induction hypothesis, $\widetilde{J}$ is flasque.
     Thus $\widetilde{J}(X) \longrightarrow \widetilde{J}(U)$ is surjective.
     While $\widetilde{J}(X) = \Gamma_{Z}(X, \widetilde{I})$ and $\widetilde{J}(U) = \Gamma_{Z \cap U}(U, \widetilde{I}\big{|}_{U})$, done!
 \end{proof}
-\begin{theorem}[\textbf{\emph{Serre}}]
+\begin{theorem}[\textbf{\emph{Serre Vanishing}}]
     Let $A$ be a noetherian ring and $X = \spec A$.
-    Then for all $\mathcal{F}$ quasi-coherent sheaf in X, we have that $H^{i}(X, \mathcal{F}) = 0$ for all $i > 0$.
+    Then for all $\mathcal{F}$ quasi-coherent sheaf in $X$, we have that $H^{i}(X, \mathcal{F}) = 0$ for all $i > 0$.
     \label{Theorem 7.3}
 \end{theorem}
 \begin{proof}
     For $\mathcal{F}$ quasi-coherent, set $M = \mathcal{F}(X)$.
-    Take injective resolution $I^{\ast}$ of M in $Mod_{A}$.
+    Take injective resolution $I^{\ast}$ of $M$ in $Mod_{A}$.
     Thus $0 \longrightarrow \mathcal{F} \longrightarrow \widetilde{I^{0}} \longrightarrow \cdots$ is exact, which is a $\Gamma(X, \cdot)$-acyclic resolution by Proposition \ref{Proposition 7.6}.
     As $\widetilde{I^{i}}$ is $\Gamma(X, \cdot)$-acyclic, can apply $\Gamma(X, \cdot)$ to calculate $H^{i}(X, \mathcal{F})$.
     But $\Gamma(X, \cdot)$ gives back to $0 \longrightarrow M \longrightarrow I^{0} \longrightarrow \cdots$ exact, get $H^{i}(X, \mathcal{F}) = 0$ for all $i > 0$. 
@@ -3860,7 +3875,7 @@ There are some special functors in Algebraic Geometry.
     Then for all exact sequence $0 \longrightarrow \mathcal{F} \longrightarrow \mathcal{G} \longrightarrow \mathcal{H} \longrightarrow 0$ of $\mathcal{O}_{X}$-module with $\mathcal{F}$ quasi-coherent,
     we have that $0 \longrightarrow \mathcal{F}(X) \longrightarrow \mathcal{G}(X) \longrightarrow \mathcal{H}(X) \longrightarrow 0$ is exact.
     \label{Corollary 7.4}
-\end{corollary}\
+\end{corollary}
 \begin{corollary}
     Let $X$ be a noetherian scheme.
     Suppose that $0 \longrightarrow \mathcal{F} \longrightarrow \mathcal{G} \longrightarrow \mathcal{H} \longrightarrow 0$ is an exact sequence of $\mathcal{O}_{X}$-module.
@@ -3892,16 +3907,17 @@ There are some special functors in Algebraic Geometry.
 \begin{lemma}
     Let $X$ be a noetherian scheme.
     Assume that $H^{1}(X, \mathcal{I}) = 0$ for all $\mathcal{I}$ coherent ideal sheaf.
-    Then we can cover X by affine open subsets of the form $X_{f}$ for $f\in A = \Gamma(X, \mathcal{O}_{X})$.
+    Then we can cover $X$ by affine open subsets of the form $X_{f}$ for $f\in A = \Gamma(X, \mathcal{O}_{X})$.
+    \vspace{-\baselineskip} % 减少一行间距
     \label{Lemma 7.3}
 \end{lemma}
 \begin{proof}
     Suffice to show that every closed point $x\in X$ admits an affine open neighbourhood $X_{f}$.
-    For $x\in X$ closed point, choose affine open neighbourhood U of x and set $Y = X \setminus U$.
+    For $x\in X$ closed point, choose affine open neighbourhood $U$ of $x$ and set $Y = X \setminus U$.
     Get $0 \longrightarrow \mathcal{I}_{Y \cup \{x\}} \longrightarrow \mathcal{I}_{Y} \longrightarrow i_{\ast}\mathcal{O}_{\{x\}} \longrightarrow 0$  is exact with reduced scheme structures on each set,
     where $i: \{x\} \longrightarrow X$ is inclusion.
     By assumption, $\Gamma(X, \mathcal{I}_{Y}) \longrightarrow \Gamma(X, i_{\ast}\mathcal{O}_{\{x\}})$ is surjective.
-    Take $f\in \Gamma(X, \mathcal{I}_{Y})$ such that f is mapped to 1.
+    Take $f\in \Gamma(X, \mathcal{I}_{Y})$ such that $f$ is mapped to $1$.
     Then $x\in X_{f}$.
     On the other hand, $X_{f} \subseteq U$, get $X_{f}$ is affine.
 \end{proof}
@@ -3918,7 +3934,7 @@ There are some special functors in Algebraic Geometry.
 \begin{theorem}[\textbf{\emph{Serre, Cohomology Criterion of Affineness}}]
     Let $X$ be a noetherian scheme.
     Then the following conditions are equivalent: \\
-    (1)X is affine \\
+    (1)$X$ is affine \\
     (2)$H^{i}(X, \mathcal{F}) = 0$ for all $i > 0$ and $\mathcal{F}$ quasi-coherent. \\
     (3)$H^{1}(X, \mathcal{I}) = 0$ for all $\mathcal{I}$ coherent ideal sheaf.
     \label{Theorem 7.4}
@@ -3929,9 +3945,12 @@ There are some special functors in Algebraic Geometry.
 \begin{remark}
     In fact, noetherian condition is not necessary.
 \end{remark}
-\subsection{Čech Cohomology}
+
+\subsection{Čech cohomology}
+\label{subsection:Sheaf_Cohomology_Čech_cohomology}
+
 \begin{definition}
-    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of X with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on X.
+    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of $X$ with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on $X$.
     For $i_{0}, \cdots, i_{p}\in I$, set $U_{i_{0}, \cdots, i_{p}} = U_{i_{0}} \cap \cdots \cap U_{i_{p}}$.
     Define complex $C^{\ast}(\mathcal{I}, \mathcal{F})$ to be 
     \begin{equation*}
@@ -3946,10 +3965,10 @@ There are some special functors in Algebraic Geometry.
     \end{equation*}
 \end{definition}
 \begin{remark}
-    If we don't assume that I is well-ordered, we need to set $U_{i_{0}, \cdots, i_{p}} = 0$ if there are repeated index and $\alpha_{i_{0}, \cdots, i_{p}} = (-1)^{sgn(\sigma)}\alpha_{i_{\sigma(0)}, \cdots, i_{\sigma(p)}}$.
+    If we don't assume that $I$ is well-ordered, we need to set $U_{i_{0}, \cdots, i_{p}} = 0$ if there are repeated index and $\alpha_{i_{0}, \cdots, i_{p}} = (-1)^{sgn(\sigma)}\alpha_{i_{\sigma(0)}, \cdots, i_{\sigma(p)}}$.
 \end{remark}
 \begin{definition}
-    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of X with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on X.
+    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of $X$ with well-ordered index set $I$, $\mathcal{F}$ sheaf of abelian groups on $X$.
     Define $\check{H}^{p}(\mathcal{U}, \mathcal{F}) = h^{p}(C^{\ast}(\mathcal{U}, \mathcal{F}))$, called the pth Čech cohomology of $\mathcal{F}$ with respect to $\mathcal{U}$.
 \end{definition}
 \begin{example}
@@ -3957,8 +3976,8 @@ There are some special functors in Algebraic Geometry.
     (2)For $\mathcal{U} = \{X\}$, $\check{H}^{p}(\mathcal{U}, \mathcal{F}) = 0$ for all $p > 0$.
 \end{example}
 \begin{lemma}
-    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of X with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on X.
-    Suppose that $\mathcal{U}$ contains $U_{i} = X$ for some i.
+    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of $X$ with well-ordered index set $I$, $\mathcal{F}$ sheaf of abelian groups on $X$.
+    Suppose that $\mathcal{U}$ contains $U_{i} = X$ for some $i$.
     Then $0 \longrightarrow \mathcal{F}(X) \longrightarrow C^{\ast}(\mathcal{U}, \mathcal{F})$ is exact.
     \label{Lemma 7.5}
 \end{lemma}
@@ -3969,10 +3988,13 @@ There are some special functors in Algebraic Geometry.
     Check that $d^{p - 1} \circ k^{p} + k^{p + 1} \circ d^{p} = \identity_{C^{\ast}(\mathcal{U}, \mathcal{F})}$.
     Thus identity is homotopic to zero map, which inducing $\check{H}^{p}(\mathcal{U}, \mathcal{F}) = 0$ for all $p > 0$.. 
 \end{proof}
+
 \subsection{Comparison Theorem}
+\label{subsection:Sheaf_Cohomology_Comparison_Theorem}
+
 \begin{definition}
-    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of X with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on X.
-    Define a complex of sheaves on $X$, denoted by $\mathcal{C}^{\ast}(\mathcal{U}, \mathcal{F})$, as followingiwollof
+    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of $X$ with well-ordered index set $I$, $\mathcal{F}$ sheaf of abelian groups on $X$.
+    Define a complex of sheaves on $X$, denoted by $\mathcal{C}^{\ast}(\mathcal{U}, \mathcal{F})$, as following
     \begin{equation*}
         \mathcal{C}^{p}(\mathcal{U}, \mathcal{F}) = \prod_{i_{0}, \cdots, i_{p}} f_{\ast}(\mathcal{F}\big{|}_{U_{i_{0}, \cdots, i_{p}}})
     \end{equation*}
@@ -3986,30 +4008,33 @@ There are some special functors in Algebraic Geometry.
     Obviously, $\Gamma(X, \mathcal{C}^{p}(\mathcal{U}, \mathcal{F})) = C^{p}(\mathcal{U}, \mathcal{F})$.
 \end{remark}
 \begin{proposition}
-    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of X with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on X.
+    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of $X$ with well-ordered index set $I$, $\mathcal{F}$ sheaf of abelian groups on $X$.
     Then $0 \longrightarrow \mathcal{F} \longrightarrow \mathcal{C}^{\ast}(\mathcal{U}, \mathcal{F})$ is exact.
+    \vspace{-\baselineskip} % 减少一行间距
     \label{Proposition 7.7}
 \end{proposition}
 \begin{reason}
     Since exactness of complex of sheaves is equivalent to exactness at all stalks.
-    Set $x\in X$, we can represent elements in stalks by sections on V, which is small enough to be contained in $U_{j}$ for some j.
-    Apply Lemma \ref{Lemma 7.5}, get exactness of complex of sections on V.
+    Set $x\in X$, we can represent elements in stalks by sections on $V$, which is small enough to be contained in $U_{j}$ for some $j$.
+    Apply Lemma \ref{Lemma 7.5}, get exactness of complex of sections on $V$.
 \end{reason}
 \begin{proposition}
-    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of X with well-ordered index set I, $\mathcal{F}$ flasque sheaf of abelian groups on X.
+    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of $X$ with well-ordered index set $I$, $\mathcal{F}$ flasque sheaf of abelian groups on $X$.
     Then $\check{H}^{p}(\mathcal{U}, \mathcal{F}) = 0$ for all $p > 0$.
+    \vspace{-\baselineskip} % 减少一行间距
     \label{Proposition 7.8}
 \end{proposition}
 \begin{proof}
-    Since flasque is stable under restriction to open subset, direct limit and product, $\mathcal{C}^{p}(\mathcal{U}, \mathcal{F})$ is flasque for all p.
+    Since flasque is stable under restriction to open subset, direct limit and product, $\mathcal{C}^{p}(\mathcal{U}, \mathcal{F})$ is flasque for all $p$.
     Thus $\mathcal{C}^{\ast}(\mathcal{U}, \mathcal{F})$ is a flasque resolution of $\mathcal{F}$.
     By Proposition \ref{Proposition 7.5} and Proposition \ref{Proposition 7.1}, get
     \begin{equation*}
         \check{H}^{p}(\mathcal{U}, \mathcal{F}) = h^{p}(\Gamma(X, \mathcal{C}^{\ast}(\mathcal{U}, \mathcal{F}))) = H^{p}(X, \mathcal{F}) = 0
     \end{equation*}
+    hence we are done!
 \end{proof}
 \begin{lemma}
-    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of X with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on X.
+    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of $X$ with well-ordered index set $I$, $\mathcal{F}$ sheaf of abelian groups on $X$.
     Then for all $p \ge 0$, there is a natural homomorphism $\check{H}^{p}(\mathcal{U}, \mathcal{F}) \longrightarrow H^{p}(X, \mathcal{F})$.
     \label{Lemma 7.6}
 \end{lemma}
@@ -4019,8 +4044,8 @@ There are some special functors in Algebraic Geometry.
     inducing the natural homomorphisms we want.
 \end{proof}
 \begin{theorem}[\textbf{\emph{Comparison Theorem}}]
-    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of X with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on X.
-    Suppose that for all p and all $i_{0}, \cdots, i_{p}$, we have that $H^{q}(U_{i_{0}, \cdots, i_{p}}, \mathcal{F}\big{|}_{U_{i_{0}, \cdots, i_{p}}}) = 0$ for all $q > 0$.
+    Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of $X$ with well-ordered index set $I$, $\mathcal{F}$ sheaf of abelian groups on $X$.
+    Suppose that for all $p$ and all $i_{0}, \cdots, i_{p}$, we have that $H^{q}(U_{i_{0}, \cdots, i_{p}}, \mathcal{F}\big{|}_{U_{i_{0}, \cdots, i_{p}}}) = 0$ for all $q > 0$.
     Then the natural homomorphism $\check{H}^{r}(\mathcal{U}, \mathcal{F}) \longrightarrow H^{r}(X, \mathcal{F})$ is isomorphic for all $r \ge 0$.
     \label{Theorem 7.5}
 \end{theorem}
@@ -4138,8 +4163,8 @@ There are some special functors in Algebraic Geometry.
     Here our modifying assumption is in fact same as the proof of injectivity of a split exact sequence consists of injective objects.
 \end{remark}
 \begin{corollary}
-    Let $X$ be a (noetherian) separated scheme, $\mathcal{U}$ affine open covering of X, $\mathcal{F}$ quasi-coherent sheaf on X.
-    Then the natural homomorphism $\check{H}^{p}(\mathcal{U}, \mathcal{F}) \longrightarrow H^{p}(X, \mathcal{F})$ is isomorphic for all p.
+    Let $X$ be a (noetherian) separated scheme, $\mathcal{U}$ affine open covering of $X$, $\mathcal{F}$ quasi-coherent sheaf on $X$.
+    Then the natural homomorphism $\check{H}^{p}(\mathcal{U}, \mathcal{F}) \longrightarrow H^{p}(X, \mathcal{F})$ is isomorphic for all $p$.
     \label{Corollary 7.6}
 \end{corollary}
 \begin{remark}
@@ -4147,17 +4172,19 @@ There are some special functors in Algebraic Geometry.
 \end{remark}
 \begin{corollary}
     Let $X$ be a (noetherian) separated scheme covered by $r + 1$ affine open subsets.
-    Then for all $\mathcal{F}$ quasi-coherent on X, we have that $H^{i}(X, \mathcal{F}) = 0$ for all $i > r$.
+    Then for all $\mathcal{F}$ quasi-coherent on $X$, we have that $H^{i}(X, \mathcal{F}) = 0$ for all $i > r$.
     In particular, when $r = 0$, this specializes to Serre Vanishing Theorem.
     \label{Corollary 7.7}
 \end{corollary}
-\subsection{Cohomology of Projective Space}
-\label{subsection:Cohomology of Projective Space}
+
+\subsection{Cohomology of projective space}
+\label{subsection:Sheaf_Cohomology_Cohomology_of_projective_space}
+
 \begin{theorem}
     Let $A$ be a noetherian ring, $S= A[x_{0}, \cdots, x_{r}]$, $X = \proj(S) = \mathbb{P}_{A}^{r}$, $r \ge 1$.
     Then we have that \\ 
     (1)$H^{i}(X, \mathcal{O}_{X}(n)) = 0$ for all $0 < i < r$ and all $n\in \mathbb{Z}$ \\
-    (2)$H^{r}(X, \mathcal{O}_{X}(-r - 1)) \cong A$ is free $A$-module of rank 1 \\
+    (2)$H^{r}(X, \mathcal{O}_{X}(-r - 1)) \cong A$ is free $A$-module of rank $1$ \\
     (3)the natural pairing $H^{0}(X, \mathcal{O}_{X}(n)) \times H^{r}(X, \mathcal{O}_{X}(-n - r - 1)) \longrightarrow H^{r}(X, \mathcal{O}_{X}(-r - 1))$ is a perfect pairing of finite free $A$-modules for all $n\in \mathbb{Z}$.
     \label{Theorem 7.6}
 \end{theorem}
@@ -4177,8 +4204,8 @@ There are some special functors in Algebraic Geometry.
     Consider $\mathcal{F} = \oplus_{n\in \mathbb{Z}} \mathcal{O}_{X}(n)$ quasi-coherent.
     Since cohomology commutes with direct sum, $H^{i}(X, \mathcal{F}) = \oplus_{n\in \mathbb{Z}} H^{i}(X, \mathcal{F})$.
     In particular, $H^{0}(X, \mathcal{F}) = \Gamma_{\ast}(\mathcal{O_{X}}) \cong S$.
-    Note that X is noetherian, separated and covered by $r + 1$ affine open subsets.
-    By Corollary \ref{Corollary 7.7}, get $\check{H}^{p}(\mathcal{U}, \mathcal{F}) \cong H^{p}(X, \mathcal{F})$ for all p.
+    Note that $X$ is noetherian, separated and covered by $r + 1$ affine open subsets.
+    By Corollary \ref{Corollary 7.7}, get $\check{H}^{p}(\mathcal{U}, \mathcal{F}) \cong H^{p}(X, \mathcal{F})$ for all $p$.
     \par
     For all $i_{0}, \cdots, i_{p}$, note that $U_{i_{0}, \cdots, i_{p}} = D_{+}(x_{i_{0}}, \cdots, x_{i_{p}})$.
     Get $\mathcal{F}(U_{i_{0}, \cdots, i_{p}}) \cong S_{x_{i_{0}}, \cdots, x_{i_{p}}}$. 
@@ -4201,7 +4228,7 @@ There are some special functors in Algebraic Geometry.
     here that $x_{i}^{m_{i} + l_{i}} = 0$ if $m_{i} + l_{i} \ge 0$.
     Then it is a perfect pairing since it is easy to see that dual basis of $x_{0}^{m_{0}}\cdots x_{r}^{m_{r}}$ is $x_{0}^{-m_{0} - 1}\cdots x_{r}^{-m_{r} - 1}$.
     \par
-    For (1), take induction on r.
+    For (1), take induction on $r$.
     When $r = 1$, there is nothing to prove.
     Suppose that $r \ge 2$.
     Consider localization of $C^{\ast}(\mathcal{U}, \mathcal{F})$ with respect to $x_{r}$.
@@ -4221,7 +4248,7 @@ There are some special functors in Algebraic Geometry.
     \begin{equation*}
         0 \longrightarrow \mathcal{O}_{X}(-1) \overset{x_{r}}{\longrightarrow} \mathcal{O}_{X} \longrightarrow j_{\ast}\mathcal{O}_{H} \longrightarrow 0
     \end{equation*}
-    where H is the hyperplane given by $x_{r} = 0$ and $j: H \hookrightarrow X$ is closed immersion. 
+    where $H$ is the hyperplane given by $x_{r} = 0$ and $j: H \hookrightarrow X$ is closed immersion. 
     Take direct sum, get exact sequence
     \begin{equation*}
         0 \longrightarrow \mathcal{F}(-1) \overset{x_{r}}{\longrightarrow} \mathcal{F} \longrightarrow \mathcal{F}_{H} \longrightarrow 0
@@ -4231,14 +4258,14 @@ There are some special functors in Algebraic Geometry.
     \begin{equation*}
         \cdots \longrightarrow H^{i - 1}(X, \mathcal{F}_{H}) \longrightarrow H^{i}(X, \mathcal{F}(-1)) \overset{x_{r}}{\longrightarrow} H^{i}(X, \mathcal{F}) \longrightarrow H^{i}(X, \mathcal{F})_{H} \longrightarrow \cdots
     \end{equation*}
-    Now $H \cong \mathbf{P}^{r - 1}_{A}$ and since j is closed immersion, $H^{i}(X, \mathcal{F}_{H}) = H^{i}(H, \oplus_{n\in \mathbb{Z}} O_{H}(n))$.
+    Now $H \cong \mathbf{P}^{r - 1}_{A}$ and since $j$ is closed immersion, $H^{i}(X, \mathcal{F}_{H}) = H^{i}(H, \oplus_{n\in \mathbb{Z}} O_{H}(n))$.
     By induction hypothesis, $H^{i}(X, \mathcal{F}_{H}) = 0$ for all $0 < i < r - 1$.
     Thus $x_{r}$ is injective on $H^{i}(X, \mathcal{F}(-1))$ for all $1 < i < r$.
     When $i = 1$, find that $H^{0}(X, \mathcal{F}) = S \longrightarrow H^{0}(X, \mathcal{F}_{H}) = S/(x_{r})$ is surjective.
     Get $x_{r}$ is injective on $H^{i}(X, \mathcal{F}(-1))$ for all $0 < i < r$, done!
 \end{proof}
 \begin{theorem}[\textbf{\emph{Serre}}]
-    Let $A$ be a noetherian ring, $X$ projective scheme over $A$, $\mathcal{F}$ coherent sheaf on X.
+    Let $A$ be a noetherian ring, $X$ projective scheme over $A$, $\mathcal{F}$ coherent sheaf on $X$.
     Then \\
     (1)for all $i \ge 0$, $H^{i}(X, \mathcal{F})$ is a finite $A$-module. \\
     (2)for $j: X \hookrightarrow \mathbb{P}_{A}^{r}$ closed immersion, there exists integer $n_{0}$ relative to $\mathcal{F}$ such that $H^{i}(X, \mathcal{F}(n)) = 0$ for all $i > 0$ and $n \ge n_{0}$.
@@ -4246,7 +4273,7 @@ There are some special functors in Algebraic Geometry.
 \end{theorem}
 \begin{proof}
     Since $j$ is finite, $j_{\ast}(\mathcal{F})$ is coherent on $\mathbb{P}_{A}^{r}$ and by Projection Formula, $j_{\ast}(\mathcal{F}(n)) = (j_{\ast}(\mathcal{F}))(n)$.
-    What's more, since j is closed immersion, $H^{i}(X, \mathcal{F}) = H^{i}(\mathbb{P}_{A}^{r}, j_{\ast}(\mathcal{F}))$.
+    What's more, since $j$ is closed immersion, $H^{i}(X, \mathcal{F}) = H^{i}(\mathbb{P}_{A}^{r}, j_{\ast}(\mathcal{F}))$.
     Thus we can reduce this problem to $X = \mathbb{P}_{A}^{r}$.
     For $\mathcal{F} = \mathcal{O}_{X}(m)$, this is just things told by \ref{Theorem 7.6}.
     Also, for general $\mathcal{F}$, as $\mathbb{P}_{A}^{r}$ can be covered by $r + 1$ affine open subsets, 
@@ -4266,7 +4293,7 @@ There are some special functors in Algebraic Geometry.
     As $A$ is noetherian, $H^{i}(X, \mathcal{F})$ is also finite.
     \par
     For (2), by above discuss, we only need to check for $0 < i \le r$.
-    Induct on i, assume for $i + 1$ and all coherent sheaf $\mathcal{F}$,
+    Induct on $i$, assume for $i + 1$ and all coherent sheaf $\mathcal{F}$,
     there exists $n_{i + 1}(\mathcal{F})$ such that $H^{i + 1}(X, \mathcal{F}(n)) = 0$ for all $n \ge n_{i + 1}(\mathcal{F})$.
     Take same short exact sequence.
     Tensor the short exact sequence by $\mathcal{O}_{X}(n)$.
@@ -4305,8 +4332,8 @@ There are some special functors in Algebraic Geometry.
     Get $L = k$.
 \end{reason}
 \begin{corollary}
-    Let $A$ be a noetherian ring, $X$ proper over $\spec A$, $\mathcal{L}$ ample invertible sheaf on X.
-    Then for all $\mathcal{F}$ coherent sheaf on X, there exists $n_{0}$ relative to $\mathcal{F}$ such that $H^{i}(X, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n}) = 0$ for all $i > 0$ and $n \ge n_{0}$. 
+    Let $A$ be a noetherian ring, $X$ proper over $\spec A$, $\mathcal{L}$ ample invertible sheaf on $X$.
+    Then for all $\mathcal{F}$ coherent sheaf on $X$, there exists $n_{0}$ relative to $\mathcal{F}$ such that $H^{i}(X, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n}) = 0$ for all $i > 0$ and $n \ge n_{0}$. 
     \label{Corollary 7.10}
 \end{corollary}
 \begin{reason}
@@ -4315,13 +4342,14 @@ There are some special functors in Algebraic Geometry.
     Apply Theorem \ref{Theorem 7.7} to $\mathcal{F}, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}, \cdots, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{m - 1}$.
 \end{reason}
 \begin{theorem}[\textbf{\emph{Serre Cohomological Criteria for Ampleness}}]
-    Let $A$ be a noetherian ring, $X$ proper over $\spec A$, $\mathcal{L}$ invertible sheaf on X.
+    Let $A$ be a noetherian ring, $X$ proper over $\spec A$, $\mathcal{L}$ invertible sheaf on $X$.
     Then the following conditions are equivalent \\
     (1)$\mathcal{L}$ is ample \\
-    (2)for all $\mathcal{F}$ coherent sheaf on X, 
+    (2)for all $\mathcal{F}$ coherent sheaf on $X$, 
     there exists $n_{0}$ relative to $\mathcal{F}$ such that $H^{i}(X, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n}) = 0$ for all $i > 0$ and $n \ge n_{0}$. \\
-    (3)for all $\mathcal{F}$ coherent sheaf on X, 
+    (3)for all $\mathcal{F}$ coherent sheaf on $X$, 
     there exists $n_{0}$ relative to $\mathcal{F}$ such that $H^{1}(X, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n}) = 0$.
+    \vspace{-\baselineskip} % 减少一行间距
     \label{Theorem 7.8}
 \end{theorem}
 \begin{proof}
@@ -4380,8 +4408,9 @@ There are some special functors in Algebraic Geometry.
 \end{proof}
 \begin{remark}
     In fact, all finiteness results still hold for $X$ proper over $A$.
-    Prooves can be seen in EGA or Stacks Project.
+    Proofs can be seen in EGA or Stacks Project.
 \end{remark}
+
 \subsection{Higher Direct Images}
 \begin{definition}
     Let $f: X \longrightarrow Y$ be a morphism of schemes (can be replaced by topological spaces or ringed space).
@@ -6274,7 +6303,7 @@ Want to know what is the Serre duality for general $X$ projective scheme over $k
     \par
     Version (2-): $\omega_{X}^{o}$ in version (1) also satisfies that for all locally free sheaf $\mathcal{E}$ of finite rank on $X$ and $i \ge 0$,
     there exists isomorphism $H^{i}(X, \mathcal{E}^{\lor} \otimes_{\mathcal{O}_{X}} \omega_{X}^{o}) \cong H^{n - i}(X, \mathcal{E})^{\lor}$ functorial in $\mathcal{E}$.
-    This is what used in the proof of Riemann-ROch Theorem for curves.
+    This is what used in the proof of Riemann-Roch Theorem for curves.
     \par
     Version (2+): $\omega_{X}^{o}$ in version (1) also satisfies that for all coherent sheaf $\mathcal{F}$, locally free sheaf $\mathcal{E}$ of finite rank on $X$ and $i \ge 0$,
     there exists isomorphism 
