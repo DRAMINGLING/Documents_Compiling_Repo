@@ -170,9 +170,9 @@ Recall the definition of sheaves.
 \end{definition}
 \begin{remark}
     The two conditions in fact give a exact sequence for each open subset $U$ with open covering $\{U_{i}\}_{i\in I}$.
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \mathcal{F}(U) \longrightarrow \prod_{i\in I} \mathcal{F}(U_{i}) \longrightarrow \prod_{i,j\in I} \mathcal{F}(U_{i} \cap U_{j})
-    \end{equation*}
+    \end{}
 \end{remark}
 \begin{example}
     (1)Let $X$ be a topological space.
@@ -207,14 +207,14 @@ Recall the definition of sheaves.
     Let $X$ be a topological space, $\mathcal{F}, \mathcal{G}$ (pre)sheaves of abelian groups on $X$.
     A morphism $\varphi$ from $\mathcal{F}$ to $\mathcal{G}$ is a family of group homomorphisms $\varphi(U): \mathcal{F}(U) \longrightarrow \mathcal{G}(U)$ such that for $V \subseteq U$,
     there is a commutative diagram
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             \mathcal{F}(U) \arrow[r, "\varphi(U)"] \arrow[d, "\rho_{UV}"] &
             \mathcal{G}(U) \arrow[d, "\rho_{UV}"] \\
             \mathcal{F}(V) \arrow[r, "\varphi(V)"] &
             \mathcal{G}(V)
         \end{tikzcd}
-    \end{equation*}
+    \end{}
 \end{definition}
 \begin{remark}
     By property of direct limit, morphism $\varphi$ gives homomorphism $\varphi_{x}: \mathcal{F}_{x} \longrightarrow \mathcal{G}_{x}$ for all $x\in X$.
@@ -443,7 +443,7 @@ Recall the definition of sheaves.
     To prove $\mathcal{F} \cong \widetilde{\mathcal{F}(X)}$, it suffices to show that for all $f\in A$, $\mathcal{F}(X)_{f} = \mathcal{F}(X) \otimes_{A} A_{f} \longrightarrow \mathcal{F}(D(f))$ is isomorphic.
     Set $V_{i} = U_{i} \cap D(f) = D(f\big{|}_{U_{i}})$.
     As tensor product commutes with finite direct sum, there is commutative diagram with exact rows,
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             0 \arrow[r] &
             \mathcal{F}(X)_{f} \arrow[r] \arrow[d] &
@@ -454,7 +454,7 @@ Recall the definition of sheaves.
             \prod_{i} \mathcal{F}(V_{i}) \arrow[r] &
             \prod_{i,j} \mathcal{F}(V_{i} \cap V_{j})
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     Similar to proof of Lemma \ref{Lemma 2.6}, get $\mathcal{F}$ is quasi-coherent.
     \par
     Further if $A$ is noetherian, $\mathcal{F} = \widetilde{M}$.
@@ -480,13 +480,13 @@ Recall the definition of sheaves.
 \begin{proposition}
     Let $X$ be an affine scheme.
     Then for all exact sequence of quasi-coherent sheaves 
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \mathcal{F} \longrightarrow \mathcal{G} \longrightarrow \mathcal{H} \longrightarrow 0
-    \end{equation*}
+    \end{}
     the sequence of global sections 
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \mathcal{F}(X) \longrightarrow \mathcal{G}(X) \longrightarrow \mathcal{H}(X) \longrightarrow 0
-    \end{equation*}
+    \end{}
     is exact.
     \label{Proposition 1.8}
 \end{proposition}
@@ -494,42 +494,42 @@ Recall the definition of sheaves.
     Let $X$ be a scheme, $\mathcal{F}$ an $\mathcal{O}_{X}$-module.
     Then $\mathcal{F}$ is quasi-coherent if and only if for all $x\in X$, 
     there exists open neighbourhood $U\ni x$ such that there is an exact sequence
-    \begin{equation*}
+    \begin{}
         \mathcal{O}_{U}^{\oplus J} \longrightarrow \mathcal{O}_{U}^{\oplus I} \longrightarrow \mathcal{F}\big{|}_{U} \longrightarrow 0
-    \end{equation*}
+    \end{}
     If moreover $X$ is noetherian,
     then $\mathcal{F}$ is coherent if and only if for all $x\in X$, 
     there exists open neighbourhood $U\ni x$ such that there is an exact sequence with $I,J$ finite
-    \begin{equation*}
+    \begin{}
         \mathcal{O}_{U}^{\oplus J} \longrightarrow \mathcal{O}_{U}^{\oplus I} \longrightarrow \mathcal{F}\big{|}_{U} \longrightarrow 0
-    \end{equation*}
+    \end{}
     \label{Proposition 1.9}
 \end{proposition}
 \begin{proof}
     "$\Rightarrow$": For $\mathcal{F}$ quasi-coherent and all $x\in X$, 
     there is affine open neighbourhood $U = \spec A\ni x$ such that $\mathcal{F}\big{|}_{U} \cong \widetilde{M}$ for some $A$-module $M$.
     Note that there is an exact sequence for some index sets $I,J$
-    \begin{equation*}
+    \begin{}
         A^{\oplus J} \longrightarrow A^{\oplus I} \longrightarrow M \longrightarrow 0
-    \end{equation*}
+    \end{}
     By Proposition \ref{Proposition 1.6} (3), get exact sequence
-    \begin{equation*}
+    \begin{}
         \mathcal{O}_{U}^{\oplus J} \longrightarrow \mathcal{O}_{U}^{\oplus I} \longrightarrow \mathcal{F}\big{|}_{U} \longrightarrow 0
-    \end{equation*}
+    \end{}
     \par
     "$\Leftarrow$": For all $x\in X$, there exists open neighbourhood $U\ni x$ such that there is an exact sequence
-    \begin{equation*}
+    \begin{}
         \mathcal{O}_{U}^{\oplus J} \longrightarrow \mathcal{O}_{U}^{\oplus I} \longrightarrow \mathcal{F}\big{|}_{U} \longrightarrow 0
-    \end{equation*}
+    \end{}
     Can assume that $U$ is affine.
     By Proposition \ref{Proposition 1.9}, get exact sequence
-    \begin{equation*}
+    \begin{}
         \mathcal{O}_{U}(U)^{\oplus J} \longrightarrow \mathcal{O}_{U}(U)^{\oplus I} \longrightarrow \mathcal{F}\big{|}_{U}(U) \longrightarrow 0
-    \end{equation*}
+    \end{}
     By Proposition \ref{Proposition 1.6}, get exact sequence
-    \begin{equation*}
+    \begin{}
         \mathcal{O}_{U}^{\oplus J} \longrightarrow \mathcal{O}_{U}^{\oplus I} \longrightarrow \widetilde{\mathcal{F}\big{|}_{U}(U)} \longrightarrow 0
-    \end{equation*}
+    \end{}
     Thus $\mathcal{F}\big{|}_{U} \cong \widetilde{\mathcal{F}\big{|}_{U}(U)}$.
     By Theorem \ref{Theorem 1.1}, $\mathcal{F}$ is quasi-coherent.
     For coherent, the same argument would make sense.
@@ -637,13 +637,13 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
 \end{example}
 \begin{definition}
     Let $A$ be a ring and $X$ be a projective scheme over $A$ with commutative diagram
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             X \arrow[r, "i"] \arrow[dr] &
             \mathbb{P}_{A}^{d} \arrow[d] \\
             & \spec A
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     Set $\mathcal{O}_{X}(n) = i^{\ast}\mathcal{O}_{\mathbb{P}_{A}^{d}}(n)$.
     For $\mathcal{F}$ an $\mathcal{O}_{X}$-module, also set $\mathcal{F}(m) = \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{O}_{X}(n)$.
 \end{definition}
@@ -662,13 +662,13 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
 \end{proof}
 \begin{theorem}[\textbf{\emph{Serre's Theorem}}]
     Let $A$ be a noetherian ring and $X$ be a projective scheme over $A$ with commutative diagram, 
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             X \arrow[r, "i"] \arrow[dr] &
             \mathbb{P}_{A}^{d} \arrow[d] \\
             & \spec A
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     Assume that $\mathcal{F}$ is a coherent sheaf on $X$.
     Then there exists $n_{0} > 0$ such that for all $n \ge n_{0}$, $\mathcal{F}(n)$ is generated by finitely many global sections.
     \label{Theorem 1.2}
@@ -686,13 +686,13 @@ For instance, if $M = \oplus_{d \ge 0} M_{d}$ and $N = \oplus_{d \ge d_{0}} M_{d
 \end{proof}
 \begin{corollary}
     Let $A$ be a noetherian ring and $X$ be a projective scheme over $A$ with commutative diagram, 
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             X \arrow[r, "i"] \arrow[dr] &
             \mathbb{P}_{A}^{d} \arrow[d] \\
             & \spec A
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     Assume that $\mathcal{F}$ is a coherent sheaf on $X$.
     Then there exists $m\in \mathbb{Z}$ and $r < \infty$ such that $\mathcal{F}$ is a quotient of $\mathcal{O}_{X}(m)^{\oplus r}$.
     \label{Corollary 1.1}
@@ -1131,13 +1131,13 @@ There are some special functors in Algebraic Geometry.
 \begin{proof}
     It suffices to show that for all $\mathfrak{b} \subseteq A$ ideal and $\varphi: \mathfrak{b} \longrightarrow J$ homomorphism of $A$-modules,
     there exists $\psi: A \longrightarrow J$ extending $\varphi$ satisfies the following diagram commutes
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             \mathbf{b} \arrow[r, hookrightarrow] \arrow[d, "\varphi"] &
             A \arrow[dl, "\psi"] \\
             J &
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     \par
     Since $A$ is noetherian, $B$ is finitely generated.
     Thus there exists $n > 0$ such that $\mathfrak{a}^{n}\varphi(\mathfrak{b}) = 0$.
@@ -1215,7 +1215,7 @@ There are some special functors in Algebraic Geometry.
 \begin{proof}
     Can assume that $X = \spec A$ is affine.
     We have a commutative diagram with exact rows
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             0 \arrow[r] &
             \widetilde{\mathcal{F}(X)} \arrow[r] \arrow[d, "\sim"] &
@@ -1228,7 +1228,7 @@ There are some special functors in Algebraic Geometry.
             \mathcal{H} \arrow[r] & 
             0
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     Thus by 5 Lemma, $\mathcal{G}$ is quasi-coherent.
     \par
     If moreover $\mathcal{F}$ and $\mathcal{H}$ are coherent, then $\mathcal{F}(X)$ and $\mathcal{H}(X)$ are finitely generated.
@@ -1283,16 +1283,16 @@ There are some special functors in Algebraic Geometry.
     Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of $X$ with well-ordered index set I, $\mathcal{F}$ sheaf of abelian groups on $X$.
     For $i_{0}, \cdots, i_{p}\in I$, set $U_{i_{0}, \cdots, i_{p}} = U_{i_{0}} \cap \cdots \cap U_{i_{p}}$.
     Define complex $C^{\ast}(\mathcal{I}, \mathcal{F})$ to be 
-    \begin{equation*}
+    \begin{}
         C^{p}(\mathcal{U}, \mathcal{F}) = \prod_{i_{0}, \cdots, i_{p}} \mathcal{F}(U_{i_{0}, \cdots, i_{p}})
-    \end{equation*}
+    \end{}
     with coboundary map 
-    \begin{equation*}
+    \begin{}
         \begin{split}
             d^{p}: C^{p}(\mathcal{U}, \mathcal{F}) & \longrightarrow C^{p + 1}(\mathcal{U}, \mathcal{F}) \\
             \alpha = (\alpha_{i_{0}, \cdots, i_{p}})_{i_{0}, \cdots, i_{p}} & \longmapsto (\sum_{k = 0}^{p + 1} (-1)^{k}\alpha_{i_{0}, \cdots, \widehat{i_{k}}, \cdots, i_{p + 1}}\big{|}_{U_{i_{0}, \cdots, i_{p + 1}}})_{i_{0}, \cdots, i_{p + 1}}
         \end{split}
-    \end{equation*}
+    \end{}
 \end{definition}
 \begin{remark}
     If we don't assume that $I$ is well-ordered, we need to set $U_{i_{0}, \cdots, i_{p}} = 0$ if there are repeated index and $\alpha_{i_{0}, \cdots, i_{p}} = (-1)^{sgn(\sigma)}\alpha_{i_{\sigma(0)}, \cdots, i_{\sigma(p)}}$.
@@ -1325,13 +1325,13 @@ There are some special functors in Algebraic Geometry.
 \begin{definition}
     Let $X$ be a topological space, $\mathcal{U} = \{U_{i}\}_{i\in I}$ open covering of $X$ with well-ordered index set $I$, $\mathcal{F}$ sheaf of abelian groups on $X$.
     Define a complex of sheaves on $X$, denoted by $\mathcal{C}^{\ast}(\mathcal{U}, \mathcal{F})$, as following
-    \begin{equation*}
+    \begin{}
         \mathcal{C}^{p}(\mathcal{U}, \mathcal{F}) = \prod_{i_{0}, \cdots, i_{p}} f_{\ast}(\mathcal{F}\big{|}_{U_{i_{0}, \cdots, i_{p}}})
-    \end{equation*}
+    \end{}
     where $f$ is the inclusion, with coboundary map
-    \begin{equation*}
+    \begin{}
         d^{p}: \mathcal{C}^{p}(\mathcal{U}, \mathcal{F}) \longrightarrow \mathcal{C}^{p + 1}(\mathcal{U}, \mathcal{F})
-    \end{equation*}
+    \end{}
     defined accordingly.
 \end{definition}
 \begin{remark}
@@ -1358,9 +1358,9 @@ There are some special functors in Algebraic Geometry.
     Since flasque is stable under restriction to open subset, direct limit and product, $\mathcal{C}^{p}(\mathcal{U}, \mathcal{F})$ is flasque for all $p$.
     Thus $\mathcal{C}^{\ast}(\mathcal{U}, \mathcal{F})$ is a flasque resolution of $\mathcal{F}$.
     By Proposition \ref{Proposition 2.5} and Proposition \ref{Proposition 2.1}, get
-    \begin{equation*}
+    \begin{}
         \check{H}^{p}(\mathcal{U}, \mathcal{F}) = h^{p}(\Gamma(X, \mathcal{C}^{\ast}(\mathcal{U}, \mathcal{F}))) = H^{p}(X, \mathcal{F}) = 0
-    \end{equation*}
+    \end{}
     hence we are done!
 \end{proof}
 \begin{lemma}
@@ -1383,11 +1383,11 @@ There are some special functors in Algebraic Geometry.
     For $r = 0$, the natural homomorphism is identity map of global sections of $\mathcal{F}$.
     For $r > 0$, embed $\mathcal{F}$ into an injective sheaf $\mathcal{I}$.
     There is an exact sequence
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \mathcal{F} \longrightarrow \mathcal{I} \longrightarrow \mathcal{G} \longrightarrow 0
-    \end{equation*}
+    \end{}
     On the one hand, by definition of Čech sheaf resolution, we have an exact sequence of complexes
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             0 \arrow[r] &
             \mathcal{F} \arrow[r] \arrow[d] &
@@ -1400,13 +1400,13 @@ There are some special functors in Algebraic Geometry.
             \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{G}) \arrow[r] &
             0
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     Taking products, get
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow C^{\ast}(\mathcal{U}, \mathcal{F}) \longrightarrow C^{\ast}(\mathcal{U}, \mathcal{I}) \longrightarrow C^{\ast}(\mathcal{U}, \mathcal{G}) \longrightarrow 0
-    \end{equation*}
+    \end{}
     On the other hand, by Horseshoe Lemma, we may take injective resolution $\mathcal{I}_{\mathcal{F}}^{\bullet}$, $\mathcal{I}_{\mathcal{I}}^{\bullet}$ and $\mathcal{I}_{\mathcal{G}}^{\bullet}$ of $\mathcal{F}$, $\mathcal{I}$ and $\mathcal{G}$ respectively such that
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             0 \arrow[r] &
             \mathcal{F} \arrow[r] \arrow[d] &
@@ -1419,14 +1419,14 @@ There are some special functors in Algebraic Geometry.
             \mathcal{I}_{\mathcal{G}}^{\bullet} \arrow[r] &
             0
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     is an exact sequence of complexes and $\mathcal{I}_{\mathcal{I}}^{i} = \mathcal{I}_{\mathcal{F}}^{i} \oplus \mathcal{I}_{\mathcal{G}}^{i}$ for all $i \ge 0$.
     Then by Comparison Theorem for injective resolution, 
     we get morphism of chain complexes $\alpha: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{F}) \rightarrow \mathcal{I}_{\mathcal{F}}^{\bullet}$, $\beta: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{I}) \rightarrow \mathcal{I}_{\mathcal{I}}^{\bullet}$ and $\gamma: \mathcal{C}^{\bullet}(\mathcal{U}, \mathcal{G}) \rightarrow \mathcal{I}_{\mathcal{G}}^{\bullet}$,
     which are unique up to homotopy.
     \par
     Consider the following diagram
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             0 \arrow[r] &
             \mathcal{C}^{i}(\mathcal{U}, \mathcal{F}) \arrow[r, hookrightarrow, "f"] \arrow[d, "\alpha"] &
@@ -1439,19 +1439,19 @@ There are some special functors in Algebraic Geometry.
             \mathcal{I}_{\mathcal{G}}^{i} \arrow[r] &
             0
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     Want to modify $\alpha$, $\beta$ and $\gamma$.
     Since the bottom row is split, we have inclusion $\sigma: \mathcal{I}_{\mathcal{G}}^{\bullet} \rightarrow \mathcal{I}_{\mathcal{I}}^{\bullet}$ and projection $\pi: \mathcal{I}_{\mathcal{I}}^{\bullet} \rightarrow \mathcal{I}_{\mathcal{F}}^{\bullet}$.
     Take $\beta' = \beta + \pi \circ (\gamma \circ g - v \circ \beta)$ and $\alpha' = \sigma \circ (\beta' \circ f - u \circ \alpha)$.
     Then by our choice of $\alpha$, $\beta$ and $\gamma$, it is clear that the new diagram is commutative.
     \par
     By assumption, for all $i_{0}, \cdots, i_{p}$,
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \mathcal{F}(U_{i_{0}, \cdots, i_{p}})\longrightarrow \mathcal{I}(U_{i_{0}, \cdots, i_{p}}) \longrightarrow \mathcal{G}(U_{i_{0}, \cdots, i_{p}}) \longrightarrow 0
-    \end{equation*}
+    \end{}
     is exact.
     Taking global sections and by Homological Algebra, there is commutative daigram between two long exact sequences
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             \cdots \arrow[r] &
             \check{H}^{r}(\mathcal{U}, \mathcal{F}) \arrow[r] \arrow[d] &
@@ -1466,11 +1466,11 @@ There are some special functors in Algebraic Geometry.
             H^{r + 1}(X, \mathcal{F}) \arrow[r] &
             \cdots
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     Since $\mathcal{I}$ is injective, get $\mathcal{I}$ flasque and $\check{H}^{r}(\mathcal{U}, \mathcal{I}) = 0$ for all $r > 0$.
     Thus $\check{H}^{r + 1}(\mathcal{U}, \mathcal{F}) = \check{H}^{r}(\mathcal{U}, \mathcal{G})$ and $H^{r + 1}(X, \mathcal{F}) = H^{r}(X, \mathcal{G})$ for all $r \ge 1$.
     In particular, we have commutative diagram with exact rows
-    \begin{equation*}
+    \begin{}
         \begin{tikzcd}
             0 \arrow[r] &
             \check{H}^{0}(\mathcal{U}, \mathcal{F}) \arrow[r] \arrow[d, equal] &
@@ -1485,7 +1485,7 @@ There are some special functors in Algebraic Geometry.
             H^{1}(X, \mathcal{F}) \arrow[r] &
             0
         \end{tikzcd}
-    \end{equation*}
+    \end{}
     Hence by 5 Lemma, we get the natural map $\check{H}^{1}(\mathcal{U}, \mathcal{F}) \rightarrow H^{1}(X, \mathcal{F})$ is isomorphic.
     Finally, by induction, done!
 \end{proof}
@@ -1540,9 +1540,9 @@ There are some special functors in Algebraic Geometry.
     For all $i_{0}, \cdots, i_{p}$, note that $U_{i_{0}, \cdots, i_{p}} = D_{+}(x_{i_{0}}, \cdots, x_{i_{p}})$.
     Get $\mathcal{F}(U_{i_{0}, \cdots, i_{p}}) \cong S_{x_{i_{0}}, \cdots, x_{i_{p}}}$. 
     Thus $C^{\ast}(\mathcal{U}, \mathcal{F})$ is given by 
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \prod_{i_{0}} S_{x_{i_{0}}} \longrightarrow \cdots \longrightarrow S_{x_{0}, \cdots, x_{r}}.
-    \end{equation*}
+    \end{}
     Since $\check{H}^{r}(\mathcal{U}, \mathcal{F})$ is the cokernel of $d^{r - 1}: \prod_{k} S_{x_{0}, \cdots, \widehat{x_{k}}, \cdots, x_{r}} \longrightarrow S_{x_{0}, \cdots, x_{r}}$.
     Note that $S_{x_{0}, \cdots, x_{r}}$ is free $A$-module spanned by $\{x_{0}^{l_{0}}..x_{r}^{l_{r}}\}$, where $l_{0}, \cdots, l_{r}\in \mathbb{Z}$.
     In addition, $im(d^{r - 1})$ is free $A$-module spanned by $\{x_{0}^{l_{0}}\cdots x_{r}^{l_{r}}\}$, where $l_{0}, \cdots, l_{r}\in \mathbb{Z}$ and at least one $l_{i} \ge 0$.
@@ -1566,28 +1566,28 @@ There are some special functors in Algebraic Geometry.
     As localization is exact and $U_{r}$ is affine, $H^{i}(X, \mathcal{F})_{x_{r}} = H^{i}(U_{r}, \mathcal{F}\big{|}_{U_{r}}) = 0$.
     Suffice to show that for all $0 < i < r$, $x_{r}$ acts injectively on $H^{i}(X, \mathcal{F})$.
     View $x_{r}$ as a homomorphism of $A$-modules like below
-    \begin{equation*}
+    \begin{}
         x_{r}: H^{i}(X, \mathcal{F}(-1)) \longrightarrow H^{i}(X, \mathcal{F})
-    \end{equation*}
+    \end{}
     here $\mathcal{F}(-1)$ is same sheaf on $\mathcal{F}$ with grading shifted.
     Consider exact sequence of graded $C$-modules 
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow S(-1) \overset{x_{r}}{\longrightarrow} S \longrightarrow S/(x_{r}) \longrightarrow 0
-    \end{equation*}
+    \end{}
     Get exact sequence of sheaves 
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \mathcal{O}_{X}(-1) \overset{x_{r}}{\longrightarrow} \mathcal{O}_{X} \longrightarrow j_{\ast}\mathcal{O}_{H} \longrightarrow 0
-    \end{equation*}
+    \end{}
     where $H$ is the hyperplane given by $x_{r} = 0$ and $j: H \hookrightarrow X$ is closed immersion. 
     Take direct sum, get exact sequence
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \mathcal{F}(-1) \overset{x_{r}}{\longrightarrow} \mathcal{F} \longrightarrow \mathcal{F}_{H} \longrightarrow 0
-    \end{equation*}
+    \end{}
     where $\mathcal{F}_{H} = \oplus_{n\in \mathbb{Z}} j_{\ast}(\mathcal{O}_{H}(n))$. 
     Get long exact sequence
-    \begin{equation*}
+    \begin{}
         \cdots \longrightarrow H^{i - 1}(X, \mathcal{F}_{H}) \longrightarrow H^{i}(X, \mathcal{F}(-1)) \overset{x_{r}}{\longrightarrow} H^{i}(X, \mathcal{F}) \longrightarrow H^{i}(X, \mathcal{F})_{H} \longrightarrow \cdots
-    \end{equation*}
+    \end{}
     Now $H \cong \mathbf{P}^{r - 1}_{A}$ and since $j$ is closed immersion, $H^{i}(X, \mathcal{F}_{H}) = H^{i}(H, \oplus_{n\in \mathbb{Z}} O_{H}(n))$.
     By induction hypothesis, $H^{i}(X, \mathcal{F}_{H}) = 0$ for all $0 < i < r - 1$.
     Thus $x_{r}$ is injective on $H^{i}(X, \mathcal{F}(-1))$ for all $1 < i < r$.
@@ -1612,13 +1612,13 @@ There are some special functors in Algebraic Geometry.
     For (1), by induction, suppose theorem is correct for $i + 1$.
     By Corollary \ref{Corollary 1.1}, there exists $m\in \mathbb{Z}$ and $r < \infty$ such that $\mathcal{F}$ is quotient of $\mathcal{O}_{X}(m)^{r}$,
     inducing the following exact sequence of coherent sheaves
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \mathcal{G} \longrightarrow \mathcal{O}_{X}(m)^{r} \longrightarrow \mathcal{F} \longrightarrow 0
-    \end{equation*} 
+    \end{} 
     Consider the long exact sequence
-    \begin{equation*}
+    \begin{}
         \cdots \longrightarrow H^{i}(X, \mathcal{O}_{X}(m)^{r}) \longrightarrow H^{i}(X, \mathcal{F}) \longrightarrow H^{i + 1}(X, \mathcal{G}) \longrightarrow \cdots
-    \end{equation*}
+    \end{}
     By hypothesis, $H^{i + 1}(X, \mathcal{G})$ is finite $A$-module.
     As $A$ is noetherian, $H^{i}(X, \mathcal{F})$ is also finite.
     \par
@@ -1628,13 +1628,13 @@ There are some special functors in Algebraic Geometry.
     Take same short exact sequence.
     Tensor the short exact sequence by $\mathcal{O}_{X}(n)$.
     Get exact sequence
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \mathcal{G}(n) \longrightarrow \mathcal{O}_{X}(m + n)^{r} \longrightarrow \mathcal{F}(n) \longrightarrow 0
-    \end{equation*}
+    \end{}
     Consider the long exact sequence
-    \begin{equation*}
+    \begin{}
         \cdots \longrightarrow H^{i}(X, \mathcal{O}_{X}(m + n)^{r}) \longrightarrow H^{i}(X, \mathcal{F}(n)) \longrightarrow H^{i + 1}(X, \mathcal{G}(n)) \longrightarrow \cdots
-    \end{equation*}
+    \end{}
     By hypothesis, there exists $n_{i + 1}(\mathcal{G})$ such that $H^{i + 1}(X, \mathcal{G}(n)) = 0$ for all $n \ge n_{i + 1}(\mathcal{G})$.
     By Theorem \ref{Theorem 2.6}, $H^{i}(X, \mathcal{O}_{X}(m + n)^{r}) = 0$ for large enough $n$.
     Thus there exists $n_{i}(\mathcal{F})$ such that $H^{i}(X, \mathcal{F}(n)) = 0$ for all $n \ge n_{i}(\mathcal{F})$.
@@ -1707,17 +1707,17 @@ There are some special functors in Algebraic Geometry.
     Let $x\in X$ be a closed point, $\mathcal{I}_{x}$ the ideal sheaf of $\{x\} \overset{i}{\hookrightarrow} X$,
     where $\{x\}$ has the same scheme structure as $\spec(k(x))$ with structure sheaf denoted by $k(x)$ for convenience.
     We have short exact sequence
-    \begin{equation*}
+    \begin{}
         0 \longrightarrow \mathcal{I}_{X} \longrightarrow \mathcal{O}_{x} \longrightarrow i_{\ast}k(x) \longrightarrow 0
-    \end{equation*}
+    \end{}
     Tensor by $\mathcal{F}$, get
-    \begin{equation*}
+    \begin{}
         \mathcal{I}_{x}\mathcal{F} \longrightarrow \mathcal{F} \longrightarrow i_{\ast}k(x) \otimes_{\mathcal{O}_{X}} \mathcal{F} \longrightarrow 0
-    \end{equation*}
+    \end{}
     Tensor by $\mathcal{L}^{r}$, get
-    \begin{equation*}
+    \begin{}
         \mathcal{I}_{x}\mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n} \longrightarrow \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n} \longrightarrow i_{\ast}k(x) \otimes_{\mathcal{O}_{X}} \mathcal{F} \otimes_{\mathcal{O}_{x}} \mathcal{L}^{n}\longrightarrow 0
-    \end{equation*}
+    \end{}
     Note that, by hypothesis, $H^{1}(X, \mathcal{I}_{X}\mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n}) = 0$ for all $n \ge n_{0}$.
     So $\Gamma(X, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n}) \longrightarrow \Gamma(X, i_{\ast}k(x) \otimes_{\mathcal{O}_{X}} \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n})$ is surjective for all $n \ge n_{0}$.
     Note that $i_{\ast}k(x) \otimes_{\mathcal{O}_{X}} \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n}$ is only supported at $x$,
@@ -1888,6 +1888,23 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
     \label{Lemma 3.4}
 \end{lemma}
 \begin{proof}
-
+    First prove for effective $D$.
+    Take $\ell: Y \rightarrow X$ as above, then there is an exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{O}_{X}(-D) \longrightarrow \mathcal{O}_{X} \longrightarrow \ell_{\ast}\mathcal{O}_{Y} \longrightarrow 0
+    \end{equation}
+    Tensoring by $\mathcal{O}_{X}(D)$, we get exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{O}_{X} \longrightarrow \mathcal{O}_{X}(D) \longrightarrow \ell_{\ast}\mathcal{O}_{Y}(D) \longrightarrow 0
+    \end{equation}
+    Then by Lemma \ref{Lemma 3.1}, $\deg (\mathcal{O}_{X}(D)) = \chi(\mathcal{O}_{X}(D)) - \chi(\mathcal{O}_{X}) = \chi(\ell_{\ast}\mathcal{O}_{Y}(D))$.
+    Is suffices to show $\chi(\ell_{\ast}\mathcal{O}_{Y} \otimes \mathcal{O}_{X}(D)) = \deg D$.
+    Note that we can take affine open covering $\mathcal{U}$ of $X$ trivializing $\mathcal{O}_{X}(D)$ such that for all $i$, there is a unique $U_{i} = \spec A_{i}$ in $\mathcal{U}$ containing $x_{i}$.
+    Want to use such a covering to compute cohomology.
+    \par
+    Since $\ell_{\ast}\mathcal{O}_{Y} = \oplus \ell_{\ast}\mathcal{O}_{X_{i}}$,
+    $\chi(\ell_{\ast}\mathcal{O}_{Y}(D)) = \sum \chi(\ell_{\ast}\mathcal{O}_{X_{i}}(D))$.
+    It is clear that $\Gamma(X, \ell_{\ast}\mathcal{O}_{X_{i}}(D)) \rightarrow \Gamma(U_{i}, \ell_{\ast}\mathcal{O}_{X_{i}}(D))$ is isomorphic.
+    Thus $\chi(\ell_{\ast}\mathcal{O}_{X_{i}}(D)) = a_{i} - 0 = a_{i}$ and hence $\chi\ell_{\ast}\mathcal{O}_{Y}(D) = \sum a_{i} = \deg D$.
 \end{proof}
 \end{document}
