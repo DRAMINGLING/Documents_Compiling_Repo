@@ -1825,5 +1825,13 @@ There are some special functors in Algebraic Geometry.
 \end{proof}
 Now let $C$ be a smooth connected projective curve.
 Define the (arithmatic) genus of $C$ to be $g(C) := 1 - \chi(C) = h^{1}(C, \mathcal{O}_{C})$.
-
+\begin{proposition}
+    Let $C \subseteq \mathbb{P}_{\mathbb{C}}^{2}$ of degree $n$.
+    Then $C$ is connected and $g(C) = \frac{(n - 1)(n - 2)}{2}$.
+    \label{Proposition 3.2}
+\end{proposition}
+\begin{reason}
+    Consider exact sequence $0 \rightarrow \mathcal{O}_{\mathbb{P}_{\mathbb{C}}^{2}}(-n) \rightarrow \mathcal{O}_{\mathbb{P}_{\mathbb{C}}^{2}} \rightarrow \mathcal{O}_{C} \rightarrow 0$.
+    Then $\chi(\mathcal{O}_{C}) = \chi(\mathcal{O}_{\mathbb{P}_{\mathbb{C}}^{2}}) - \chi(\mathcal{O}_{\mathbb{P}_{\mathbb{C}}^{2}}(-n)) = 1 - \frac{(n - 1)(n - 2)}{2}$.
+\end{reason}
 \end{document}
