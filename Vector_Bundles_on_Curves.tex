@@ -1784,7 +1784,7 @@ There are some special functors in Algebraic Geometry.
     \label{Corollary 3.1}  
 \end{corollary}
 \begin{proof}
-    Immediately comes from Grothendieck Vanishing and Serre's Duality.
+    Immediately comes from Grothendieck Vanishing and Serre's duality.
 \end{proof}
 
 \subsection{Riemann-Roch for curves}
@@ -1830,8 +1830,11 @@ Define the (arithmatic) genus of $C$ to be $g(C) := 1 - \chi(C) = h^{1}(C, \math
     Then $C$ is connected and $g(C) = \frac{(n - 1)(n - 2)}{2}$.
     \label{Proposition 3.2}
 \end{proposition}
-\begin{reason}
+\begin{proof}
     Consider exact sequence $0 \rightarrow \mathcal{O}_{\mathbb{P}_{\mathbb{C}}^{2}}(-n) \rightarrow \mathcal{O}_{\mathbb{P}_{\mathbb{C}}^{2}} \rightarrow \mathcal{O}_{C} \rightarrow 0$.
-    Then $\chi(\mathcal{O}_{C}) = \chi(\mathcal{O}_{\mathbb{P}_{\mathbb{C}}^{2}}) - \chi(\mathcal{O}_{\mathbb{P}_{\mathbb{C}}^{2}}(-n)) = 1 - \frac{(n - 1)(n - 2)}{2}$.
-\end{reason}
+    Then $\chi(\mathcal{O}_{C}) = \chi(\mathcal{O}_{\mathbb{P}_{\mathbb{C}}^{2}}) - \chi(\mathcal{O}_{\mathbb{P}_{\mathbb{C}}^{2}}(-n))$.
+    Since $\chi(\mathcal{O}_{\mathbb{P}_{\mathbb{C}^{2}}}) = h^{0}(\mathcal{O}_{\mathbb{P}_{\mathbb{C}^{2}}}) = 1$ and by Serre's duality,
+    $\chi(\mathcal{O}_{\mathbb{P}_{\mathbb{C}^{2}}}(-n)) = -h^{1}(\mathcal{O}_{\mathbb{P}_{\mathbb{C}^{2}}}(-n)) = -h^{1}(\mathcal{O}_{\mathbb{P}_{\mathbb{C}^{2}}}(-n))^{\vee} = -h^{0}(\mathcal{O}_{\mathbb{P}_{\mathbb{C}^{2}}}(n - 3)) = -\frac{(n - 1)(n - 2)}{2}$,
+    we get that $g(C) = \frac{(n - 1)(n - 2)}{2}$.
+\end{proof}
 \end{document}
