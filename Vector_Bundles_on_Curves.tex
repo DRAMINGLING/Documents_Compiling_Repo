@@ -1827,6 +1827,15 @@ There are some special functors in Algebraic Geometry.
     Let $X$ be an integral variety, $\mathcal{F}\in \coherent (X)$.
     Define $\deg (\mathcal{F}) = \chi(\mathcal{F}) - \rank \cdot \chi(\mathcal{O}_{X})$.
 \end{definition}
+\begin{lemma}
+    Let $X$ be an integral variety.
+    Then for all short exact sequence $0 \rightarrow \mathcal{F}' \rightarrow \mathcal{F} \rightarrow \mathcal{F}'' \rightarrow 0$ in $\coherent (X)$,
+    we have that $\deg (\mathcal{F}) = \deg (\mathcal{F}') + \deg (\mathcal{F}'')$.
+    \label{Lemma 3.3}
+\end{lemma}
+\begin{reason}
+    Immediately comes from Lemma \ref{Lemma 3.1} and Lemma \ref{Lemma 3.2}
+\end{reason}
 Now let $C$ be a smooth connected projective curve.
 Define the (arithmatic) genus of $C$ to be $g(C) := 1 - \chi(C) = h^{1}(C, \mathcal{O}_{C})$.
 \begin{proposition}
