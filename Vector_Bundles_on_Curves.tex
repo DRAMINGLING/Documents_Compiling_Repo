@@ -1768,7 +1768,7 @@ There are some special functors in Algebraic Geometry.
 \end{proof}
 \begin{theorem}[\textbf{\emph{Serre's Duality}}]
     Let $X$ be a smooth projective variety of dimension $n$, $\omega_{X}$ canonical sheaf.
-    Then for all locally free sheaf $\mathcal{F}(X)$ on $X$, we have canonical isomorphism $H^{i}(X, \mathcal{F}^{\vee} \otimes \omega_{X}) \overset{\sim}{\rightarrow} H^{n - i}(X, \mathcal{F})^{\vee}$.
+    Then for all locally free sheaf $\mathcal{F}$ on $X$, we have canonical isomorphism $H^{i}(X, \mathcal{F}^{\vee} \otimes \omega_{X}) \overset{\sim}{\rightarrow} H^{n - i}(X, \mathcal{F})^{\vee}$.
     \label{Theorem 3.1}
 \end{theorem}
 \begin{remark}
@@ -1777,4 +1777,31 @@ There are some special functors in Algebraic Geometry.
     Since $\omega_{X}$ is flat, we $0 \rightarrow \mathcal{F} \otimes \omega_{X} \rightarrow \mathcal{I}^{\bullet} \otimes \omega_{X}$ is still exact.
     However, we do not know if $\mathcal{I} \otimes \omega_{X}$ is still injective.
 \end{remark}
+\begin{corollary}
+    Let $X$ be a smooth projective variety of dimension $n$, $\omega_{X}$ canonical sheaf.
+    Then for all locally free sheaf $\mathcal{F}$ on $X$, $\chi(\mathcal{F}) = (-1)^{n} \cdot \chi(\mathcal{F}^{\vee} \otimes \omega_{X})$.
+    \label{Corollary 3.1}  
+\end{corollary}
+\begin{proof}
+    Immediately comes from Grothendieck Vanishing and Serre's Duality.
+\end{proof}
+
+\subsection{Riemann-Roch for curves}
+\label{subsection:Riemann-Roch_for_curves}
+
+\begin{proposition}
+    Let $X$ be an integral variety, $\mathcal{F}\in \coherent (X)$.
+    Then there exists open dense subset $U \subseteq X$ such that $\mathcal{F}\big{|}_{U}$ is locally free.
+    Moreover, we can well define $\rank (\mathcal{F}) := \rank (\mathcal{F}\big{|}_{U})$.
+    \label{Proposition 3.1}
+\end{proposition}
+\begin{proof}
+    Consider the subset $\{x\in X \big{|} \dim_{k(x)} \mathcal{F}_{x}/\mathfrak{m}_{x}\mathcal{F}_{x} \le d\}$,
+    which by Nakayama's Lemma is an open subset.
+    Then we may take $d$ minimal so that $U := \{x\in X \big{|} \dim_{k(x)} \mathcal{F}_{x}/\mathfrak{m}_{x}\mathcal{F}_{x} = d\}$ is an open subset.
+    Since $X$ is integral, $U$ is irreducible.
+    \par
+    Now we want to show that $\mathcal{F}\big{|}_{U}$ is locally free.
+     
+\end{proof}
 \end{document}
