@@ -1864,6 +1864,9 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
 \end{proposition} 
 \begin{proof}
     Consider $X_{i} = \spec \mathcal{O}_{X, x_{i}}/\mathfrak{m}_{x_{i}}^{a_{i}}$.
-    Then there is a closed immersion $\varphi_{i}: X_{i} \hookrightarrow \spec \mathcal{O}_{X, x_{i}}$
+    Then there are closed immersions $\varphi_{i}: X_{i} \hookrightarrow \spec X$.
+    Taking disjoint product $Y := \sqcup X_{i}$, we get a closed subscheme of $X$.
+    Consider the ideal sheaf $\mathcal{O}_{X}(-D) := \mathcal{I}_{Y/X}$.
+    And our desired $\mathcal{O}_{X}(D)$ can be defined as dual of $\mathcal{O}_{X}(-D)$.
 \end{proof}
 \end{document}
