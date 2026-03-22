@@ -876,7 +876,8 @@ And all morphisms mentioned are morphisms of varieties.
     In particular, locally $\Gamma(U, E) \cong A^{\oplus r}$ hence $\mathcal{O}_{X}(E)$ is a locally free sheaf of rank $r$. 
 \end{proof}
 \begin{proposition}
-    There is a functor $\theta: \vectorbundle_{X} \rightarrow \coherent (X)$ sending $E$ to $\mathcal{O}_{X}(E)$ and $E \rightarrow F$ to $\{\Gamma(U, E) \rightarrow \Gamma(U, F)\}$,
+    Let $\mathcal{C}$ be the category of locally free sheaves of finite rank on $X$.
+    There is a functor $\theta: \vectorbundle_{X} \rightarrow \mathcal{C}$ sending $E$ to $\mathcal{O}_{X}(E)$ and $E \rightarrow F$ to $\{\Gamma(U, E) \rightarrow \Gamma(U, F)\}$,
     which is an equivalence of category.
     \label{Proposition 1.14}
 \end{proposition}
@@ -887,7 +888,7 @@ And all morphisms mentioned are morphisms of varieties.
     Also, $(s: U \rightarrow E) \rightarrow (f \circ s: U \rightarrow F)$ also corresponds to such a matrix.
     Hence the bijection is clear.
     \par
-    Next to prover $\theta$ dense (or say essentially surjective) i.e. given $\mathcal{E}\in \coherent (X)$, there exists $E\in \vectorbundle_{X}$ with isomorphism $\mathcal{O}_{X}(E) \overset{\sim}{\rightarrow} \mathcal{E}$.
+    Next to prover $\theta$ dense (or say essentially surjective) i.e. given $\mathcal{E}\in \mathcal{C}$, there exists $E\in \vectorbundle_{X}$ with isomorphism $\mathcal{O}_{X}(E) \overset{\sim}{\rightarrow} \mathcal{E}$.
     Assume $U_{i} = \spec A_{i}$ is an affine cover of $X$ trivializing $\mathcal{E}$.
     Denote the trivialization $\varphi_{i}: \mathcal{E}\big{|}_{U_{i}} \rightarrow \mathbb{A}_{A_{i}}^{n}$.
     Consider the transition functions $g_{ij} = \varphi_{i} \circ \varphi_{j}^{-1}\big{|}_{U_{ij}}$.
@@ -1802,6 +1803,6 @@ There are some special functors in Algebraic Geometry.
     Since $X$ is integral, $U$ is irreducible.
     \par
     Now we want to show that $\mathcal{F}\big{|}_{U}$ is locally free.
-     
+
 \end{proof}
 \end{document}
