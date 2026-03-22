@@ -1754,7 +1754,7 @@ There are some special functors in Algebraic Geometry.
 \end{definition}
 \begin{lemma}
     Let $X$ be a variety.
-    Then for short exact sequence $0 \rightarrow \mathcal{F}' \rightarrow \mathcal{F} \rightarrow \mathcal{F}'' \rightarrow 0$ in $\abeliangroups (X)$,
+    Then for all short exact sequence $0 \rightarrow \mathcal{F}' \rightarrow \mathcal{F} \rightarrow \mathcal{F}'' \rightarrow 0$ in $\abeliangroups (X)$,
     we have that $\chi(\mathcal{F}) = \chi(\mathcal{F}') + \chi(\mathcal{F}'')$.
     \label{Lemma 3.1}
 \end{lemma}
@@ -1812,5 +1812,15 @@ There are some special functors in Algebraic Geometry.
     Otherwise, there exists $\mathfrak{q}\in \spec A$ such that $a_{i}\notin \mathfrak{q}$ for some $i$.
     And then this relation becomes a relation in $M_{\mathfrak{q}} \otimes A_{\mathfrak{q}}/\mathfrak{q}A_{\mathfrak{q}}$, contradicting to $\mathfrak{q}\in U$.
     Hence $\mathcal{F}\big{|}_{W}$ is free and $\mathcal{F}\big{|}_{U}$ is locally free.
+\end{proof}
+\begin{lemma}
+    Let $X$ be an integral variety.
+    Then for all short exact sequence $0 \rightarrow \mathcal{F}' \rightarrow \mathcal{F} \rightarrow \mathcal{F}'' \rightarrow 0$ in $\coherent (X)$,
+    we have that $\rank (\mathcal{F}) = \rank (\mathcal{F}') + \rank (\mathcal{F}'')$.
+    \label{Lemma 3.2}
+\end{lemma}
+\begin{proof}
+    We may take open dense subset $U \subseteq X$ such that $\mathcal{F}\big{|}_{U}$, $\mathcal{F}'\big{|}_{U}$ and $\mathcal{F}''\big{|}_{U}$ are all locally free.
+    Then it is clear that $\rank (\mathcal{F}\big{|}_{U}) = \rank (\mathcal{F}'\big{|}_{U}) + \rank (\mathcal{F}''\big{|}_{U})$.
 \end{proof}
 \end{document}
