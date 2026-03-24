@@ -2029,7 +2029,14 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
             0 \arrow[u] &
         \end{tikzcd}
     \end{equation}
-    By diagram chasing, it is easy to show that the medium 
+    By diagram chasing, it is easy to show that the medium column also exact.
+    Hence $\overline{\mathcal{E}_{2} + \mathcal{E}_{1}' - \mathcal{E}_{1} - \mathcal{E}_{2}'} = 0$ in $K_{0}(X)$ so that $j$ is well defined.
+    Left to show that $j$ is a group homomorphism.
+    For exact sequence $0 \rightarrow \mathcal{F}' \rightarrow \mathcal{F} \rightarrow \mathcal{F}'' \rightarrow 0$,
+    by Horseshoe Lemma, we can construct a locally free resolution of $\mathcal{F}$ as direct sum of thoes resolutions of $\mathcal{F}'$ and $\mathcal{F}''$.
+    Thus $j$ is indeed a group homomorphism.
+    Note that $i \circ j = \identity_{K(X)}$ and $j \circ i = \identity_{K_{0}(X)}$,
+    we conclude that $i$ is isomorphic. 
 \end{proof}
 \begin{corollary}
     Let $X$ be a regular projective curve.
