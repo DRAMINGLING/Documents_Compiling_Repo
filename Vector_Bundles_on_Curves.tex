@@ -2076,6 +2076,20 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
 \end{corollary}
 \begin{proof}
     Suffices to show $K_{0}(X) \cong \picardscheme (X) \oplus \mathbb{Z}$.
+    We may consider the rank map $\rank: K_{0}(X) \rightarrow \mathbb{Z}$.
+    Denote the kernel by $A(X)$.
+    Then it is clear that $K_{0}(X) \cong A(X) \cong \mathbb{Z}$.
+    \par
+    Left to show that $A(X) \cong \picardscheme (X)$.
+    Construct map $\alpha: \picardscheme (X) \rightarrow A(X)$ sending $\mathcal{L}$ sending $\mathcal{L}$ to $\overline{\mathcal{L} - \mathcal{O}_{X}}$.
+    Check that $\alpha$ is a group morphism.
+    For divisors $D$ and $E$, want to show $\alpha(\mathcal{O}_{X}(D + E)) = \alpha(\mathcal{O}_{X}(D)) + \alpha(\mathcal{O}_{X}(E))$.
+    \par
+
+    Since $\mathcal{L} \cong \mathcal{O}_{X}(D)$ for some divisor $D$,
+    we can write $\mathcal{L} = \mathcal{O}_{X}(D_{1}) \otimes \mathcal{O}_{X}(-D_{2})$ with $D_{1}$ and $D_{2}$ effective.
+    In fact, as $X$ is projective, for all different points $x$ and $y$ in $X$, $x - y$ is a principle divisor.
+    Hence we can pick $D_{1}$ and $D_{2}$ disjoint.
     In fact, by same argument as above, we know $\overline{\mathcal{E}} = \sum_{i = 0}^{r - 1} \overline{\mathcal{L}_{i}}$ in $K_{0}(X)$.
 \end{proof}
 \end{document}
