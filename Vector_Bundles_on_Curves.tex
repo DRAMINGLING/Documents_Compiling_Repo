@@ -2049,11 +2049,6 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
     Then $K(X) \overset{j}{\rightarrow} K_{0}(X) \overset{\det}{\rightarrow} \picardscheme (X)$ sending $\overline{\mathcal{L}_{1} + \mathcal{L}_{2}}$ to $\det \mathcal{L}_{1} \otimes \det \mathcal{L}_{2}$ is a group homomorphism.
     \label{Corollary 3.5}
 \end{corollary}
-\begin{lemma}
-    Let $X$ be a regular projective curve.
-    Put $A(X) := \mathbb{Z} \langle \mathcal{O}_{p} \big{|} p\in X \rangle/\sim$.
-    \label{Lemma 3.7}
-\end{lemma}
 \begin{theorem}
     Let $X$ be a regular projective curve, $\mathcal{F}\in \coherent (X)$.
     Then $\deg \mathcal{F} = \deg (\det \mathcal{F})$.
@@ -2062,8 +2057,25 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
 \begin{proof}
     Note that $\deg: K(X) \rightarrow \mathbb{Z}$ is a group homomorphism,
     suffices to check for generators of $K(X)$ i.e. locally free sheaves of finite rank.
-    
-    Then $A(X)$ is a subgroup of $K(X)$ and $K(X) \cong A(X) \oplus \mathbb{Z}$.
-
+    For each vector bundle $\mathcal{E}$ on $X$, we have a filtration of $\mathcal{E}$ by line bundle
+    \begin{equation}
+        0 = \mathcal{E}_{0} \subseteq \mathcal{E}_{1} \subseteq \cdots \subseteq \mathcal{E}_{r} = \mathcal{E}
+    \end{equation}
+    such that $\mathcal{E}_{i + 1}/\mathcal{E}_{i} = \mathcal{L}_{i}$ are line bundles.
+    Then $\det \mathcal{E}_{i + 1} = \det \mathcal{E}_{i} \otimes \mathcal{L}_{i}$ for all $i$.
+    Combining together, we get $\det \mathcal{E} = \bigotimes_{i = 0}^{r - 1} \mathcal{L}_{i}$.
+    Hence $\deg (\det \mathcal{E}) = \deg (\bigotimes_{i = 0}^{r - 1} \mathcal{L}_{i}) = \sum_{i = 0}^{r - 1} \deg \mathcal{L}_{i}$.
+    \par
+    On the other hand, we also have that $\deg \mathcal{E}_{i + 1} = \deg \mathcal{E}_{i} + \deg \mathcal{L}_{i}$ for all $i$.
+    Summing together, we get $\deg \mathcal{E} = \sum_{i = 0}^{r - 1} \deg \mathcal{L}_{i} = \deg (\det \mathcal{E})$, done!
+\end{proof}
+\begin{corollary}
+    Let $X$ be a regular projective curve.
+    Then $K(X) \cong \picardscheme (X) \oplus \mathbb{Z}$.
+    \label{Corollary 3.6}
+\end{corollary}
+\begin{proof}
+    Suffices to show $K_{0}(X) \cong \picardscheme (X) \oplus \mathbb{Z}$.
+    In fact, by same argument as above, we know $\overline{\mathcal{E}} = \sum_{i = 0}^{r - 1} \overline{\mathcal{L}_{i}}$ in $K_{0}(X)$.
 \end{proof}
 \end{document}
