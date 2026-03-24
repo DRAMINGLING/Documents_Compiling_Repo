@@ -1990,6 +1990,45 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
     \begin{equation}
         0 \longrightarrow \mathcal{E}_{2}' \overset{\psi_{2}}{\longrightarrow} \mathcal{E}_{1}' \overset{\psi_{1}}{\longrightarrow} \mathcal{F} \longrightarrow 0
     \end{equation}
+    By universal property of resolution, there is a chain map
+    \begin{equation}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{E}_{2} \arrow[r, "\varphi_{2}"] &
+            \mathcal{E}_{1} \arrow[r, "\varphi_{1}"] &
+            \mathcal{F} \arrow[r] &
+            0 \\
+            0 \arrow[r] &
+            \mathcal{E}_{2}' \arrow[u, "\alpha_{2}"] \arrow[r, "\psi_{2}"] &
+            \mathcal{E}_{1}' \arrow[u, "\alpha_{1}"] \arrow[r, "\psi_{1}"] &
+            \mathcal{F} \arrow[u, equal] \arrow[r] &
+            0
+        \end{tikzcd}
+    \end{equation}
+    Then we can construct a commutative diagram with exact rows and exact columns except the medium column
+    \begin{equation}
+        \begin{tikzcd}
+            & 0 &
+            0 &
+            0 & \\
+            0 \arrow[r] &
+            \mathcal{E}_{2} \arrow[u] \arrow[r, "\varphi_{2}"] &
+            \mathcal{E}_{1} \arrow[u] \arrow[r, "\varphi_{1}"] &
+            \mathcal{F} \arrow[r] &
+            0 \\
+            0 \arrow[r] &
+            \mathcal{E}_{2} \arrow[u, "\equal"] \arrow[r] &
+            \mathcal{E}_{2} \oplus \mathcal{E}_{1}' \arrow[u, "\varphi_{2} + \alpha_{1}"] \arrow[r] &
+            \mathcal{E}_{1}' \arrow[u, "\psi_{1}"] \arrow[r] &
+            0 \\
+            & 0 \arrow[u] \arrow[r] &
+            \mathcal{E}_{2}' \arrow[u, "-\alpha_{2} \oplus \psi_{2}"] \arrow[r, equal] &
+            \mathcal{E}_{2}' \arrow[u, "\psi_{2}"] \arrow[r] &
+            0 \\
+            && 0 \arrow[u] &
+            0 \arrow[u] &
+        \end{tikzcd}
+    \end{equation}
 \end{proof}
 \begin{corollary}
     Let $X$ be a regular projective curve.
