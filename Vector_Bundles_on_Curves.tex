@@ -1924,11 +1924,27 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
 \begin{reason}
     Immediately comes from the fact that $\deg: WeilDiv \rightarrow \mathbb{Z}$ is a group homomorphism and Lemma \ref{Lemma 3.4}.
 \end{reason}
+\begin{lemma}
+    Let $\mathcal{L}$ be an invertible sheaf on $X$.
+    Then for all nonzero global section $s$ of $\mathcal{L}$, we have that $\mathcal{O}_{X}(\divisor s) \cong \mathcal{L}$.
+    \label{Lemma 3.5}
+\end{lemma}
+\begin{proof}
+    Assume $g_{ij}$ are transition functions of $\mathcal{L}$ and $s\big{|}_{U_{i}} = f_{i}e_{i}$ where $e_{i}$ has image $1$ under trivialization.
+    Then we have that $f_{j}e_{j} = f_{j}g_{ij}e_{i}$ so that $f_{i} = g_{ij}f_{j}$ on $U_{i} \cap U_{j}$.
+    By definition, $\div s = (U_{i}, f_{i})$ and $\mathcal{O}_{X}(\div s)$ is defined by transition functions $\frac{f_{i}}{f_{j}} = g_{ij}$.
+    Hence $\mathcal{O}_{X}(\div s) \cong \mathcal{L}$.
+\end{proof}
 \begin{corollary}
     Let $\mathcal{L}$ be an invertible sheaf on $X$.
     If $H^{0}(X, \mathcal{L}) \neq 0$, then $\deg L \ge 0$.
     \label{Corollary 3.3}
 \end{corollary}
+\begin{reason}
+    By Lemma \ref{Lemma 3.5}, pick a nonzero global section $s$ of $\mathcal{L}$,
+    then we know $\mathcal{L} \cong \mathcal{O}_{X}(\div s)$.
+    Note that $s$ has no pole, $\div s$ is an effective Weil divisor so that $\deg \mathcal{L} = \deg \mathcal{O}_{X}(\div s) = \deg (\div s) \ge 0$.
+\end{reason}
 
 \subsection{Grothendieck group}
 \label{subsection:Riemann-Roch_for_curves_Grothendieck_group}
@@ -1943,7 +1959,7 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
 \begin{lemma}
     Let $X$ be a regular projective curve, $\mathcal{F}\in \coherent (X)$.
     Then there is an exact sequence $0 \rightarrow \mathcal{E}_{1} \rightarrow \mathcal{E}_{2} \rightarrow \mathcal{F} \rightarrow X$ with $\mathcal{E}_{1}$ and $\mathcal{E}_{2}$ locally free of finite rank.
-    \label{Lemma 3.5}
+    \label{Lemma 3.6}
 \end{lemma}
 \begin{proof}
     Since $X$ is projective, there is a very ample line bundle $\mathcal{O}_{X}(1)$.
@@ -1989,7 +2005,7 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
 \begin{lemma}
     Let $X$ be a regular projective curve.
     Put $A(X) := \mathbb{Z} \langle \mathcal{O}_{p} \big{|} p\in X \rangle/\sim$.
-    \label{Lemma 3.6}
+    \label{Lemma 3.7}
 \end{lemma}
 \begin{theorem}
     Let $X$ be a regular projective curve, $\mathcal{F}\in \coherent (X)$.
