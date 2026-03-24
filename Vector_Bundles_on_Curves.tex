@@ -2069,11 +2069,29 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
     On the other hand, we also have that $\deg \mathcal{E}_{i + 1} = \deg \mathcal{E}_{i} + \deg \mathcal{L}_{i}$ for all $i$.
     Summing together, we get $\deg \mathcal{E} = \sum_{i = 0}^{r - 1} \deg \mathcal{L}_{i} = \deg (\det \mathcal{E})$, done!
 \end{proof}
-\begin{corollary}
+\begin{lemma}
+    Let $X$ be an arbitrary scheme, $D, E$ effective Cartier divisors with disjoint supports.
+    Then there is an exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{O}_{X} \longrightarrow \mathcal{O}_{X}(D) \oplus \mathcal{O}_{X}(E) \longrightarrow \mathcal{O}_{X}(D + E) \longrightarrow 0
+    \end{equation}
+    \label{Lemma 3.7}
+\end{lemma}
+\begin{proof}
+    Construct the maps locally.
+    Take affine cover $U_{i}$ of $X$ trivializing both $\mathcal{O}_{X}(D)$ and $\mathcal{O}_{X}(E)$.
+    Assume $D\big{|}_{U_{i}}$ and $E\big{|}_{U_{i}}$ are defined by regular sections $f_{i}$ and $g_{i}$ respectively.
+    Since $\support D$ and $\support E$ are disjoint, $f_{i}$ and $g_{i}$ are coprime.
+    \par
+    Define $\mathcal{O}_{U_{i}} \rightarrow \mathcal{O}_{X}(D)\big{|}_{U_{i}} \oplus \mathcal{O}_{X}(E)\big{|}_{U_{i}}$ sending $1$ to $(f_{i}, g_{i})$,
+    and $\mathcal{O}_{X}(D)\big{|}_{U_{i}} \oplus \mathcal{O}_{X}(E)\big{|}_{U_{i}} \rightarrow \mathcal{O}_{X}(D + E)\big{|}_{U_{i}}$ sending $(a, b)$ to $g_{i}a - f_{i}b$.
+    Obviously these maps give a short exact sequence and glue up to our desired exact sequence.
+\end{proof}
+\begin{proposition}
     Let $X$ be a regular projective curve.
     Then $K(X) \cong \picardscheme (X) \oplus \mathbb{Z}$.
-    \label{Corollary 3.6}
-\end{corollary}
+    \label{Proposition 3.5}
+\end{proposition}
 \begin{proof}
     Suffices to show $K_{0}(X) \cong \picardscheme (X) \oplus \mathbb{Z}$.
     We may consider the rank map $\rank: K_{0}(X) \rightarrow \mathbb{Z}$.
