@@ -2298,5 +2298,25 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
     In fact, all finiteness results in Theorem \ref{Theorem 2.7} still hold for $X$ proper over $A$.
     Proofs can be seen in EGA or Stacks Project.
 \end{remark}
-
+\begin{proposition}
+    Let $X$ be a variety, $\mathcal{L}$ and $\mathcal{M}$ invertible sheaves on $X$.
+    Then \\
+    (1)If $\mathcal{L}$ and $\mathcal{M}$ are both ample, then $\mathcal{L} \otimes \mathcal{M}$ is ample. \\
+    (2)If $\mathcal{L}$ is ample, then $\mathcal{L}^{m} \otimes \mathcal{M}$ is ample for $m$ large enough.
+    \label{Proposition 4.4}
+\end{proposition}
+\begin{proof}
+    (1): For all coherent sheaf $\mathcal{F}$, as $\mathcal{L}$ is ample, 
+    there exists $n_{1}$ such that $\mathcal{F} \otimes \mathcal{L}^{n}$ is globally generated for all $n \ge n_{1}$.
+    In addition, since $\mathcal{M}$ is ample, there exists $n_{2}$ such that $\mathcal{L} \otimes \mathcal{M}^{n}$ is globally generated for all $n \ge n_{2}$.
+    Set $n_{0} = \max \{n_{1} + 1, n_{2}\}$.
+    Then for all $n \ge n_{0}$, $\mathcal{F} \otimes (\mathcal{L} \otimes \mathcal{M})^{n} = (\mathcal{F} \otimes \mathcal{L}^{n - 1}) \otimes (\mathcal{L} \otimes \mathcal{M}^{n})$ is globally generated.
+    Thus $\mathcal{L} \otimes \mathcal{M}$ is ample.
+    \par
+    (2):Since $\mathcal{L}$ is ample, there exists $m_{0}$ such that $\mathcal{L}^{m} \otimes \mathcal{M}$ is globally generated for all $m \ge m_{0}$.
+    We may take $m \ge m_{0} + 1$.
+    For all coherent sheaf $\mathcal{F}$, there exists $n_{0}$ such that $\mathcal{F} \otimes \mathcal{L}^{n}$ is globally generated for all $n \ge n_{0}$.
+    Then $\mathcal{F} \otimes (\mathcal{L}^{m} \otimes \mathcal{M})^{n} = (\mathcal{F} \otimes \mathcal{L}^{n}) \otimes (\mathcal{L}^{m - 1} \otimes \mathcal{M})^{n}$ is globally generated.
+    Thus $\mathcal{L}^{m} \otimes \mathcal{M}$ is ample for $m$ large enough.
+\end{proof}
 \end{document}
