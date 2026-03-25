@@ -2219,15 +2219,14 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
     Let $A$ be a noetherian ring and $X$ be a scheme of finite type over $A$, $\mathcal{L}$ an ample invertible sheaf on $X$.
     If $X$ admits an ample invertible sheaf, then $X$ is separated. 
 \end{remark}
-
 \begin{corollary}
     Let $A$ be a noetherian ring, $X$ proper over $\spec A$, $\mathcal{L}$ ample invertible sheaf on $X$.
     Then for all $\mathcal{F}$ coherent sheaf on $X$, there exists $n_{0}$ relative to $\mathcal{F}$ such that $H^{i}(X, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n}) = 0$ for all $i > 0$ and $n \ge n_{0}$. 
-    \label{Corollary 2.10}
+    \label{Corollary 4.2}
 \end{corollary}
 \begin{reason}
     Note that there exists $m > 0$ such that $\mathcal{L}^{m}$ is very ample.
-    Get closed immersion $i: X \hookrightarrow \mathbb{P}_{A}^{r}$ such that $\mathcal{L}^{m} = \mathcal{O}_{X}(1)$.
+    Since $X$ is proper, get closed immersion $i: X \hookrightarrow \mathbb{P}_{A}^{r}$ such that $\mathcal{L}^{m} = \mathcal{O}_{X}(1)$.
     Apply Theorem \ref{Theorem 2.7} to $\mathcal{F}, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}, \cdots, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{m - 1}$.
 \end{reason}
 \begin{theorem}[\textbf{\emph{Serre Cohomological Criteria for Ampleness}}]
@@ -2239,11 +2238,11 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
     (3)for all $\mathcal{F}$ coherent sheaf on $X$, 
     there exists $n_{0}$ relative to $\mathcal{F}$ such that $H^{1}(X, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n}) = 0$.
     \vspace{-\baselineskip} % 减少一行间距
-    \label{Theorem 2.8}
+    \label{Theorem 4.2}
 \end{theorem}
 \begin{proof}
     Step 1.
-    Since by Corollary \ref{Corollary 2.10}, we have $(1) \Rightarrow (2)$, and $(2) \Rightarrow (3)$ is obvious.
+    Since by Corollary \ref{Corollary 4.2}, we have $(1) \Rightarrow (2)$, and $(2) \Rightarrow (3)$ is obvious.
     Only need to prove $(3) \Rightarrow (1)$.
     Moreover, suffices to prove that for all $\mathcal{F}$ coherent sheaf on $X$ and closed point $x\in X$,
     there exists open neighbourhood $U_{x}\ni x$ and $n_{0}(x) > 0$ such that for all $n \ge n_{0}(x)$ and $y\in U_{x}$,
