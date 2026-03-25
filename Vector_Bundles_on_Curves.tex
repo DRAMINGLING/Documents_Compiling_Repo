@@ -2060,7 +2060,7 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
 \section{Ample Vector Bundles}
 \label{section:Ample_Vector_Bundles}
 
-\subsection{Ample line bundle}
+\subsection{Ample line bundles}
 \label{subsection:Ample_Vector_Bundles_Ample_line_bundles}
 
 \begin{proposition}
@@ -2325,6 +2325,59 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
     \label{Proposition 4.5}
 \end{proposition}
 \begin{proof}
-    
+    In fact, here we only need affine morphism.
+    In this case, we have a natural surjective map $f^{\ast}f_{\ast}\mathcal{F} \twoheadrightarrow \mathcal{F}$ for all coherent sheaf $\mathcal{F}$,
+    which can be affine locally defined as $M \otimes_{A} B \twoheadrightarrow M$.
+    In addition, since $X$ and $Y$ are proper, by Cancellation Theorem, $f$ is proper hence $f_{\ast}\mathcal{F}$ is a coherent sheaf on $Y$
+    \par
+    Then by Projection Formula, we know $f_{\ast}(\mathcal{F} \otimes f^{\ast}\mathcal{L}^{n}) \cong f_{\ast}\mathcal{F} \otimes \mathcal{L}^{n}$ is globally generated for $n$ large enough.
+    Hence we have a surjection $\mathcal{O}_{Y}^{\oplus I} \twoheadrightarrow f_{\ast}\mathcal{F} \otimes \mathcal{L}^{n}$.
+    Take inverse image, we get $\mathcal{O}_{X}^{\oplus I} \twoheadrightarrow f^{\ast}f_{\ast}(\mathcal{F} \otimes f^{\ast}\mathcal{L}^{n}) \twoheadrightarrow \mathcal{F} \otimes f^{\ast}\mathcal{L}^{n}$ for $n$ large enough.
+    Conclude that $f^{\ast}\mathcal{L}$ is ample.
 \end{proof}
+\begin{remark}
+    When $f$ is not affine, then we cannot take affine cover such that $f^{\ast}f_{\ast}\mathcal{F}$ is of the form $M \otimes_{A} B$.
+    So there is no natural surjection $f^{\ast}f_{\ast}\mathcal{F} \twoheadrightarrow \mathcal{F}$.
+\end{remark}
+\begin{proposition}
+    Let $X$ be complete scheme, $\mathcal{L}$ invertible sheaf on $X$.
+    Then \\
+    (1)$\mathcal{L}$ is ample on $X$ if and only if $\mathcal{L}\big{|}_{X^{\reduction}}$ is ample on $X^{\reduction}$. \\
+    (2)$\mathcal{L}$ is ample on $X$ if and only if $\mathcal{L}\big{|}_{X_{i}}$ is ample on $X_{i}$ for all irreducible component $X_{i}$ of $X$.
+    \vspace{-\baselineskip} % 减少一行间距
+    \label{Proposition 4.6}
+\end{proposition}
+\begin{proof}
+    Since $f: X^{\reduction} \rightarrow X$ and $f_{i}: X_{i} \hookrightarrow X$ are closed immersions hence finite,
+    by Proposition \ref{Proposition 4.5}, if $\mathcal{L}$ is ample on $X$,
+    then $\mathcal{L}\big{|}_{X^{\reduction}}$ is ample on $X^{\reduction}$ and $\mathcal{L}\big{|}_{X_{i}}$ is ample on $X_{i}$.
+    \par
+    For the converse, if $\mathcal{L}\big{|}_{X^{\reduction}}$ is ample on $X^{\reduction}$,
+    consider the following commutative diagram for all $\mathcal{F}\in \coherent (X)$ and $x\in X$
+    \begin{equation}
+        \begin{tikzcd}
+            H^{0}(X, \mathcal{F} \otimes \mathcal{L}^{n}) \otimes \mathcal{O}_{X, x} \arrow[r, "\alpha"] \arrow[d, twoheadrightarrow] &
+            (\mathcal{F} \otimes \mathcal{L}^{n})_{x} \arrow[d, equal] \\
+            H^{0}(X^{\reduction}, f^{\ast}\mathcal{F} \otimes f^{\ast}\mathcal{L}^{n}) \otimes \mathcal{O}_{X^{\reduction}, x} \arrow[r, twoheadrightarrow] &
+            (f^{\ast}\mathcal{F} \otimes f^{\ast}\mathcal{L}^{n})_{x}
+        \end{tikzcd}
+    \end{equation}
+    Then $\alpha$ is surjective so that $\mathcal{L}$ is ample on $X$.
+    Similarly, if $\mathcal{L}\big{|}_{X_{i}}$ is ample on $X_{i}$ for all irreducible component $X_{i}$ of $X$,
+    then for all $x\in X$, we can find irreducible component $X_{i}$ containing $x$.
+    Consider the following commutative diagram for all $\mathcal{F}\in \coherent (X)$
+    \begin{equation}
+        \begin{tikzcd}
+            H^{0}(X, \mathcal{F} \otimes \mathcal{L}^{n}) \otimes \mathcal{O}_{X, x} \arrow[r, "\alpha"] \arrow[d, twoheadrightarrow] &
+            (\mathcal{F} \otimes \mathcal{L}^{n})_{x} \arrow[d, equal] \\
+            H^{0}(X_{i}, f_{i}^{\ast}\mathcal{F} \otimes f_{i}^{\ast}\mathcal{L}^{n}) \otimes \mathcal{O}_{X_{i}, x} \arrow[r, twoheadrightarrow] &
+            (f_{i}^{\ast}\mathcal{F} \otimes f_{i}^{\ast}\mathcal{L}^{n})_{x}
+        \end{tikzcd}
+    \end{equation}
+    Thus $\mathcal{L}$ is ample on $X$.
+\end{proof}
+
+\subsection{Ample vector bundles}
+\label{subsection:Ample_Vector_Bundles_Ample_vector_bundles}
+
 \end{document}
