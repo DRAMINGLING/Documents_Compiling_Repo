@@ -2393,9 +2393,9 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
 \end{proposition}
 \begin{proof}
     First take $n_{1, x}$ such that $H^{0}(X, S^{n}\mathcal{E})$ generate $(S^{n}\mathcal{E})_{x}$ for all $n \ge n_{1, x}$.
-    Then there is an open neighbourhood $U_{1, x}$ of $x$ such that $S^{n}\mathcal{E}\big{|}_{U_{1, x}}$ is globally generated.
+    Then there is an open neighbourhood $U_{1, x}$ of $x$ such that $S^{n_{1, x}}\mathcal{E}\big{|}_{U_{1, x}}$ is globally generated.
     And we can take $n_{2, x}$ large enough such that $H^{0}(X, \mathcal{F} \otimes S^{i}\mathcal{E} \otimes S^{n}\mathcal{E})$ generate $(\mathcal{F} \otimes S^{i}\mathcal{E} \otimes S^{n}\mathcal{E})$ for all $n \ge n_{2, x}$ and for all $0 \le i \le n_{1, x} - 1$.
-    Then there is an open neighbourhood $U_{2, x}$ of $x$ such that $\mathcal{F} \otimes S^{i}\mathcal{E} \otimes \mathcal{E}\big{|}_{U_{2, x}}$ are globally generated.
+    Then there is an open neighbourhood $U_{2, x}$ of $x$ such that $\mathcal{F} \otimes S^{i}\mathcal{E} \otimes S^{n_{2, x}}\mathcal{E}\big{|}_{U_{2, x}}$ are globally generated.
     \par
     Set $U_{x} = U_{1, x} \cap U_{2, x}$ and $n_{0, x} = n_{2, x}$.
     Then for all $n \ge n_{0, x}$, we can write $n = n_{2, x} + r \cdot n_{1, x} + i$,
@@ -2453,5 +2453,23 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
     \end{equation}
     Then by Proposition \ref{Proposition 4.9}, we know $\mathcal{E}_{1}^{\oplus r}$ is ample.
     Hence by Proposition \ref{Proposition 4.8}, $\mathcal{E}_{1} \otimes \mathcal{E}_{2}$ is ample.
+\end{proof}
+\begin{corollary}
+    Let $X$ be a scheme, $\mathcal{E}_{1}$ and $\mathcal{E}_{2}$ ample vector bundles on $X$.
+    Then for all $\mathcal{F}\in \coherent (X)$, $\mathcal{F} \otimes S^{p}\mathcal{E}_{1} \otimes S^{q}\mathcal{E}_{2}$ is globally generated for $p + q$ large enough.
+    \label{Proposition 4.10}
+\end{corollary}
+\begin{proof}
+    Firstly, we can take $n_{1}$ such that $S^{n}\mathcal{E}_{1}$ is globally generated for all $n \ge n_{1}$ and $n_{2}$ such that $S^{n}\mathcal{E}_{2}$ is globally generated for all $n \ge n_{2}$.
+    Then take $n_{3}$ such that $\mathcal{F} \otimes S^{i}\mathcal{E}_{2} \otimes S^{n}\mathcal{E}_{1}$ is globally generated for all $n \ge n_{3}$ and $0 \le i \le n_{2} - 1$,
+    and $n_{4}$ such that $\mathcal{F} \otimes S^{j}\mathcal{E}_{1} \otimes S^{n}\mathcal{E}_{2}$ is globally generated for all $n \ge n_{4}$ and $0 \le j \le n_{1} - 1$.
+    \par
+    Put $n_{0} = n_{3} + n_{4}$.
+    Then for all $p + q \ge n_{0}$, we know $p \ge n_{3}$ or $q \ge n_{4}$.
+    We may assume that $p \ge n_{3}$ and write $q = r \cdot n_{2} + i$, where $0 \le i \le n_{2} - 1$.
+    Note that there is a surjection
+    \begin{equation}
+        \mathcal{F} \otimes S^{p}\mathcal{E}_{1} \otimes S^{} 
+    \end{equation}
 \end{proof}
 \end{document}
