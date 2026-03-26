@@ -2380,4 +2380,40 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
 \subsection{Ample vector bundles}
 \label{subsection:Ample_Vector_Bundles_Ample_vector_bundles}
 
+\begin{definition}
+    Let $X$ be a scheme.
+    A vector bundle $\mathcal{E}$ on $X$ is said to be ample if for all $\mathcal{F}\in \coherent (X)$,
+    the sheaf $\mathcal{F} \otimes S^{n}\mathcal{E}$ is globally generated for $n$ large enough.
+\end{definition}
+\begin{proposition}[\textbf{\emph{Local Criteria}}]
+    Let $X$ be a variety, $\mathcal{E}$ vector bundle on $X$.
+    Then $\mathcal{E}$ is ample if and only if for all $\mathcal{F}\in \coherent (X)$ and closed point $x\in X$,
+    $H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E})$ generate $(\mathcal{F} \otimes S^{n}\mathcal{E})_{x}$ as $\mathcal{O}_{X, x}$-module.
+    \label{Proposition 4.7}
+\end{proposition}
+\begin{proof}
+    First take $n_{1, x}$ such that $H^{0}(X, S^{n}\mathcal{E})$ generate $(S^{n}\mathcal{E})_{x}$ for all $n \ge n_{1, x}$.
+    Then there is an open neighbourhood $U_{1, x}$ of $x$ such that $S^{n}\mathcal{E}\big{|}_{U_{1, x}}$ is globally generated.
+    And we can take $n_{2, x}$ large enough such that $H^{0}(X, \mathcal{F} \otimes S^{i}\mathcal{E} \otimes S^{n}\mathcal{E})$ generate $(\mathcal{F} \otimes S^{i}\mathcal{E} \otimes S^{n}\mathcal{E})$ for all $n \ge n_{2, x}$ and for all $0 \le i \le n_{1, x} - 1$.
+    Then there is an open neighbourhood $U_{2, x}$ of $x$ such that $\mathcal{F} \otimes S^{i}\mathcal{E} \otimes \mathcal{E}\big{|}_{U_{2, x}}$ are globally generated.
+    \par
+    Set $U_{x} = U_{1, x} \cap U_{2, x}$ and $n_{0, x} = n_{2, x}$.
+    Then for all $n \ge n_{0, x}$, we can write $n = n_{2, x} + r \cdot n_{1, x} + i$,
+    where $r \ge 0$ and $0 \le i \le n_{1, x} - 1$.
+    As $\mathcal{F} \otimes S^{i}\mathcal{E} \otimes S^{n_{2, x}}\mathcal{E} \otimes (S^{n_{1, x}}\mathcal{E})^{r}\big{|}_{U_{0, x}}$ is globally generated and there is a surjection
+    \begin{equation}
+        \mathcal{F} \otimes S^{i}\mathcal{E} \otimes S^{n_{2, x}}\mathcal{E} \otimes (S^{n_{1, x}}\mathcal{E})^{r} \twoheadrightarrow \mathcal{F} \otimes S^{n}\mathcal{E}
+    \end{equation}
+    so that $\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{U_{x}}$ is globally generated.
+    Note that $X$ is a variety so that $U_{x}$ cover $X$ and there is a finite subcovering $U_{x_{1}}, \cdots, U_{x_{m}}$.
+    Take $n_{0} = \max \{n_{0, x_{1}}, \cdots, n_{0, x_{m}}\}$.
+    It is clear that $\mathcal{F} \otimes S^{n}\mathcal{E}$ is globally generated for all $n \ge n_{0}$.
+    Conclude that $\mathcal{E}$ is ample.
+\end{proof}
+\begin{remark}
+    Here the statement that $S^{n}\mathcal{E}\big{|}_{U_{1, x}}$ is globally generated might be a little misunderstood.
+    What we mean is that $H^{0}(X, S^{n}\mathcal{E})$ generate $(S^{n}\mathcal{E})_{y}$ for all $y\in U_{1, x}$.
+    But sometimes, it can be understood as the inverse image of $S^{n}\mathcal{E}$ along $U_{1, x} \hookrightarrow X$ is globally generated on $U_{1, x}$.
+    And we cannot conclude $S^{n}\mathcal{E}$ is globally generated with the latter one.
+\end{remark}
 \end{document}
