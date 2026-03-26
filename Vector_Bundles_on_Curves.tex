@@ -2457,7 +2457,7 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
 \begin{corollary}
     Let $X$ be a scheme, $\mathcal{E}_{1}$ and $\mathcal{E}_{2}$ ample vector bundles on $X$.
     Then for all $\mathcal{F}\in \coherent (X)$, $\mathcal{F} \otimes S^{p}\mathcal{E}_{1} \otimes S^{q}\mathcal{E}_{2}$ is globally generated for $p + q$ large enough.
-    \label{Proposition 4.10}
+    \label{Corollary 4.4}
 \end{corollary}
 \begin{proof}
     Firstly, we can take $n_{1}$ such that $S^{n}\mathcal{E}_{1}$ is globally generated for all $n \ge n_{1}$ and $n_{2}$ such that $S^{n}\mathcal{E}_{2}$ is globally generated for all $n \ge n_{2}$.
@@ -2474,4 +2474,35 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
     And by our assumption, $\mathcal{F} \otimes S^{i}\mathcal{E}_{2} \otimes S^{p}\mathcal{E}_{1}$ and $S^{r \cdot n_{2}}\mathcal{E}_{2}$ are both globally generated.
     Conclude that $\mathcal{F} \otimes S^{p}\mathcal{E}_{1} \otimes S^{q}\mathcal{E}_{2}$ is globally generated for $p + q$ large enough.
 \end{proof}
+\begin{proposition}
+    Let $X$ be a scheme, $\mathcal{E}$ vector bundle on $X$.
+    If $\mathcal{E}$ is ample, then $S^{n}\mathcal{E}$ is ample for $n$ large enough.
+    Conversely, if $S^{n}\mathcal{E}$ is ample for some $n > 0$, then $\mathcal{E}$ is ample.
+    \label{Proposition 4.10}
+\end{proposition}
+\begin{proof}
+    Firstly note that when $\mathcal{E}$ is ample, $S^{n}\mathcal{E}$ is globally generated for $n$ large enough.
+    By Corollary \ref{Corollary 4.3}, $\mathcal{E} \otimes S^{n}\mathcal{E}$ is ample for $n$ large enough.
+    As $S^{n + 1}\mathcal{E}$ is a quotient of $\mathcal{E} \otimes S^{n}\mathcal{E}$, by Proposition \ref{Proposition 4.8}, $S^{n + 1}\mathcal{E}$ is ample for $n$ large enough.
+    \par
+    Conversely, if $S^{n}\mathcal{E}$ is ample for some $n > 0$,
+    then for all coherent $\mathcal{F}$, consider $\mathcal{F} \otimes S^{i}\mathcal{E}$ for $0 \le i \le n - 1$.
+    We can take $m_{0}$ such that $\mathcal{F} \otimes S^{i}\mathcal{E} \otimes S^{m}(S^{n}\mathcal{E})$ is globally generated for all $m \ge m_{0}$.
+    Note that there is a surjection $S^{i}\mathcal{E} \otimes S^{m}(S^{n}\mathcal{E}) \twoheadrightarrow S^{i + mn}\mathcal{E}$, we know $\mathcal{F} \otimes S^{i + mn}\mathcal{E}$ is globally generated.
+    Thus $\mathcal{F} \otimes S^{m}\mathcal{E}$ is globally generated for all $m \ge m_{0}n$.
+    Conclude that $\mathcal{E}$ is ample.
+\end{proof}
+\begin{corollary}
+    Let $X$ be a scheme, $\mathcal{E}$ vector bundle on $X$, $\mathcal{L}$ ample line bundle on $X$.
+    Then $\mathcal{E}$ is ample if and only if $\mathcal{L}^{\vee} \otimes S^{n}\mathcal{E}$ is globally generated for some $n > 0$.
+    \label{Corollary 4.5}
+\end{corollary}
+\begin{reason}
+    Immediately comes from Proposition \ref{Proposition 4.10} and Corollary \ref{Corollary 4.3}.
+\end{reason}
+
+\subsection{Serre criteria of ampleness}
+\label{subsection:Ample_Vector_Bundles_Serre_criteria_of_ampleness}
+
+
 \end{document}
