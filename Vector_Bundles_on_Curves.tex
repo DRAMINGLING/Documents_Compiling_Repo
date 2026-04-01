@@ -2654,8 +2654,24 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
 \end{remark}
 \begin{lemma}
     Let $f: X \rightarrow Y$ be a morphism between noetherian schemes, $\mathcal{L}$ $f$-ample invertible sheaf on $X$.
+    Then for all coherent $\mathcal{F}$ on $Y$, the natural map $f^{\ast}f_{\ast}(\mathcal{F} \otimes \mathcal{L}^{n}) \rightarrow \mathcal{F} \otimes \mathcal{L}^{n}$ is surjective for $n$ large enough.
     \ref{Lemma 4.3}
 \end{lemma}
+\begin{proof}
+    Since the question is local, we may assume that $Y$ is affine.
+    Then $\mathcal{L}$ is ample.
+    Hence $\mathcal{F} \otimes \mathcal{L}^{n}$ is globally generated for $n$ large enough.
+    Consider the following commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            H^{0}(X, f^{\ast}f_{\ast}(\mathcal{F} \otimes \mathcal{L}^{n})) \arrow[r, equal] \arrow[d] &
+            H^{0}(X, \mathcal{F} \otimes \mathcal{L}^{n}) \arrow[d, twoheadrightarrow] \\
+            f^{\ast}f_{\ast}(\mathcal{F} \otimes \mathcal{L}^{n}) \arrow[r, "\alpha"] &
+            \mathcal{F} \otimes \mathcal{L}^{n}
+        \end{tikzcd}
+    \end{equation}
+    Thus the natural map $\alpha$ is surjective.
+\end{proof}
 \begin{proposition}
     Let $X$ be a noetherian scheme, $\mathcal{E}$ vector bundle on $X$ with tautological line bundle $\mathcal{L} := \mathcal{O}_{\mathbb{P}(\mathcal{E})}(1)$.
     Then $\mathcal{E}$ is ample on $X$ if and only if $\mathcal{L}$ is ample on $\mathbb{P}(\mathcal{E})$.
