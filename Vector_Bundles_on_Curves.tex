@@ -128,6 +128,7 @@
 The course aims at introducing vector bundles on curve and Koszul cohomology.
 You may benefit from the following references
 \begin{itemize}
+    \item \emph{Ample Vector Bundles}, Hartshorne
     \item \emph{Koszul Cohomology and Algebraic Geometry}, Aprodu-Nagel
     \item \emph{Lectures on Vector Bundles}, J.Le Potier
     \item \emph{The Geometry of Moduli Space of Sheaves}, Huybrechts-Lehn.
@@ -2655,7 +2656,7 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
 \begin{lemma}
     Let $f: X \rightarrow Y$ be a morphism between noetherian schemes, $\mathcal{L}$ $f$-ample invertible sheaf on $X$.
     Then for all coherent $\mathcal{F}$ on $Y$, the natural map $f^{\ast}f_{\ast}(\mathcal{F} \otimes \mathcal{L}^{n}) \rightarrow \mathcal{F} \otimes \mathcal{L}^{n}$ is surjective for $n$ large enough.
-    \ref{Lemma 4.3}
+    \label{Lemma 4.3}
 \end{lemma}
 \begin{proof}
     Since the question is local, we may assume that $Y$ is affine.
@@ -2690,6 +2691,30 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     Then by Lemma \ref{Lemma 4.2}, $\pi^{\ast}\pi_{\ast}(\pi^{\ast}\mathcal{G} \otimes \mathcal{L}^{n}) \cong \pi^{\ast}(\mathcal{G} \otimes S^{n}\mathcal{E})$,
     which is globally generated for $n$ large enough since $\mathcal{E}$ is ample.
     \par
-    \leftquotes $\Leftarrow$ \rightquotes :                                                                                                                                                                                                                                                           
+    \leftquotes $\Leftarrow$ \rightquotes : By local criteria, suffices to show $H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E})$ generate $(\mathcal{F} \otimes S^{n}\mathcal{E})_{x}$ for all closed point $x$.
+    By Nakayama's Lemma, it is equivalent to show $H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E})$ generate $(\mathcal{F} \otimes S^{n}\mathcal{E})_{x} \otimes k(x) = (\mathcal{F} \otimes S^{n}\mathcal{E} \otimes k(x))_{x}$.
+    Note that $\mathcal{F} \otimes S^{n}\mathcal{E} \otimes k(x)$ is a skyscraper sheaf, its global sections is same to the stalk at $x$.
+    Hence we only need to show $H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E}) \rightarrow H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E} \otimes k(x))$ is surjective for all closed point $x\in X$.
+    \par
+    When $X$ is projective, we may assume $\mathcal{F}$ is locally free.
+    By Lemma \ref{Lemma 4.2}, $H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E}) = H^{0}(\mathbb{P}(\mathcal{E}), p^{\ast}\mathcal{F} \otimes \mathcal{L}^{n})$ and $H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E} \otimes k(x)) = H^{0}(\mathbb{P}(\mathcal{E}), p^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \otimes p^{\ast}k(x))$.
+    Denote $Y := \pi^{-1}(x)$ and there is an short exact sequence.
+    \begin{equation}
+        0 \longrightarrow \mathcal{I}_{Y} \longrightarrow \mathcal{O}_{\mathbb{P}(\mathcal{E})} \longrightarrow \mathcal{O}_{Y} \longrightarrow 0
+    \end{equation}
+    Tensoring by $\pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}$, get exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{I}_{Y} \otimes \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \longrightarrow \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \longrightarrow \mathcal{O}_{Y} \otimes \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \longrightarrow 0
+    \end{equation}
+    Hence suffices to show that $H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{I}_{Y} \otimes \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}) = 0$ for $n$ large enough,
+    which immediately comes from Serre Theorem.
 \end{proof}
+\begin{remark}
+    It seems that the original statement in \emph{Ample Vector Bundles}, Hartshorne does not assume $X$ to be projective.
+    And his proof for that case also used our short exact sequence above which requires $p^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}$ to be flat.
+    But for a general noetherian $X$, a coherent sheaf need not to be a quotient of a locally free sheaf.
+    And globally generated property is not local so we cannot reduce to affine case.
+    I donot know in such case, why we can assume $\mathcal{F}$ locally free.
+    Maybe the derived push forward plays a role.
+\end{remark}
 \end{document}
