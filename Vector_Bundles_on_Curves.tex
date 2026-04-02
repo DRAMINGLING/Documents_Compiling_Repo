@@ -2697,16 +2697,26 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     Note that $\mathcal{F} \otimes S^{n}\mathcal{E} \otimes k(x)$ is a skyscraper sheaf, its global sections is same to the stalk at $x$.
     Hence we only need to show $H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E}) \rightarrow H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E} \otimes k(x))$ is surjective for all closed point $x\in X$.
     \par
-    When $X$ is projective, we may assume $\mathcal{F}$ is locally free.
     By Lemma \ref{Lemma 4.2}, $H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E}) = H^{0}(\mathbb{P}(\mathcal{E}), p^{\ast}\mathcal{F} \otimes \mathcal{L}^{n})$ and $H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E} \otimes k(x)) = H^{0}(\mathbb{P}(\mathcal{E}), p^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \otimes p^{\ast}k(x))$.
+    Denote $Y := \pi^{-1}(x)$, which is a closed subscheme of $\mathbb{P}(\mathcal{E})$.
+    Consider the following exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{I}_{Y}\pi^{\ast}\mathcal{F} \longrightarrow \pi^{\ast}\mathcal{F} \longrightarrow \mathcal{O}_{Y} \otimes \pi^{\ast}\mathcal{F} \longrightarrow 0
+    \end{equation}
+    where $\mathcal{I}_{Y}\pi^{\ast}\mathcal{F}$ denotes the image of $\mathcal{I}_{Y} \otimes \pi^{\ast}\mathcal{F} \rightarrow \pi^{\ast}\mathcal{F}$.
+    Tensoring by $\mathcal{L}^{n}$, get exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{I}_{Y}\pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \longrightarrow \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \longrightarrow \mathcal{O}_{Y} \otimes \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \longrightarrow 0
+    \end{equation}
+    Note that $\pi^{\ast}k(x) \cong \mathcal{O}_{Y}$.
+    Hence it is equivalent to show that $H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{I}_{Y}p^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}) \rightarrow H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{O}_{Y} \otimes p^{\ast}\mathcal{F} \otimes \mathcal{L}^{n})$ is injective.
+    
     Denote $Y := \pi^{-1}(x)$ and there is an short exact sequence.
     \begin{equation}
         0 \longrightarrow \mathcal{I}_{Y} \longrightarrow \mathcal{O}_{\mathbb{P}(\mathcal{E})} \longrightarrow \mathcal{O}_{Y} \longrightarrow 0
     \end{equation}
     Tensoring by $\pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}$, get exact sequence
-    \begin{equation}
-        0 \longrightarrow \mathcal{I}_{Y} \otimes \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \longrightarrow \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \longrightarrow \mathcal{O}_{Y} \otimes \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n} \longrightarrow 0
-    \end{equation}
+    
     Hence suffices to show that $H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{I}_{Y} \otimes \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}) = 0$ for $n$ large enough,
     which immediately comes from Serre Theorem.
 \end{proof}
