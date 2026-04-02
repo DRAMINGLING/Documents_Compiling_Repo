@@ -2729,6 +2729,22 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
 \begin{proof}
     \leftquotes $\Rightarrow$ \rightquotes : 
     \par
-    \leftquotes $\Leftarrow$ \rightquotes : 
+    \leftquotes $\Leftarrow$ \rightquotes : By Proposition \ref{Proposition 4.11}, the tautological line bundle $\mathcal{L}$ is ample.
+    As $X$ is proper, by Serre Theorem, for all coherent $\mathcal{F}$ on $X$,
+    $H^{i}(\mathbb{P}(\mathcal{E}), \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}) = 0$ for all $i > 0$ and $n$ large enough.
+    By Lemma \ref{Lemma 4.2}, $R^{i}\pi_{\ast}(\pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}) = 0$.
+    Note that $\Gamma(\mathbb{P}(\mathcal{E}), \cdot) = \Gamma(X, \cdot) \circ \pi_{\ast}$.
+    By Grothendieck Spectral Sequence Theorem, we get
+    \begin{equation}
+        E_{2}^{p, q} = H^{p}(X, R^{q}\pi_{\ast}(p^{\ast}\mathcal{F} \otimes \mathcal{L}^{n})) \Rightarrow H^{p + q}(\mathbb{P}(\mathcal{E}), p^{\ast}\mathcal{F} \otimes \mathcal{L}^{n})
+    \end{equation}
+    Hence we get
+    \begin{equation}
+        \begin{split}
+            H^{i}(X, \mathcal{F} \otimes S^{n}\mathcal{E}) & \cong H^{i}(X, \pi_{\ast}(\pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n})) \\
+            & \cong H^{i}(\mathbb{P}(\mathcal{E}), \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}) \\
+            & = 0, \text{ for all $i > 0$ and $n$ large enough}
+        \end{split}
+    \end{equation}
 \end{proof}
 \end{document}
