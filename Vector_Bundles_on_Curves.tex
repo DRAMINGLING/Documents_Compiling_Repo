@@ -2757,11 +2757,28 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
 \end{corollary}
 \begin{proof}
     First by Corollary \ref{Corollary 4.4}, we know $\mathcal{E}' \oplus \mathcal{E}'$ is ample.
-    Hartshorne Chapter II exercise 5.16, there is a filtration
+    Hence by previous proposition, for all coherent $\mathcal{F}$,
+    $H^{X, \mathcal{F} \otimes S^{p}\mathcal{E}' \otimes S^{q}\mathcal{E}''} = 0$ for all $i > 0$ and $p + q$ large enough.
+    By Hartshorne Chapter II exercise 5.16, there is a locally free filtration
     \begin{equation}
         S^{r}\mathcal{E} = E^{0} \supseteq E^{1} \supseteq \cdots \supseteq E^{r} \supseteq E^{r + 1} = 0
     \end{equation}
-    such that $E^{i}/E^{i + 1} \cong S^{i}\mathcal{E}' \otimes S^{r - i}\mathcal{E}''$.
-    Note that by 
+    such that $E^{j}/E^{j + 1} \cong S^{j}\mathcal{E}' \otimes S^{r - j}\mathcal{E}''$.
+    Note that a short exact sequence of locally free sheaves is still exact after tensored by any $\mathcal{O}_{X}$-module.
+    One may check it locally.
+    Then we get long exact sequence of cohomology
+    \begin{equation}
+        0 \rightarrow H^{0}(X, \mathcal{F} \otimes E^{j + 1}) \rightarrow H^{0}(X, \mathcal{F} \otimes E^{j}) \rightarrow H^{0}(X, \mathcal{F} \otimes S^{j}\mathcal{E}' \otimes S^{r - j}\mathcal{E}'') \rightarrow H^{1}(X, \mathcal{F} \otimes E^{j + 1}) \rightarrow \cdots
+    \end{equation}
+    Since $H^{i}(X, \mathcal{F} \otimes S^{j}\mathcal{E}' \otimes S^{r - j}\mathcal{E}'') = 0$ for all $i > 0$ and $r$ large enough,
+    we get that $H^{i}(X, \mathcal{F} \otimes E^{j}) = H^{i}(X, \mathcal{F} \otimes E^{j + 1})$ for all $i > 1$.
+    As $E^{r} = S^{r}\mathcal{E}'$, we get $H^{i}(X, \mathcal{F} \otimes S^{r}\mathcal{E}) = H^{i}(X, \mathcal{F} \otimes S^{r}\mathcal{E}') = 0$ for all $i > 2$ and $r$ large enough.
+    For $i = 1$ case, note that there is an exact sequence
+    \begin{equation}
+        0 = H^{1}(X, \mathcal{F} \otimes E^{r}) \rightarrow H^{1}(X, \mathcal{F} \otimes E^{r - 1}) \rightarrow H^{1}(X, \mathcal{F} \otimes S^{r - 1}\mathcal{E}' \otimes \mathcal{E}'') = 0
+    \end{equation}
+    Hence $H^{1}(X, \mathcal{F} \otimes E^{r - 1}) = 0$.
+    Preceding step by step, we get $H^{1}(X, \mathcal{F} \otimes S^{r}\mathcal{E}) = 0$.
+    Conclude that $\mathcal{E}$ is ample.
 \end{proof}
 \end{document}
