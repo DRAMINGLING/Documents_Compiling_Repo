@@ -2817,6 +2817,16 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
 \begin{proof}
     Since a locally closed immersion is composition of open immersion and closed immersion.
     It suffices to prove these two cases.
-    When $f: Y \hookrightarrow X$ is open, 
+    When $f: Y \hookrightarrow X$ is open, by Hartshorne Chapter II exercise 5.15,
+    for all $\mathcal{F}\in \coherent (Y)$, we can extend $\mathcal{F}$ to a coherent sheaf $\mathcal{F}'$ on $X$.
+    Hence $\mathcal{F}' \otimes S^{n}\mathcal{E}$ is globally generated for $n$ large enough.
+    While $\mathcal{F}' \otimes S^{n}\mathcal{E}$ and $\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y}$ have same stalks at $y\in Y$,
+    it is clear that $\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y}$ is globally generated so that $\mathcal{E}\big{|}_{Y}$ is ample.
+    \par
+    When $f: Y \rightarrow X$ is closed, for all $\mathcal{F}\in \coherent (Y)$,
+    since $f$ is proper, $f_{\ast}\mathcal{F}$ is coherent on $X$.
+    Then $f_{\ast}\mathcal{F} \otimes S^{n}\mathcal{E}$ is globally generated for $n$ large enough.
+    Note that by Projection Formula, $f_{\ast}\mathcal{F} \otimes S^{n}\mathcal{E} \cong f_{\ast}(\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y})$.
+    
 \end{proof}
 \end{document}
