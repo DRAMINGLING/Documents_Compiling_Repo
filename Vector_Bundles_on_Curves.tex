@@ -2397,25 +2397,41 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
     Thus $\mathcal{L}^{m} \otimes \mathcal{M}$ is ample for $m$ large enough.
 \end{proof}
 \begin{proposition}
-    Let $f: X \rightarrow Y$ be a finite morphism between complete schemes, $\mathcal{L}$ ample invertible sheaf on $Y$.
+    Let $f: X \rightarrow Y$ be a proper and affine morphism between noetherian schemes, $\mathcal{L}$ ample invertible sheaf on $Y$.
     Then $f^{\ast}\mathcal{L}$ is ample invertible sheaf on $X$.
     \label{Proposition 4.5}
 \end{proposition}
 \begin{proof}
-    In fact, here we only need affine morphism.
-    In this case, the natural map $f^{\ast}f_{\ast}\mathcal{F} \twoheadrightarrow \mathcal{F}$ is surjective for all coherent sheaf $\mathcal{F}$,
+    Since $f$ is affine, the natural map $f^{\ast}f_{\ast}\mathcal{F} \twoheadrightarrow \mathcal{F}$ is surjective for all coherent sheaf $\mathcal{F}$,
     which can be affine locally defined as $M \otimes_{A} B \twoheadrightarrow M$.
-    In addition, since $X$ and $Y$ are proper, by Cancellation Theorem, $f$ is proper hence $f_{\ast}\mathcal{F}$ is a coherent sheaf on $Y$
+    In addition, as $f$ is proper, $f_{\ast}\mathcal{F}$ is a coherent sheaf on $Y$.
     \par
     Then by Projection Formula, we know $f_{\ast}(\mathcal{F} \otimes f^{\ast}\mathcal{L}^{n}) \cong f_{\ast}\mathcal{F} \otimes \mathcal{L}^{n}$ is globally generated for $n$ large enough.
     Hence we have a surjection $\mathcal{O}_{Y}^{\oplus I} \twoheadrightarrow f_{\ast}\mathcal{F} \otimes \mathcal{L}^{n}$.
-    Take inverse image, we get $\mathcal{O}_{X}^{\oplus I} \twoheadrightarrow f^{\ast}f_{\ast}(\mathcal{F} \otimes f^{\ast}\mathcal{L}^{n}) \twoheadrightarrow \mathcal{F} \otimes f^{\ast}\mathcal{L}^{n}$ for $n$ large enough.
+    Take pull back, we get $\mathcal{O}_{X}^{\oplus I} \twoheadrightarrow f^{\ast}f_{\ast}(\mathcal{F} \otimes f^{\ast}\mathcal{L}^{n}) \twoheadrightarrow \mathcal{F} \otimes f^{\ast}\mathcal{L}^{n}$ for $n$ large enough.
     Conclude that $f^{\ast}\mathcal{L}$ is ample.
 \end{proof}
 \begin{remark}
     When $f$ is not affine, then we cannot take affine cover such that $f^{\ast}f_{\ast}\mathcal{F}$ is of the form $M \otimes_{A} B$ because $f_{\ast}\mathcal{F}$ locally is not given by $M$ as an $A$-module.
     So the natural map $f^{\ast}f_{\ast}\mathcal{F} \twoheadrightarrow \mathcal{F}$ is not surjective.
 \end{remark}
+\begin{corollary}
+    Let $X$ be a noetherian scheme, $\mathcal{L}$ ample invertible sheaf on $X$.
+    Assume $Y$ is a locally closed subscheme of $X$.
+    Then $\mathcal{L}\big{|}_{Y}$ is ample.
+    \label{Corollary 4.3}
+\end{corollary}
+\begin{proof}
+    Since a locally closed immersion is composition of open immersion and closed immersion.
+    It suffices to prove these two cases.
+    When $f: Y \hookrightarrow X$ is open, by Hartshorne Chapter II exercise 5.15,
+    for all $\mathcal{F}\in \coherent (Y)$, we can extend $\mathcal{F}$ to a coherent sheaf $\mathcal{F}'$ on $X$.
+    Hence $\mathcal{F}' \otimes \mathcal{L}^{n}$ is globally generated for $n$ large enough.
+    While $\mathcal{F}' \otimes \mathcal{L}^{n}$ and $\mathcal{F} \otimes \mathcal{L}^{n}\big{|}_{Y}$ have same stalks at $y\in Y$,
+    it is clear that $\mathcal{F} \otimes \mathcal{L}^{n}\big{|}_{Y}$ is globally generated so that $\mathcal{L}\big{|}_{Y}$ is ample.
+    On the other hand, when $f: Y \rightarrow X$ is closed, since $f$ is proper and affine, 
+    by Proposition \ref{Proposition 4.6}, $\mathcal{L}\big{|}_{Y}$ is ample.
+\end{proof}
 \begin{proposition}
     Let $X$ be complete scheme, $\mathcal{L}$ invertible sheaf on $X$.
     Then \\
@@ -2525,7 +2541,7 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
 \begin{corollary}
     Let $X$ be a noetherian scheme, $\mathcal{E}_{1}$ and $\mathcal{E}_{2}$ vector bundles on $X$.
     Then $\mathcal{E}_{1}$ and $\mathcal{E}_{2}$ are ample if and only if $\mathcal{E}_{1} \oplus \mathcal{E}_{2}$ is ample.
-    \label{Corollary 4.3}
+    \label{Corollary 4.4}
 \end{corollary}
 \begin{proof}
     Note that $S^{n}(\mathcal{E}_{1} \oplus \mathcal{E}_{2}) = \bigoplus_{i = 0}^{n} S^{i}\mathcal{E}_{1} \otimes S^{n - i}\mathcal{E}_{2}$.
@@ -2537,7 +2553,7 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
 \begin{corollary}
     Let $X$ be a noetherian scheme, $\mathcal{E}_{1}$ ample vector bundle on $X$.
     Then for all globally generated vector bundle $\mathcal{E}_{2}$ on $X$, $\mathcal{E}_{1} \otimes \mathcal{E}_{2}$ is ample.
-    \label{Corollary 4.4}
+    \label{Corollary 4.5}
 \end{corollary}
 \begin{proof}
     Since $\mathcal{E}_{2}$ is globally generated, there is an surjection
@@ -2549,7 +2565,7 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
     \begin{equation}
         \mathcal{E}_{1}^{\oplus r} \twoheadrightarrow \mathcal{E}_{1} \otimes \mathcal{E}_{2} \rightarrow 0
     \end{equation}
-    Then by Corollary \ref{Corollary 4.3}, we know $\mathcal{E}_{1}^{\oplus r}$ is ample.
+    Then by Corollary \ref{Corollary 4.4}, we know $\mathcal{E}_{1}^{\oplus r}$ is ample.
     Hence by Proposition \ref{Proposition 4.8}, $\mathcal{E}_{1} \otimes \mathcal{E}_{2}$ is ample.
 \end{proof}
 \begin{proposition}
@@ -2560,7 +2576,7 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
 \end{proposition}
 \begin{proof}
     Firstly note that when $\mathcal{E}$ is ample, $S^{n}\mathcal{E}$ is globally generated for $n$ large enough.
-    By Corollary \ref{Corollary 4.4}, $\mathcal{E} \otimes S^{n}\mathcal{E}$ is ample for $n$ large enough.
+    By Corollary \ref{Corollary 4.5}, $\mathcal{E} \otimes S^{n}\mathcal{E}$ is ample for $n$ large enough.
     As $S^{n + 1}\mathcal{E}$ is a quotient of $\mathcal{E} \otimes S^{n}\mathcal{E}$, by Proposition \ref{Proposition 4.8}, $S^{n + 1}\mathcal{E}$ is ample for $n$ large enough.
     \par
     Conversely, if $S^{n}\mathcal{E}$ is ample for some $n > 0$,
@@ -2573,10 +2589,10 @@ In Midterm24.pdf, there is also a definition of immersion which is a little diff
 \begin{corollary}
     Let $X$ be a noetherian scheme, $\mathcal{E}$ vector bundle on $X$, $\mathcal{L}$ ample line bundle on $X$.
     Then $\mathcal{E}$ is ample if and only if $\mathcal{L}^{\vee} \otimes S^{n}\mathcal{E}$ is globally generated for some $n > 0$.
-    \label{Corollary 4.5}
+    \label{Corollary 4.6}
 \end{corollary}
 \begin{reason}
-    Immediately comes from Proposition \ref{Proposition 4.10} and Corollary \ref{Corollary 4.3}.
+    Immediately comes from Proposition \ref{Proposition 4.10} and Corollary \ref{Corollary 4.4}.
 \end{reason}
 
 \subsection{Serre criteria of ampleness}
@@ -2780,10 +2796,10 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     For short exact sequence of vector bundles on $X$, $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \rightarrow \mathcal{E}'' \rightarrow 0$,
     if $\mathcal{E}'$ and $\mathcal{E}''$ are both ample, then $\mathcal{E}$ is ample.
     In particular, $\mathcal{E}' \oplus \mathcal{E}''$ is ample.
-    \label{Corollary 4.6}
+    \label{Corollary 4.7}
 \end{corollary}
 \begin{proof}
-    First by Corollary \ref{Corollary 4.4}, we know $\mathcal{E}' \oplus \mathcal{E}'$ is ample.
+    First by Corollary \ref{Corollary 4.5}, we know $\mathcal{E}' \oplus \mathcal{E}'$ is ample.
     Hence by previous proposition, for all coherent $\mathcal{F}$,
     $H^{X, \mathcal{F} \otimes S^{p}\mathcal{E}' \otimes S^{q}\mathcal{E}''} = 0$ for all $i > 0$ and $p + q$ large enough.
     By Hartshorne Chapter II exercise 5.16, there is a locally free filtration
@@ -2809,11 +2825,26 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     Conclude that $\mathcal{E}$ is ample.
 \end{proof}
 \begin{proposition}
+    Let $f: X \rightarrow Y$ be a proper and affine morphism between noetherian schemes, $\mathcal{E}$ ample vector bundle on $Y$.
+    Then $\mathcal{E}\big{|}_{X}$ is ample on $X$.
+    \label{Proposition 4.13}
+\end{proposition}
+\begin{proof}
+    Since $f$ is affine, the natural map $f^{\ast}f_{\ast}\mathcal{F} \twoheadrightarrow \mathcal{F}$ is surjective for all coherent sheaf $\mathcal{F}$,
+    which can be affine locally defined as $M \otimes_{A} B \twoheadrightarrow M$.
+    In addition, as $f$ is proper, $f_{\ast}\mathcal{F}$ is a coherent sheaf on $Y$.
+    \par
+    Then by Projection Formula, we know $f_{\ast}(\mathcal{F} \otimes S^{n}(f^{\ast}\mathcal{E})) \cong f_{\ast}\mathcal{F} \otimes S^{n}\mathcal{E}$ is globally generated for $n$ large enough.
+    Hence we have a surjection $\mathcal{O}_{Y}^{\oplus I} \twoheadrightarrow f_{\ast}\mathcal{F} \otimes S^{n}\mathcal{E}$.
+    Take pull back, we get $\mathcal{O}_{X}^{\oplus I} \twoheadrightarrow f^{\ast}f_{\ast}(\mathcal{F} \otimes S^{n}(f^{\ast}\mathcal{E})) \twoheadrightarrow \mathcal{F} \otimes S^{n}(f^{\ast}\mathcal{E})$ for $n$ large enough.
+    Conclude that $f^{\ast}\mathcal{E}$ is ample.
+\end{proof}
+\begin{corollary}
     Let $X$ be a noetherian scheme, $\mathcal{E}$ ample vector bundle on $X$.
     Assume $Y$ is a locally closed subscheme of $X$.
     Then $\mathcal{E}\big{|}_{Y}$ is ample on $Y$.
-    \label{Proposition 4.13}
-\end{proposition}
+    \label{Corollary 4.8}
+\end{corollary}
 \begin{proof}
     Since a locally closed immersion is composition of open immersion and closed immersion.
     It suffices to prove these two cases.
@@ -2822,16 +2853,7 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     Hence $\mathcal{F}' \otimes S^{n}\mathcal{E}$ is globally generated for $n$ large enough.
     While $\mathcal{F}' \otimes S^{n}\mathcal{E}$ and $\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y}$ have same stalks at $y\in Y$,
     it is clear that $\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y}$ is globally generated so that $\mathcal{E}\big{|}_{Y}$ is ample.
-    \par
-    When $f: Y \rightarrow X$ is closed, for all $\mathcal{F}\in \coherent (Y)$,
-    since $f$ is proper, $f_{\ast}\mathcal{F}$ is coherent on $X$.
-    Then $f_{\ast}\mathcal{F} \otimes S^{n}\mathcal{E}$ is globally generated for $n$ large enough.
-    Note that by Projection Formula, $f_{\ast}\mathcal{F} \otimes S^{n}\mathcal{E} \cong f_{\ast}(\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y})$.
-    As $f$ is affine, we have a natural surjection
-    \begin{equation}
-        f^{\ast}f_{\ast}(\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y}) \twoheadrightarrow \mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y}
-    \end{equation}
-    While as $f_{\ast}(\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y})$ is globally generated, we get $f^{\ast}f_{\ast}(\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y})$ is globally generated and so is $\mathcal{F} \otimes S^{n}\mathcal{E}\big{|}_{Y}$.
-    Conclude that $\mathcal{E}\big{|}_{Y}$ is ample.
+    On the other hand, when $f: Y \rightarrow X$ is closed, since $f$ is proper and affine, 
+    by Proposition \ref{Proposition 4.13}, $\mathcal{E}\big{|}_{Y}$ is ample.
 \end{proof}
 \end{document}
