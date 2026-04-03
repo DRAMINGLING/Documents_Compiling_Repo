@@ -2751,7 +2751,13 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     \label{Proposition 4.12}
 \end{proposition}
 \begin{proof}
-    \leftquotes $\Rightarrow$ \rightquotes : 
+    \leftquotes $\Rightarrow$ \rightquotes : Similar to above argument, it suffices to show that $H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E}) \rightarrow H^{0}(X, \mathcal{F} \otimes S^{n}\mathcal{E} \otimes k(x))$ is surjective for all closed point $x\in X$ and large enough $n$.
+    Consider exact sequence
+    \begin{equation}
+        0 \rightarrow \mathcal{I}_{\{x\}}\mathcal{F} \otimes S^{n}\mathcal{E} \rightarrow \mathcal{F} \otimes S^{n}\mathcal{E} \rightarrow \mathcal{F} \otimes S^{n}\mathcal{E} \otimes k(x) \rightarrow 0
+    \end{equation}
+    Note that $\mathcal{I}_{\{x\}}\mathcal{F} \otimes S^{n}\mathcal{E}$ is coherent,
+    we have $H^{1}(X, \mathcal{I}_{\{x\}}\mathcal{F} \otimes S^{n}\mathcal{E}) = 0$ for $n$ large enough, done!
     \par
     \leftquotes $\Leftarrow$ \rightquotes : By Proposition \ref{Proposition 4.11}, the tautological line bundle $\mathcal{L}$ is ample.
     As $X$ is proper, by Serre Theorem, for all coherent $\mathcal{F}$ on $X$,
