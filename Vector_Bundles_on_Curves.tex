@@ -2713,16 +2713,26 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     \par
     Now since $\mathcal{L}$ is ample, we find $r$ large enough such that $\mathcal{L}^{r}$ very ample with an immersion $\ell: \mathbb{P}(\mathcal{E}) \hookrightarrow \mathbb{P}$ into some projective space.
     Take schematic closure of $\mathbb{P}(\mathcal{E})$ in $\mathbb{P}$, denoted by $\overline{\mathbb{P}(\mathcal{E})}$.
-
-    
-    Denote $Y := \pi^{-1}(x)$ and there is an short exact sequence.
+    Denote $\mathcal{G}_{i} := \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{i}$ and $\mathcal{H}_{i} := \mathcal{I}_{Y}\pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{i}$ for $0 \le i \le r - 1$.
+    By Hartshorne Chapter II exercise 5.15, we can extend $\mathcal{G}_{i}$ and $\mathcal{H}_{i}$ to coherent sheaves $\mathcal{G}_{i}'$ and $\mathcal{H}_{i}'$ on $\overline{\mathbb{P}(\mathcal{E})}$ respectively with $\mathcal{H}_{i}' \rightarrow \mathcal{G}_{i}'$ extending the natural map.
+    \par
+    Now for $Z := \overline{\mathbb{P}(\mathcal{E})} \setminus \mathbb{P}(\mathcal{E})$,
+    by Hartshorne Chapter III exercise 2.3, there is a commutative diagram with exact rows
     \begin{equation}
-        0 \longrightarrow \mathcal{I}_{Y} \longrightarrow \mathcal{O}_{\mathbb{P}(\mathcal{E})} \longrightarrow \mathcal{O}_{Y} \longrightarrow 0
+        \begin{tikzcd}
+            \cdots \arrow[r] &
+            H^{1}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{H}_{i}'(m)) \arrow[r] \arrow[d, "\alpha"] &
+            H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{H}_{i}'(m)\big{|}_{\mathbb{P}(\mathcal{E})}) \arrow[r] \arrow[d, "\beta"] &
+            H_{Z}^{2}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{H}_{i}'(m)) \arrow[r] \arrow[d] &
+            \cdots \\
+            \cdots \arrow[r] &
+            H^{1}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{G}_{i}'(m)) \arrow[r] &
+            H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{G}_{i}'(m)\big{|}_{\mathbb{P}(\mathcal{E})}) \arrow[r] &
+            H_{Z}^{2}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{H}_{i}'(m)) \arrow[r] &
+            \cdots
+        \end{tikzcd}
     \end{equation}
-    Tensoring by $\pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}$, get exact sequence
     
-    Hence suffices to show that $H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{I}_{Y} \otimes \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{n}) = 0$ for $n$ large enough,
-    which immediately comes from Serre Theorem.
 \end{proof}
 \begin{remark}
     It seems that the original statement in \emph{Ample Vector Bundles}, Hartshorne does not assume $X$ to be projective.
