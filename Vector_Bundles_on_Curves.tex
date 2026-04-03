@@ -2722,12 +2722,10 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     by Hartshorne Chapter III exercise 2.3, there is a commutative diagram with exact rows
     \begin{equation}
         \begin{tikzcd}[sep = small]
-            \cdots \arrow[r] &
             H^{1}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{I}_{\overline{Y}}\mathcal{G}_{i}'(m)) \arrow[r] \arrow[d, "\alpha"] &
             H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{I}_{\overline{Y}}\mathcal{G}_{i}'(m)\big{|}_{\mathbb{P}(\mathcal{E})}) \arrow[r] \arrow[d, "\beta"] &
             H_{Z}^{2}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{I}_{\overline{Y}}\mathcal{G}_{i}'(m)) \arrow[r] \arrow[d, "\gamma"] &
             \cdots \\
-            \cdots \arrow[r] &
             H^{1}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{G}_{i}'(m)) \arrow[r] &
             H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{G}_{i}'(m)\big{|}_{\mathbb{P}(\mathcal{E})}) \arrow[r] &
             H_{Z}^{2}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{H}_{i}'(m)) \arrow[r] &
@@ -2809,5 +2807,16 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     Hence $H^{1}(X, \mathcal{F} \otimes E^{r - 1}) = 0$.
     Preceding step by step, we get $H^{1}(X, \mathcal{F} \otimes S^{r}\mathcal{E}) = 0$.
     Conclude that $\mathcal{E}$ is ample.
+\end{proof}
+\begin{proposition}
+    Let $X$ be a noetherian scheme, $\mathcal{E}$ ample vector bundle on $X$.
+    Assume $Y$ is a locally closed subscheme of $X$.
+    Then $\mathcal{E}\big{|}_{Y}$ is ample on $Y$.
+    \label{Proposition 4.13}
+\end{proposition}
+\begin{proof}
+    Since a locally closed immersion is composition of open immersion and closed immersion.
+    It suffices to prove these two cases.
+    When $f: Y \hookrightarrow X$ is open, 
 \end{proof}
 \end{document}
