@@ -2713,17 +2713,19 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     \par
     Now since $\mathcal{L}$ is ample, we find $r$ large enough such that $\mathcal{L}^{r}$ very ample with an immersion $\ell: \mathbb{P}(\mathcal{E}) \hookrightarrow \mathbb{P}$ into some projective space.
     Take schematic closure of $\mathbb{P}(\mathcal{E})$ in $\mathbb{P}$, denoted by $\overline{\mathbb{P}(\mathcal{E})}$.
-    Denote $\mathcal{G}_{i} := \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{i}$ and $\mathcal{H}_{i} := \mathcal{I}_{Y}\pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{i}$ for $0 \le i \le r - 1$.
-    By Hartshorne Chapter II exercise 5.15, we can extend $\mathcal{G}_{i}$ and $\mathcal{H}_{i}$ to coherent sheaves $\mathcal{G}_{i}'$ and $\mathcal{H}_{i}'$ on $\overline{\mathbb{P}(\mathcal{E})}$ respectively with $\mathcal{H}_{i}' \rightarrow \mathcal{G}_{i}'$ extending the natural map.
+    Denote $\mathcal{G}_{i} := \pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{i}$ for all $0 \le i \le r - 1$.
+    By Hartshorne Chapter II exercise 5.15, we can extend $\mathcal{G}_{i}$ to a coherent sheaf $\mathcal{G}_{i}'$ on $\overline{\mathbb{P}(\mathcal{E})}$.
+    Denote $\overline{Y}$ to be the closure of $Y$ in $\overline{\mathbb{P}(\mathcal{E})}$.
+    Then $\mathcal{I}_{\overline{Y}}\mathcal{G}_{i}'\big{|}_{\mathbb{P}(\mathcal{E})} = \mathcal{I}_{Y}\mathcal{G}_{i} = \mathcal{I}_{Y}\pi^{\ast}\mathcal{F} \otimes \mathcal{L}^{i}$.
     \par
     Now for $Z := \overline{\mathbb{P}(\mathcal{E})} \setminus \mathbb{P}(\mathcal{E})$,
     by Hartshorne Chapter III exercise 2.3, there is a commutative diagram with exact rows
     \begin{equation}
         \begin{tikzcd}
             \cdots \arrow[r] &
-            H^{1}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{H}_{i}'(m)) \arrow[r] \arrow[d, "\alpha"] &
-            H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{H}_{i}'(m)\big{|}_{\mathbb{P}(\mathcal{E})}) \arrow[r] \arrow[d, "\beta"] &
-            H_{Z}^{2}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{H}_{i}'(m)) \arrow[r] \arrow[d] &
+            H^{1}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{I}_{\overline{Y}}\mathcal{G}_{i}'(m)) \arrow[r] \arrow[d, "\alpha"] &
+            H^{1}(\mathbb{P}(\mathcal{E}), \mathcal{I}_{\overline{Y}}\mathcal{G}_{i}'(m)\big{|}_{\mathbb{P}(\mathcal{E})}) \arrow[r] \arrow[d, "\beta"] &
+            H_{Z}^{2}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{I}_{\overline{Y}}\mathcal{G}_{i}'(m)) \arrow[r] \arrow[d] &
             \cdots \\
             \cdots \arrow[r] &
             H^{1}(\overline{\mathbb{P}(\mathcal{E})}, \mathcal{G}_{i}'(m)) \arrow[r] &
