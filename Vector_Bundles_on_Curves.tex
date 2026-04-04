@@ -2870,6 +2870,26 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
 \label{subsection:Ample_Vector_Bundles_Vector_bundles_on_curves}
 
 Let $C$ be a smooth projective curve of genus $g$.
+\begin{lemma}
+    For all invertible sheaf $\mathcal{L}$ on $C$ with $\deg \mathcal{L} \ge 2g$, $\mathcal{L}$ is globally generated.
+    \label{lemma 4.4}
+\end{lemma}
+\begin{proof}
+    Consider the following short exact sequence for all closed point $x\in C$
+    \begin{equation}
+        0 \longrightarrow \mathcal{L} \otimes \mathcal{O}_{C}(-x) \longrightarrow \mathcal{L} \longrightarrow \mathcal{L} \otimes \mathcal{O}_{x} \longrightarrow 0
+    \end{equation}
+    Note that by Serre duality, $\dim H^{1}(C, \mathcal{L} \otimes \mathcal{O}_{C}(-x)) = \dim H^{0}(C, \mathcal{L}^{\vee} \otimes \mathcal{O}_{C}(x) \otimes \omega_{C})$.
+    While $\deg (\mathcal{L}^{\vee} \otimes \mathcal{O}_{C}(x) \otimes \omega_{C}) \le 2g - 2 + 1 - 2g < 0$,
+    by Corollary \ref{Corollary 3.3}, it has no nonzero global section.
+    Hence $H^{1}(C, \mathcal{L} \otimes \mathcal{O}_{C}(-x)) = 0$.
+    And we get an exact sequence
+    \begin{equation}
+        0 \longrightarrow \Gamma(C, \mathcal{L} \otimes \mathcal{O}_{C}(-x)) \longrightarrow \Gamma(C, \mathcal{L}) \longrightarrow \Gamma(C, \mathcal{L} \otimes \mathcal{O}_{x}) \longrightarrow 0
+    \end{equation}
+    As $\Gamma(C, \mathcal{L} \otimes \mathcal{O}_{x}) = \mathcal{L}_{x}$.
+    We get $\mathcal{L}$ is globally generated.
+\end{proof}
 \begin{proposition}
     For all coherent sheaf $\mathcal{F}$ on $X$, there exists $n_{0}$ such that for all $\mathcal{L}$ with $\deg \mathcal{L} > n_{0}$,
     we have that $\mathcal{F} \otimes \mathcal{L}$ is globally generated and $H^{1}(X, \mathcal{F} \otimes \mathcal{L}) = 0$.
@@ -2877,7 +2897,20 @@ Let $C$ be a smooth projective curve of genus $g$.
 \end{proposition}
 \begin{proof}
     We first prove for invertible sheaf $\mathcal{M}$.
-
+    Then by Lemma \ref{Lemma 4.4}, we can take $n_{1} = 2g - \deg M$.
+    For a general coherent sheaf $\mathcal{F}$, since $C$ is projective,
+    $\mathcal{F}$ is quotient of some direct sum of finitely many line bundles, say $\mathcal{G}$.
+    Then there exists $n_{0}$ such that $\mathcal{G} \otimes \mathcal{L}$ is globally generated and $H^{1}(C, \mathcal{G} \otimes \mathcal{L}) = 0$ for all $\mathcal{L}$ with $\deg \mathcal{L} > n_{0}$.
+    Hence $\mathcal{F} \otimes \mathcal{L}$ is globally generated.
+    Consider the following exact sequence
+    \begin{equation}
+        0 \longrightarrow \ker \otimes \mathcal{L} \longrightarrow \mathcal{G} \otimes \mathcal{L} \longrightarrow \mathcal{F} \otimes \mathcal{L} \longrightarrow 0
+    \end{equation}
+    By Grothendieck Vanishing, we get exact sequence
+    \begin{equation}
+        \cdots \longrightarrow H^{1}(C, \ker \otimes \mathcal{L}) \longrightarrow H^{1}(C, \mathcal{G} \otimes \mathcal{L}) \longrightarrow H^{1}(C, \mathcal{F} \otimes \mathcal{L}) \longrightarrow 0
+    \end{equation}
+    Hence we also get $H^{1}(C, \mathcal{F} \otimes \mathcal{L}) = 0$, done!
 \begin{corollary}
     Let $\mathcal{L}$ be a line bundle on $C$.
     Then $\mathcal{L}$ is ample if and only if $\deg \mathcal{L} > 0$.
