@@ -2871,11 +2871,25 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
 
 Let $C$ be a smooth projective curve of genus $g$.
 \begin{proposition}
-    Let $\mathcal{L}$ be a line bundle on $C$.
-    Then \\
-    (1)$\mathcal{L}$ is ample if and only if $\deg \mathcal{L} > 0$. \\
-    (2)For all coherent sheaf $\mathcal{F}$, there exists $n_{0}$ such that for all $\mathcal{L}$ with $\deg \mathcal{L} > n_{0}$,
+    For all coherent sheaf $\mathcal{F}$ on $X$, there exists $n_{0}$ such that for all $\mathcal{L}$ with $\deg \mathcal{L} > n_{0}$,
     we have that $\mathcal{F} \otimes \mathcal{L}$ is globally generated and $H^{1}(X, \mathcal{F} \otimes \mathcal{L}) = 0$.
     \label{Proposition 4.15}
 \end{proposition}
+\begin{corollary}
+    Let $\mathcal{L}$ be a line bundle on $C$.
+    Then $\mathcal{L}$ is ample if and only if $\deg \mathcal{L} > 0$.
+    \label{Corollary 4.9}
+\end{corollary}
+\begin{proof}
+    Suppose $\mathcal{L}$ is ample and $\deg \mathcal{L} \le 0$.
+    Since $\mathcal{L}$ is ample, for a line bundle $\mathcal{M}$ with $\deg \mathcal{M} < 0$, 
+    we get $\mathcal{M} \otimes \mathcal{L}^{n}$ is globally generated for $n$ large enough.
+    While $\deg (\mathcal{M} \otimes \mathcal{L}^{n}) < 0$, hence by Corollary \ref{Corollary 3.3}, it has no nonzero global section, contradiction!
+    Hence $\deg \mathcal{L} > 0$.
+    \par
+    For the converse, note that since $C$ is projective, 
+    $\mathcal{L}$ is ample if and only if for all $\mathcal{F}\in \coherent (C)$,
+    $H^{1}(X, \mathcal{F} \otimes \mathcal{L}^{n}) = 0$ for $n$ large enough.
+    Then by Proposition \ref{Proposition 4.15}, we are done.
+\end{proof}
 \end{document}
