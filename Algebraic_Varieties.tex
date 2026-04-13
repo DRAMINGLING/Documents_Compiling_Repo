@@ -11,6 +11,7 @@
             linkcolor = blue,       % 内部链接（如目录、交叉引用）颜色
             urlcolor = blue,        % 外部链接颜色
             citecolor = blue]{hyperref} % 参考文献链接颜色
+\usepackage{textcomp}
 
 \newtheorem{definition}{Definition}[section]
 \newtheorem{remark}{Remark}[section]
@@ -28,8 +29,8 @@
 \renewcommand{\refname}{References}
 \renewcommand{\hom}{\operatorname{Hom}}
 
-\newcommand{\leftquotes}{``}
-\newcommand{\rightquotes}{''}
+\newcommand{\leftquotes}{\textquotedblleft}
+\newcommand{\rightquotes}{\textquotedblright}
 
 \newcommand{\mapsfrom}{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 \newcommand{\longmapsfrom}{\mathrel{\reflectbox{\ensuremath{\longmapsto}}}}
@@ -109,6 +110,7 @@
 \newcommand{\order}{\operatorname{ord}}
 \newcommand{\divisor}{\operatorname{div}}
 \newcommand{\annihilator}{\operatorname{ann}}
+\newcommand{\coefficient}{\operatorname{coeff}}
 
 \title{代数簇}
 \author{Taught by Zhi Jiang}
@@ -1166,7 +1168,7 @@ From now on, by a morphism of varieties, we mean a regular map.
     \label{Lemma 4.1}
 \end{lemma}
 \begin{proof}
-    The $\leftquotes \Rightarrow \rightquotes$ arrow is trivial since for all $y\in U$, $f\big{|}_{V}^{-1}(y) \subseteq f^{-1}(y)$.
+    The \leftquotes $\Rightarrow$ \rightquotes arrow is trivial since for all $y\in U$, $f\big{|}_{V}^{-1}(y) \subseteq f^{-1}(y)$.
     For the converse, since a general fiber of $f\big{|}_{V}$ is finite, by Theorem \ref{Theorem 4.5}, $\dim X = \dim V = \dim U = \dim Y$.
     Take $W = V^{c}$, then $W$ is a proper subset of $X$ and hence $\dim W < dim X$.
     As $f\big{|}_{W}: W \rightarrow \overline{f(W)}$ is dominant, $\dim \overline{f(W)} \le \dim W < \dim X = \dim Y$ so that $\overline{f(W)}$ is a proper subset.
@@ -2923,7 +2925,7 @@ We call kernel of the $\deg$ map the Jacobian variety of $X$, denoted by $J(X)$.
     \label{Proposition 7.5}
 \end{proposition}
 \begin{proof}
-    The $\leftquotes \Leftarrow \rightquotes$ arrow have been discussed in Example \ref{example:picard_group}.
+    The \leftquotes $\Leftarrow$ \rightquotes arrow have been discussed in Example \ref{example:picard_group}.
     We only need prove for the other arrow.
     For all $x, y\in X$, the divisor $D = [x] - [y]$ has degree $0$ and by assumption, $\mathcal{O}_{X}(D)$ is trivial.
     Hence by Theorem \ref{Theorem 7.1}, $D = \divisor (f)$ for some rational function $f\in K(X)$.
