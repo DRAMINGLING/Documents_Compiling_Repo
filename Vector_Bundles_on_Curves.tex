@@ -2664,7 +2664,7 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
 \end{proof}
 \begin{definition}
     Let $f: X \rightarrow Y$ be a morphism between noetherian schemes, $\mathcal{L}$ invertible sheaf on $X$.
-    We say $\mathcal{L}$ is ample relative to $f$ (or say $f$-ample) if there exists affine open covering $U_{i}$ of $Y$ such that $\mathcal{L}\big{|}_{f^{-1}(U_{i})}$ is ample on $f^{-1}\big{|}_{f^{-1}(U_{i})}$.
+    We say $\mathcal{L}$ is ample relative to $f$ (or say $f$-ample) if there exists affine open covering $U_{i}$ of $Y$ such that $\mathcal{L}\big{|}_{f^{-1}(U_{i})}$ is ample on $f^{-1}(U_{i})$.
 \end{definition}
 \begin{remark}
     In fact, when $Y$ is affine, by EGA II Corollary 4.6.6, $\mathcal{L}$ is $f$-ample if and only if $\mathcal{L}$ is ample on $X$.
@@ -3113,4 +3113,189 @@ We may use $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ to denote this filtratio
     Now take pull back $[s'']$ along the quotient map $\mathcal{E} \twoheadrightarrow \mathcal{E}'$, we get a vector subbundle $\mathcal{E}_{i + 1}$ of $\mathcal{E}$ containing $\mathcal{E}_{i}$ and with $\deg (\mathcal{E}_{i + 1}/\mathcal{E}_{i}) = \deg [s''] \ge \deg \mathcal{L}_{1} - i(2g - 2)$.
     By induction, we get a filtration of $\mathcal{E}$ of length $r$ starting with $[s]$ such that $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
 \end{proof}
+\begin{corollary}
+    Let $\mathcal{E}$ be an indecomposable vector bundle on $C$ of rank $r$.
+    Then $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
+    \label{Corollary 5.4}
+\end{corollary}
+\begin{proof}
+    Since $\mathcal{O}_{C}(1)$ is ample, there exists $n_{0}$ such that $\mathcal{E}(n)$ is globally generated for all $n > n_{0}$.
+    And it is clear that indecomposability is preserved by twisting by line bundles.
+    Hence $\mathcal{E}(n)$ is a globally generated indecomposable vector bundle on $C$ for all $n > n_{0}$.
+    By previous lemma, $\mathcal{E}(n)$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
+    Hence $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}(-n), \cdots, \mathcal{L}_{r}(-n))$ with $\deg \mathcal{L}_{i}(-n) \ge \deg \mathcal{L}_{1}(-n) - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
+\end{proof}
+\begin{lemma}
+    Let $\mathcal{E}$ be an indecomposable vector bundle on $C$ of rank $r$ and degree $d$.
+    Then $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \frac{d}{r} - (r - 1)(3g - 2)$ for all $1 \le i \le r$.
+    \label{Lemma 5.7}
+\end{lemma}
+\begin{proof}
+    Similar to Corollary \ref{Corollary 5.4}, we may assume $\mathcal{E}$ is globally generated.
+    Then by Corollary \ref{Corollary 4.5}, $\mathcal{E}(1)$ is ample.
+    By Lemma \ref{Lemma 5.6}, $\mathcal{E}(1)$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
+    And by Corollary \ref{Corollary 5.3}, $\deg \mathcal{L}_{i + 1} - \deg \mathcal{L}_{i} \le 2g$.
+    Hence
+    \begin{equation}
+        -2g(i - 1) \le \deg \mathcal{L}_{1} - \deg \mathcal{L}_{i} \le (i - 1)(2g - 2)
+    \end{equation}
+    Summing up, we get
+    \begin{equation}
+        -r(r - 1)g \le r\deg \mathcal{L}_{1} - \sum_{i = 1}^{r} \deg \mathcal{L}_{i} \le r(r - 1)(g - 1)
+    \end{equation}
+    Note that $\sum_{i = 1}^{r} \deg \mathcal{L}_{i} = \deg \mathcal{E} = d$.
+    Hence
+    \begin{equation}
+        -r(r - 1)g \le r\deg \mathcal{L}_{1} - d \le r(r - 1)(g - 1)
+    \end{equation}
+    Moving terms and dividing by $r$, we get
+    \begin{equation}
+        \frac{r}{d} - (r - 1)g \le \deg \mathcal{L}_{1} \le \frac{d}{r} + (r - 1)(g - 1)
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        \begin{split}
+            \deg \mathcal{L}_{i} & \ge \deg \mathcal{L}_{1} - (r - 1)(2g - 2) \\
+            & \ge \frac{d}{r} - (r - 1)g - (r - 1)(2g - 2) \\
+            & \ge \frac{d}{r} - (r - 1)(3g - 2)
+        \end{split}
+    \end{equation}
+\end{proof}
+\begin{remark}
+    In particular, when $g = 0$, we get $0 \le \deg \mathcal{L}_{1} - \frac{d}{r} \le 1 - r$.
+    Hence $r$ must equal to $1$ and $\mathcal{E}$ is a line bundle.
+    This is consistent with the Grothendieck's theorem that all vector bundles on a rational curve are direct sum of line bundles.
+\end{remark}
+\begin{definition}
+    Define $\mathcal{E}(r, d)$ to be the set of isomorphism classes of indecomposable vector bundles on $C$ of rank $r$ and degree $d$.
+\end{definition}
+\begin{theorem}[\textbf{\emph{Atiyah}}]
+    There is an integer $N$ with respect to $g$, $r$ and $d$ such that $\mathcal{E}(n)$ is ample for all $\mathcal{E}\in \mathcal{E}(r, d)$.
+    \label{Theorem 5.1}
+\end{theorem}
+\begin{proof}
+    By Lemma \ref{Lemma 5.7}, for all $\mathcal{E}\in \mathcal{E}(r, d)$, there is a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ of $\mathcal{E}$ with $\deg \mathcal{L}_{i} \ge \frac{d}{r} - (r - 1)(3g - 2)$ for all $1 \le i \le r$.
+    Hence $\deg \mathcal{L}_{i}(n) > 0$ for all $1 \le i \le r$ when $n > (r - 1)(3g - 2) - \frac{d}{r}$.
+    By Corollary \ref{Corollary 5.1}, $\mathcal{L}_{i}(n)$ is ample for all $1 \le i \le r$ when $n > (r - 1)(3g - 2) - \frac{d}{r}$.
+    Hence $\mathcal{E}(n)$ is ample for all $\mathcal{E}\in \mathcal{E}(r, d)$ when $n > (r - 1)(3g - 2) - \frac{d}{r}$ by Corollary \ref{Corollary 4.6}.
+\end{proof}
+
+\subsection{Vector bundles on elliptic curves}
+\label{subsection:Vector_Bundles_on_Curves_Vector_bundles_on_elliptic_curves}
+
+Let $X$ be an elliptic curve over $\mathbb{C}$, i.e. a smooth projective curve of genus $1$ with a chosen rational point $x_{0}$.
+And $\mathcal{E}$ be a vector bundle on $X$ of rank $r$ and degree $d$.
+Set $A = \mathcal{O}_{X}(x_{0})$.
+\begin{lemma}
+    $\deg A = 1$.
+    \label{Lemma 5.8}
+\end{lemma}
+\begin{proof}
+    Considetr the following exact sequence
+    \begin{equation}
+        0 \longrightarrow A^{\vee} \longrightarrow \mathcal{O}_{X} \longrightarrow \mathcal{O}_{x_{0}} \longrightarrow 0
+    \end{equation}
+    Then $\deg A = -\deg A^{\vee} = 0 - \deg \mathcal{O}_{x_{0}}$.
+    While $\mathcal{O}_{x_{0}}$ is a skyscraper sheaf supported at $x_{0}$, its degree is $1$.
+    Hence $\deg A = 1$.
+\end{proof}
+\begin{remark}
+    There is a canonical map
+    \begin{equation}
+        \begin{split}
+            \mathcal{E}(r, d) & \longrightarrow \mathcal{E}(r, d + nr) \\
+            \mathcal{E} & \longmapsto \mathcal{E} \otimes A^{\otimes n}
+        \end{split}
+    \end{equation}
+    Clearly this map is bijective as $A$ is invertible.
+    Hence we can identify $\mathcal{E}(r, d)$ with $\mathcal{E}(r, d + nr)$ for all $n\in \mathbb{Z}$.
+    So we can just consider $\mathcal{E}(r, d)$ for $0 \le d < r$.
+\end{remark}
+\begin{proposition}
+    $\omega_{X} \cong \mathcal{O}_{X}$.
+    \label{Proposition 5.2}
+\end{proposition}
+\begin{proof}
+    Note that $h^{0}(X, \omega_{X}) = g = 1$ and $\deg \omega_{X} = g - 1 - (1 - g) = 0$.
+    Hence there is a nonzero section $s\in H^{0}(X, \omega_{X})$.
+    Then similar to proof of Corollary \ref{Corollary 3.3}, $\omega_{X} \cong \mathcal{O}_{X}(\divisor (s))$ of degree $0$.
+    Hence $\omega_{X} \cong \mathcal{O}_{X}$.
+\end{proof}
+\begin{lemma}
+    Let $\mathcal{E}\in \mathcal{E}(r, d)$, $0 \le d < r$ and $h^{0}(X, \mathcal{E}) > 0$.
+    Then $\mathcal{E}$ has a trivial line subbundle of rank $h = h^{0}(X, \mathcal{E})$, denoted by $\mathcal{I}_{\mathcal{E}}$.
+    \label{Lemma 5.9}
+\end{lemma}
+\begin{proof}
+    By Corollary \ref{Corollary 5.4}, $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$ for all $1 \le i \le r$.
+    If $\deg \mathcal{L}_{1} > 0$, then $d = \deg \mathcal{E} = \sum_{i = 1}^{r} \deg \mathcal{L}_{i} \ge r \cdot \deg \mathcal{L}_{1} \ge r$, which contradicts the assumption that $0 \le d < r$.
+    Hence $\deg \mathcal{L}_{1} = 0$.
+    \par
+    Then for any $s\in H^{0}(X, \mathcal{L}_{1})$, we have $0 \le \deg s \le \deg \mathcal{L}_{1} = 0$.
+    Consider $w_{x}: \Gamma(X, \mathcal{E}) \otimes \mathcal{O}_{X, x} \to \mathcal{E}_{x}$ for any $x \in X$.
+    Then $w_{x}$ is injective otherwise there is a nonzero section $s\in H^{0}(X, \mathcal{E})$ such that $\deg s \ge \coefficient_{x} \divisor (s) \ge 1$.
+    Hence $\Gamma(X, \mathcal{E})$ generates a trivial line subbundle of rank $h$.
+\end{proof}
+\begin{lemma}
+    Let $\mathcal{E}\in \mathcal{E}(r, r)$.
+    Then $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{1} = 1$.
+    \label{Lemma 5.10}
+\end{lemma}
+\begin{proof}
+    By Corollary \ref{Corollary 5.4}, $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$ for all $1 \le i \le r$.
+    Suppose $\deg \mathcal{L}_{1} = 0$.
+    Similar to proof of previous lemma, we can show that $\Gamma(X, \mathcal{E})$ generates a trivial subbundle $\mathcal{I}_{\mathcal{E}}$ of rank $h = h^{0}(X, \mathcal{E})$.
+    Hence $r \ge h^{0}(X, \mathcal{E}) \ge \deg \mathcal{E} = r$ so that $h^{0}(X, \mathcal{E}) = r$ and $\mathcal{E} = \mathcal{I}_{\mathcal{E}}$,
+    which contradicts the indecomposability of $\mathcal{E}$.
+    Now $\deg \mathcal{L}_{1} \ge 1$.
+    Note that $r = \deg \mathcal{E} \ge r \cdot \deg \mathcal{L}_{1} \ge r$, which implies $\deg \mathcal{L}_{1} = 1$.
+\end{proof}
+\begin{definition}
+    An extension of vector bundles $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \rightarrow \mathcal{E}'' \rightarrow 0$ is called $\mathcal{E}''$-partial if there is a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            \mathcal{E} \arrow[r, "p"] &
+            \mathcal{E}'' \arrow[d, twoheadrightarrow, "q"] \\
+            & \mathcal{E}_{1}'' \arrow[ul, "j"]
+        \end{tikzcd}
+    \end{equation}
+    such that $q \circ p \circ j = \identity_{\mathcal{E}_{1}''}$.
+    Otherwise, we say this extension is $\mathcal{E}''$-complete.
+\end{definition}
+\begin{remark}
+    Dually, An extension of vector bundles $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \rightarrow \mathcal{E}'' \rightarrow 0$ is called $\mathcal{E}'$-partial if the dual extension $0 \rightarrow \mathcal{E}''^{\vee} \rightarrow \mathcal{E}^{\vee} \rightarrow \mathcal{E}'^{\vee} \rightarrow 0$ is $\mathcal{E}'^{\vee}$-partial.
+\end{remark}
+\begin{lemma}
+    The extension $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \overset{p}{\rightarrow} \mathcal{I}_{\mathcal{E}} \rightarrow 0$ is $\mathcal{I}_{\mathcal{E}}$-complete if and only if $p_{\ast}: H^{0}(X, \mathcal{E}) \to H^{0}(X, \mathcal{I}_{\mathcal{E}})$ is a zero map.
+    \label{Lemma 5.11}
+\end{lemma}
+\begin{proof}
+    If the extension is $\mathcal{I}_{\mathcal{E}}$-partial, then there is a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            \mathcal{E} \arrow[r, "p"] &
+            \mathcal{I}_{\mathcal{E}} \arrow[d, twoheadrightarrow, "q"] \\
+            & \mathcal{E}'' \arrow[ul, "j"]
+        \end{tikzcd}
+    \end{equation}
+    such that $q \circ p \circ j = \identity_{\mathcal{E}''}$.
+    Hence $p_{\ast} \neq 0$ as $(q \circ p \circ j)_{\ast}$ is isomorphic.
+    \par
+    Conversely, if $p_{\ast} \neq 0$, then we can pick a nonzero section $s\in H^{0}(X, \mathcal{I}_{\mathcal{E}})$ such that $p_{\ast}s \neq 0$.
+    Then $p_{\ast}s$ defines a line subbundle $[p_{\ast}s]$ of $\mathcal{I}_{\mathcal{E}}$.
+    
+\end{proof}
+\begin{theorem}[\textbf{\emph{Atiyah}}]
+    There exists a vector bundle $\mathcal{F}_{r}\in \mathcal{E}(r, 0)$ with nonzero global sections, called the Atiyah bundle,
+    which is unique up to isomorphism.
+    Moreover, there is an exact sequence for all $r \ge 1$
+    \begin{equation}
+        0 \longrightarrow \mathcal{O}_{X} \longrightarrow \mathcal{F}_{r} \longrightarrow \mathcal{F}_{r - 1} \longrightarrow 0
+    \end{equation}
+    Let $\mathcal{E}\in \mathcal{E}(r, 0)$.
+    Then $\mathcal{E} \cong \mathcal{L} \otimes \mathcal{F}_{r}$ for some line bundle $\mathcal{L}$ of degree $0$,
+    which is also unique up to isomorphism.
+    More precisely, $\mathcal{L} \cong \det \mathcal{E}$.
+    \label{Theorem 5.2}
+\end{theorem}
 \end{document}
