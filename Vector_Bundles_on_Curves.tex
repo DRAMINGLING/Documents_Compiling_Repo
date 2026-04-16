@@ -3274,23 +3274,98 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     Dually, An extension of vector bundles $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \rightarrow \mathcal{E}'' \rightarrow 0$ is called $\mathcal{E}'$-partial if the dual extension $0 \rightarrow \mathcal{E}''^{\vee} \rightarrow \mathcal{E}^{\vee} \rightarrow \mathcal{E}'^{\vee} \rightarrow 0$ is $\mathcal{E}'^{\vee}$-partial.
 \end{remark}
 \begin{lemma}
-    The extension $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \overset{p}{\rightarrow} \mathcal{I}_{\mathcal{E}} \rightarrow 0$ is $\mathcal{I}_{\mathcal{E}}$-complete if and only if $p_{\ast}: H^{0}(X, \mathcal{E}) \to H^{0}(X, \mathcal{I}_{\mathcal{E}})$ is a zero map.
+    Given an extension $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \overset{p}{\rightarrow} \mathcal{E}'' \rightarrow 0$ with $\mathcal{E}''$ trivial,
+    it is $\mathcal{E}''$-complete if and only if $p_{\ast}: H^{0}(X, \mathcal{E}) \to H^{0}(X, \mathcal{E}'')$ is a zero map.
     \label{Lemma 5.11}
 \end{lemma}
 \begin{proof}
-    If the extension is $\mathcal{I}_{\mathcal{E}}$-partial, then there is a commutative diagram
+    If the extension is $\mathcal{E}''$-partial, then there is a commutative diagram
     \begin{equation}
         \begin{tikzcd}
             \mathcal{E} \arrow[r, "p"] &
-            \mathcal{I}_{\mathcal{E}} \arrow[d, twoheadrightarrow, "q"] \\
-            & \mathcal{E}'' \arrow[ul, "j"]
+            \mathcal{E}'' \arrow[d, twoheadrightarrow, "q"] \\
+            & \mathcal{E}_{1}'' \arrow[ul, "j"]
         \end{tikzcd}
     \end{equation}
-    such that $q \circ p \circ j = \identity_{\mathcal{E}''}$.
+    such that $q \circ p \circ j = \identity_{\mathcal{E}_{1}''}$.
     Hence $p_{\ast} \neq 0$ as $(q \circ p \circ j)_{\ast}$ is isomorphic.
     \par
-    Conversely, if $p_{\ast} \neq 0$, then we can pick a nonzero section $s\in H^{0}(X, \mathcal{I}_{\mathcal{E}})$ such that $p_{\ast}s \neq 0$.
-    Then $p_{\ast}s$ defines a line subbundle $[p_{\ast}s]$ of $\mathcal{I}_{\mathcal{E}}$.
+    Conversely, if $p_{\ast} \neq 0$, then we can pick a nonzero section $s\in H^{0}(X, \mathcal{E}'')$ such that $p_{\ast}s \neq 0$.
+    Then $p_{\ast}s$ defines a line subbundle $[p_{\ast}s]$ of $\mathcal{E}''$.
+    As $H^{0}(X, \mathcal{E}'') \cong \oplus H^{0}(X, \mathcal{O}_{X})$, we have $p_{\ast}s$ is injective and $[p_{\ast}s]$ is a trivial line subbundle of $\mathcal{E}''$.
+    And we can take orthogonal complement of $H^{0}(X, [p_{\ast}s])$ in $H^{0}(X, \mathcal{E}'')$, which implies that $[p_{\ast}s]$ is a direct summand of $\mathcal{E}''$.
+    Take the projection $q: \mathcal{E}'' \twoheadrightarrow \mathcal{O}_{X} \cong [p_{\ast}s]$.
+    Consider the following diagram
+    \begin{equation}
+        \begin{tikzcd}
+            \mathcal{E} \arrow[r, "p"] &
+            \mathcal{E}'' \arrow[d, twoheadrightarrow, "q"] \\
+            & {[p_{\ast}s]} \arrow[ul, "j"]
+        \end{tikzcd}
+    \end{equation}
+    where $j$ is the compostion of $[p_{\ast}s] \cong \mathcal{O}_{X} \overset{s}{\rightarrow} \mathcal{E}$.
+    Clearly this diagram is commutative and $q \circ p \circ j = \identity_{[p_{\ast}s]}$.
+\end{proof}
+\begin{corollary}
+    Given an extension $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \overset{p}{\rightarrow} \mathcal{E}'' \rightarrow 0$ with $\mathcal{E}''$ trivial,
+    it is $\mathcal{E}''$-complete if and only if the coboundary map $\delta: H^{0}(X, \mathcal{E}'') \to H^{1}(X, \mathcal{E}')$ is injective.
+    \label{Corollary 5.5}
+\end{corollary}
+\begin{proof}
+    Consider the following long exact sequence of cohomology
+    \begin{equation}
+        0 \rightarrow H^{0}(X, \mathcal{E}') \rightarrow H^{0}(X, \mathcal{E}) \overset{p_{\ast}}{\rightarrow} H^{0}(X, \mathcal{E}'') \overset{\delta}{\rightarrow} H^{1}(X, \mathcal{E}') \rightarrow \cdots
+    \end{equation}
+    If the extension is $\mathcal{E}''$-complete, then by previous lemma, $p_{\ast}$ is a zero map.
+    Hence $\delta$ is injective.
+    Conversely, if $\delta$ is injective, then $p_{\ast}$ is a zero map.
+    Hence the extension is $\mathcal{E}''$-complete by previous lemma.
+\end{proof}
+\begin{proposition}
+    Given a vector bundle $\mathcal{E}'$ and trivial vector bundle $\mathcal{E}''$ of rank $r$ on $X$.
+    The equivalence class of extensions of $\mathcal{E}''$ by $\mathcal{E}'$ is one-to-one corresponding with the set of coboundary maps $\delta: H^{0}(X, \mathcal{E}'') \to H^{1}(X, \mathcal{E}')$.
+    In particular, if $h^{1}(X, \mathcal{E}') = r$, then there is a unique $\mathcal{E}''$-complete extension of $\mathcal{E}''$ by $\mathcal{E}'$ up to isomorphism.
+    \label{Proposition 5.3}
+\end{proposition}
+\begin{proof}
+    It is well-known that the equivalence class of extensions of $\mathcal{E}''$ by $\mathcal{E}'$ is one-to-one corresponding with the set of extension classes in $\ext^{1}(\mathcal{E}'', \mathcal{E}')$.
+    Note that $\omega_{X} \cong \mathcal{O}_{X}$.
+    As $\mathcal{E}''$ is trivial, by Serre duality, we have that
+    \begin{equation}
+        \begin{split}
+            \ext^{1}(\mathcal{E}'', \mathcal{E}') & = H^{0}(X, \sheafext^{1}(\mathcal{E}'', \mathcal{E}')) \\
+            & \cong H^{1}(X, \sheafhom(\mathcal{E}'', \mathcal{E}')) \\
+            & \cong H^{0}(X, \mathcal{E}'' \otimes \mathcal{E}'^{\vee} \otimes \omega_{X})^{\vee} \\
+            & \cong H^{0}(X, \mathcal{E}'' \otimes \mathcal{E}'^{\vee}) \\
+            & = H^{0}(X, \mathcal{E}''^{\vee} \otimes \mathcal{E}'^{\vee}) \\
+            & \cong H^{0}(X, \sheafhom(\mathcal{E}'', \sheafhom(\mathcal{E}', \mathcal{O}_{X}))) \\
+            & \cong \hom(H^{0}(X, \mathcal{E}''), H^{0}(X, \mathcal{E}'^{\vee})) \\
+            & \cong \hom(H^{0}(X, \mathcal{E}''), H^{1}(X, \mathcal{E}'))
+        \end{split}
+    \end{equation}
+    For the second part, as $h^{1}(X, \mathcal{E}') = r = h^{0}(X, \mathcal{E}'')$,
+    the identity map gives $\mathcal{E}''$-complete extension.
+    On the other hand, given any $\mathcal{E}''$-complete extension,
+    consider the following long exact sequence of cohomology
+    \begin{equation}
+        0 \rightarrow H^{0}(X, \mathcal{E}') \rightarrow H^{0}(X, \mathcal{E}) \overset{p_{\ast}}{\rightarrow} H^{0}(X, \mathcal{E}'') \overset{\delta}{\rightarrow} H^{1}(X, \mathcal{E}') \rightarrow \cdots
+    \end{equation}
+    By Corollary \ref{Corollary 5.5}, $\delta$ is injective.
+    Since $h^{1}(X, \mathcal{E}') = r = h^{0}(X, \mathcal{E}'')$, $\delta$ is an isomorphism.
+    This implies that the extension is unique up to isomorphism.
+\end{proof}
+\begin{lemma}
+    Given an $\mathcal{E}'$-complete extension $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \overset{p}{\rightarrow} \mathcal{E}'' \rightarrow 0$ with $\mathcal{E}'$ trivial,
+    then $h^{0}(X, \mathcal{E}) = h^{0}(X, \mathcal{E}'')$.
+    \label{Lemma 5.12}
+\end{lemma}
+\begin{proof}
+    Take the dual extension $0 \rightarrow \mathcal{E}''^{\vee} \rightarrow \mathcal{E}^{\vee} \rightarrow \mathcal{E}'^{\vee} \rightarrow 0$.
+    By Lemma \ref{Lemma 5.11}, we know $H^{0}(X, \mathcal{E}^{\vee}) \cong H^{0}(X, \mathcal{E}'^{\vee})$.
+    Hence by Serre duality, $H^{1}(X, \mathcal{E}^{\vee}) \cong H^{1}(X, \mathcal{E}'^{\vee})$.
+    Take dimension, we get $h^{1}(X, \mathcal{E}) = h^{1}(X, \mathcal{E}'')$.
+    Note that $\deg \mathcal{E}' = 0$, by additivity of degree, $\deg \mathcal{E} = \deg \mathcal{E}''$.
+    Hence by $h^{0}(X, \mathcal{E}) = h^{0}(X, \mathcal{E}'')$.
 \end{proof}
 \begin{theorem}[\textbf{\emph{Atiyah}}]
     There exists a vector bundle $\mathcal{F}_{r}\in \mathcal{E}(r, 0)$ with nonzero global sections, called the Atiyah bundle,
@@ -3305,4 +3380,5 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     More precisely, $\mathcal{L} \cong \det \mathcal{E}$.
     \label{Theorem 5.2}
 \end{theorem}
+
 \end{document}
