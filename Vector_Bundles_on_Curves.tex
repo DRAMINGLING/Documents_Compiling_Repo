@@ -2962,8 +2962,15 @@ We may use $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ to denote this filtratio
     \label{Corollary 5.2}
 \end{corollary}
 \begin{proof}
-    Since $\mathcal{O}_{X} \overset{s}{\rightarrow} \mathcal{E}$ factors through $[s]$, we get a morphism $s: \mathcal{O}_{C} \rightarrow [s]$ so that $s$ is a nonzero global section of $[s]$ also.
-    Hence $[s]$ is isomorphic to $\mathcal{O}_{C}(\divisor (s))$.
+    Suffice to show $s$ is also a section of $[s]$ i.e. $s\in \Gamma(C, [s])$.
+    By gluing property, we can reduce to affine case that $C = \spec A$ and $\mathcal{E} = \mathcal{O}_{C}^{\oplus r}$.
+    Assume $s = (s_{1}, \cdots, s_{r})$.
+    Then the canonical inclusion is given by
+    \begin{equation}
+        1 \longmapsto (\frac{x_{1}}{x_{i}}, \cdots, \frac{x_{r}}{x_{i}})
+    \end{equation}
+    And $(s_{i}, D_{+}(x_{i})) \otimes 1 = (s_{i} \cdot \frac{s_{1}}{s_{i}}, \cdots, s_{i} \cdot \frac{s_{r}}{s_{i}}) = (\frac{s_{1}}{1}, \cdots, \frac{s_{r}}{1})$ is a section in $\Gamma(D(s_{i}), [s])$.
+    Obviously, we can glue them up to section $s$ in $\Gamma(C, [s])$, done!
 \end{proof}
 \begin{remark}
     Then consider $\mathcal{E}' = \mathcal{E}/[s]$, which is also locally free.
