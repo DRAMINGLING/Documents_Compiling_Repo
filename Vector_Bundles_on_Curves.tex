@@ -3324,7 +3324,22 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
 \begin{proposition}
     Given a vector bundle $\mathcal{E}'$ and trivial vector bundle $\mathcal{E}''$ of rank $r$ on $X$.
     The equivalence class of extensions of $\mathcal{E}''$ by $\mathcal{E}'$ is one-to-one corresponding with the set of coboundary maps $\delta: H^{0}(X, \mathcal{E}'') \to H^{1}(X, \mathcal{E}')$.
-    In particular, if $h^{1}(X, \mathcal{E}') = r$, then there is a unique $\mathcal{E}''$-complete extension of $\mathcal{E}''$ by $\mathcal{E}'$ up to isomorphism.
+    In particular, if $h^{1}(X, \mathcal{E}') = r$, then there is a unique $\mathcal{E}''$-complete extension of $\mathcal{E}''$ by $\mathcal{E}'$ up to equivalence relation that two extension $\mathcal{E}_{1}$ and $\mathcal{E}_{2}$ are equivalent if there is a commutative diagram with exact rows
+    \begin{equation}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{E}' \arrow[r] \arrow[d, equal] &
+            \mathcal{E}_{2} \arrow[r] \arrow[d, "\sim"] &
+            \mathcal{E}'' \arrow[r] \arrow[d, "\sim"] &
+            0 \\
+            0 \arrow[r] &
+            \mathcal{E}' \arrow[r] &
+            \mathcal{E}_{1} \arrow[r] &
+            \mathcal{E}'' \arrow[r] &
+            0
+        \end{tikzcd}
+    \end{equation}
+    which is more general than the isomorphism class of extensions.
     \label{Proposition 5.3}
 \end{proposition}
 \begin{proof}
@@ -3352,6 +3367,49 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     \end{equation}
     By Corollary \ref{Corollary 5.5}, $\delta$ is injective.
     Since $h^{1}(X, \mathcal{E}') = r = h^{0}(X, \mathcal{E}'')$, $\delta$ is an isomorphism.
+    Assume there are two different $\delta_{1}$ and $\delta_{2}$.
+    Then $\varphi := \delta_{1}^{-1} \circ \delta_{2}$ gives an automorphism of $H^{0}(X, \mathcal{E}'')$.
+    As $\mathcal{E}''$ is trivial, $\varphi$ in fact an automorphism of $\mathcal{E}''$.
+    Assume $\mathcal{E}_{1}$ is the extension corresponding to $\delta_{1}$.
+    Take pull back
+    \begin{equation}
+        \begin{tikzcd}
+            \mathcal{E}_{2} \arrow[r, twoheadrightarrow, "q"] \arrow[d, "\psi"] &
+            \mathcal{E}'' \arrow[d, "\varphi"] \\
+            \mathcal{E}_{1} \arrow[r, twoheadrightarrow, "p"] &
+            \mathcal{E}''
+        \end{tikzcd}
+    \end{equation}
+    It is clear to check that $\mathcal{E}_{2}$ is locally free and $\psi$ is isomorphic.
+    As there is a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            \mathcal{E}' \arrow[r, "0"] \arrow[d] &
+            \mathcal{E}'' \arrow[d, "\varphi"] \\
+            \mathcal{E}_{1} \arrow[r, twoheadrightarrow, "p"] &
+            \mathcal{E}''
+        \end{tikzcd}
+    \end{equation}
+    By universal property, there is a unique map $\mathcal{E}' \rightarrow \mathcal{E}_{2}$.
+    Easy to check that $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E}_{2} \rightarrow \mathcal{E}'' \rightarrow 0$ is exact and hence an extension.
+    Consider the commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            H^{0}(X, \mathcal{E}') \arrow[r] \arrow[d, equal] &
+            H^{0}(X, \mathcal{E}_{2}) \arrow[r] \arrow[d, "\psi"] &
+            H^{0}(X, \mathcal{E}'') \arrow[r, "\delta"] \arrow[d, "\varphi"] &
+            H^{1}(X, \mathcal{E}') \arrow[r] \arrow[d, equal] &
+            \cdots \\
+            0 \arrow[r] &
+            H^{0}(X, \mathcal{E}') \arrow[r] &
+            H^{0}(X, \mathcal{E}_{1}) \arrow[r] &
+            H^{0}(X, \mathcal{E}'') \arrow[r, "\delta_{1}"] &
+            H^{1}(X, \mathcal{E}') \arrow[r] &
+            \cdots
+        \end{tikzcd}
+    \end{equation}
+    Hence $\delta = \delta_{1} \circ \varphi = \delta_{2}$.
     This implies that the extension is unique up to isomorphism.
 \end{proof}
 \begin{lemma}
@@ -3380,5 +3438,4 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     More precisely, $\mathcal{L} \cong \det \mathcal{E}$.
     \label{Theorem 5.2}
 \end{theorem}
-
 \end{document}
