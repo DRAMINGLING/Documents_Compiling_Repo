@@ -3123,7 +3123,7 @@ We may use $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ to denote this filtratio
 \end{proof}
 \begin{corollary}
     Let $\mathcal{E}$ be an indecomposable vector bundle on $C$ of rank $r$.
-    Then $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
+    Then $\mathcal{E}$ has a filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
     \label{Corollary 5.4}
 \end{corollary}
 \begin{proof}
@@ -3131,8 +3131,11 @@ We may use $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ to denote this filtratio
     And it is clear that indecomposability is preserved by twisting by line bundles.
     Hence $\mathcal{E}(n)$ is a globally generated indecomposable vector bundle on $C$ for all $n > n_{0}$.
     By previous lemma, $\mathcal{E}(n)$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
-    Hence $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}(-n), \cdots, \mathcal{L}_{r}(-n))$ with $\deg \mathcal{L}_{i}(-n) \ge \deg \mathcal{L}_{1}(-n) - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
+    Hence $\mathcal{E}$ has a filtration $(\mathcal{L}_{1}(-n), \cdots, \mathcal{L}_{r}(-n))$ with $\deg \mathcal{L}_{i}(-n) \ge \deg \mathcal{L}_{1}(-n) - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
 \end{proof}
+\begin{remark}
+    This is not a maximal filtration since $\mathcal{L}_{i}$ after twisting might be not given by a nonzero section.
+\end{remark}
 \begin{lemma}
     Let $\mathcal{E}$ be an indecomposable vector bundle on $C$ of rank $r$ and degree $d$.
     Then $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \frac{d}{r} - (r - 1)(3g - 2)$ for all $1 \le i \le r$.
