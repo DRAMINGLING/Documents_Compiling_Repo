@@ -3238,6 +3238,37 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     \label{Lemma 5.9}
 \end{Lemma}
 \begin{proof}
+    The proof is similar to Lemma \ref{Lemma 5.6}.
+    By definition, we can pick a maximal section $s\in H^{0}(C, \mathcal{E})$.
+    Then $[s]$ is a maximal line subbundle of $\mathcal{E}$.
+    Suppose now we have constructed a filtration of $\mathcal{E}$ of length $i$ starting with $[s]$.
+    \begin{equation}
+        0 = \mathcal{E}_{0} \subseteq \mathcal{E}_{1} \subseteq \cdots \subseteq \mathcal{E}_{i} \subseteq \mathcal{E}
+    \end{equation}
+    such that $\mathcal{L}_{j}$ is a maximal line subbundle of $\mathcal{E}/\mathcal{E}_{j - 1}$ for all $1 \le j \le i$.
+    \par
+    Set $\mathcal{E}' = \mathcal{E}/\mathcal{E}_{i}$.
+    Since $\mathcal{E}$ is indecomposable, by Lemma \ref{Lemma 5.5}, we have $\hom(\mathcal{E}_{i}, \mathcal{E}') \neq 0$.
+    Hence there is a nonzero morphism $\mathcal{E}_{i} \rightarrow \mathcal{E}'$.
+    Pick $j_{0}$ such that $f\big{|}_{\mathcal{E}_{j_{0}}}$ is nonzero and $f\big{|}_{\mathcal{E}_{j}} = 0$ for all $j < j_{0}$.
+    Thus $\mathcal{L}_{j_{0}} \rightarrow \mathcal{E}'$ is a nonzero morphism.
+    \par
+    Note that by definition of maximal line bundle, $\mathcal{L}_{j_{0}}$ has nonzero global section.
+    Hence we can pick $s'\in H^{0}(C, \mathcal{L}_{j_{0}})$ such that $f_{\ast}s' \neq 0$ and $[f_{\ast}s'] \ge [s']$.
+    On the other hand, as $f_{\ast}s'$ is a nonzero section in $H^{0}(X, \mathcal{E})$, $H^{0}(X, \mathcal{E}) \neq 0$ and we can pick an $s''$ maximal.
+    Thus
+    \begin{equation}
+        \begin{split}
+            \deg [s''] & \ge \deg ([f_{\ast}s'] \otimes \omega_{C}^{\vee}) \\
+            & = \deg [f_{\ast}s'] - (2g - 2) \\
+            & \ge \deg [s'] - (2g - 2) \\
+            & = \deg \mathcal{L}_{j_{0}} - (2g - 2) \\
+            & \ge \deg \mathcal{L}_{1} - j_{0}(2g - 2) \\
+            & \ge \deg \mathcal{L}_{1} - i(2g - 2)
+        \end{split}
+    \end{equation}
+    Now take pull back $[s'']$ along the quotient map $\mathcal{E} \twoheadrightarrow \mathcal{E}'$, we get a vector subbundle $\mathcal{E}_{i + 1}$ of $\mathcal{E}$ containing $\mathcal{E}_{i}$ and with $\deg (\mathcal{E}_{i + 1}/\mathcal{E}_{i}) = \deg [s''] \ge \deg \mathcal{L}_{1} - i(2g - 2)$.
+    By induction, we get a filtration of $\mathcal{E}$ of length $r$ starting with $[s]$ such that $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
 \end{proof}
 \begin{lemma}
     Let $\mathcal{E}\in \mathcal{E}(r, d)$, $0 \le d < r$ and $h^{0}(X, \mathcal{E}) > 0$.
