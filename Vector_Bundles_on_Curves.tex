@@ -3105,9 +3105,10 @@ We may use $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ to denote this filtratio
     Thus $\mathcal{L}_{j_{0}} \rightarrow \mathcal{E}' \otimes \omega_{C}$ is a nonzero morphism.
     \par
     Note that by definition of maximal line bundle, $\mathcal{L}_{j_{0}}$ has nonzero global section.
-    Hence we can pick $s'\in H^{0}(C, \mathcal{L}_{j_{0}})$.
-    As $f$ is nonzero, $f_{x}: \mathcal{L}_{j_{0}, x} \otimes k(x) \rightarrow \mathcal{E}'_{x} \otimes \omega_{C, x} \otimes k(x)$ is a nonzero linear transformation except for finitely many closed points.
-    While $\mathcal{L}_{j_{0}, x} \otimes k(x)$ is a $1$-dimensional vector space, nonzero $f_{x}$ is in fact injective.
+    Hence we can pick nonzero $s'\in H^{0}(C, \mathcal{L}_{j_{0}})$.
+    Note that $s'$ is nowhere vanishing on $U := C \setminus \divisor (s')$,
+    for all $x \in U$, $s'_{x}$ spans $\mathcal{L}_{j_{0}, x}$.
+    As $f$ is nonzero, $f_{x}: \mathcal{L}_{j_{0}, x} \rightarrow \mathcal{E}'_{x} \otimes \omega_{C, x}$ is a nonzero except for finitely many closed points.
     Hence $f_{x}(s'_{x}) \neq 0$ except for finitely many closed points so that $f_{\ast}s' \neq 0$ and $[f_{\ast}s'] \ge [s']$.
     On the other hand, since $\mathcal{E}$ globally generated, $\mathcal{E}'$ is also globally generated so that there exists a nonzero section in $s''\in H^{0}(C, \mathcal{E}')$ such that $[s'']$ is maximal.
     Thus
@@ -3237,11 +3238,11 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     Then similar to proof of Corollary \ref{Corollary 3.3}, $\omega_{X} \cong \mathcal{O}_{X}(\divisor (s))$ of degree $0$.
     Hence $\omega_{X} \cong \mathcal{O}_{X}$.
 \end{proof}
-\begin{Lemma}
+\begin{lemma}
     Let $\mathcal{E}$ be an indecomposable vector bundle of rank $r$ with $h^{0}(X, \mathcal{E}) > 0$.
-    Then $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ such that $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$.
+    Then $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ such that $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$.
     \label{Lemma 5.9}
-\end{Lemma}
+\end{lemma}
 \begin{proof}
     The proof is similar to Lemma \ref{Lemma 5.6}.
     By definition, we can pick a maximal section $s\in H^{0}(C, \mathcal{E})$.
@@ -3259,24 +3260,23 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     Thus $\mathcal{L}_{j_{0}} \rightarrow \mathcal{E}'$ is a nonzero morphism.
     \par
     Note that by definition of maximal line bundle, $\mathcal{L}_{j_{0}}$ has nonzero global section.
-    Hence we can pick $s'\in H^{0}(C, \mathcal{L}_{j_{0}})$.
-    As $f$ is nonzero, $f_{x}: \mathcal{L}_{j_{0}, x} \otimes k(x) \rightarrow \mathcal{E}'_{x} \otimes \omega_{C, x} \otimes k(x)$ is a nonzero linear transformation except for finitely many closed points.
-    While $\mathcal{L}_{j_{0}, x} \otimes k(x)$ is a $1$-dimensional vector space, nonzero $f_{x}$ is in fact injective.
+    Hence we can pick nonzero $s'\in H^{0}(X, \mathcal{L}_{j_{0}})$.
+    Note that $s'$ is nowhere vanishing on $U := X \setminus \divisor (s')$,
+    for all $x \in U$, $s'_{x}$ spans $\mathcal{L}_{j_{0}, x}$.
+    As $f$ is nonzero, $f_{x}: \mathcal{L}_{j_{0}, x} \rightarrow \mathcal{E}'_{x}$ is a nonzero except for finitely many closed points.
     Hence $f_{x}(s'_{x}) \neq 0$ except for finitely many closed points so that $f_{\ast}s' \neq 0$ and $[f_{\ast}s'] \ge [s']$.
     On the other hand, as $f_{\ast}s'$ is a nonzero section in $H^{0}(X, \mathcal{E})$, $H^{0}(X, \mathcal{E}) \neq 0$ and we can pick an $s''$ maximal.
     Thus
     \begin{equation}
         \begin{split}
-            \deg [s''] & \ge \deg ([f_{\ast}s'] \otimes \omega_{C}^{\vee}) \\
-            & = \deg [f_{\ast}s'] - (2g - 2) \\
-            & \ge \deg [s'] - (2g - 2) \\
-            & = \deg \mathcal{L}_{j_{0}} - (2g - 2) \\
-            & \ge \deg \mathcal{L}_{1} - j_{0}(2g - 2) \\
-            & \ge \deg \mathcal{L}_{1} - i(2g - 2)
+            \deg [s''] & \ge \deg [f_{\ast}s'] \\
+            & \ge \deg [s'] \\
+            & = \deg \mathcal{L}_{j_{0}} \\
+            & \ge \deg \mathcal{L}_{1}
         \end{split}
     \end{equation}
-    Now take pull back $[s'']$ along the quotient map $\mathcal{E} \twoheadrightarrow \mathcal{E}'$, we get a vector subbundle $\mathcal{E}_{i + 1}$ of $\mathcal{E}$ containing $\mathcal{E}_{i}$ and with $\deg (\mathcal{E}_{i + 1}/\mathcal{E}_{i}) = \deg [s''] \ge \deg \mathcal{L}_{1} - i(2g - 2)$.
-    By induction, we get a filtration of $\mathcal{E}$ of length $r$ starting with $[s]$ such that $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$ for all $1 \le i \le r$.
+    Now take pull back $[s'']$ along the quotient map $\mathcal{E} \twoheadrightarrow \mathcal{E}'$, we get a vector subbundle $\mathcal{E}_{i + 1}$ of $\mathcal{E}$ containing $\mathcal{E}_{i}$ and with $\deg (\mathcal{E}_{i + 1}/\mathcal{E}_{i}) = \deg [s''] \ge \deg \mathcal{L}_{1}$.
+    By induction, we get a filtration of $\mathcal{E}$ of length $r$ starting with $[s]$ such that $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$ for all $1 \le i \le r$.
 \end{proof}
 \begin{lemma}
     Let $\mathcal{E}\in \mathcal{E}(r, d)$, $0 \le d < r$ and $h^{0}(X, \mathcal{E}) > 0$.
@@ -3308,6 +3308,10 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     Now $\deg \mathcal{L}_{1} \ge 1$.
     Note that $r = \deg \mathcal{E} \ge r \cdot \deg \mathcal{L}_{1} \ge r$, which implies $\deg \mathcal{L}_{1} = 1$.
 \end{proof}
+\begin{remark}
+    In fact, for $\mathcal{E}\in \mathcal{E}(r, d)$ with $d \ge r$,
+    by similar argument, we can show that $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{1} \ge 1$.
+\end{remark}
 \begin{definition}
     An extension of vector bundles $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \rightarrow \mathcal{E}'' \rightarrow 0$ is called $\mathcal{E}''$-partial if there is a commutative diagram
     \begin{equation}
@@ -3477,18 +3481,103 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
 \end{proof}
 In the following, we would give \leftquotes uniqueness theorem \rightquotes and \leftquotes existence theorem \rightquotes of $\mathcal{E}(r, d)$.
 \begin{proposition}[\textbf{\emph{uniqueness}}]
-    Let $\mathcal{E}\in \mathcal{E}(r, d)$.
+    Let $\mathcal{E}\in \mathcal{E}(r, d)$, $d \ge 0$.
     Then \\
-    (1)$\left\{
+    (1)$h^{0}(X, \mathcal{E}) =
+    \left\{
         \begin{aligned}
-            h^{0}(X, \mathcal{E}) = 1 \text{ or } 2 & \text{if } d = 0 \\
-            h^{0}(X, \mathcal{E}) = d & \text{else}
+            & 1 \text{ or } 2 & \text{if } d = 0 \\
+            & d & \text{else}
         \end{aligned}
     \right.$
     \\
     (2)If $d < r$, then $\mathcal{E}' = \mathcal{E}/\mathcal{I}_{\mathcal{E}}$ is indecomposable with $h^{0}(X, \mathcal{E}') = h^{0}(X, \mathcal{E})$.
     \label{Proposition 5.4}
-\end{proposition} 
+\end{proposition}
+\begin{proof}
+    For (1), if $d \ge r$, then by remark of Lemma \ref{Lemma 5.11}, 
+    $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{1} \ge 1$.
+    Hence for all $i$, $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} > 0$.
+    And by Serre duality, $h^{1}(X, \mathcal{L}_{i}) = h^{0}(X, \mathcal{L}_{i}^{\vee}) = 0$ for all $i$.
+    Note that
+    \begin{equation}
+        h^{0}(X, \mathcal{E}) \le \sum_{i = 1}^{r} h^{0}(X, \mathcal{L}_{i}) = \sum_{i = 1}^{r} \deg \mathcal{L}_{i} = \deg \mathcal{E} = d \le h^{0}(X, \mathcal{E})
+    \end{equation}
+    We get $h^{0}(X, \mathcal{E}) = d$.
+    Suppose now that $d < r$. If $d = 0$ and $\Gamma(X, \mathcal{E}) = 0$ there is nothing to prove.
+    Hence we may suppose that $\Gamma(X, \mathcal{E}) \neq 0$ even if $d = 0$. 
+    If $d > 0$, we always have $\Gamma(X, \mathcal{E}) \neq 0$. 
+    Consider the following exact sequence
+    \begin{equation}
+        (\mathcal{E}): \quad 0 \longrightarrow I_{\mathcal{E}} \longrightarrow \mathcal{E} \longrightarrow \mathcal{E}' \longrightarrow 0.
+    \end{equation}
+    Since $\mathcal{E}$ is indecomposable, $(\mathcal{E})$ is certainly $\mathcal{I}_{\mathcal{E}}$-complete.
+    Hence by Lemma \ref{Lemma 5.13}, $h^{0}(X, \mathcal{E}') = h^{0}(X, \mathcal{E}) =: h$,
+    and so by duality $h^{1}(X, \mathcal{E}'^{\vee}) = h$.
+    By Proposition \ref{Proposition 5.3} the extension $(\mathcal{E})$ corresponds to a monomorphism
+    \begin{equation}
+        \delta: \Gamma(\mathcal{E}'^{\vee}) \longrightarrow H^{1}(X, \mathcal{E}^{\vee}),
+    \end{equation}
+    since both terms here have same dimension, $\delta$ must be an isomorphism.
+    Suppose that $\mathcal{E}'$ is decomposable and $\mathcal{E}' = \mathcal{F} \oplus \mathcal{G}$ with $\mathcal{F} \neq 0$ and $\mathcal{G} \neq 0$.
+    Then we may write $\delta = \delta_{1} \oplus \delta_{2}$ where
+    \begin{equation}
+        \delta_{1}: \Gamma(\mathcal{F}^{\vee}) \longrightarrow H^{1}(X, \mathcal{F}^{\vee}) \text{ and } \delta_{2}: \Gamma(\mathcal{G}^{\vee}) \longrightarrow H^{1}(X, \mathcal{G}^{\vee})
+    \end{equation}
+    are isomorphisms, $f = \dim H^{1}(X, \mathcal{F}^{\vee})$, $g = \dim H^{1}(X, \mathcal{G}^{\vee})$. By Lemma 13, $\delta_{1}$ and $\delta_{2}$ correspond to extensions
+    \begin{equation}
+        \begin{split}
+            (\mathcal{E}_{1}):\; 0 \longrightarrow \mathcal{I}_{r} \longrightarrow \mathcal{E}_{1} \longrightarrow \mathcal{F} \longrightarrow 0 \\
+            (\mathcal{E}_{2}):\; 0 \longrightarrow \mathcal{I}_{r} \longrightarrow \mathcal{E}_{2} \longrightarrow \mathcal{G} \longrightarrow 0
+        \end{split}
+    \end{equation}
+    Thus $\delta_{1} \oplus \delta_{2}$ corresponds to $(\mathcal{E}_{1}) \oplus (\mathcal{E}_{2})$, and also to $(\mathcal{E})$.
+    Hence, again by Proposition \ref{Proposition 5.3}, $\mathcal{E} \cong \mathcal{E}_{1} \oplus \mathcal{E}_{2}$, contradiction!
+    \par
+    We have now proved (2) and (1) for $d \ge r$.
+    It remains to prove (1) for $0 \le d < r$.
+    We proceed by induction on $r$. 
+    For $r = 1$, (1) is certainly true.
+    Suppose it is true for all $r' < r$, in particular then for $r - h$.
+    Since $\mathcal{E}' \in \mathcal{E}(r - h, d)$, $\dim \Gamma(\mathcal{E}') = d$ if $d > 0$, and $= 0$ or $1$ if $d = 0$.
+    But we have already shown that $\dim \Gamma(\mathcal{E}') = \dim \Gamma(\mathcal{E})$, done!
+\end{proof}
+\begin{proposition}[\textbf{\emph{existence}}]
+    Let $\mathcal{E}'\in \mathcal{E}(r', d)$ with $d \ge 0$, and if $d = 0$ we assume $h^0(X, \mathcal{E}') \neq 0$.
+    Then there exists $\mathcal{E}\in \mathcal{E}(r, d)$ such that $\mathcal{E}' \cong \mathcal{E}/\mathcal{I}_{\mathcal{E}}$ and $h^{0}(X, \mathcal{E}) = h^{0}(X, \mathcal{E}')$,
+    which is unique up to isomorphism.
+    \label{Proposition 5.5}
+\end{proposition}
+\begin{proof}
+    Set $h = h^{0}(X, \mathcal{E}')$.
+    Then for tivial vector bundle $\mathcal{I}_{h}$ of rank $h$,
+    by Proposition \ref{Proposition 5.3}, there is an $\mathcal{E}'$-complete extension 
+    \begin{equation}
+        0 \longrightarrow \mathcal{I}_{h} \longrightarrow \mathcal{E} \longrightarrow \mathcal{E}' \longrightarrow 0
+    \end{equation}
+    unique up to equivalence relation.
+    By Lemma \ref{Lemma 5.13}, $h^{0}(X, \mathcal{E}) = h^{0}(X, \mathcal{E}')$.
+    Remains to show that $\mathcal{E}$ is indecomposable.
+    \par
+    Suppose $\mathcal{E}$ is decomposable and $\mathcal{E} = \mathcal{F} \oplus \mathcal{G}$ with $\mathcal{F} \neq 0$ and $\mathcal{G} \neq 0$.
+    Note that $\Gamma(X, \mathcal{I}_{h}) = \Gamma(X, \mathcal{E}) = \Gamma(X, \mathcal{F}) \oplus \Gamma(X, \mathcal{G})$, we get $\mathcal{I}_{h}$ is in fact $\mathcal{I}_{\mathcal{E}}$.
+    Then $\Gamma(X, \mathcal{F})$ and $\Gamma(X, \mathcal{G})$ span trivial line subbundle $\mathcal{I}_{\mathcal{F}}$ and $\mathcal{I}_{\mathcal{G}}$ respectively.
+    And $\mathcal{I}_{\mathcal{F}} \oplus \mathcal{I}_{\mathcal{G}} = \mathcal{I}_{h}$.
+    While $\mathcal{E}' \cong \mathcal{E}/\mathcal{I}_{h} = \mathcal{E}/(\mathcal{I}_{\mathcal{F}} \oplus \mathcal{I}_{\mathcal{G}}) \cong \mathcal{F}/\mathcal{I}_{\mathcal{F}} \oplus \mathcal{G}/\mathcal{I}_{\mathcal{G}}$, 
+    as $\mathcal{E}'$ indecomposable, $\mathcal{F} = \mathcal{I}_{\mathcal{F}}$ or $\mathcal{G} = \mathcal{I}_{\mathcal{G}}$.
+    \par
+    We may assume $\mathcal{F} = \mathcal{I}_{\mathcal{F}}$.
+    There is a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            \mathcal{F} \arrow[d, hookrightarrow, "i"] & \\
+            \mathcal{I}_{h} \arrow[r, hookrightarrow, "j"] &
+            \mathcal{E} \arrow[ul, twoheadrightarrow, "\pi" swap]
+        \end{tikzcd}
+    \end{equation}
+    such that $\pi \circ j \circ i = \identity_{\mathcal{F}}$, contradicting that the extension is $\mathcal{I}_{h}$-complete.
+    Conclude that $\mathcal{E}$ is indecomposable.
+\end{proof}
 \begin{theorem}[\textbf{\emph{Atiyah}}]
     There exists a vector bundle $\mathcal{F}_{r}\in \mathcal{E}(r, 0)$ with nonzero global sections, called the Atiyah bundle,
     which is unique up to isomorphism.
