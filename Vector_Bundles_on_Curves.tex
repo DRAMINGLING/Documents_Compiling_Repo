@@ -3138,7 +3138,7 @@ We may use $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ to denote this filtratio
 \end{remark}
 \begin{lemma}
     Let $\mathcal{E}$ be an indecomposable vector bundle on $C$ of rank $r$ and degree $d$.
-    Then $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \frac{d}{r} - (r - 1)(3g - 2)$ for all $1 \le i \le r$.
+    Then $\mathcal{E}$ has a filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \frac{d}{r} - (r - 1)(3g - 2)$ for all $1 \le i \le r$.
     \label{Lemma 5.7}
 \end{lemma}
 \begin{proof}
@@ -3232,13 +3232,20 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     Then similar to proof of Corollary \ref{Corollary 3.3}, $\omega_{X} \cong \mathcal{O}_{X}(\divisor (s))$ of degree $0$.
     Hence $\omega_{X} \cong \mathcal{O}_{X}$.
 \end{proof}
+\begin{Lemma}
+    Let $\mathcal{E}$ be an indecomposable vector bundle of rank $r$ with $h^{0}(X, \mathcal{E}) > 0$.
+    Then $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ such that $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1} - (i - 1)(2g - 2)$.
+    \label{Lemma 5.9}
+\end{Lemma}
+\begin{proof}
+\end{proof}
 \begin{lemma}
     Let $\mathcal{E}\in \mathcal{E}(r, d)$, $0 \le d < r$ and $h^{0}(X, \mathcal{E}) > 0$.
     Then $\mu_{\max}(\mathcal{E}) = 0$ and $\mathcal{E}$ has a trivial line subbundle of rank $h = h^{0}(X, \mathcal{E})$, denoted by $\mathcal{I}_{\mathcal{E}}$.
-    \label{Lemma 5.9}
+    \label{Lemma 5.10}
 \end{lemma}
 \begin{proof}
-    By Corollary \ref{Corollary 5.4}, $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$ for all $1 \le i \le r$.
+    By Lemma \ref{Lemma 5.9}, $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$ for all $1 \le i \le r$.
     If $\deg \mathcal{L}_{1} > 0$, then $d = \deg \mathcal{E} = \sum_{i = 1}^{r} \deg \mathcal{L}_{i} \ge r \cdot \deg \mathcal{L}_{1} \ge r$, which contradicts the assumption that $0 \le d < r$.
     Hence $\deg \mathcal{L}_{1} = 0$.
     \par
@@ -3250,10 +3257,11 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
 \begin{lemma}
     Let $\mathcal{E}\in \mathcal{E}(r, r)$.
     Then $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{1} = 1$.
-    \label{Lemma 5.10}
+    \label{Lemma 5.11}
 \end{lemma}
 \begin{proof}
-    By Corollary \ref{Corollary 5.4}, $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$ for all $1 \le i \le r$.
+    As $r > 0$, we know $h^{0}(X, \mathcal{E}) \neq 0$.
+    By Lemma \ref{Lemma 5.9}, $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$ for all $1 \le i \le r$.
     Suppose $\deg \mathcal{L}_{1} = 0$.
     Similar to proof of previous lemma, we can show that $\Gamma(X, \mathcal{E})$ generates a trivial subbundle $\mathcal{I}_{\mathcal{E}}$ of rank $h = h^{0}(X, \mathcal{E})$.
     Hence $r \ge h^{0}(X, \mathcal{E}) \ge \deg \mathcal{E} = r$ so that $h^{0}(X, \mathcal{E}) = r$ and $\mathcal{E} = \mathcal{I}_{\mathcal{E}}$,
@@ -3279,7 +3287,7 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
 \begin{lemma}
     Given an extension $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \overset{p}{\rightarrow} \mathcal{E}'' \rightarrow 0$ with $\mathcal{E}''$ trivial,
     it is $\mathcal{E}''$-complete if and only if $p_{\ast}: H^{0}(X, \mathcal{E}) \to H^{0}(X, \mathcal{E}'')$ is a zero map.
-    \label{Lemma 5.11}
+    \label{Lemma 5.12}
 \end{lemma}
 \begin{proof}
     If the extension is $\mathcal{E}''$-partial, then there is a commutative diagram
@@ -3418,11 +3426,11 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
 \begin{lemma}
     Given an $\mathcal{E}'$-complete extension $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \overset{p}{\rightarrow} \mathcal{E}'' \rightarrow 0$ with $\mathcal{E}'$ trivial,
     then $h^{0}(X, \mathcal{E}) = h^{0}(X, \mathcal{E}'')$.
-    \label{Lemma 5.12}
+    \label{Lemma 5.13}
 \end{lemma}
 \begin{proof}
     Take the dual extension $0 \rightarrow \mathcal{E}''^{\vee} \rightarrow \mathcal{E}^{\vee} \rightarrow \mathcal{E}'^{\vee} \rightarrow 0$.
-    By Lemma \ref{Lemma 5.11}, we know $H^{0}(X, \mathcal{E}^{\vee}) \cong H^{0}(X, \mathcal{E}'^{\vee})$.
+    By Lemma \ref{Lemma 5.12}, we know $H^{0}(X, \mathcal{E}^{\vee}) \cong H^{0}(X, \mathcal{E}'^{\vee})$.
     Hence by Serre duality, $H^{1}(X, \mathcal{E}^{\vee}) \cong H^{1}(X, \mathcal{E}'^{\vee})$.
     Take dimension, we get $h^{1}(X, \mathcal{E}) = h^{1}(X, \mathcal{E}'')$.
     Note that $\deg \mathcal{E}' = 0$, by additivity of degree, $\deg \mathcal{E} = \deg \mathcal{E}''$.
