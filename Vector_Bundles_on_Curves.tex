@@ -3240,7 +3240,7 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
 \end{proof}
 \begin{lemma}
     Let $\mathcal{E}$ be an indecomposable vector bundle of rank $r$ with $h^{0}(X, \mathcal{E}) > 0$.
-    Then $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ such that $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$.
+    Then $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ such that $\mathcal{L}_{i} \ge \mathcal{L}_{1}$.
     \label{Lemma 5.9}
 \end{lemma}
 \begin{proof}
@@ -3265,18 +3265,16 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     for all $x \in U$, $s'_{x}$ spans $\mathcal{L}_{j_{0}, x}$.
     As $f$ is nonzero, $f_{x}: \mathcal{L}_{j_{0}, x} \rightarrow \mathcal{E}'_{x}$ is a nonzero except for finitely many closed points.
     Hence $f_{x}(s'_{x}) \neq 0$ except for finitely many closed points so that $f_{\ast}s' \neq 0$ and $[f_{\ast}s'] \ge [s']$.
+    \par
     On the other hand, as $f_{\ast}s'$ is a nonzero section in $H^{0}(X, \mathcal{E})$, $H^{0}(X, \mathcal{E}) \neq 0$ and we can pick an $s''$ maximal.
+    If $[f_{x}(s'_{x})]$ itself is maximal, then we may take $s'' = f_{x}(s'_{x})$ and hence $[s''] = [f_{x}(s'_{x})]$.
+    Otherwise, $\deg [s''] \ge \deg [f_{x}(s'_{x})] + 1$ so that $[s''] \otimes [f_{x}(s'_{x})]^{\vee}$ has positve degree and hence nonzero global section.
     Thus
     \begin{equation}
-        \begin{split}
-            \deg [s''] & \ge \deg [f_{\ast}s'] \\
-            & \ge \deg [s'] \\
-            & = \deg \mathcal{L}_{j_{0}} \\
-            & \ge \deg \mathcal{L}_{1}
-        \end{split}
+        [s''] \ge [f_{\ast}s'] \ge [s'] = \mathcal{L}_{j_{0}} \ge \mathcal{L}_{1}
     \end{equation}
     Now take pull back $[s'']$ along the quotient map $\mathcal{E} \twoheadrightarrow \mathcal{E}'$, we get a vector subbundle $\mathcal{E}_{i + 1}$ of $\mathcal{E}$ containing $\mathcal{E}_{i}$ and with $\deg (\mathcal{E}_{i + 1}/\mathcal{E}_{i}) = \deg [s''] \ge \deg \mathcal{L}_{1}$.
-    By induction, we get a filtration of $\mathcal{E}$ of length $r$ starting with $[s]$ such that $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$ for all $1 \le i \le r$.
+    By induction, we get a filtration of $\mathcal{E}$ of length $r$ starting with $[s]$ such that $\mathcal{L}_{i} \ge \mathcal{L}_{1}$ for all $1 \le i \le r$.
 \end{proof}
 \begin{lemma}
     Let $\mathcal{E}\in \mathcal{E}(r, d)$, $0 \le d < r$ and $h^{0}(X, \mathcal{E}) > 0$.
@@ -3295,18 +3293,26 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
 \end{proof}
 \begin{lemma}
     Let $\mathcal{E}\in \mathcal{E}(r, r)$.
-    Then $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{1} = 1$.
+    Then $\mathcal{E}$ admits a maximal filtration $(\mathcal{L}, \cdots, \mathcal{L})$ with $\deg \mathcal{L} = 1$.
+    \vspace{-\baselineskip} % 减少一行间距
     \label{Lemma 5.11}
 \end{lemma}
 \begin{proof}
     As $r > 0$, we know $h^{0}(X, \mathcal{E}) \neq 0$.
-    By Lemma \ref{Lemma 5.9}, $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\deg \mathcal{L}_{i} \ge \deg \mathcal{L}_{1}$ for all $1 \le i \le r$.
+    By Lemma \ref{Lemma 5.9}, $\mathcal{E}$ has a maximal filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ with $\mathcal{L}_{i} \ge \mathcal{L}_{1}$ for all $1 \le i \le r$.
     Suppose $\deg \mathcal{L}_{1} = 0$.
     Similar to proof of previous lemma, we can show that $\Gamma(X, \mathcal{E})$ generates a trivial subbundle $\mathcal{I}_{\mathcal{E}}$ of rank $h = h^{0}(X, \mathcal{E})$.
     Hence $r \ge h^{0}(X, \mathcal{E}) \ge \deg \mathcal{E} = r$ so that $h^{0}(X, \mathcal{E}) = r$ and $\mathcal{E} = \mathcal{I}_{\mathcal{E}}$,
     which contradicts the indecomposability of $\mathcal{E}$.
+    \par
     Now $\deg \mathcal{L}_{1} \ge 1$.
-    Note that $r = \deg \mathcal{E} \ge r \cdot \deg \mathcal{L}_{1} \ge r$, which implies $\deg \mathcal{L}_{1} = 1$.
+    Note that $r = \deg \mathcal{E} \ge r \cdot \deg \mathcal{L}_{1} \ge r$, which implies $\deg \mathcal{L}_{i} = 1$ for all $i$.
+    Pick some nonzero global section $s$ of $\mathcal{L}_{1}$.
+    Then $\deg (\divisor (s)) = \deg \mathcal{L}_{1} = 1$.
+    While there is a nonzero map $f_{i}: \mathcal{L}_{1} \rightarrow \mathcal{L}_{i}$ for all $i \ge 1$, consider $f_{i} \circ s$.
+    By argument similar to proof of Lemma \ref{Lemma 5.6}, we know $f_{i} \circ s$ is a nonzero global section of $\mathcal{L}_{i}$.
+    Note that $\deg (\divisor (f \circ s)) = \deg \mathcal{L}_{i} = 1 = \deg (\divisor (s))$ so that $f$ is nowhere vanishing and hence $f$ is invertible.
+    Conclude that $\mathcal{L}_{i} \cong \mathcal{L}_{1}$ for all $i$.
 \end{proof}
 \begin{remark}
     In fact, for $\mathcal{E}\in \mathcal{E}(r, d)$ with $d \ge r$,
@@ -3486,7 +3492,7 @@ In the following, we would give \leftquotes uniqueness theorem \rightquotes and 
     (1)$h^{0}(X, \mathcal{E}) =
     \left\{
         \begin{aligned}
-            & 1 \text{ or } 2 & \text{if } d = 0 \\
+            & 0 \text{ or } 1 & \text{if } d = 0 \\
             & d & \text{else}
         \end{aligned}
     \right.$
@@ -3588,7 +3594,32 @@ In the following, we would give \leftquotes uniqueness theorem \rightquotes and 
     Let $\mathcal{E}\in \mathcal{E}(r, 0)$.
     Then $\mathcal{E} \cong \mathcal{L} \otimes \mathcal{F}_{r}$ for some line bundle $\mathcal{L}$ of degree $0$,
     which is also unique up to isomorphism.
-    More precisely, $\mathcal{L} \cong \det \mathcal{E}$.
+    More precisely, $\mathcal{L}^{r} \cong \det \mathcal{E}$.
     \label{Theorem 5.2}
 \end{theorem}
+\begin{proof}
+    We first prove the existence of $\mathcal{F}_{r}$ by induction on $r$.
+    For $r = 1$, assume $\mathcal{E}\in \mathcal{E}(1, 0)$ with nonzero global section $s$.
+    Then $\mathcal{E} \cong \divisor (s)$ is an effective divisor of degree $0$, which must be isomorphic to $\mathcal{O}_{X}$.
+    Suppose now we have proven the result for all $r' < r$.
+    If $\mathcal{E}\in \mathcal{E}(r, 0)$ with nonzero global section, then $h^{0}(X, \mathcal{E}) = 1$ and by Proposition \ref{Proposition 5.4} there is an exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{I}_{\mathcal{E}} \longrightarrow \mathcal{E} \longrightarrow \mathcal{E}' \longrightarrow 0
+    \end{equation}
+    where $\mathcal{E}' := \mathcal{E}/\mathcal{I}_{\mathcal{E}}\in \mathcal{E}(r - 1, 0)$.
+    By inductive hypothesis we must have $\mathcal{E}' \cong \mathcal{F}_{r - 1}$.
+    And by Proposition \ref{Proposition 5.5}, we know extension of $\mathcal{F}_{r - 1}$ by $\mathcal{O}_{X}$ is unique up to isomorphism.
+    Hence the result also holds for $r$.
+    \par
+    Now for any $\mathcal{E}\in \mathcal{E}(r, 0)$, then $\deg (\mathcal{E} \otimes A) = \deg \mathcal{E} + r \cdot \deg A = r$.
+    Then by Lemma \ref{Lemma 5.11}, $\mathcal{E} \otimes A$ admits a maximal filtration $(\mathcal{L}, \cdots, \mathcal{L})$ with $\deg \mathcal{L} = 1$.
+    Note that $\mathcal{O}_{X}$ is a line subbundle of $\mathcal{E} \otimes A \otimes \mathcal{L}^{\vee}$,
+    $\mathcal{E} \otimes A \otimes \mathcal{L}^{\vee}\in \mathcal{E}(r, 0)$ with nonzero global section so that isomorphic to $\mathcal{F}_{r}$.
+    Take the line bundle to be $A^{\vee} \otimes \mathcal{L}$ is enough.
+    In particular, we get $(\mathcal{O}_{X}, \cdots, \mathcal{O}_{X})$ is a filtration of $\mathcal{F}_{r}$ and $\det \mathcal{E} \cong (\mathcal{A}^{\vee} \otimes \mathcal{L})^{r}$.
+    \par
+    To show the uniqueness, suffices to prove if $\mathcal{F}_{r} \cong \mathcal{F}_{r} \otimes \mathcal{L}$, then $\mathcal{L}$ is tivial line bundle.
+    As $(\mathcal{O}_{X}, \cdots, \mathcal{O}_{X})$ is a filtration of $\mathcal{F}_{r}$,
+    if $\mathcal{L}$ is not a trivial line bundle, then $h^{0}(X, \mathcal{L}) = 0$ and hence $h^{0}(X, \mathcal{F}_{r} \otimes \mathcal{L}) \le r \cdot h^{0}(X, A^{\vee} \otimes \mathcal{L}) = 0$, contradicting to $\Gamma(X, \mathcal{F}_{r}) \neq 0$
+\end{proof}
 \end{document}
