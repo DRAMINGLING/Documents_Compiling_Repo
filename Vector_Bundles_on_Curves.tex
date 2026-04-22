@@ -3633,4 +3633,33 @@ In the following, we would give \leftquotes uniqueness theorem \rightquotes and 
     Thus $\mathcal{F}_{r}^{\vee}$ also has nonzero global sections.
     Conclude $\mathcal{F}_{r} \cong \mathcal{F}_{r}^{\vee}$. 
 \end{proof}
+\begin{corollary}
+    For any $s < r$, there is an exact sequence $0 \rightarrow \mathcal{F}_{s} \rightarrow \mathcal{F}_{r} \rightarrow \mathcal{F}_{r - s} \rightarrow 0$.
+    \label{Corollary 5.7}
+\end{corollary}
+\begin{proof}
+    First to show $\mathcal{F}_{s}$ is the unique subbundle of $\mathcal{F}$ of rank $s$, which is a successive extension of trivial line bundles.
+    By Corollary \ref{Corollary 5.6}, we know $\mathcal{F}_{s} \cong \mathcal{F}_{s}^{\vee}$ is such a subbundle of $\mathcal{F}_{r} \cong \mathcal{F}_{r}^{\vee}$.
+    Suppose $\mathcal{E}_{s}$ is also such a subbundle.
+    For $s = 1$, clearly $\mathcal{E}_{1} \cong \mathcal{F}_{1}$.
+    Induct on $s$ and $r$, suppose we have proven for all $s' < s$ and $r' > s'$.
+    Note that $\mathcal{E}_{s}/\mathcal{F}_{1}$ is a subbundle of $\mathcal{F}_{r}/\mathcal{F}_{1} \cong \mathcal{F}_{r - 1}$.
+    By inductive hypothesis, $\mathcal{E}_{s}/\mathcal{F}_{1} \cong \mathcal{F}_{s - 1}$.
+    Now we get an extension 
+    \begin{equation}
+        0 \longrightarrow \mathcal{F}_{1} \longrightarrow \mathcal{E}_{s} \longrightarrow \mathcal{F}_{s - 1} \longrightarrow 0
+    \end{equation}
+    As $\mathcal{F}_{1}$ is trivial line bundle, the extension corresponds a map $H^{0}(X, \mathcal{F}_{1}^{\vee}) \rightarrow H^{1}(X, \mathcal{F}_{s - 1}^{\vee})$.
+    Or equivalently by Serre duality, a map $H^{0}(X, \mathcal{F}_{1}) \rightarrow H^{0}(X, \mathcal{F}_{s - 1})^{\vee}$.
+    Note that $h^{0}(X, \mathcal{F}_{i}) = 0$ for all $i$.
+    The map is either a zero map or an isomorphism.
+    If it is a zero map, then $\mathcal{E}_{s} \cong \mathcal{F}_{1} \oplus \mathcal{F}_{s - 1}$.
+    But then $\mathcal{O}_{X}^{\oplus 2} \subseteq \mathcal{F}_{1} \oplus \mathcal{F}_{s - 1}$ is a trivial subbundle of $\mathcal{F}_{r}$, contradicting to $h^{0}(X, \mathcal{F}_{r}) = 1$.
+    Hence the map is an isomorphism so that $\mathcal{E}_{s} \cong \mathcal{F}_{s}$.
+    \par
+    Finally, consider $\mathcal{E}_{r - s} := \mathcal{F}_{r}/\mathcal{F}_{s}$.
+    Dually, we get $\mathcal{E}_{r - s}^{\vee}$ is a subbundle of $\mathcal{F}_{r}$.
+    Remains to check $\mathcal{E}_{r - s}^{\vee}$ is a successive extension of trivial line bundles.
+    As there is a filtration $\mathcal{E}_{1}^{\vee} \subset \cdots \subset \mathcal{E}_{r - s}^{\vee}$ and $\mathcal{E}_{i}^{\vee}/\mathcal{E}_{i - 1}^{\vee} \cong \mathcal{F}_{r - i + 1}/\mathcal{F}_{r - i} \cong \mathcal{F}_{1}$ is trivial line bundle, done!
+\end{proof}
 \end{document}
