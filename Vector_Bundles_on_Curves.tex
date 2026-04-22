@@ -2080,13 +2080,15 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
 \begin{lemma}
     Let $X$ be a regular projective curve, $\mathcal{E}$ and $\mathcal{E}'$ vector bundles on $X$.
     Then $\deg (\mathcal{E} \otimes \mathcal{E}') = \rank \mathcal{E} \cdot \deg \mathcal{E}' + \rank \mathcal{E}' \cdot \deg \mathcal{E}$.
-    \label{Lemma 3.9}
+    \label{Lemma 3.8}
 \end{lemma}
 \begin{proof}
     Take filtration $(\mathcal{L}_{1}', \cdots, \mathcal{L}_{r'}')$ of $\mathcal{E}'$.
     Consider exact sequence $0 \rightarrow \mathcal{E}_{i}' \otimes \mathcal{E} \rightarrow \mathcal{E}_{i + 1}' \otimes \mathcal{E} \rightarrow \mathcal{L}_{i + 1}' \otimes \mathcal{E} \rightarrow 0$.
     Hence $\deg (\mathcal{E} \otimes \mathcal{E}') = \sum \deg (\mathcal{L}_{i}' \otimes \mathcal{E})$.
     Suffice to show that $\deg (\mathcal{E} \otimes \mathcal{L}) = \deg \mathcal{E} + r \cdot \deg \mathcal{L}$ for all line bundle $\mathcal{L}$.
+    Take filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ of $\mathcal{E}$.
+    Similarly, we get $\deg (\mathcal{E} \otimes \mathcal{L}) = \sum \deg (\mathcal{L}_{i} \otimes \mathcal{L}) = \sum (\deg \mathcal{L}_{i} + \deg \mathcal{L}) = \deg \mathcal{E} + r \cdot \deg \mathcal{L}$.
 \end{proof}
 
 \subsection{Riemann-Roch for curves}
@@ -3228,7 +3230,8 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     Hence $\deg A = 1$.
 \end{proof}
 \begin{remark}
-    There is a canonical map
+    By Lemma \ref{Lemma 3.8}, $\deg (\mathcal{E} \otimes A) = \deg \mathcal{E} + r$.
+    Hence there is a canonical map
     \begin{equation}
         \begin{split}
             \mathcal{E}(r, d) & \longrightarrow \mathcal{E}(r, d + nr) \\
@@ -3557,7 +3560,7 @@ In the following, we would give \leftquotes uniqueness theorem \rightquotes and 
     For $r = 1$, (1) is certainly true.
     Suppose it is true for all $r' < r$, in particular then for $r - h$.
     Since $\mathcal{E}' \in \mathcal{E}(r - h, d)$, $\dim \Gamma(\mathcal{E}') = d$ if $d > 0$, and $= 0$ or $1$ if $d = 0$.
-    But we have already shown that $\dim \Gamma(\mathcal{E}') = \dim \Gamma(\mathcal{E})$, done!
+    As we have already shown that $\dim \Gamma(\mathcal{E}') = \dim \Gamma(\mathcal{E})$, done!
 \end{proof}
 \begin{proposition}[\textbf{\emph{existence}}]
     Let $\mathcal{E}'\in \mathcal{E}(r', d)$ with $d \ge 0$, and if $d = 0$ we assume $h^0(X, \mathcal{E}') \neq 0$.
@@ -3595,7 +3598,7 @@ In the following, we would give \leftquotes uniqueness theorem \rightquotes and 
     such that $\pi \circ j \circ i = \identity_{\mathcal{F}}$, contradicting that the extension is $\mathcal{I}_{h}$-complete.
     Conclude that $\mathcal{E}$ is indecomposable.
 \end{proof}
-\begin{theorem}[\textbf{\emph{Atiyah}}]
+\begin{theorem}
     There exists a vector bundle $\mathcal{F}_{r}\in \mathcal{E}(r, 0)$ with nonzero global sections, called the Atiyah bundle,
     which is unique up to isomorphism.
     Moreover, there is an exact sequence for all $r \ge 1$
@@ -3673,4 +3676,73 @@ In the following, we would give \leftquotes uniqueness theorem \rightquotes and 
     Remains to check $\mathcal{E}_{r - s}^{\vee}$ is a successive extension of trivial line bundles.
     As there is a filtration $\mathcal{E}_{1}^{\vee} \subset \cdots \subset \mathcal{E}_{r - s}^{\vee}$ and $\mathcal{E}_{i}^{\vee}/\mathcal{E}_{i - 1}^{\vee} \cong \mathcal{F}_{r - i + 1}/\mathcal{F}_{r - i} \cong \mathcal{F}_{1}$ is trivial line bundle, done!
 \end{proof}
+\begin{theorem}
+    The fixed line bundle $A$ determines a one-to-one correspondence 
+    \begin{equation}
+        \alpha_{r, d}: \mathcal{E}(h, 0) \rightarrow \mathcal{E}(r, d)
+    \end{equation}
+    where $h$ is the greatest common divisor of $r$ and $d$.
+    And for all $\mathcal{E}\in \mathcal{E}(h, 0)$, $\alpha_{r, d}$ is defined uniquely by the following properties
+    \begin{itemize}
+        \item $\alpha_{r, 0} = \identity$
+        \item $\alpha_{r, r + d}(\mathcal{E}) \cong \alpha_{r, d}(\mathcal{E}) \otimes A$
+        \item if $0 < d < r$, we have an exact sequence $0 \rightarrow \mathcal{I}_{d} \longrightarrow \alpha_{r, d}(\mathcal{E}) \longrightarrow \alpha_{r - d, d}(\mathcal{E}) \longrightarrow 0$,
+        where $\mathcal{I}_{d}$ is the trivial bundle of rank $d$.
+    \end{itemize}
+    In particular, $\det \alpha_{r, d}(\mathcal{E}) \cong \det \mathcal{E} \otimes A^{d}$.
+    \label{Theorem 5.3}
+\end{theorem}
+\begin{proof}
+    With correspondence given by $\otimes A$, we may assume $d \ge 0$ first.
+    When $d = 0$, we have $h = r$ so that we can just take $\alpha_{r, 0}$ to be the identity map.
+    If $d > 0$, note that in fact Proposition \ref{Proposition 5.4} and Proposition \ref{Proposition 5.5} gives a one-to-one correspondence between $\mathcal{E}(r, d)$ and $\mathcal{E}(r - d, d)$,
+    we have the following correspondence process that
+    \begin{equation}
+        \beta_{r, d}: \mathcal{E}(r, d) \longleftrightarrow
+        \left\{
+            \begin{aligned}
+                & \mathcal{E}(r - d, d) & \text{if } r > d \\
+                & \mathcal{E}(r, d - r) & \text{else}
+            \end{aligned}
+        \right.
+    \end{equation}
+    Starting with $\mathcal{E}(r, d)$ and $\beta_{r, d}$ and reapeating the process, we get $\mathcal{E}(r, d) \overset{\beta_{r, d}}{\longleftrightarrow} \mathcal{E}(r', d') \overset{\beta_{r', d'}}{\longleftrightarrow} \cdots$.
+    For each step, it is easy to see that $r' + d' < r + d$, $\gcd (r', d') = \gcd(r, d)$ and $d' \ge 0$.
+    Hence the process would stop at $\mathcal{E}(h, 0)$.
+    Combining these correspondence together, we get one-to-one correspondence $\beta_{r, d}: \mathcal{E}(r, d) \longleftrightarrow \mathcal{E}(r_{0}, 0)$.
+    Take $\alpha_{r, d} = \beta_{r, d}^{-1}$.
+    Then by definition, we know this correspondence satisfies those properties.
+    \par
+    For uniqueness, suppose now we have another correspondence $\gamma_{r, d}$ satisfying those properties.
+    Consider the correspondence $\mathcal{E}(r, d) \overset{\gamma_{r, d}^{-1}}{\longleftrightarrow} \mathcal{E}(h, 0) \overset{\gamma_{r, d + r}}{\longleftrightarrow} \mathcal{E}(r, d + r)$.
+    Then $\gamma_{r, d + r} \circ \gamma_{r, d}^{-1}(\mathcal{E}) \cong \mathcal{E} \otimes A = \alpha_{r, d + r} \circ \alpha_{r, d}^{-1}(\mathcal{E})$.
+    And the last property also tells us that $\gamma_{r + d, d} \circ \gamma_{r, d}^{-1} = \alpha_{r + d, d} \circ \alpha_{r, d}^{-1}$.
+    Conclude that $\gamma \cong \alpha$.
+\end{proof}
+\begin{theorem}
+    We may regard $X$ as an abelian variety with identity the fixed point $x_{0}$.
+    Then each $\mathcal{E}(r, d)$ can be identified with $X$ in such a way that
+    \begin{equation}
+        \det: \mathcal{E}(r, d) \rightarrow \mathcal{E}(1, d) \text{ corresponds to } H: X \rightarrow X
+    \end{equation}
+    where $H(x) = h \cdot x$ and $h = \gcd (r, d)$.
+    \label{Theorem 5.4}
+\end{theorem}
+\begin{reason}
+    By Theorem \ref{Theorem 5.3}, suffices to consider $\mathcal{E}(h, 0)$.
+    Then for all $\mathcal{E}\in \mathcal{E}(h, 0)$, $\mathcal{E} \cong \mathcal{F}_{h} \otimes \mathcal{L}$ for some $\mathcal{L}\in \picardscheme^{0}(X)$.
+    Hence we can identify $\mathcal{E}(h, 0)$ with $\picardscheme^{0}(X)$.
+    While there is isomorphism $X \rightarrow \picardscheme^{0}(X)$ sending $x$ to $\mathcal{O}_{X}(x) \otimes A^{\vee}$,
+    we can identify $\mathcal{E}(h, 0)$ with $X$.
+    In particular, $\det \mathcal{E} \cong \det \mathcal{F}_{h} \otimes \mathcal{L}^{h}$ so that $\det$ corresponds to $H$. 
+\end{reason}
+\begin{corollary}
+    Notation as above, then for all $\mathcal{E}\in \mathcal{E}(r, d)$, we have that \\
+    (1)$\mathcal{E} \mapsto \det \mathcal{E}$ gives a one-to-one correspondence $\mathcal{E}(r, d) \longleftrightarrow \mathcal{E}(1, d)$. \\
+    (2)$\mathcal{E} \cong \mathcal{E}_{A}(r, d) \otimes \mathcal{L}$ for some $\mathcal{L}\in \picardscheme^{0}(X)$,
+    where $\mathcal{E}_{A}(r, d) = \alpha_{r, d}(\mathcal{F}_{h})$. \\
+    (3)$\mathcal{E}_{A}(r, d) \otimes \mathcal{L} \cong \mathcal{E}_{A}(r, d)$ if and only if $\mathcal{L}^{r} \cong \mathcal{O}_{X}$. \\
+    (4)$\mathcal{E}_{A}(r, d)^{\ast} \cong \mathcal{E}_{A}(r, -d)$.
+    \label{Corollary 5.8}
+\end{corollary}
 \end{document}
