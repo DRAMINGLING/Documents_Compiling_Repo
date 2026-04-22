@@ -2082,6 +2082,12 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
     Then $\deg (\mathcal{E} \otimes \mathcal{E}') = \rank \mathcal{E} \cdot \deg \mathcal{E}' + \rank \mathcal{E}' \cdot \deg \mathcal{E}$.
     \label{Lemma 3.9}
 \end{lemma}
+\begin{proof}
+    Take filtration $(\mathcal{L}_{1}', \cdots, \mathcal{L}_{r'}')$ of $\mathcal{E}'$.
+    Consider exact sequence $0 \rightarrow \mathcal{E}_{i}' \otimes \mathcal{E} \rightarrow \mathcal{E}_{i + 1}' \otimes \mathcal{E} \rightarrow \mathcal{L}_{i + 1}' \otimes \mathcal{E} \rightarrow 0$.
+    Hence $\deg (\mathcal{E} \otimes \mathcal{E}') = \sum \deg (\mathcal{L}_{i}' \otimes \mathcal{E})$.
+    Suffice to show that $\deg (\mathcal{E} \otimes \mathcal{L}) = \deg \mathcal{E} + r \cdot \deg \mathcal{L}$ for all line bundle $\mathcal{L}$.
+\end{proof}
 
 \subsection{Riemann-Roch for curves}
 \label{subsection:Riemann-Roch_Formula_Riemann-Roch_for_curves}
