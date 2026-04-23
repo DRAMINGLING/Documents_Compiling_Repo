@@ -76,6 +76,7 @@
 \newcommand{\regular}{\operatorname{reg}}
 \newcommand{\smooth}{\operatorname{sm}}
 \newcommand{\analytification}{\operatorname{an}}
+\newcommand{\saturation}{\operatorname{sat}}
 
 \newcommand{\inverselimit}{\underset{\longleftarrow}{\lim}} 
 \newcommand{\colimit}{\underset{\longrightarrow}{\lim}}
@@ -3751,12 +3752,35 @@ In the following, we would give \leftquotes uniqueness theorem \rightquotes and 
 
 Let $X$ be a regular projective curve over $\mathbb{C}$.
 \begin{definition}
-    Let $f: \mathcal{W}_{1} \rightarrow \mathcal{W}_{2}$ be a map between vector bundles on $X$.
-    We say $f$ is of maximal rank if the induced map $\det f: \det \mathcal{W}_{1} \rightarrow \det \mathcal{W}_{2}$ is a nonzero map.
+    Let $f: \mathcal{E}_{1} \rightarrow \mathcal{E}_{2}$ be a map between vector bundles on $X$.
+    We say $f$ is of maximal rank if the induced map $\det f: \det \mathcal{E}_{1} \rightarrow \det \mathcal{E}_{2}$ is a nonzero map.
 \end{definition}
 \begin{remark}
-    As $\deg \mathcal{W}_{i} = \deg (\det \mathcal{W}_{i})$,
-    if $f: \mathcal{W}_{1} \rightarrow \mathcal{W}_{2}$ is of maximal rank, then $\deg \mathcal{W}_{1} \le \deg \mathcal{W}_{2}$.
+    As $\deg \mathcal{E}_{i} = \deg (\det \mathcal{E}_{i})$,
+    if $f: \mathcal{E}_{1} \rightarrow \mathcal{E}_{2}$ is of maximal rank, then $\deg \mathcal{E}_{1} \le \deg \mathcal{E}_{2}$.
 \end{remark}
-Given a 
+\begin{definition}
+    Let $\mathcal{F}$ be a sheaf, $\mathcal{G} \subseteq \mathcal{F}$ subsheaf.
+    We say $\mathcal{G}$ is saturated in $\mathcal{F}$ if $\mathcal{F}/\mathcal{G}$ is torsion free.
+    Define the saturation of $\mathcal{G}$ in $\mathcal{F}$ is the minimal subsheaf $\mathcal{G}^{\saturation}$ of $\mathcal{F}$ containing $\mathcal{G}$ such that $\mathcal{G}^{\saturation}$ is saturated in $\mathcal{F}$.
+\end{definition}
+Given a map $f: \mathcal{E} \rightarrow \mathcal{F}$ between vector bundles.
+Consider $\ker f$ and $\im f$, since they are subsheaves of $\mathcal{E}$ and $\mathcal{F}$ respectively, they are both torsion free.
+Moreover, as $X$ is a regular curve, we get $\ker f$ and $\im f$ are locally free.
+Take $\mathcal{E}' = \ker f$, $\mathcal{E}'' = \im f$, $\mathcal{F}'$ the saturation of $\mathcal{E}''$ in $\mathcal{F}$ and $\mathcal{F}'' = \mathcal{F}/\mathcal{F}'$.
+Then we get a commutative diagram consisting of vector bundles, with exact rows
+\begin{equation}
+    \begin{tikzcd}
+        0 \arrow[r] &
+        \mathcal{E}' \arrow[r, hookrightarrow] &
+        \mathcal{E} \arrow[r, twoheadrightarrow] \arrow[d, "f"] &
+        \mathcal{E}'' \arrow[r] \arrow[d, hookrightarrow, "g"] &
+        0 \\
+        0 &
+        \mathcal{F}'' \arrow[l] &
+        \mathcal{F} \arrow[l, twoheadrightarrow] &
+        \mathcal{F}' \arrow[l, hookrightarrow] &
+        0 \arrow[l] 
+    \end{tikzcd}
+\end{equation}
 \end{document}
