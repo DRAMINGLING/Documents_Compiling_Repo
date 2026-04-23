@@ -1780,8 +1780,7 @@ Define the (arithmatic) genus of $C$ to be $g(C) := 1 - \chi(C) = h^{1}(C, \math
 \begin{remark}
     Connectedness comes from the fact that every two different curves in $\mathbb{P}_{\mathbb{C}}^{2}$ would intersect,
     in which case smoothness implies irreducibility.
-    \par
-    In general, we would assume curve to be irreducible also.
+    In general, we would just assume curve to be integral.
 \end{remark}
 Let $D = \sum_{i} a_{i}x_{i}$ be an effective Weil divisor on $C$.
 Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
@@ -2090,6 +2089,24 @@ Define the degree of $D$ to be $\deg D = \sum_{i} a_{i}$.
     Suffice to show that $\deg (\mathcal{E} \otimes \mathcal{L}) = \deg \mathcal{E} + r \cdot \deg \mathcal{L}$ for all line bundle $\mathcal{L}$.
     Take filtration $(\mathcal{L}_{1}, \cdots, \mathcal{L}_{r})$ of $\mathcal{E}$.
     Similarly, we get $\deg (\mathcal{E} \otimes \mathcal{L}) = \sum \deg (\mathcal{L}_{i} \otimes \mathcal{L}) = \sum (\deg \mathcal{L}_{i} + \deg \mathcal{L}) = \deg \mathcal{E} + r \cdot \deg \mathcal{L}$.
+\end{proof}
+\begin{corollary}
+    Let $X$ be a regular projective curve, $\mathcal{E}$ vector bundle on $X$.
+    Then $\deg \mathcal{E}^{\vee} = -\deg \mathcal{E}$.
+    \label{Corollary 3.7}
+\end{corollary}
+\begin{proof}
+    Assume $\rank \mathcal{E} = r$ and $g(X) = g$.
+    Then we have that
+    \begin{equation}
+        \begin{split}
+            \deg \mathcal{E}^{\vee} & = \chi(\mathcal{E}^{\vee}) - r(1 - g) \\
+            & = -\chi(\mathcal{E} \otimes \omega_{X}) - r(1 - g) \\
+            & = -\deg (\mathcal{E} \otimes \omega_{X}) - 2r(1 - g) \\
+            & = -\deg \mathcal{E} - r \cdot \deg \omega_{X} - 2r(1 - g) \\
+            & = -\deg \mathcal{E} 
+        \end{split}
+    \end{equation}
 \end{proof}
 
 \subsection{Riemann-Roch for curves}
@@ -3760,11 +3777,28 @@ Let $X$ be a regular projective curve over $\mathbb{C}$.
     if $f: \mathcal{E}_{1} \rightarrow \mathcal{E}_{2}$ is of maximal rank, then $\deg \mathcal{E}_{1} \le \deg \mathcal{E}_{2}$.
 \end{remark}
 \begin{definition}
-    Let $\mathcal{F}$ be a coherent sheaf, $\mathcal{G} \subseteq \mathcal{F}$ subsheaf.
+    Let $\mathcal{F}$ be a coherent sheaf on $X$, $\mathcal{G} \subseteq \mathcal{F}$ subsheaf.
     We say $\mathcal{G}$ is saturated in $\mathcal{F}$ if $\mathcal{F}/\mathcal{G}$ is torsion free.
     Define the saturation of $\mathcal{G}$ in $\mathcal{F}$ is the minimal subsheaf $\mathcal{G}^{\saturation}$ of $\mathcal{F}$ containing $\mathcal{G}$ such that $\mathcal{G}^{\saturation}$ is saturated in $\mathcal{F}$.
 \end{definition}
-Given a map $f: \mathcal{E} \rightarrow \mathcal{F}$ between vector bundles.
+\begin{remark}
+    As $X$ is integral, we can directly construct $\mathcal{G}^{\saturation}$ by
+    \begin{equation}
+        \mathcal{G}^{\saturation} = \{s\in \mathcal{F} \big{|} \text{the image of $s$ in $\mathcal{F}/\mathcal{G}(U)$ is torsion}\}
+    \end{equation}
+    which is clearly the minimal saturated subsheaf containing $\mathcal{G}$. 
+\end{remark}
+\begin{lemma}
+    Let $\mathcal{F}$ be a coherent sheaf on $X$, $\mathcal{G} \subseteq \mathcal{F}$ subsheaf with saturation $\mathcal{G}^{\saturation}$.
+    Then $\rank \mathcal{G} = \rank \mathcal{G}^{\saturation}$.
+    \label{Lemma 6.1}
+\end{lemma}
+\begin{proof}
+    As $X$ is integral, by Proposition \ref{Proposition 3.1}, there is an open subset $U \subset X$ such that $(\mathcal{F}/\mathcal{G})\big{|}_{U}$ is locally free and hence torsion free.
+    By our construction of saturation, it is clear that $\mathcal{G}^{\saturation}\big{|}_{U} = \mathcal{G}\big{|}_{U}^{\saturation} = \mathcal{G}\big{|}_{U}$.
+    Thus $\rank \mathcal{G} = \rank \mathcal{G}^{\saturation}$.
+\end{proof}
+Given a nonzero map $f: \mathcal{E} \rightarrow \mathcal{F}$ between vector bundles.
 Consider $\ker f$ and $\im f$, since they are subsheaves of $\mathcal{E}$ and $\mathcal{F}$ respectively, they are both torsion free.
 Moreover, as $X$ is a regular curve, we get $\ker f$ and $\im f$ are locally free.
 Take $\mathcal{E}' = \ker f$, $\mathcal{E}'' = \im f$, $\mathcal{F}'$ the saturation of $\mathcal{E}''$ in $\mathcal{F}$ and $\mathcal{F}'' = \mathcal{F}/\mathcal{F}'$.
@@ -3782,5 +3816,189 @@ Then we get a commutative diagram consisting of vector bundles, with exact rows
         \mathcal{F}' \arrow[l, hookrightarrow] &
         0 \arrow[l] 
     \end{tikzcd}
+    \label{equation:commutative_diagram_factoring_through_map_of_maxiaml_rank}
 \end{equation}
+By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''$.
+\begin{definition}
+    Let $\mathcal{F}$ be a coherent sheaf on $X$.
+    Define the slope of $\mathcal{F}$ to be $\mu(\mathcal{F}) := \frac{\deg \mathcal{F}}{\rank \mathcal{F}}$.
+\end{definition}
+\begin{definition}
+    We say a vector bundle $\mathcal{E}$ on $X$ is stable (resp. semi-stable) if for all proper subbundle $\mathcal{E}' \subset \mathcal{E}$,
+    we have $\mu(\mathcal{E}') < \mu(\mathcal{E})$ (resp. $\mu(\mathcal{E}') \le \mu(\mathcal{E})$).
+\end{definition}
+\begin{lemma}
+    Let $\mathcal{E}$ be a semi-stable vector bundle of deg $d$ and rank $r$.
+    If $\gcd (r, d) = 1$, then $\mathcal{E}$ is stable.
+    \label{Lemma 6.2}
+\end{lemma}
+\begin{proof}
+    Suffice to show for all subbundle $\mathcal{E}' \subseteq \mathcal{E}$, $\mu(\mathcal{E}') = \mu(\mathcal{E})$ if and only if $\mathcal{E}' = \mathcal{E}$.
+    As $\mu(\mathcal{E}') = \mu(\mathcal{E})$, we get $\deg \mathcal{E}' \cdot \rank \mathcal{E} = \deg \mathcal{E} \cdot \rank \mathcal{E}'$.
+    Since $\gcd (r, d) = 1$, we must have $r \mid \rank \mathcal{E}'$ so that $\mathcal{E}' = r$ and $\mathcal{E}' = \mathcal{E}$.
+\end{proof}
+\begin{proposition}
+    There is an equivalent definition of stability (resp. semi-stability) that $\mathcal{E}$ is stable (resp. semi-stable) if for any nonzero surjection $\mathcal{E} \twoheadrightarrow \mathcal{F}$ to vector bundle $\mathcal{F}$,
+    we have $\mu(\mathcal{E}) < \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) \le \mu(\mathcal{F})$).
+    \label{Proposition 6.1}
+\end{proposition}
+\begin{proof}
+    Note that for any nonzero surjection $\mathcal{E} \twoheadrightarrow \mathcal{F}$ to vector bundle $\mathcal{F}$,
+    there is a short exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{E}' \longrightarrow \mathcal{E} \longrightarrow \mathcal{F} \longrightarrow 0
+    \end{equation}
+    where the kernel $\mathcal{E}'$ is automatically a proper subbundle of $\mathcal{E}$.
+    This gives a one-to-one correspondence between proper subbundles and nonzero surjections.
+    In addition, as $\deg \mathcal{E} = \deg \mathcal{E}' + \deg \mathcal{F}$ and $\rank \mathcal{E} = \rank \mathcal{E}' + \rank \mathcal{F}$, we have
+    \begin{equation}
+        \begin{split}
+            \deg \mathcal{E} \cdot \rank \mathcal{E}' > \deg \mathcal{E}' \cdot \rank \mathcal{E} & \iff \deg \mathcal{F} \cdot \rank \mathcal{E}' > \deg \mathcal{E}' \cdot \rank \mathcal{F} \\
+            & \iff \deg \mathcal{F} \cdot \rank \mathcal{E} > \deg \mathcal{E} \cdot \rank \mathcal{F} 
+        \end{split}
+    \end{equation}
+    And respectively,
+    \begin{equation}
+        \begin{split}
+            \deg \mathcal{E} \cdot \rank \mathcal{E}' \ge \deg \mathcal{E}' \cdot \rank \mathcal{E} & \iff \deg \mathcal{F} \cdot \rank \mathcal{E}' \ge \deg \mathcal{E}' \cdot \rank \mathcal{F} \\
+            & \iff \deg \mathcal{F} \cdot \rank \mathcal{E} \ge \deg \mathcal{E} \cdot \rank \mathcal{F} 
+        \end{split}
+    \end{equation}
+    Conclude that the two definitions are equivalent.
+\end{proof}
+\begin{proposition}
+    $\mathcal{E}$ is stable (resp. semi-stable) if and only if for all proper subbundle $\mathcal{E}' \subset \mathcal{E}$,
+    $\deg (\mathcal{E}^{\vee} \otimes \mathcal{E}') < 0$ (resp. $\mathcal{E}' \subset \mathcal{E}$, $\deg (\mathcal{E}^{\vee} \otimes \mathcal{E}') \le 0$).
+    \label{Proposition 6.2}
+\end{proposition}
+\begin{reason}
+    Note that $\deg (\mathcal{E}^{\vee} \otimes \mathcal{E}')  = \deg \mathcal{E}^{\vee} \cdot \rank \mathcal{E}' + \deg \mathcal{E}' \cdot \rank \mathcal{E}^{\vee}$.
+    As $\rank \mathcal{E}^{\vee} = \rank \mathcal{E}$ and by Corollary \ref{Corollary 3.7}, we have $\deg \mathcal{E^{\vee}} = -\deg \mathcal{E}$.
+\end{reason}
+\begin{proposition}
+    Let $\mathcal{L}$ be a line bundle on $X$.
+    Then $\mathcal{E}$ is stable (resp. semi-stable) if and only if $\mathcal{E} \otimes \mathcal{L}$ is stable (resp. semi-stable).
+    \label{Proposition 6.3}
+\end{proposition}
+\begin{proof}
+    Since $\mathcal{L}^{\vee}$ is also a line bundle, suffices to show if $\mathcal{E}$ stable (resp. semi-stable) then $\mathcal{E} \otimes \mathcal{L}$ stable (resp. semi-stable).
+    In fact, for all proper subbundle $\mathcal{F} \subset \mathcal{E} \otimes \mathcal{L}$, we get $\mathcal{F} \otimes \mathcal{L}^{\vee}$ a proper subbundle of $\mathcal{E}$.
+    Hence $\mu(\mathcal{F} \otimes \mathcal{L}^{\vee}) < \mu(\mathcal{E})$ (resp. $\mu(\mathcal{F} \otimes \mathcal{L}^{\vee}) \le \mu(\mathcal{E})$).
+    Note that
+    \begin{equation}
+        \begin{split}
+            \mu(\mathcal{F} \otimes \mathcal{L}^{\vee}) & = \frac{\deg (\mathcal{F} \otimes \mathcal{L}^{\vee})}{\rank (\mathcal{F} \otimes \mathcal{L}^{\vee})} \\
+            & = \frac{\deg \mathcal{F} + \rank \mathcal{F} \cdot \deg \mathcal{L}^{\vee}}{\rank \mathcal{F}} \\
+            & = \mu(\mathcal{F}) + \deg \mathcal{L}^{\vee}
+        \end{split}
+    \end{equation}
+    and
+    \begin{equation}
+        \begin{split}
+            \mu(\mathcal{E} \otimes \mathcal{L}) & = \frac{\deg (\mathcal{E} \otimes \mathcal{L})}{\rank (\mathcal{E} \otimes \mathcal{L})} \\
+            & = \frac{\deg \mathcal{E} + \rank \mathcal{E} \cdot \deg \mathcal{L}}{\rank \mathcal{E}} \\
+            & = \mu(\mathcal{E}) + \deg \mathcal{L}
+        \end{split}
+    \end{equation}
+    Thus $\mu(\mathcal{F}) < \mu(\mathcal{E} \otimes \mathcal{L})$ (resp. $\mu(\mathcal{F}) \le \mu(\mathcal{E} \otimes \mathcal{L})$).
+\end{proof}
+\begin{proposition}
+    Let $\mathcal{E}$ and $\mathcal{F}$ be two semi-stable vector bundles of same rank and degree.
+    Assume at least one of them is stable.
+    If $f: \mathcal{E} \rightarrow \mathcal{F}$ is a nonzero map, then $f$ is an isomorphism.
+    \label{Proposition 6.4}
+\end{proposition}
+\begin{proof}
+    Suppose $f$ is not isomorphism.
+    By construction of the diagram \ref{equation:commutative_diagram_factoring_through_map_of_maxiaml_rank}, we get
+    \begin{equation}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{E}' \arrow[r, hookrightarrow] &
+            \mathcal{E} \arrow[r, twoheadrightarrow] \arrow[d, "f"] &
+            \mathcal{E}'' \arrow[r] \arrow[d, hookrightarrow, "g"] &
+            0 \\
+            0 &
+            \mathcal{F}'' \arrow[l] &
+            \mathcal{F} \arrow[l, twoheadrightarrow] &
+            \mathcal{F}' \arrow[l, hookrightarrow] &
+            0 \arrow[l] 
+        \end{tikzcd}
+    \end{equation}
+    Since $\mathcal{E}$ is semi-stable, we have $\deg (\mathcal{E}^{\vee} \otimes \mathcal{E}') \le 0$.
+    As $0 = \deg (\mathcal{E}^{\vee} \otimes \mathcal{E}) = \deg (\mathcal{E}^{\vee} \otimes \mathcal{E}') + \deg (\mathcal{E}^{\vee} \otimes \mathcal{E}'')$, we get $\deg (\mathcal{E}^{\vee} \otimes \mathcal{E}'') \ge 0$.
+    On the other hand, since $\mathcal{F}$ is semi-stable, we also have $\deg (\mathcal{F}^{\ast} \otimes \mathcal{F}') \le 0$.
+    As $g$ is of maximal rank, $\deg \mathcal{E}'' \le \deg \mathcal{F}'$.
+    While $\rank \mathcal{E}'' = \rank \mathcal{F}'$, we get $\deg (\mathcal{E}^{\ast} \otimes \mathcal{F}') \ge \deg (\mathcal{E}^{\vee} \otimes \mathcal{E}'')$.
+    Since $\deg \mathcal{E} = \deg \mathcal{F}$ and $\rank \mathcal{E} = \rank \mathcal{F}$, we obtain
+    \begin{equation}
+        \begin{split}
+            0 & \ge \deg (\mathcal{F}^{\vee} \otimes \mathcal{F}') \\
+            & = \deg (\mathcal{E}^{\vee} \otimes \mathcal{F}') \\
+            & \ge \deg (\mathcal{E}^{\vee} \otimes \mathcal{E}'') \\
+            & \ge 0
+        \end{split}
+    \end{equation}
+    As at least one of $\mathcal{E}$ and $\mathcal{F}$ is stable, at least one of the first and the last inequalities is strict, contradiction!
+    Conclude that $f$ must be isomorphic.
+\end{proof}
+\begin{definition}
+    We say a vector bundle $\mathcal{E}$ on $X$ is simple if $h^{0}(X, \sheafend(\mathcal{E})) = 1$.
+    Or equivalently, the only elements in $\homend(\mathcal{E})$ are multiplications by scalar.
+\end{definition}
+\begin{lemma}
+    A simple vector bundle $\mathcal{E}$ is indecomposable.
+    \label{Lemma 6.3}
+\end{lemma}
+\begin{proof}
+    Suppose $\mathcal{E} \cong \mathcal{E}_{1} \oplus \mathcal{E}_{2}$ for vector bundles $\mathcal{E}_{1}$ and $\mathcal{E}_{2}$.
+    Then $\homend(\mathcal{E}_{1}) \oplus \homend(\mathcal{E}_{2}) \subseteq \homend(\mathcal{E})$ so that $h^{0}(X, \sheafend(\mathcal{E})) \ge 2$, contradiction!
+\end{proof}
+\begin{corollary}
+    A stable vector bundle $\mathcal{E}$ is simple and hence indecomposable.
+    \label{Corollary 6.1}
+\end{corollary}
+\begin{reason}
+    By Proposition \ref{Proposition 6.4}, the only elements in $\homend(\mathcal{E})$ are zero map and isomorphisms.
+    Hence $\homend(\mathcal{E})$ is a division algebra finite over $\mathbb{C}$, which must be $\mathbb{C}$ as $\mathbb{C}$ is algebraically closed.
+\end{reason}
+\begin{proposition}
+    Let $\mathcal{E}$ be a semi-stable vector bundle and $\mathcal{F}$ be a vector bundle with $\mu(\mathcal{E}) \ge \mu(\mathcal{G})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$).
+    If $f: \mathcal{E} \rightarrow \mathcal{F}$ is a nonzero morphism and $\mathcal{F}' := (\im f)^{\saturation}$, then $\mu(\mathcal{F}') \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{F}') > \mu(\mathcal{F})$).
+    \label{Proposition 6.5}
+\end{proposition}
+\begin{proof}
+    By construction of the diagram \ref{equation:commutative_diagram_factoring_through_map_of_maxiaml_rank}, we get
+    \begin{equation}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{E}' \arrow[r, hookrightarrow] &
+            \mathcal{E} \arrow[r, twoheadrightarrow] \arrow[d, "f"] &
+            \mathcal{E}'' \arrow[r] \arrow[d, hookrightarrow, "g"] &
+            0 \\
+            0 &
+            \mathcal{F}'' \arrow[l] &
+            \mathcal{F} \arrow[l, twoheadrightarrow] &
+            \mathcal{F}' \arrow[l, hookrightarrow] &
+            0 \arrow[l] 
+        \end{tikzcd}
+    \end{equation}
+    Hence $\mu(\mathcal{F}') \ge \mu(\mathcal{E}'')$.
+    Since $\mathcal{E}$ is semi-stable, we get $\mu(\mathcal{E}'') \ge \mu(\mathcal{E})$.
+    As $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$), we are done!
+\end{proof}
+\begin{proposition}
+    If $\mathcal{E}$ is not stable, then there exists stable subbundle $\mathcal{E}' \subset \mathcal{E}$ with $\mu(\mathcal{E}') \ge \mu(\mathcal{E})$.
+    Moreover, if $\mathcal{E}$ is not semi-stable, then there exists stable subbundle $\mathcal{E}' \subset \mathcal{E}$ with $\mu(\mathcal{E}') > \mu(\mathcal{E})$.
+    \label{Proposition 6.6}
+\end{proposition}
+\begin{proof}
+    Take $\mathcal{E}'$ to be the subbundle of $\mathcal{E}$ satisfying that $\mu(\mathcal{E}') \ge \mu(\mathcal{E})$ (resp. $\mu(\mathcal{E}') > \mu(\mathcal{E})$)with minimal rank.
+    It is clear that $\mathcal{E}'$ is stable.
+\end{proof}
+\begin{proposition}
+    Let $\mathcal{F}$ be a vector bundle of rank $r$.
+    Then $\mathcal{F}$ is not stable (resp. semi-stable) if and only if there exists stable vector bundle $\mathcal{E}$ with $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$) and a nonzero map $f: \mathcal{E} \rightarrow \mathcal{F}$.
+    \label{Proposition 6.7}
+\end{proposition}
 \end{document}
