@@ -113,6 +113,7 @@
 \newcommand{\divisor}{\operatorname{div}}
 \newcommand{\annihilator}{\operatorname{ann}}
 \newcommand{\coefficient}{\operatorname{coeff}}
+\newcommand{\multiplicity}{\operatorname{multi}}
 
 \title{Vector Bundles on Curves}
 \author{Taught by Jiabin Du}
@@ -2828,7 +2829,6 @@ where $\mathbb{P}(\mathcal{E}) \overset{\pi}{\rightarrow} X$ is the projective b
     Let $X$ be a noetherian proper scheme.
     For short exact sequence of vector bundles on $X$, $0 \rightarrow \mathcal{E}' \rightarrow \mathcal{E} \rightarrow \mathcal{E}'' \rightarrow 0$,
     if $\mathcal{E}'$ and $\mathcal{E}''$ are both ample, then $\mathcal{E}$ is ample.
-    In particular, $\mathcal{E}' \oplus \mathcal{E}''$ is ample.
     \label{Corollary 4.7}
 \end{corollary}
 \begin{proof}
@@ -3300,7 +3300,7 @@ Set $A = \mathcal{O}_{X}(x_{0})$.
     \par
     On the other hand, as $f_{\ast}s'$ is a nonzero section in $H^{0}(X, \mathcal{E})$, $H^{0}(X, \mathcal{E}) \neq 0$ and we can pick an $s''$ maximal.
     If $[f_{x}(s'_{x})]$ itself is maximal, then we may take $s'' = f_{x}(s'_{x})$ and hence $[s''] = [f_{x}(s'_{x})]$.
-    Otherwise, $\deg [s''] \ge \deg [f_{x}(s'_{x})] + 1$ and $g(X) = 1$ so that $[s''] \otimes [f_{x}(s'_{x})]^{\vee}$ has positve degree and hence nonzero global section.
+    Otherwise, $\deg [s''] \ge \deg [f_{x}(s'_{x})] + 1$ and $g(X) = 1$ so that $[s''] \otimes [f_{x}(s'_{x})]^{\vee}$ has positive degree and hence nonzero global section.
     Thus
     \begin{equation}
         [s''] \ge [f_{\ast}s'] \ge [s'] = \mathcal{L}_{j_{0}} \ge \mathcal{L}_{1}
@@ -3764,10 +3764,13 @@ In the following, we would give \leftquotes uniqueness theorem \rightquotes and 
     \label{Corollary 5.8}
 \end{corollary}
 
-\section{Stability of Vector Bundles on Curves}
-\label{section:Stability_of_Vector_Bundles_on_Curves}
+\section{Stable Vector Bundles on Curves}
+\label{section:Stable_of_Vector_Bundles_on_Curves}
 
-Let $X$ be a regular projective curve over $\mathbb{C}$.
+\subsection{Stability}
+\label{subsection:Stable_of_Vector_Bundles_on_Curves_Stability}
+
+Let $X$ be a regular projective curve over $\mathbb{C}$ of genus $g$.
 \begin{definition}
     Let $f: \mathcal{E}_{1} \rightarrow \mathcal{E}_{2}$ be a map between vector bundles on $X$.
     We say $f$ is of maximal rank if the induced map $\det f: \det \mathcal{E}_{1} \rightarrow \det \mathcal{E}_{2}$ is a nonzero map.
@@ -3838,18 +3841,18 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
     Since $\gcd (r, d) = 1$, we must have $r \mid \rank \mathcal{E}'$ so that $\mathcal{E}' = r$ and $\mathcal{E}' = \mathcal{E}$.
 \end{proof}
 \begin{proposition}
-    There is an equivalent definition of stability (resp. semi-stability) that $\mathcal{E}$ is stable (resp. semi-stable) if for any nonzero surjection $\mathcal{E} \twoheadrightarrow \mathcal{F}$ to vector bundle $\mathcal{F}$,
+    There is an equivalent definition of stability (resp. semi-stability) that $\mathcal{E}$ is stable (resp. semi-stable) if for any nontrivial surjection $\mathcal{E} \twoheadrightarrow \mathcal{F}$ to vector bundle $\mathcal{F}$,
     we have $\mu(\mathcal{E}) < \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) \le \mu(\mathcal{F})$).
     \label{Proposition 6.1}
 \end{proposition}
 \begin{proof}
-    Note that for any nonzero surjection $\mathcal{E} \twoheadrightarrow \mathcal{F}$ to vector bundle $\mathcal{F}$,
+    Note that for any nontrivial surjection $\mathcal{E} \twoheadrightarrow \mathcal{F}$ to vector bundle $\mathcal{F}$,
     there is a short exact sequence
     \begin{equation}
         0 \longrightarrow \mathcal{E}' \longrightarrow \mathcal{E} \longrightarrow \mathcal{F} \longrightarrow 0
     \end{equation}
     where the kernel $\mathcal{E}'$ is automatically a proper subbundle of $\mathcal{E}$.
-    This gives a one-to-one correspondence between proper subbundles and nonzero surjections.
+    This gives a one-to-one correspondence between proper subbundles and nontrivial surjections.
     In addition, as $\deg \mathcal{E} = \deg \mathcal{E}' + \deg \mathcal{F}$ and $\rank \mathcal{E} = \rank \mathcal{E}' + \rank \mathcal{F}$, we have
     \begin{equation}
         \begin{split}
@@ -3963,7 +3966,7 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
     Hence $\homend(\mathcal{E})$ is a division algebra finite over $\mathbb{C}$, which must be $\mathbb{C}$ as $\mathbb{C}$ is algebraically closed.
 \end{reason}
 \begin{proposition}
-    Let $\mathcal{E}$ be a semi-stable vector bundle and $\mathcal{F}$ be a vector bundle with $\mu(\mathcal{E}) \ge \mu(\mathcal{G})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$).
+    Let $\mathcal{E}$ be a semi-stable vector bundle and $\mathcal{F}$ be a vector bundle with $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$).
     If $f: \mathcal{E} \rightarrow \mathcal{F}$ is a nonzero morphism and $\mathcal{F}' := (\im f)^{\saturation}$, then $\mu(\mathcal{F}') \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{F}') > \mu(\mathcal{F})$).
     \label{Proposition 6.5}
 \end{proposition}
@@ -3998,7 +4001,123 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
 \end{proof}
 \begin{proposition}
     Let $\mathcal{F}$ be a vector bundle of rank $r$.
-    Then $\mathcal{F}$ is not stable (resp. semi-stable) if and only if there exists stable vector bundle $\mathcal{E}$ with $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$) and a nonzero map $f: \mathcal{E} \rightarrow \mathcal{F}$.
+    Then $\mathcal{F}$ is not stable (resp. semi-stable) if and only if there exists stable vector bundle $\mathcal{E}$ with $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$) and a nonisomorphic nonzero map $f: \mathcal{E} \rightarrow \mathcal{F}$.
     \label{Proposition 6.7}
 \end{proposition}
+\begin{proof}
+    By Proposition \ref{Proposition 6.6}, suffices to show if there exists stable vector bundle $\mathcal{E}$ with $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$) and a nonisomorphic nonzero map $f: \mathcal{E} \rightarrow \mathcal{F}$,
+    then $\mathcal{F}$ is not stable (resp. semi-stable).
+    Suppose $\mathcal{F}$ is stable (resp. semi-stable).
+    \par
+    Denote $\mathcal{F}' = (\im f)^{\saturation}$.
+    By Proposition \ref{Proposition 6.5}, we have $\mu(\mathcal{F}') \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{F}') > \mu(\mathcal{F})$).
+    For the second case, this already contradicts to semi-stability of $\mathcal{F}$.
+    For the first case, since $\mathcal{F}$ is stable, we get $\mathcal{F}'$ must be $\mathcal{F}$ itself.
+    Consider the diagram \ref{equation:commutative_diagram_factoring_through_map_of_maxiaml_rank}
+    \begin{equation}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{E}' \arrow[r, hookrightarrow] &
+            \mathcal{E} \arrow[r, twoheadrightarrow] \arrow[d, "f"] &
+            \mathcal{E}'' \arrow[r] \arrow[d, hookrightarrow, "g"] &
+            0 \\
+            0 &
+            \mathcal{F}'' \arrow[l] &
+            \mathcal{F} \arrow[l, twoheadrightarrow] &
+            \mathcal{F}' \arrow[l, hookrightarrow] &
+            0 \arrow[l] 
+        \end{tikzcd}
+    \end{equation}
+    Then $\mu(\mathcal{F}) = \mu(\mathcal{F}') \ge \mu(\mathcal{E}'') \ge \mu(\mathcal{E}) \ge \mu(\mathcal{F})$.
+    Hence all equalities hold.
+    As $\mu(\mathcal{E}) = \mu(\mathcal{E}'')$ and $\mathcal{E}$ is stable, we get $\mathcal{E}' = \ker f = 0$.
+    Now $\mathcal{E}$ and $\mathcal{F}$ have same rank and degree.
+    By Proposition \ref{Proposition 6.4}, $f$ is an isomorphism, contradiction!
+\end{proof}
+
+\subsection{Relation to ampleness}
+\label{subsection:Stable_of_Vector_Bundles_on_Curves_Relation_to_ampleness}
+
+\begin{proposition}
+    The following conditions are equivalent: \\
+    (1)Every stable vector bundle of positive degree on $X$ is ample. \\
+    (2)Every vector bundle, all of whose quotients bundles have positive degree, is ample.
+    \label{Proposition 6.8}
+\end{proposition}
+\begin{proof}
+    \leftquotes $\Rightarrow$ \rightquotes : Let $\mathcal{E}$ be a vector bundle, all of whose quotient bundles have positive degree.
+    Induction on $\rank \mathcal{E}$.
+    When $\rank \mathcal{E} = 1$, since line bundle of positive degree on $X$ is ample, there is nothing to prove.
+    Suppose $\rank \mathcal{E} > 1$.
+    If $\mathcal{E}$ is stable, then by assumption, $\mathcal{E}$ is ample.
+    \par
+    Now $\mathcal{E}$ is not stable.
+    By Proposition \ref{Proposition 6.6}, there is a stable subbundle $\mathcal{E}' \subset \mathcal{E}$ with $\mu(\mathcal{E}') \ge \mu(\mathcal{E})$.
+    Since $\mu(\mathcal{E}) > 0$, we get $\mu(\mathcal{E}') > 0$ so that $\mathcal{E}'$ has positive degree.
+    By assumption, $\mathcal{E}'$ is ample.
+    Consider the following exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{E}' \longrightarrow \mathcal{E} \longmapsfrom \mathcal{E}'' := \mathcal{E}/\mathcal{E}' \longrightarrow 0
+    \end{equation}  
+    Note that quotient bundles of $\mathcal{E}''$ are also quotient bundles of $\mathcal{E}$ and hence have positive degree.
+    By inductive hypothesis, we know $\mathcal{E}''$ is ample.
+    Then by Corollary \ref{Corollary 4.7}, we get $\mathcal{E}$ is ample.
+    \par
+    \leftquotes $\Leftarrow$ \rightquotes : Let $\mathcal{E}$ be a stable vector bundle with positive degree.
+    For all nontrivial quotient bundle $\mathcal{E} \twoheadrightarrow \mathcal{E}''$,
+    as $\mathcal{E}$ is stable, we know $\mu(\mathcal{E}'') > \mu(\mathcal{E}) > 0$ so that $\mathcal{E}''$ has positive degree.
+    Then by assumption, $\mathcal{E}$ is ample.
+\end{proof}
+To relate stability and ampleness, we need a numerative criterion for ampleness.
+\begin{theorem}[\textbf{\emph{Seshadri}}]
+    Let $X$ be a complete scheme, $D$ Cartier divisor on $X$.
+    Then $D$ is ample on $X$ if and only if there exists $\varepsilon > 0$ such that for all integral curve $C \subset X$,
+    we have that $\frac{D \cdot C}{m(C)} > \varepsilon$, where $m(C) := \max_{p\in C} \{\multiplicity_{p}(C)\}$.
+    \label{Theorem 6.1}
+\end{theorem}
+\begin{proof}
+    \leftquotes $\Rightarrow$ \rightquotes : Take $m$ large enough such that $mD$ is very ample.
+    Then $mD$ associates with an immersion $X \hookrightarrow \mathbb{P}^{N}$.
+    Since $X$ is proper, the immersion is closed.
+    Take hyperplane $H \subseteq \mathbb{P}^{N}$ such that $H \cap X = mD$.
+    Then $(mD \cdot C)_{X} = (H \cdot C)_{\mathbb{P}^{N}} = \deg C \ge m(C)$.
+    Hence $\frac{(D \cdot C)_{X}}{m(C)} \ge \frac{1}{m}$ and we may take $\varepsilon = \frac{1}{2m}$. 
+    \par
+    \leftquotes $\Leftarrow$ \rightquotes : We may assume $X$ is integral.
+    Induct on $\dim X = n$.
+    For $n = 1$, then there is no integral closed subscheme of higher dimension.
+    As $D \cdot C > \varepsilon \cdot m(C) \ge 0$, by Nakai-Moisheson criterion, $D$ is ample.
+    When $n > 1$, by induction hypothesis, we know $D^{s} \cdot Y > 0$ for all integral closed subscheme $Y \subset X$ of dimension $s < n$.
+    Again by Nakai-Moisheson criterion, suffices to show $D^{n} > 0$.
+    \par
+    Take a smooth closed point of $X$ and consider the blow up $f: X' \rightarrow X$ at $p$.
+    Assume $E$ is the exceptional divisor and $D' = f^{\ast}D$ the total transform of $D$.
+    Then $f^{-1}(p) \cong \mathbb{P}^{n - 1}$ and $\mathcal{O}_{X}(E)\big{|}_{E} = \mathcal{O}_{E}(-1)$.
+    Set $G := aD' - E$ where $a = \frac{1}{\varepsilon}$.
+    Want to show $G$ is nef.
+    \par
+    For all integral curve $C' \subset X'$.
+    If $C' \subseteq E$, then $G \cdot C' = aD' \cdot C' - E \cdot C' = -E \cdot C' = \deg C' > 0$.
+    Or if $C' \cap E' \neq \varnothing$ but $C' \not\subset E$, then $G \cdot C' = aD' \cdot C' - E \cdot C' = aD \cdot C - \multiplicity_{p}(C) > 0$,
+    where $C$ is the image of $C$ under $f$.
+    Otherwise, $C' \cap E = \varnothing$, then $G \cdot C' = aD' \cdot C' - E \cdot C' = aD \cdot C > 0$.
+    Thus by numerative criterion for nefness, $G$ is nef.
+    \par
+    Now $G$ is nef.
+    Note that $(D')^{n} = D^{n}$, $E^{n} = (E^{n - 1})_{E} = (-1)^{n - 1}$ and $(D')^{i} \cdot E^{n - i} = 0$ for all $0 < i < n$.
+    \begin{equation}
+        \begin{split}
+            0 \le G^{n} & = (aD' - E)^{n} \\
+            & = (aD')^{n} - E^{n} \\
+            & = a^{n}D^{n} - 1
+        \end{split}
+    \end{equation}
+    which implies that $D^{n} > 0$.
+\end{proof}
+Here we quote a deep theorem by Narasimhan and Seshadri without proof.
+\begin{theorem}
+    Let $X$ be a complete smooth complex curve of genus $g \ge 2$, $\mathcal{E}$ stable vector bundle on $X$.
+    Then $S^{n}\mathcal{E}$ is semi-stable for all $n \ge 1$.
+    \label{Theorem 6.2}
+\end{theorem}
 \end{document}
