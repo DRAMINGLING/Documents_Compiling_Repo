@@ -4127,7 +4127,9 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
     And by Theorem \ref{Theorem 6.1}, want to find $\varepsilon > 0$ such that $\mathcal{L} \cdot C > \varepsilon \cdot m(C)$ for all integral curve $C \subseteq \mathbb{P}(\mathcal{E})$.
     \par
     If $\pi(C)$ is a single point, then $C$ is contained in some fiber of $\pi$, which is isomorphic to $\mathbb{P}_{\mathbb{C}}^{r - 1}$.
-    Hence $\mathcal{L} \cdot C = $
+    Hence $\mathcal{L} \cdot C = \deg C \ge m(C)$.
+    When $\pi(C)$ is not a single point, then $\dim (\pi(C)) = 1$ so that $\pi(C) = X$ and $\pi\big{|}_{C}: C \rightarrow X$ is a finite surjection.
+    Then $\chi(C, \mathcal{L}^{m}\big{|}_{C}) = \chi(X, (\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})) = \chi(X, \pi_\ast (\mathcal{L}^{m} \otimes \mathcal{O}_{C})) = \chi(X, S^{m}\mathcal{E} \otimes (\pi\big{|}_{C})_{\ast}\mathcal{O}_{C})$
 \end{proof}
 Here we quote a deep theorem by Narasimhan and Seshadri without proof.
 \begin{theorem}
