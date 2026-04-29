@@ -4115,13 +4115,48 @@ To relate stability and ampleness, we need a numerative criterion for ampleness.
     which implies that $D^{n} > 0$.
 \end{proof}
 \begin{lemma}
-    Let $f: X \rightarrow Y$ be a finite surjection between integral shcemes. sometimes called finite cover.
+    Let $f: X \rightarrow Y$ be a finite surjection between integral noetherian schemes. sometimes called finite cover.
     Then we have \\
     (1)$R^{i}f_{\ast}\mathcal{F} = 0$ for all coherent $\mathcal{F}$ and $i > 0$ \\
-    (2)$\rank (f_{\ast}\mathcal{F}) = \deg f \cdot \rank \mathcal{F}$, where $\deg f = [K(X) : K(Y)]$. \\
-    (3)$\deg (f_{\ast}\mathcal{F}) = \deg \mathcal{F} + \deg (f_{\ast}\mathcal{F})$.
+    (2)$\rank (f_{\ast}\mathcal{F}) = \deg f \cdot \rank \mathcal{F}$ for all coherent $\mathcal{F}$, where $\deg f = [K(X) : K(Y)]$. \\
+    (3)$\deg (f_{\ast}\mathcal{F}) = \deg \mathcal{F} + \rank \mathcal{F} \cdot \deg (f_{\ast}\mathcal{F})$ for all coherent $\mathcal{F}$.
     \label{Lemma 6.4} 
 \end{lemma}
+\begin{proof}
+    For (1), we may assume $Y = \spec A$ and $X = \spec B$ with $A$ finite over $B$.
+    Then $R^{i}f_{\ast}\mathcal{F} = \widetilde{H^{i}(X, \mathcal{F})}$, which by Serre vanishing is zero.
+    \par
+    For (2), we can also $Y = \spec A$ and $X = \spec B$ with $A$ finite over $B$.
+    Assume $\mathcal{F}$ is given by $M$ finite over $B$.
+    Then $\deg f = [\fraction (B) : \fraction (A)]$, $\rank (f_{\ast}\mathcal{F}) = \dim_{\fraction (A)} (M \otimes_{A} \fraction (A))$ and $\rank \mathcal{F} = \dim_{\fraction (B)} (M \otimes_{B} \fraction (B))$.
+    As $f$ is surjective, the corresponding $\varphi: A \rightarrow B$ is injective.
+    \par
+    Note that there is a natural map $\psi: B \otimes_{A} \fraction (A) \rightarrow \fraction (B)$.
+    It is clear that $\psi$ is injective.
+    And since $\varphi$ is integral, for all $b\in B$, we have $b^{n} + a_{1}b^{n - 1} + \cdots + a_{n - 1}b + a_{n} = 0$ with $a_{i}\in A$.
+    Then $b(b^{n - 1} + a_{1}b^{n - 2} + \cdots + a_{n - 1}) = -a_{n}\in A$ so that $\psi((b^{n - 1} + a_{1}b^{n - 2} + \cdots + a_{n - 1}) \otimes \frac{1}{-a_{n}}) = \frac{1}{b}$.
+    Thus $\psi$ is isomorphic and we get
+    \begin{equation}
+        \begin{split}
+            \rank (f_{\ast}\mathcal{F}) & = \dim_{\fraction (A)} (M \otimes_{A} \fraction (A)) \\
+            & = \dim_{\fraction (A)} (M \otimes_{B} (B \otimes_{A} \fraction (A))) \\
+            & = \dim_{\fraction (A)} (M \otimes_{B} \fraction (B)) \\
+            & = [\fraction (B) : \fraction (A)] \cdot \dim_{\fraction (B)} (M \otimes_{B} \fraction (B)) \\
+            & = \deg f \cdot \rank \mathcal{F}
+        \end{split}
+    \end{equation}
+    For (3), this immediately comes from (1) and (2) as following
+    \begin{equation}
+        \begin{split}
+            \deg (f_{\ast}\mathcal{F}) & = \chi(Y, f_{\ast}\mathcal{F}) - \rank (f_{\ast}\mathcal{F}) \cdot \chi(Y, \mathcal{O}_{Y}) \\
+            & = \chi(X, \mathcal{F}) - \deg f \cdot \rank \mathcal{F} \cdot \chi(Y, \mathcal{O}_{Y}) \\
+            & = \deg \mathcal{F} + \rank \mathcal{F} \cdot \chi(X, \mathcal{O}_{X}) - \deg f \cdot \rank \mathcal{F} \cdot \chi(Y, \mathcal{O}_{Y}) \\
+            & = \deg \mathcal{F} + \rank \mathcal{F} \cdot \chi(Y, f_{\ast}\mathcal{O}_{Y}) - \rank (f_{\ast}\mathcal{O}_{X}) \cdot \rank \mathcal{F} \cdot \chi(Y, \mathcal{O}_{Y}) \\
+            & = \deg \mathcal{F} + \rank \mathcal{F} \cdot \deg (f_{\ast}\mathcal{F})
+        \end{split}
+    \end{equation}
+    done!
+\end{proof}
 From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C}$.
 \begin{proposition}
     Let $\mathcal{E}$ be a vector bundle on $X$ of positive degree satisfying that $S^{n}\mathcal{E}$ is semi-stable for all $n$.
@@ -4129,7 +4164,7 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
     \label{Proposition 6.9}
 \end{proposition}
 \begin{proof}
-    Assume $\rank \mathcal{E} = r$.
+    Assume $\rank \mathcal{E} = r$ and $\deg \mathcal{E} = d$.
     Consider the associated projective bundle $\pi: \mathbb{P}(\mathcal{E})$.
     Then by Proposition \ref{Proposition 4.11}, suffices to show the tautological line bundle $\mathcal{L} := \mathcal{O}_{\mathbb{P}(\mathcal{E})}(1)$ is ample.
     And by Theorem \ref{Theorem 6.1}, want to find $\varepsilon > 0$ such that $\mathcal{L} \cdot C > \varepsilon \cdot m(C)$ for all integral curve $C \subseteq \mathbb{P}(\mathcal{E})$.
@@ -4137,8 +4172,36 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
     If $\pi(C)$ is a single point, then $C$ is contained in some fiber of $\pi$, which is isomorphic to $\mathbb{P}_{\mathbb{C}}^{r - 1}$.
     Hence $\mathcal{L} \cdot C = \deg C \ge m(C)$.
     When $\pi(C)$ is not a single point, then $\dim (\pi(C)) = 1$ so that $\pi(C) = X$ and $\pi\big{|}_{C}: C \rightarrow X$ is a finite surjection.
-    Then $\chi(C, \mathcal{L}^{m}\big{|}_{C}) = \chi(X, (\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})) = \chi(X, \pi_\ast (\mathcal{L}^{m} \otimes \mathcal{O}_{C})) = \chi(X, S^{m}\mathcal{E} \otimes (\pi\big{|}_{C})_{\ast}\mathcal{O}_{C})$
+    Then by Lemma \ref{Lemma 6.4}, $\rank ((\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})) = \deg (\pi\big{|}_{C})$ and $\deg ((\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})) = \deg (\mathcal{L}^{m}\big{|}_{C}) + \deg ((\pi\big{|}_{C})_{\ast}\mathcal{O}_{C})$.
+    Consider the following surjection
+    \begin{equation}
+        S^{m}\mathcal{E} \cong (\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}) \twoheadrightarrow (\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})
+    \end{equation}
+    Note that pushforward preserves torsion-freeness and $X$ is a regular curve, $(\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})$ is locally free.
+    By assumption, $S^{m}\mathcal{E}$ is semi-ample so that $\mu(S^{m}\mathcal{E}) \le \mu((\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C}))$.
+    Then we have
+    \begin{equation}
+        \begin{split}
+            \frac{dm}{r} & \le \frac{\deg (\mathcal{L}^{m}\big{|}_{C}) + \deg ((\pi\big{|}_{C})_{\ast}\mathcal{O}_{C})}{\deg (\pi\big{|}_{C})} \\
+            \frac{dm \cdot \deg (\pi\big{|}_{C})}{r} & \le \deg (\mathcal{L}^{m}\big{|}_{C}) + \deg ((\pi\big{|}_{C})_{\ast}\mathcal{O}_{C}) \\
+            \frac{d \cdot \deg (\pi\big{|}_{C})}{r} & \le \frac{1}{m} \cdot (\deg (\mathcal{L}^{m}\big{|}_{C}) + \deg ((\pi\big{|}_{C})_{\ast}\mathcal{O}_{C}))
+        \end{split}
+    \end{equation}
+    Note that $m \cdot \deg (\mathcal{L}\big{|}_{C}) = \deg (\mathcal{L}^{m}\big{|}_{C}) = \chi(\mathcal{L}^{m}\big{|}_{C}) - \chi(\mathcal{O}_{C})$.
+    By definition of intersection number, $\mathcal{L} \cdot C = \deg (\mathcal{L}\big{|}_{C})$.
+    Hence
+    \begin{equation}
+        \frac{d \cdot \deg (\pi\big{|}_{C})}{r} \le \mathcal{L} \cdot C + \frac{1}{m} \cdot \deg ((\pi\big{|}_{C})_{\ast}\mathcal{O}_{C})
+    \end{equation}
+    Taking $m$ converging to $\infty$, we get  
+    \begin{equation}
+        \frac{d \cdot \deg (\pi\big{|}_{C})}{r} \le \mathcal{L} \cdot C
+    \end{equation}
+    Note that $\deg (\pi\big{|}_{C}) \ge m(C)$, we are done!
 \end{proof}
+\begin{remark}
+    It is not clear for me to see why $\deg (\pi\big{|}_{C}) \ge m(C)$.
+\end{remark}
 Here we quote a deep theorem by Narasimhan and Seshadri without proof.
 \begin{theorem}
     Let $X$ be a complete smooth complex curve of genus $g \ge 2$, $\mathcal{E}$ stable vector bundle on $X$.
