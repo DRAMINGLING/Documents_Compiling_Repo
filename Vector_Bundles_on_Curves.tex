@@ -4114,6 +4114,12 @@ To relate stability and ampleness, we need a numerative criterion for ampleness.
     \end{equation}
     which implies that $D^{n} > 0$.
 \end{proof}
+Here we quote another deep theorem by Narasimhan and Seshadri without proof.
+\begin{theorem}
+    Let $X$ be a complete smooth complex curve of genus $g \ge 2$, $\mathcal{E}$ stable vector bundle on $X$.
+    Then $S^{n}\mathcal{E}$ is semi-stable for all $n \ge 1$.
+    \label{Theorem 6.2}
+\end{theorem}
 \begin{lemma}
     Let $f: X \rightarrow Y$ be a finite surjection between integral noetherian schemes. sometimes called finite cover.
     Then we have \\
@@ -4202,10 +4208,13 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
 \begin{remark}
     It is not clear for me to see why $\deg (\pi\big{|}_{C}) \ge m(C)$.
 \end{remark}
-Here we quote a deep theorem by Narasimhan and Seshadri without proof.
 \begin{theorem}
-    Let $X$ be a complete smooth complex curve of genus $g \ge 2$, $\mathcal{E}$ stable vector bundle on $X$.
-    Then $S^{n}\mathcal{E}$ is semi-stable for all $n \ge 1$.
-    \label{Theorem 6.2}
+    Vector bundle $\mathcal{E}$ is ample if and only if every quotient bundle of $\mathcal{E}$ has positive degree.
+    \label{Theorem 6.3}
 \end{theorem}
+\begin{proof}
+    If $\mathcal{E}$ is ample, then clearly every quotient bundle of $\mathcal{E}$ is also ample.
+    And ample vector bundle automatically has positive degree.
+    Conversely, when genus $g \ge 2$, by Theorem \ref{Theorem 6.2}
+\end{proof}
 \end{document}
