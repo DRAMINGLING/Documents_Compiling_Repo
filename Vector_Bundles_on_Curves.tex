@@ -4224,4 +4224,17 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
     Note that stable vector bundle is indecomposable, 
     while the only indecomposable vector bundle is line bundle and line bundle of positive degree is ample, done!
 \end{proof}
+\begin{lemma}
+    Let $\mathcal{E}$ be a vector bundle on $X$, $s\in \Gamma(X, \mathcal{E})$ not vanishing at any singular point of $X$.
+    Then $\mathcal{E}$ has a line subbundle $\mathcal{L}$ such that $s\in \Gamma(X, \mathcal{L})$.
+    Moreover, if $s$ is not invertible, $\mathcal{L}$ is ample.
+    \label{Lemma 6.5}
+\end{lemma}
+\begin{proof}
+    Note that $s$ would give a rational section $\tau: X \dashrightarrow \mathbb{P}(\mathcal{E})$ defined on $X$ minus finitely many regular points.
+    Hence $\tau$ would extend to a regular section.
+    Then just as what we did in Lemma \ref{Lemma 5.2}, we get a line subbundle $\mathcal{L}$ of $\mathcal{E}$.
+    In addition, $s$ is a global section of $\mathcal{L}$.
+    If $s$ is not invertible, then $\deg \mathcal{L} = \deg (\divisor (s)) \ge 1 > 0$ so that $\mathcal{L}$ is ample.
+\end{proof}
 \end{document}
