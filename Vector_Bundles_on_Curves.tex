@@ -4038,6 +4038,7 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
 \subsection{Relation to ampleness}
 \label{subsection:Stable_of_Vector_Bundles_on_Curves_Relation_to_ampleness}
 
+For this section, you may refer to the paper \emph{Ample Vecotr Bundles on Curves}, Hartshorne.
 \begin{proposition}
     The following conditions are equivalent: \\
     (1)Every stable vector bundle of positive degree on $X$ is ample. \\
@@ -4114,7 +4115,8 @@ To relate stability and ampleness, we need a numerative criterion for ampleness.
     \end{equation}
     which implies that $D^{n} > 0$.
 \end{proof}
-Here we quote another deep theorem by Narasimhan and Seshadri without proof.
+In Hartshorne's paper, he proved the following deep theorem with results of Narasimhan and Seshadri relating stable vector bundles to certain group representations.
+Here we quote it without proof.
 \begin{theorem}
     Let $X$ be a complete smooth complex curve of genus $g \ge 2$, $\mathcal{E}$ stable vector bundle on $X$.
     Then $S^{n}\mathcal{E}$ is semi-stable for all $n \ge 1$.
@@ -4236,5 +4238,56 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
     Then just as what we did in Lemma \ref{Lemma 5.2}, we get a line subbundle $\mathcal{L}$ of $\mathcal{E}$.
     In addition, $s$ is a global section of $\mathcal{L}$.
     If $s$ is not invertible, then $\deg \mathcal{L} = \deg (\divisor (s)) \ge 1 > 0$ so that $\mathcal{L}$ is ample.
+\end{proof}
+\begin{proposition}
+    Let $Y$ be a proper variety over algebraically closed field $k$, $\mathcal{E}$ vector bundle over $Y$ globally generated.
+    Then $\mathcal{E}$ is ample if and only if every quotient line bundle of $\mathcal{E}\big{|}_{C}$ is ample for all curve $C \subset Y$.
+    \label{Proposition 6.10}
+\end{proposition}
+\begin{proof}
+    If $\mathcal{E}$ is ample, since $C \hookrightarrow Y$ is closed immersion, $\mathcal{E}\big{|}_{C}$ is still ample by Corollary \ref{Corollary 4.3}.
+    Hence every quotient line bundle of $\mathcal{E}\big{|}_{C}$ is also ample.
+    Conversely, suppose that every quotient line bundle of $\mathcal{E}\big{|}_{C}$ is ample for all curve $C \subset Y$.
+    \par
+    First consider a line bundle $\mathcal{E}$.
+    As $\mathcal{E}$ is globally generated, it induces a morphism $\varphi: Y \rightarrow \mathbb{P}^{N}$ such that $\mathcal{E} \cong \varphi^{\ast}(\mathcal{O}(1))$.
+    Suppose $\varphi$ is not quasi-finite, then there exists some fiber $Y'$ of dimension $\ge 1$ which would contain some curve $C$.
+    Hence $\mathcal{E}\big{|}_{C} \cong \varphi^{\ast}(\mathcal{O}(1)\big{|}_{\varphi(C)})$ is trivial and of degree $0$.
+    While by assumption $\mathcal{E}\big{|}_{C}$ is ample, contradiction.
+    Thus $\varphi$ is quasi-finite.
+    As $Y$ is proper, we know $\varphi$ is in fact finite so that by Proposition \ref{Proposition 4.5}, we know $\mathcal{E}$ is ample.
+    \par
+    When $Y$ is a curve, we prove the result by induction on $\rank \mathcal{E}$.
+    By inductive hypothesis, every nontrivial quotient bundle of $\mathcal{E}$ is ample.
+    Hence we suffices to find an ample line subbundle of $\mathcal{E}$.
+    By Lemma \ref{Lemma 6.5}, only need to find a section which does not vanish at any singular point of $Y$ but not invertible.
+    \par
+    Set $n = h^{0}(Y, \mathcal{E})$.
+    As $\mathcal{E}$ is globally generated, there is a surjection $\psi: \mathcal{O}_{Y}^{\oplus n} \twoheadrightarrow \mathcal{E}$.
+    Consider the Grassmannian scheme $\grassmannianscheme{\rank \mathcal{E}}{n}$ over $k$ with universal quotient bundle $\mathcal{U}$.
+    Then $\psi$ would corresponds to a morphism $f: Y \rightarrow \grassmannianscheme{\rank \mathcal{E}}{n}$ satisfying that $\mathcal{E} \cong f^{\ast}\mathcal{U}$.
+    \par
+    If $f(Y)$ is a single point, then similarly we get $\mathcal{E}$ trivial so that trivial line bundle is quotient line bundle of $\mathcal{E}$, contradicting to ample assumption.
+    Then $\dim f(Y) = 1$ so that we can find $y\in Y$ such that $f(y)$ is not image of any singular point of $Y$.
+    Note that for any two points $z$ and $w$ in $\grassmannianscheme{\rank \mathcal{E}}{n}$, $z = w$ if and only if 
+    \begin{equation}
+        \Gamma(\grassmannianscheme{\rank \mathcal{E}}{n}, \mathcal{U} \otimes \mathcal{I}_{z}) = \Gamma(\grassmannianscheme{\rank \mathcal{E}}{n}, \mathcal{U} \otimes \mathcal{I}_{w})
+    \end{equation}
+    Thus $\Gamma(\grassmannianscheme{\rank \mathcal{E}}{n}, \mathcal{U} \otimes \mathcal{I}_{f(y)}) \cap \Gamma(\grassmannianscheme{\rank \mathcal{E}}{n}, \mathcal{U} \otimes \mathcal{I}_{f(y')}) \subsetneq \Gamma(\grassmannianscheme{\rank \mathcal{E}}{n}, \mathcal{U} \otimes \mathcal{I}_{f(y')})$ for singular $f(y')$.
+    Since $k$ is infinite, we get
+    \begin{equation}
+        \Gamma(\grassmannianscheme{\rank \mathcal{E}}{n}, \mathcal{U} \otimes \mathcal{I}_{f(x)}) \subsetneq \cup_{y' \text{ singular}} \Gamma(\grassmannianscheme{\rank \mathcal{E}}{n}, \mathcal{U} \otimes \mathcal{I}_{f(y')})
+    \end{equation}
+    So we may pick global section $s$ of $\mathcal{U}$ not vanishing at any $f(y')$.
+    Pull back to $Y$, we get global section $f^{\ast}s$ of $\mathcal{E}$ not vanishing at any singular $y'$.
+    \par
+    Now if $Y$ is an arbitrary proper variety, consider the associated projective bundle $\pi: \mathbb{P}(\mathcal{E}) \rightarrow Y$.
+    By Proposition \ref{Proposition 4.11}, suffices to show the tautological line bundle $\mathcal{L} := \mathcal{O}_{\mathbb{P}(\mathcal{E})}(1)$ is ample.
+    Let $C'$ be any curve in $\mathbb{P}(\mathcal{E})$.
+    If $C'$ is contained in some fiber, then $\mathcal{L}\big{|}_{C}$ is ample on $C'$.
+    Otherwise, $\pi\big{|}_{C'}: C' \rightarrow \pi(C')$ is a finite surjection and $\pi(C')$ is a curve in $Y$.
+    By argument above, $\mathcal{E}\big{|}_{\pi(C')}$ is ample and hence $(\pi\big{|}_{C'})^{\ast}\mathcal{E}$ is ample on $C'$.
+    As there is a surjection $\pi^{\ast}\mathcal{E} \twoheadrightarrow \mathcal{L}$, we also get $\mathcal{L}\big{|}_{C}$ ample.
+    Since $\mathcal{L}$ is globally generated, by argument above, $\mathcal{L}$ is ample and we are done!
 \end{proof}
 \end{document}
