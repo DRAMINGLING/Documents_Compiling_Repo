@@ -46,6 +46,7 @@
 \newcommand{\characteristic}{\operatorname{Char}}
 
 \newcommand{\derivation}{\operatorname{Der}}
+\newcommand{\tor}{\operatorname{Tor}}
 \newcommand{\ext}{\operatorname{Ext}}
 \newcommand{\mor}{\operatorname{Mor}}
 \newcommand{\aut}{\operatorname{Aut}}
@@ -4289,5 +4290,68 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
     By argument above, $\mathcal{E}\big{|}_{\pi(C')}$ is ample and hence $(\pi\big{|}_{C'})^{\ast}\mathcal{E}$ is ample on $C'$.
     As there is a surjection $\pi^{\ast}\mathcal{E} \twoheadrightarrow \mathcal{L}$, we also get $\mathcal{L}\big{|}_{C}$ ample.
     Since $\mathcal{L}$ is globally generated, by argument above, $\mathcal{L}$ is ample and we are done!
+\end{proof}
+
+\section{Moduli Space of Vector Bundles}
+\label{section:Moduli_Space_of_Vector_Bundles}
+
+\subsection{Hilbert scheme}
+\label{subsection:Moduli_Space_of_Vector_Bundles_Hilbert_scheme}
+
+Recall two local criterion for flatness.
+\begin{proposition}
+    Let $(A, \mathfrak{m})$ be a local ring with residue field $k$, $M$ finitely generated $A$-module.
+    Then the following conditions are equivalent: \\
+    (1)$M$ is free \\
+    (2)$M$ is projective \\
+    (3)$M$ is flat \\
+    (4)$\tor_{1}^{A}(M, k) = 0$.
+    \label{Proposition 7.1}
+\end{proposition}
+\begin{proof}
+    (1) $\Rightarrow$ (2) $\Rightarrow$ (3) $\Rightarrow$ (4) is clear.
+    Suffices to prove (4) $\Rightarrow$ (1).
+    As $M$ is finitely generated, by Nakayama's Lemma, we can pick representative elements of a basis of $M/\mathfrak{m}M$ over $k$, which also generate $M$.
+    And these elements induces a surjection $A^{\oplus n} \twoheadrightarrow M$ with kernel $N$.
+    Since $\tor_{1}^{A}(M, k) = 0$, the following sequence is exact
+    \begin{equation}
+        0 \longrightarrow N \otimes_{A} k \longrightarrow A^{\oplus n} \otimes_{A} k \longrightarrow M \otimes_{A} k \longrightarrow 0
+    \end{equation}
+    Note that by our choice, $A^{\oplus n} \otimes_{A} k \rightarrow M \otimes_{A} k$ is an isomorphism.
+    Hence $N \otimes_{A} k = 0$ so that by Nakayama's Lemma again, $N = 0$.
+    Conclude that $M \cong A^{\oplus n}$ is free.
+\end{proof}
+\begin{proposition}
+    Let $f: (A, \mathfrak{m}) \rightarrow (B, \mathfrak{n})$ be a local homomorphism between local rings, $M$ finitely generated $B$-module.
+    Then $M$ is flat over $A$ if and only if $\tor_{1}^{A}(M, A/\mathfrak{m}) = 0$.
+    \label{Proposition 7.2}
+\end{proposition}
+\begin{remark}
+    This result is much more tricky.
+    Proof can be seen in \href{Stacks Project 00MK}{stacks.math.columbia.edu/tag/00MK}.
+\end{remark}
+\begin{corollary}
+    Let $f: (A, \mathfrak{m}) \rightarrow (B, \mathfrak{n})$ be a local homomorphism between local rings, $M$ finitely generated $B$-module.
+    Assume $B$ is flat over $A$.
+    Then $M$ is flat over $A$ if and only if $\tor_{1}^{A}(M, B \otimes_{A} A/\mathfrak{m}) = 0$.
+    \label{Corollary 7.1}
+\end{corollary}
+\begin{proof}
+    By Proposition \ref{Proposition 7.2}, suffices to show that if $\tor_{1}^{A}(M, B \otimes_{A} A/\mathfrak{m}) = 0$,
+    then $\tor_{1}^{A}(M, A/\mathfrak{m}) = 0$.
+    Consider the following exact sequence
+    \begin{equation}
+        0 \longrightarrow \tor_{1}^{A}(M, A/\mathfrak{m}) \longrightarrow \mathfrak{m} \otimes_{A} M \longrightarrow M \longrightarrow A/\mathfrak{m} \otimes_{A} M \longrightarrow 0
+    \end{equation}
+    Since $B$ is flat over $A$, tensoring by $B$, we get exact sequence
+    \begin{equation}
+        0 \longrightarrow \tor_{1}^{A}(M, A/\mathfrak{m}) \otimes_{A} B \longrightarrow \mathfrak{m} \otimes_{A} M \otimes_{A} B \longrightarrow M \otimes_{A} B \longrightarrow B \otimes_{A} A/\mathfrak{m} \otimes_{A} M \longrightarrow 0
+    \end{equation}
+    On the other hand, we also have the following exact sequence
+    \begin{equation}
+        0 \longrightarrow \tor_{1}^{A}(M, B \otimes_{A} A/\mathfrak{m}) \otimes_{A} B \longrightarrow \mathfrak{m} \otimes_{A} M \otimes_{A} B \longrightarrow M \otimes_{A} B \longrightarrow B \otimes_{A} A/\mathfrak{m} \otimes_{A} M \longrightarrow 0
+    \end{equation}
+    Hence we get $\tor_{1}^{A}(M, A/\mathfrak{m}) \otimes_{A} B = 0$.
+    While flat local homomorphism is automoatically faithfully flat, by faithfully flat descent, we get $\tor_{1}^{A}(M, A/\mathfrak{m}) = 0$.
 \end{proof}
 \end{document}
