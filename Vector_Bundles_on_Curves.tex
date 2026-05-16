@@ -4362,6 +4362,29 @@ Recall two local criterion for flatness.
 Given $X$ flat over $Y$, $\mathcal{F}$ sheaf module on $X$.
 If there is a locally free resolution $\mathcal{L}^{\bullet}$ of $\mathcal{F}$,
 then for all $y\in Y$, restricting to fibered product $X(y) := X \times_{Y} \spec \mathcal{O}_{Y, y}$, we get locally free resolution $\mathcal{L}^{\bullet}\big{|}_{X(y)}$ of $\mathcal{F}\big{|}_{X(y)}$ by faltness.
+\par
+Let we introduce some results to better describe derived pushforward.
+\begin{lemma}
+    The derived pushforward $R^{i}f_{\ast}\mathcal{F}$ can be identified with the sheafification of the presheaf
+    \begin{equation}
+        U \longmapsto H^{i}(f^{-1}(U), \mathcal{F})
+    \end{equation}
+    \label{Lemma 7.1}
+\end{lemma}
+\begin{proof}
+    Take injective resolution $0 \rightarrow \mathcal{F} \rightarrow \mathcal{I}^{\bullet}$.
+    By definition, $R^{i}f_{\ast}\mathcal{F}$ is the $i$th cohomology of the following complex
+    \begin{equation}
+        0 \longrightarrow f_{\ast}\mathcal{I}^{0} \overset{\psi_{0}}{\longrightarrow} f_{\ast}\mathcal{I}^{1} \overset{\psi_{1}}{\longrightarrow} f_{\ast}\mathcal{I}^{2} \overset{\psi_{2}}{\longrightarrow} \cdots
+    \end{equation}
+    Hence $R^{i}f_{\ast}\mathcal{F}$ is the sheafification of presheaf $U \mapsto (\ker \psi_{i})(U)/(\im \psi_{i - 1})(U)$.
+    Applying $\Gamma(U, \cdot)$, then we get
+    \begin{equation}
+        0 \longrightarrow \Gamma(f^{-1}(U), \mathcal{I}^{0}) \overset{\psi_{0}(U)}{\longrightarrow} \Gamma(f^{-1}(U), \mathcal{I}^{1}) \overset{\psi_{1}(U)}{\longrightarrow} \Gamma(f^{-1}(U), \mathcal{I}^{2}) \overset{\psi_{2}(U)}{\longrightarrow} \cdots
+    \end{equation}
+    Note that $\im \psi_{i}$ is the sheafification of the presheaf $U \mapsto \im \psi_{i}(U)$.
+    Checking stalkwise, it is clear that $R^{i}f_{\ast}\mathcal{F}$ is the sheafification of presheaf $U \mapsto (\ker \psi_{i})(U)/\im \psi_{i - 1}(U) = H^{i}(\Gamma(f^{-1}(U), \mathcal{I}^{\bullet})) = H^{i}(f^{-1}(U), \mathcal{F})$.
+\end{proof}
 \begin{proposition}
     
 \end{proposition}
