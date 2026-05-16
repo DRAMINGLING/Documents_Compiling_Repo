@@ -4354,7 +4354,12 @@ Recall two local criterion for flatness.
     Hence we get $\tor_{1}^{A}(M, A/\mathfrak{m}) \otimes_{A} B = 0$.
     While flat local homomorphism is automoatically faithfully flat, by faithfully flat descent, we get $\tor_{1}^{A}(M, A/\mathfrak{m}) = 0$.
 \end{proof}
-Given $X$ flat over $Y$, $\mathcal{F}$ coherent on $X$.
+\begin{definition}
+    Let $f: X \rightarrow Y$ be a morphism, $\mathcal{F}$ sheaf module on $X$.
+    We say $\mathcal{F}$ is flat over $Y$ is for all $x\in Y$, $\mathcal{O}_{X, x}$ is flat over $\mathcal{O}_{Y, f(x)}$.
+    In particular, is $\mathcal{O}_{X}$ is flat over $Y$, we say $X$ is flat over $Y$.
+\end{definition}
+Given $X$ flat over $Y$, $\mathcal{F}$ sheaf module on $X$.
 If there is a locally free resolution $\mathcal{L}^{\bullet}$ of $\mathcal{F}$,
 then for all $y\in Y$, restricting to fibered product $X(y) := X \times_{Y} \spec \mathcal{O}_{Y, y}$, we get locally free resolution $\mathcal{L}^{\bullet}\big{|}_{X(y)}$ of $\mathcal{F}\big{|}_{X(y)}$ by faltness.
 
