@@ -4457,10 +4457,23 @@ Let we introduce some results to better describe derived pushforward.
             & \longrightarrow \underset{U\ni y}{\colimit} H^{i}(X \times U, \mathcal{G})
         \end{split}
     \end{equation}
-    By Lemma \ref{Lemma 7.2}, we know $\underset{U\ni y}{\colimit} p^{\ast}\mathcal{I}^{\bullet}(X \times U) \cong \mathcal{I}^{\bullet}(X) \otimes_{k} \mathcal{O}_{Y, y} \cong \underset{U\ni y}{\colimit} (\mathcal{I}^{\bullet}(X) \otimes_{k} \mathcal{O}_{Y}(U))$ so that the composition of the first two arrows is isomorphic.
-    For the last arrow, since $X$ and $Y$ are varieties, we can compute cohomology with Čech complex.
+    Since $X$ and $Y$ are varieties, we can compute cohomology with Čech complex.
     In addition, since the problem is local on $Y$, we can assume $Y = \spec B$ is affine.
     Cover $X$ with affine open subsets $V_{i} = \spec A_{i}$.
-    Assume $\mathcal{F}\big{|}_{V_{i}}$ is defined by $A_{i}$-module $M_{i}$.
+    Consider the Čech complex
+    \begin{equation}
+        0 \longrightarrow \prod_{i} \mathcal{G}(V_{i} \times Y) \longrightarrow \prod_{i, j} \mathcal{G}((V_{i} \cap V_{j}) \times Y) \longrightarrow \cdots
+    \end{equation}
+    Applying $\underset{U\ni y}{\colimit}$, get 
+    \begin{equation}
+        0 \longrightarrow \prod_{i} \underset{U\ni y}{\colimit} \mathcal{G}(V_{i} \times Y) \longrightarrow \prod_{i, j} \underset{U\ni y}{\colimit} \mathcal{G}((V_{i} \cap V_{j}) \times Y) \longrightarrow \cdots
+    \end{equation}
+    By Lemma \ref{Lemma 7.2}, this is isomorphic to
+    \begin{equation}
+        0 \longrightarrow \prod_{i} \mathcal{F}(V_{i}) \otimes_{k} \mathcal{O}_{Y, y} \longrightarrow \prod_{i, j} \mathcal{F}(V_{i} \cap V_{j}) \otiems_{k} \mathcal{O}_{Y, y} \longrightarrow \cdots
+    \end{equation}
+    Since exact functor commutes with taking cohomology, we know $H^{i}(X \times U, \mathcal{G}) \cong H^{i}(X) \otimes_{k} \mathcal{O}_{Y, y}$.
+    It is clear that this is same to the map given by the sequence.
+    Conclude that $R^{i}q_{\ast}\mathcal{G} \cong \mathcal{O}_{Y} \otimes_{k} H^{i}(X, \mathcal{F})$.
 \end{proof}
 \end{document}
