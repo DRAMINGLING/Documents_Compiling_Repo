@@ -4425,10 +4425,39 @@ Let we introduce some results to better describe derived pushforward.
     Let $X$ and $Y$ be algebraic varieties over field $k$, $\mathcal{F}$ coherent sheaf on $X$.
     Consider the projections $p: X \times Y \rightarrow X$ and $q: X \times Y \rightarrow Y$.
     Set $\mathcal{G} := p^{\ast}\mathcal{F}$.
-    Then $R^{i}q_{\ast}\mathcal{G} \cong \mathcal{O}_{Y} \otimes_{k} H^{0}(X, \mathcal{F})$.
+    Then $R^{i}q_{\ast}\mathcal{G} \cong \mathcal{O}_{Y} \otimes_{k} H^{i}(X, \mathcal{F})$.
     \label{Proposition 7.3}
 \end{proposition}
 \begin{proof}
-
+    Take injective resolution $0 \rightarrow \mathcal{F} \rightarrow \mathcal{I}^{\bullet}$ and $0 \rightarrow \mathcal{G} \rightarrow \mathcal{J}^{\ast}$.
+    Then there exists chain map $p^{\ast}\mathcal{I}^{\bullet} \rightarrow \mathcal{J}^{\bullet}$.
+    And for all open subset $U \subseteq Y$, there is a map of cohomology groups $H^{i}((p^{\ast}\mathcal{I}^{\bullet})(X \times U)) \rightarrow H^{i}(\mathcal{J}^{\bullet}(X \times U))$.
+    Then there is a sequence of maps
+    \begin{equation}
+        \begin{split}
+            \mathcal{O}_{Y}(U) \otimes_{k} H^{i}(X, \mathcal{F}) & \overset{\sim}{\longrightarrow} \mathcal{O}_{Y}(U) \otimes_{k} H^{i}(\mathcal{I}^{\bullet}(X)) \\
+            & \overset{\sim}{\longrightarrow} H^{i}(\mathcal{I}^{\bullet}(X) \otimes_{k} \mathcal{O}_{Y}(U)) \\
+            & \overset{\sim}{\longrightarrow} H^{i}(\mathcal{I}^{\bullet}(X) \otimes_{\mathcal{O}_{X}(X)} (\mathcal{O}_{X}(X) \otimes_{k} \mathcal{O}_{Y}(U))) \\
+            & \longrightarrow H^{i}((p^{-1}\mathcal{I}^{\bullet})(X \times U) \otimes_{(p^{-1}\mathcal{O}_{X})(X \times U)} \mathcal{O}_{X \times Y}(X \times U)) \\
+            & \longrightarrow H^{i}((p^{\ast}\mathcal{I}^{\bullet})(X \times U)) \\
+            & \longrightarrow H^{i}(\mathcal{J}^{\bullet}(X \times U)) \\
+            & \overset{\sim}{\longrightarrow} H^{i}(q^{-1}(U), \mathcal{G})
+        \end{split}
+        \label{equation:sequence_of_map_from_cohomology_to_derived_pushforward}
+    \end{equation}
+    By Lemma \ref{Lemma 7,1} and universal property of sheafification, we know this map induces a map $\mathcal{O}_{Y} \otimes_{k} H^{i}(X, \mathcal{F}) \rightarrow R^{i}q_{\ast}\mathcal{G}$.
+    Remains to show this map is isomorphic.
+    Suffices to check stalkwise.
+    For all $y\in Y$, take colimit $\underset{U\ni y}{\colimit}$ for the the sequence \ref{equation:sequence_of_map_from_cohomology_to_derived_pushforward},
+    only need to check the following sequence of maps are isomorphic
+    \begin{equation}
+        \begin{split}
+            H^{i}(\mathcal{I}^{\bullet}(X) \otimes_{\mathcal{O}_{X}(X)} \underset{U\ni y}{\colimit} (\mathcal{O}_{X}(X) \otimes_{k} \mathcal{O}_{Y}(U))) \\
+            & \longrightarrow H^{i}((p^{-1}\mathcal{I}^{\bullet})(X \times U) \otimes_{(p^{-1}\mathcal{O}_{X})(X \times U)} \underset{U\ni y}{\colimit} \mathcal{O}_{X \times Y}(X \times U)) \\
+            & \longrightarrow H^{i}(\underset{U\ni y}{\colimit} (p^{\ast}\mathcal{I}^{\bullet})(X \times U)) \\
+            & \longrightarrow H^{i}(\underset{U\ni y}{\colimit} \mathcal{J}^{\bullet}(X \times U))
+        \end{split}
+    \end{equation}
+    by Lemma \ref{Lemma 7.2}, we know  
 \end{proof}
 \end{document}
