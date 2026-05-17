@@ -4328,7 +4328,7 @@ Recall two local criterion for flatness.
 \end{proposition}
 \begin{remark}
     This result is much more tricky.
-    Proof can be seen in \href{Stacks Project 00MK}{stacks.math.columbia.edu/tag/00MK}.
+    Proof can be seen in \href{stacks.math.columbia.edu/tag/00MK}{Stacks Project 00MK}.
 \end{remark}
 \begin{corollary}
     Let $f: (A, \mathfrak{m}) \rightarrow (B, \mathfrak{n})$ be a local homomorphism between local rings, $M$ finitely generated $B$-module.
@@ -4337,7 +4337,7 @@ Recall two local criterion for flatness.
     \label{Corollary 7.1}
 \end{corollary}
 \begin{proof}
-    By Proposition \ref{Proposition 7.2}, suffices to show that if $\tor_{1}^{A}(M, B \otimes_{A} A/\mathfrak{m}) = 0$,
+    By Proposition \ref{Proposition 7.2}, suffices to show if $\tor_{1}^{A}(M, B \otimes_{A} A/\mathfrak{m}) = 0$,
     then $\tor_{1}^{A}(M, A/\mathfrak{m}) = 0$.
     Consider the following exact sequence
     \begin{equation}
@@ -4349,7 +4349,7 @@ Recall two local criterion for flatness.
     \end{equation}
     On the other hand, we also have the following exact sequence
     \begin{equation}
-        0 \longrightarrow \tor_{1}^{A}(M, B \otimes_{A} A/\mathfrak{m}) \otimes_{A} B \longrightarrow \mathfrak{m} \otimes_{A} M \otimes_{A} B \longrightarrow M \otimes_{A} B \longrightarrow B \otimes_{A} A/\mathfrak{m} \otimes_{A} M \longrightarrow 0
+        0 \rightarrow \tor_{1}^{A}(M, B \otimes_{A} A/\mathfrak{m}) \otimes_{A} B \rightarrow \mathfrak{m} \otimes_{A} M \otimes_{A} B \rightarrow M \otimes_{A} B \rightarrow B \otimes_{A} A/\mathfrak{m} \otimes_{A} M \rightarrow 0
     \end{equation}
     Hence we get $\tor_{1}^{A}(M, A/\mathfrak{m}) \otimes_{A} B = 0$.
     While flat local homomorphism is automoatically faithfully flat, by faithfully flat descent, we get $\tor_{1}^{A}(M, A/\mathfrak{m}) = 0$.
@@ -4383,7 +4383,7 @@ Let we introduce some results to better describe derived pushforward.
         0 \longrightarrow \Gamma(f^{-1}(U), \mathcal{I}^{0}) \overset{\psi_{0}(U)}{\longrightarrow} \Gamma(f^{-1}(U), \mathcal{I}^{1}) \overset{\psi_{1}(U)}{\longrightarrow} \Gamma(f^{-1}(U), \mathcal{I}^{2}) \overset{\psi_{2}(U)}{\longrightarrow} \cdots
     \end{equation}
     Note that $\im \psi_{i}$ is the sheafification of the presheaf $U \mapsto \im \psi_{i}(U)$.
-    Checking stalkwise, it is clear that $R^{i}f_{\ast}\mathcal{F}$ is the sheafification of presheaf $U \mapsto (\ker \psi_{i})(U)/\im \psi_{i - 1}(U) = H^{i}(\Gamma(f^{-1}(U), \mathcal{I}^{\bullet})) = H^{i}(f^{-1}(U), \mathcal{F})$.
+    Checking stalkwise, it is clear that $R^{i}f_{\ast}\mathcal{F}$ is the sheafification of $U \mapsto (\ker \psi_{i})(U)/\im \psi_{i - 1}(U) = H^{i}(\Gamma(f^{-1}(U), \mathcal{I}^{\bullet})) = H^{i}(f^{-1}(U), \mathcal{F})$.
 \end{proof}
 \begin{lemma}
     Let $X$ and $Y$ be algebraic varieties over field $k$, $\mathcal{F}$ coherent sheaf on $X$.
@@ -4445,15 +4445,14 @@ Let we introduce some results to better describe derived pushforward.
         \end{split}
         \label{equation:sequence_of_map_from_cohomology_to_derived_pushforward}
     \end{equation}
-    By Lemma \ref{Lemma 7,1} and universal property of sheafification, we know this map induces a map $\mathcal{O}_{Y} \otimes_{k} H^{i}(X, \mathcal{F}) \rightarrow R^{i}q_{\ast}\mathcal{G}$.
+    By Lemma \ref{Lemma 7.1} and universal property of sheafification, we know this map induces a map $\mathcal{O}_{Y} \otimes_{k} H^{i}(X, \mathcal{F}) \rightarrow R^{i}q_{\ast}\mathcal{G}$.
     Remains to show this map is isomorphic.
     Suffices to check stalkwise.
     For all $y\in Y$, take colimit $\underset{U\ni y}{\colimit}$ for the the sequence \ref{equation:sequence_of_map_from_cohomology_to_derived_pushforward},
     only need to check the following sequence of maps are isomorphic
     \begin{equation}
         \begin{split}
-            H^{i}(\mathcal{I}^{\bullet}(X) \otimes_{\mathcal{O}_{X}(X)} \underset{U\ni y}{\colimit} (\mathcal{O}_{X}(X) \otimes_{k} \mathcal{O}_{Y}(U))) & \longrightarrow H^{i}((p^{-1}\mathcal{I}^{\bullet})(X \times U) \otimes_{(p^{-1}\mathcal{O}_{X})(X \times U)} \underset{U\ni y}{\colimit} \mathcal{O}_{X \times Y}(X \times U)) \\
-            & \longrightarrow H^{i}(\underset{U\ni y}{\colimit} (p^{\ast}\mathcal{I}^{\bullet})(X \times U)) \\
+            H^{i}(\mathcal{I}^{\bullet}(X) \otimes_{\mathcal{O}_{X}(X)} \underset{U\ni y}{\colimit} (\mathcal{O}_{X}(X) \otimes_{k} \mathcal{O}_{Y}(U))) & \longrightarrow H^{i}(\underset{U\ni y}{\colimit} (p^{\ast}\mathcal{I}^{\bullet})(X \times U)) \\
             & \longrightarrow \underset{U\ni y}{\colimit} H^{i}(X \times U, \mathcal{G})
         \end{split}
     \end{equation}
@@ -4470,7 +4469,7 @@ Let we introduce some results to better describe derived pushforward.
     \end{equation}
     By Lemma \ref{Lemma 7.2}, this is isomorphic to
     \begin{equation}
-        0 \longrightarrow \prod_{i} \mathcal{F}(V_{i}) \otimes_{k} \mathcal{O}_{Y, y} \longrightarrow \prod_{i, j} \mathcal{F}(V_{i} \cap V_{j}) \otiems_{k} \mathcal{O}_{Y, y} \longrightarrow \cdots
+        0 \longrightarrow \prod_{i} \mathcal{F}(V_{i}) \otimes_{k} \mathcal{O}_{Y, y} \longrightarrow \prod_{i, j} \mathcal{F}(V_{i} \cap V_{j}) \otimes_{k} \mathcal{O}_{Y, y} \longrightarrow \cdots
     \end{equation}
     Since exact functor commutes with taking cohomology, we know $H^{i}(X \times U, \mathcal{G}) \cong H^{i}(X) \otimes_{k} \mathcal{O}_{Y, y}$.
     It is clear that this is same to the map given by the sequence.
