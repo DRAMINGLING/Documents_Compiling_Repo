@@ -4452,12 +4452,15 @@ Let we introduce some results to better describe derived pushforward.
     only need to check the following sequence of maps are isomorphic
     \begin{equation}
         \begin{split}
-            H^{i}(\mathcal{I}^{\bullet}(X) \otimes_{\mathcal{O}_{X}(X)} \underset{U\ni y}{\colimit} (\mathcal{O}_{X}(X) \otimes_{k} \mathcal{O}_{Y}(U))) \\
-            & \longrightarrow H^{i}((p^{-1}\mathcal{I}^{\bullet})(X \times U) \otimes_{(p^{-1}\mathcal{O}_{X})(X \times U)} \underset{U\ni y}{\colimit} \mathcal{O}_{X \times Y}(X \times U)) \\
+            H^{i}(\mathcal{I}^{\bullet}(X) \otimes_{\mathcal{O}_{X}(X)} \underset{U\ni y}{\colimit} (\mathcal{O}_{X}(X) \otimes_{k} \mathcal{O}_{Y}(U))) & \longrightarrow H^{i}((p^{-1}\mathcal{I}^{\bullet})(X \times U) \otimes_{(p^{-1}\mathcal{O}_{X})(X \times U)} \underset{U\ni y}{\colimit} \mathcal{O}_{X \times Y}(X \times U)) \\
             & \longrightarrow H^{i}(\underset{U\ni y}{\colimit} (p^{\ast}\mathcal{I}^{\bullet})(X \times U)) \\
-            & \longrightarrow H^{i}(\underset{U\ni y}{\colimit} \mathcal{J}^{\bullet}(X \times U))
+            & \longrightarrow \underset{U\ni y}{\colimit} H^{i}(X \times U, \mathcal{G})
         \end{split}
     \end{equation}
-    by Lemma \ref{Lemma 7.2}, we know  
+    By Lemma \ref{Lemma 7.2}, we know $\underset{U\ni y}{\colimit} p^{\ast}\mathcal{I}^{\bullet}(X \times U) \cong \mathcal{I}^{\bullet}(X) \otimes_{k} \mathcal{O}_{Y, y} \cong \underset{U\ni y}{\colimit} (\mathcal{I}^{\bullet}(X) \otimes_{k} \mathcal{O}_{Y}(U))$ so that the composition of the first two arrows is isomorphic.
+    For the last arrow, since $X$ and $Y$ are varieties, we can compute cohomology with Čech complex.
+    In addition, since the problem is local on $Y$, we can assume $Y = \spec B$ is affine.
+    Cover $X$ with affine open subsets $V_{i} = \spec A_{i}$.
+    Assume $\mathcal{F}\big{|}_{V_{i}}$ is defined by $A_{i}$-module $M_{i}$.
 \end{proof}
 \end{document}
