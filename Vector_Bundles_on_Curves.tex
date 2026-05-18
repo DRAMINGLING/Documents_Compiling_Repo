@@ -4487,19 +4487,27 @@ Let we introduce some results to better describe derived pushforward.
     When $i = 0$, by definition, we know $H^{0}(X, \mathcal{F})$ is finitely generated over $A/I$ so that is also finitely generated over $A$.
 \end{proof}
 \begin{theorem}
-    Let $f: Y \rightarrow S$ be a projective morphism between varieties, $\mathcal{F}$ coherent on $Y$.
-    Then $R^{i}f_{\ast}\mathcal{F}$ is coherent on $S$ for all $i$.
+    Let $f: X \rightarrow Y$ be a projective morphism between varieties, $\mathcal{F}$ coherent on $X$.
+    Then $R^{i}f_{\ast}\mathcal{F}$ is coherent on $Y$ for all $i$.
     \label{Theorem 7.1}
 \end{theorem}
 \begin{proof}
-    Since $f$ factor through $Y \overset{\ell}{\hookrightarrow} \mathbb{P}_{S}^{N} \overset{\pi}{\rightarrow} S$ and $R^{i}f_{\ast} = R^{i}\pi_{\ast} \circ (\ell_{\ast})$.
+    Since $f$ factor through $X \overset{\ell}{\hookrightarrow} \mathbb{P}_{Y}^{N} \overset{\pi}{\rightarrow} Y$ and $R^{i}f_{\ast} = R^{i}\pi_{\ast} \circ (\ell_{\ast})$.
     By Lemma \ref{Lemma 7.4}, we know $\ell_{\ast}\mathcal{F}$ is coherent.
-    Hence we only need prove for $Y = \mathbb{P}_{S}^{N}$ projective space over $S$.
-    We may also assume $S = \spec A$ is affine.
-    In fact by Theorem \ref{Theorem 2.7}, we get $H^{i}(Y, \mathcal{F})$ is finite over $A$ for all $i \ge 0$, done!
+    Hence we only need prove for $X = \mathbb{P}_{S}^{N}$ projective space over $Y$.
+    We may also assume $Y = \spec A$ is affine.
+    In fact by Theorem \ref{Theorem 2.7}, we get $H^{i}(X, \mathcal{F})$ is finite over $A$ for all $i \ge 0$, done!
 \end{proof}
 \begin{remark}
     There is another proof for a generalized version of this result in \href{stacks.math.columbia.edu/tag/02O5}{Stacks Project 02O5},
     which only ask the morphism to be proper.
 \end{remark}
+\begin{lemma}
+    Let $f: X \rightarrow Y$ be a projective morphism between varieties.
+    Then for all coherent $\mathcal{F}$ on $Y$, the natural map $f^{\ast}f_{\ast}(\mathcal{F}(n)) \rightarrow \mathcal{F}(n)$ is surjective for $n$ large enough.
+    \label{Lemma 7.5}
+\end{lemma}
+\begin{reason}
+    In fact, this a special case of Lemma \ref{Lemma 4.3}.
+\end{reason}
 \end{document}
