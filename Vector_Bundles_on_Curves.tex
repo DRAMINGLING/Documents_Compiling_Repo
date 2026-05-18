@@ -4475,4 +4475,32 @@ Let we introduce some results to better describe derived pushforward.
     It is clear that this is same to the map given by the sequence.
     Conclude that $R^{i}q_{\ast}\mathcal{G} \cong \mathcal{O}_{Y} \otimes_{k} H^{i}(X, \mathcal{F})$.
 \end{proof}
+\begin{lemma}
+    Let $f: X \hookrightarrow Y$ be a closed immersion between varieties, $\mathcal{F}$ coherent on $X$.
+    Then $f_{\ast}\mathcal{F}$ is coherent on $Y$ and $R^{i}f_{\ast}\mathcal{F} = 0$ for all $i > 0$.
+    \label{Lemma 7.4}
+\end{lemma}
+\begin{proof}
+    Since the problem is local on $Y$, we may assume that $Y = \spec A$ is affine so that $X = \spec (A/I)$ for some ideal $I$.
+    Then $R^{i}f_{\ast}\mathcal{F} \cong \widetilde{H^{i}(X, \mathcal{F})}$.
+    By Serre Vanishing Theorem, $H^{i}(X, \mathcal{F}) = 0$ for all $i > 0$.
+    When $i = 0$, by definition, we know $H^{0}(X, \mathcal{F})$ is finitely generated over $A/I$ so that is also finitely generated over $A$.
+\end{proof}
+\begin{theorem}
+    Let $f: Y \rightarrow S$ be a projective morphism between varieties, $\mathcal{F}$ coherent on $Y$.
+    Then $R^{i}f_{\ast}\mathcal{F}$ is coherent on $S$ for all $i$.
+    \label{Theorem 7.1}
+\end{theorem}
+\begin{proof}
+    Since $f$ factor through $Y \overset{\ell}{\hookrightarrow} \mathbb{P}_{S}^{N} \overset{\pi}{\rightarrow} S$ and $R^{i}f_{\ast} = R^{i}\pi_{\ast} \circ (\ell_{\ast})$.
+    By Lemma \ref{Lemma 7.4}, we know $\ell_{\ast}\mathcal{F}$ is coherent.
+    Hence we only need prove for $Y = \mathbb{P}_{S}^{N}$ projective space over $S$.
+    \par
+    Note that $\mathbb{P}_{S}^{N} = \mathbb{P}^{N} \times S$.
+    
+\end{proof}
+\begin{remark}
+    There is another proof for a generalized version of this result in \href{stacks.math.columbia.edu/tag/02O5}{Stacks Project 02O5},
+    which only ask the morphism to be proper.
+\end{remark}
 \end{document}
