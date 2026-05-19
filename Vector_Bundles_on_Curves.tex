@@ -1603,9 +1603,10 @@ There are some special functors in Algebraic Geometry.
 \end{proof}
 \begin{theorem}[\textbf{\emph{Serre}}]
     Let $A$ be a noetherian ring, $X$ projective scheme over $A$, $\mathcal{F}$ coherent sheaf on $X$.
+    Assume $X \rightarrow A$ factor through closed immersion $j: X \hookrightarrow \mathbb{P}_{A}^{r}$.
     Then \\
     (1)for all $i \ge 0$, $H^{i}(X, \mathcal{F})$ is a finite $A$-module. \\
-    (2)for $j: X \hookrightarrow \mathbb{P}_{A}^{r}$ closed immersion, there exists integer $n_{0}$ relative to $\mathcal{F}$ such that $H^{i}(X, \mathcal{F}(n)) = 0$ for all $i > 0$ and $n \ge n_{0}$.
+    (2)there exists integer $n_{0}$ relative to $\mathcal{F}$ such that $H^{i}(X, \mathcal{F}(n)) = 0$ for all $i > 0$ and $n \ge n_{0}$.
     \label{Theorem 2.7}
 \end{theorem}
 \begin{proof}
@@ -4295,8 +4296,8 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
 \section{Moduli Space of Vector Bundles}
 \label{section:Moduli_Space_of_Vector_Bundles}
 
-\subsection{Hilbert scheme}
-\label{subsection:Moduli_Space_of_Vector_Bundles_Hilbert_scheme}
+\subsection{Higher direct image}
+\label{subsection:Moduli_Space_of_Vector_Bundles_Higher_direct_image}
 
 Recall two local criterion for flatness.
 \begin{proposition}
@@ -4478,7 +4479,7 @@ Let we introduce some results to better describe derived pushforward.
 \begin{lemma}
     Let $f: X \hookrightarrow Y$ be a closed immersion between varieties, $\mathcal{F}$ coherent on $X$.
     Then $f_{\ast}\mathcal{F}$ is coherent on $Y$ and $R^{i}f_{\ast}\mathcal{F} = 0$ for all $i > 0$.
-    \label{Lemma 7.4}
+    \label{Lemma 7.3}
 \end{lemma}
 \begin{proof}
     Since the problem is local on $Y$, we may assume that $Y = \spec A$ is affine so that $X = \spec (A/I)$ for some ideal $I$.
@@ -4493,7 +4494,7 @@ Let we introduce some results to better describe derived pushforward.
 \end{theorem}
 \begin{proof}
     Since $f$ factor through $X \overset{\ell}{\hookrightarrow} \mathbb{P}_{Y}^{N} \overset{\pi}{\rightarrow} Y$ and $R^{i}f_{\ast} = R^{i}\pi_{\ast} \circ (\ell_{\ast})$.
-    By Lemma \ref{Lemma 7.4}, we know $\ell_{\ast}\mathcal{F}$ is coherent.
+    By Lemma \ref{Lemma 7.3}, we know $\ell_{\ast}\mathcal{F}$ is coherent.
     Hence we only need prove for $X = \mathbb{P}_{S}^{N}$ projective space over $Y$.
     We may also assume $Y = \spec A$ is affine.
     In fact by Theorem \ref{Theorem 2.7}, we get $H^{i}(X, \mathcal{F})$ is finite over $A$ for all $i \ge 0$, done!
@@ -4505,9 +4506,40 @@ Let we introduce some results to better describe derived pushforward.
 \begin{lemma}
     Let $f: X \rightarrow Y$ be a projective morphism between varieties.
     Then for all coherent $\mathcal{F}$ on $Y$, the natural map $f^{\ast}f_{\ast}(\mathcal{F}(n)) \rightarrow \mathcal{F}(n)$ is surjective for $n$ large enough.
-    \label{Lemma 7.5}
+    \label{Lemma 7.4}
 \end{lemma}
 \begin{reason}
     In fact, this a special case of Lemma \ref{Lemma 4.3}.
 \end{reason}
+\begin{theorem}
+    Let $f: X \rightarrow Y$ be a projective morphism between varieties, $\mathcal{F}$ coherent on $X$.
+    Then $R^{i}f_{\ast}(\mathcal{F}(m)) = 0$ for $n$ large enough.
+    \label{Theorem 7.2}
+\end{theorem}
+\begin{reason}
+    By similar argument as proof of Theorem \ref{Theorem 7.1}, this result also comes from Theorem \ref{Theorem 2.7}.
+\end{reason}
+Now assume $Y = X \times S$ for some projective smooth curve $X$ with two projections $p$ and $q$.
+If $S$ is affine, by Corollary \ref{Corollary 1.1}, there is a locally free resolution $\mathcal{L}_{\bullet} \rightarrow \mathcal{F} \rightarrow 0$.
+In particular, we can choose all $\mathcal{L}_{i}$ of the form $\mathcal{O}_{Y}(-m_{i})^{\oplus r_{i}}$ with $m_{i}$ and $r_{i}$ positive.
+Note that $\mathcal{O}_{Y}(-m_{i}) = p^{\ast}\mathcal{O}_{X}(-m_{i})$ and $H^{0}(X, \mathcal{O}_{X}(-m_{i})) = 0$.
+By Proposition \ref{Proposition 7.3}, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i \neq 1$ and $R^{1}q_{\ast}\mathcal{L}_{i}$ locally free.
+\begin{lemma}
+    In this setting, $R^{j}q_{\ast}\mathcal{F} = 0$ for all $j \ge 2$.
+    \label{Lemma 7.5}
+\end{lemma}
+\begin{proof}
+    Split the resolution into short exact sequences $0 \rightarrow \mathcal{Z}_{i} \rightarrow \mathcal{L}_{i} \rightarrow \mathcal{Z}_{i - 1} \rightarrow 0$,
+    where $\mathcal{Z}_{-1} = \mathcal{F}$ and $\mathcal{Z}_{i} = \ker (\mathcal{L}_{i} \rightarrow \mathcal{Z}_{i - 1})$ for all $i \ge 0$.
+    Push forward along $q$, we get long exact sequences
+    \begin{equation}
+        \begin{split}
+            0 & \longrightarrow q_{\ast}\mathcal{Z}_{i} \longrightarrow 0 \longrightarrow q_{\ast}\mathcal{Z}_{i - 1} \longrightarrow R^{1}q_{\ast}\mathcal{Z}_{i} \longrightarrow R^{1}q_{\ast}\mathcal{L}_{i} \longrightarrow R^{1}q_{\ast}\mathcal{Z}_{i - 1} \\
+            & \longrightarrow R^{2}q_{\ast}\mathcal{Z}_{i} \longrightarrow 0 \longrightarrow R^{2}q_{\ast}\mathcal{Z}_{i} \longrightarrow R^{3}q_{\ast}\mathcal{Z}_{i - 1} \longrightarrow 0 \longrightarrow \cdots
+        \end{split}
+    \end{equation}
+    Hence $R^{j}q_{\ast}\mathcal{Z}_{i} \cong R^{j + 1}q_{\ast}\mathcal{Z}_{i + 1}$ for all $j \ge 2$.
+    While $\dim Y$ is finite and $R^{j}q_{\ast}\mathcal{Z}_{i}$ is given by $H^{j}(X, \mathcal{Z}_{i})$, $R^{j}q_{\ast}\mathcal{Z}_{i} = 0$ for all $j > \dim Y$.
+    Conclude $R^{j}q_{\ast}\mathcal{F} = 0$ for all $j \ge 2$.
+\end{proof}
 \end{document}
