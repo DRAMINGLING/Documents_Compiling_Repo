@@ -42,6 +42,7 @@
 \newcommand{\codim}{\operatorname{codim}}
 \newcommand{\depth}{\operatorname{depth}}
 \newcommand{\height}{\operatorname{height}}
+\newcommand{\length}{\operatorname{length}}
 \newcommand{\projdim}{\dim_{\operatorname{proj}}}
 \newcommand{\characteristic}{\operatorname{Char}}
 
@@ -90,6 +91,9 @@
 \newcommand{\picardfunctor}{\mathcal{P}\kern -.5pt ic}
 \newcommand{\isomorphismscheme}{\operatorname{Isom}}
 \newcommand{\isomorphismfunctor}{\mathcal{I}\kern -.5pt som}
+\newcommand{\chowmap}{\operatorname{Ch}}
+\newcommand{\chowvariety}{\operatorname{Chow}}
+\newcommand{\chowfunctor}{\mathcal{C}\kern -.5pt how}
 
 \newcommand{\abeliangroups}{\mathbf{Ab}}
 \newcommand{\rings}{\mathbf{Ring}}
@@ -113,6 +117,7 @@
 \newcommand{\divisor}{\operatorname{div}}
 \newcommand{\annihilator}{\operatorname{ann}}
 \newcommand{\coefficient}{\operatorname{coeff}}
+\newcommand{\multiplicity}{\operatorname{multi}}
 
 \title{Algebraic Geometry}
 \author{Taught by Qizheng Yin}
@@ -4291,9 +4296,10 @@ There are some special functors in Algebraic Geometry.
 \end{proof}
 \begin{theorem}[\textbf{\emph{Serre}}]
     Let $A$ be a noetherian ring, $X$ projective scheme over $A$, $\mathcal{F}$ coherent sheaf on $X$.
+    Assume $X \rightarrow A$ factor through closed immersion $j: X \hookrightarrow \mathbb{P}_{A}^{r}$.
     Then \\
     (1)for all $i \ge 0$, $H^{i}(X, \mathcal{F})$ is a finite $A$-module. \\
-    (2)for $j: X \hookrightarrow \mathbb{P}_{A}^{r}$ closed immersion, there exists integer $n_{0}$ relative to $\mathcal{F}$ such that $H^{i}(X, \mathcal{F}(n)) = 0$ for all $i > 0$ and $n \ge n_{0}$.
+    (2)there exists integer $n_{0}$ relative to $\mathcal{F}$ such that $H^{i}(X, \mathcal{F}(n)) = 0$ for all $i > 0$ and $n \ge n_{0}$.
     \label{Theorem 7.7}
 \end{theorem}
 \begin{proof}
