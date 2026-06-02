@@ -2822,36 +2822,37 @@ With this definition, we can state definition of abstract variety over general f
     By Theorem \ref{Theorem 5.8}, $\dim(\mathcal{O}_{Z, x}) = \dim(\mathcal{O}_{X_{y}, x}) = \dim(\mathcal{O}_{X, x}) - \dim(\mathcal{O_{Y, y}})$.
     It remains to show that $\dim(\overline{\{x\}}) = \dim(\overline{\{y\}})$.
     \par
-    Note that if we take open neighbourhood $V = \spec A$ of y and y corresponds to $\mathfrak{p}$, then $\dim(\overline{\{y\}}) = \dim(A/\mathfrak{p}) = tr\dim(k(y)/k)$.
+    Note that if we take open neighbourhood $V = \spec A$ of $y$ and $y$ corresponds to $\mathfrak{p}$, then $\dim(\overline{\{y\}}) = \dim(A/\mathfrak{p}) = tr\dim(k(y)/k)$.
     Similarly, we also have $\dim(\overline{\{x\}}) = tr\dim(k(x)/k)$.
     While by Lemma \ref{Lemma 5.4}, $\mathcal{O}_{X_{y}, x} \cong \mathcal{O}_{X, x}/\mathfrak{m}_{y}\mathcal{O}_{X, x}$, get the residue field of x in $X_{y}$ is also $k(x)$.
-    Take affine open neighbourhood $U = \spec(B)$ of x in $X_{y}$.
-    Then x corresponds to a maximal ideal $\mathfrak{m}$ of B and $k(x) = B/\mathfrak{m}$.
+    Take affine open neighbourhood $U = \spec(B)$ of $x$ in $X_{y}$.
+    Then $x$ corresponds to a maximal ideal $\mathfrak{m}$ of $B$ and $k(x) = B/\mathfrak{m}$.
     Thus $B/\mathfrak{m}$ is a field of finite type over $k(y)$.
-    By Zariski's Lemma, $B/\mathfrak{m}$ is finite over $k(y)$ so that it is algebraic over $k(y)$, inducing $tr\dim(k(x)/k) = tr\dim(k(y)/k)$.
+    By Zariski's Lemma that any field extension of finite type as algebras is finite extension,
+    $B/\mathfrak{m}$ is finite over $k(y)$ so that it is algebraic over $k(y)$, inducing $tr\dim(k(x)/k) = tr\dim(k(y)/k)$.
 \end{proof}
 \subsection{Etale Morphisms and Smooth Schemes and Morphisms}
 \begin{definition}
     Let $f: X \longrightarrow Y$ be a morphism of finite type between locally noetherian schemes, $x\in X$, $y = f(x)$.
-    We say that f is unramified at x if \\
+    We say that $f$ is unramified at x if \\
     (1)$\mathfrak{m}_{y}\mathcal{O}_{X, x} = \mathfrak{m}_{x}$. \\
     (2)The field extension $k(x)/k(y)$ is finite and separable.
     \par
-    In particular, we say that f is unramified if it is unramified at all points.
+    In particular, we say that $f$ is unramified if it is unramified at all points.
 \end{definition}
 \begin{remark}
     Recall that $\mathcal{O}_{X_{y}, x} \cong \mathcal{O}_{X, x}/\mathfrak{m}_{y}\mathcal{O}_{X, x}$.
-    Thus if f is unramified at x, then $\mathcal{O}_{X_{y}, x}$ is a field.
+    Thus if $f$ is unramified at $x$, then $\mathcal{O}_{X_{y}, x}$ is a field.
 \end{remark}
 \begin{proposition}
     Let $f: X \longrightarrow Y$ be a morphism of finite type between locally noetherian schemes.
-    Then f is unramified if and only if for all $y\in Y$, $X_{y}$ is finite over $k(y)$ and reduced and for all $x\in X_{y}$, the extension $k(x)/k(y)$ is finite and separable.
+    Then $f$ is unramified if and only if for all $y\in Y$, $X_{y}$ is finite over $k(y)$ and reduced and for all $x\in X_{y}$, the extension $k(x)/k(y)$ is finite and separable.
     \label{Proposition 5.6}
 \end{proposition}
 \begin{definition}
     Let $f: X \longrightarrow Y$ be a morphism of finite type between locally noetherian schemes.
-    We say that f is etale at x if f is both flat and unramified at x.
-    In particular, we say that f is etale if it is etale at all points.
+    We say that $f$ is etale at $x$ if $f$ is both flat and unramified at $x$.
+    In particular, we say that $f$ is etale if it is etale at all points.
 \end{definition}
 \begin{example}
     (1)$\spec K \longrightarrow \spec k$ is unramified/etale if and only if the field extension $K/k$ is finite and separable. \\
@@ -2871,7 +2872,7 @@ With this definition, we can state definition of abstract variety over general f
 \end{proposition}
 \begin{proof}
     (1): By Theorem\ref{Theorem 5.8}, $\dim(\mathcal{O}_{X_{y}, x}) = \dim(\mathcal{O}_{X, x}) - \dim(\mathcal{O}_{Y, y})$.
-    While f is unramified, get $\mathcal{O}_{X_{y}, x}$ is a field so that $\dim(\mathcal{O}_{X_{y}, x}) = 0$.
+    While $f$ is unramified, get $\mathcal{O}_{X_{y}, x}$ is a field so that $\dim(\mathcal{O}_{X_{y}, x}) = 0$.
     Thus $\dim(\mathcal{O}_{X, x}) = \dim(\mathcal{O}_{Y, y})$.
     \par
     (2): Note that $T_{Y, y} \otimes_{k(y)} k(x) = \hom_{k(x)}(\mathfrak{m}_{y}/\mathfrak{m}_{y}^{2} \otimes_{k(y)} k(x), k(x))$.
@@ -2887,22 +2888,22 @@ With this definition, we can state definition of abstract variety over general f
     \begin{equation*}
         \mathfrak{m}_{x}/\mathfrak{m}_{x}^{2} \cong \mathfrak{m}_{x} \otimes_{\mathcal{O}_{X, x}} k(x) 
     \end{equation*}
-    Since f is unramified, $\mathfrak{m}_{x} = \mathfrak{m}_{y}\mathcal{O}_{X, x}$ so that $\mathfrak{m}_{y} \otimes_{\mathcal{O}_{Y, y}} \mathcal{O}_{X, x} \longrightarrow \mathfrak{m}_{x}$ is surjective.
-    Since f is flat, $\mathfrak{O}_{X, x}$ is flat over $\mathfrak{O}_{Y, y}$ so that $\mathfrak{m}_{y} \otimes_{\mathcal{O}_{Y, y}} \mathcal{O}_{X, x} \longrightarrow \mathfrak{m}_{x}$ is injective.
+    Since $f$ is unramified, $\mathfrak{m}_{x} = \mathfrak{m}_{y}\mathcal{O}_{X, x}$ so that $\mathfrak{m}_{y} \otimes_{\mathcal{O}_{Y, y}} \mathcal{O}_{X, x} \longrightarrow \mathfrak{m}_{x}$ is surjective.
+    Since $f$ is flat, $\mathfrak{O}_{X, x}$ is flat over $\mathfrak{O}_{Y, y}$ so that $\mathfrak{m}_{y} \otimes_{\mathcal{O}_{Y, y}} \mathcal{O}_{X, x} \longrightarrow \mathfrak{m}_{x}$ is injective.
     Thus $\mathbf{m}_{y} \otimes_{\mathcal{O}_{Y, y}} \mathcal{O}_{X, x} = \mathfrak{m}_{x}$ so that $\mathfrak{m}_{x}/\mathfrak{m}_{x}^{2} \cong \mathfrak{m}_{y}/\mathfrak{m}_{y}^{2} \otimes_{k(y)} k(x)$.
 \end{proof}
 \begin{proposition}
-    Let $X$ be a k-scheme of finite type. \\
-    (1)Let $K/k$ be a field extension, $x\in X$ closed point with residue field k.
-    Assume $x_{K}\in X_{K} = X \times_{k} K$ is a closed point over x with residue field K.
-    Then X is regular at x if and only if $X_{K}$ is regular at $x_{K}$. \\
-    (2)Suppose k is perfect field with algebraic closure $\overline{k}$.
-    Then X is regular if and only if $X_{\overline{k}}$ is regular.
+    Let $X$ be a $k$-scheme of finite type. \\
+    (1)Let $K/k$ be a field extension, $x\in X$ closed point with residue field $k$.
+    Assume $x_{K}\in X_{K} = X \times_{k} K$ is a closed point over $x$ with residue field $K$.
+    Then $X$ is regular at $x$ if and only if $X_{K}$ is regular at $x_{K}$. \\
+    (2)Suppose $k$ is perfect field with algebraic closure $\overline{k}$.
+    Then $X$ is regular if and only if $X_{\overline{k}}$ is regular.
     \label{Proposition 5.9}
 \end{proposition}
 \begin{proof}
     (1): Can assume that $X = \spec A$ affine.
-    As X is of finite type over $k$, A is of the form $k[x_{1}, \cdots, x_{r}]/I$.
+    As $X$ is of finite type over $k$, $A$ is of the form $k[x_{1}, \cdots, x_{r}]/I$.
     Thus $X_{k} = \spec(A \otimes_{k} K) \cong \spec(K[x_{1}, \cdots, x_{r}])/I$ so that the Jacobson matrixes at $x\in X$ and $x_{K}\in X_{K}$ are same.
     Note that $X_{K} \longrightarrow X$ is given by $\spec K \longrightarrow \spec k$ under base change $X \longrightarrow \spec k$, $X_{K} \longrightarrow X$ is flat.
     Assume x corresponds to maximal ideal $\mathfrak{m}$ of A.
