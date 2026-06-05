@@ -79,6 +79,9 @@
 \newcommand{\smooth}{\operatorname{sm}}
 \newcommand{\analytification}{\operatorname{an}}
 \newcommand{\saturation}{\operatorname{sat}}
+\newcommand{\semi}{\operatorname{semi}}
+\newcommand{\weak}{\operatorname{weak}}
+\newcommand{\perfection}{p^{-\infty}}
 
 \newcommand{\inverselimit}{\underset{\longleftarrow}{\lim}} 
 \newcommand{\colimit}{\underset{\longrightarrow}{\lim}}
@@ -88,13 +91,17 @@
 \newcommand{\grassmanmianfunctor}[2]{\mathcal{G}\kern -.5pt r(#1, #2)}
 \newcommand{\hilbertscheme}{\operatorname{Hilb}}
 \newcommand{\hilbertfunctor}{\mathcal{H}\kern -.5pt ilb}
+\newcommand{\cartierdivisormodulispace}{\operatorname{CDiv}}
+\newcommand{\cartierdivisorfunctor}{\mathcal{C}\kern -.5pt Div}
 \newcommand{\picardscheme}{\operatorname{Pic}}
 \newcommand{\picardfunctor}{\mathcal{P}\kern -.5pt ic}
 \newcommand{\isomorphismscheme}{\operatorname{Isom}}
 \newcommand{\isomorphismfunctor}{\mathcal{I}\kern -.5pt som}
+\newcommand{\chowpullback}{\operatorname{ch}}
 \newcommand{\chowmap}{\operatorname{Ch}}
 \newcommand{\chowvariety}{\operatorname{Chow}}
 \newcommand{\chowfunctor}{\mathcal{C}\kern -.5pt how}
+\newcommand{\universalfamily}{\operatorname{Univ}}
 
 \newcommand{\abeliangroups}{\mathbf{Ab}}
 \newcommand{\rings}{\mathbf{Ring}}
@@ -102,12 +109,13 @@
 \newcommand{\sets}{\mathbf{Set}}
 
 \newcommand{\module}{\mathbf{Mod}}
-\newcommand{\vectorspace}{\mathbf{Vect}}
 \newcommand{\algebra}{\mathbf{Alg}}
 \newcommand{\scheme}{\mathbf{Sch}}
+\newcommand{\vectorspace}{\mathbf{Vect}}
 \newcommand{\vectorbundle}{\underline{\mathbf{Vect}}}
 \newcommand{\coherent}{\mathbf{Coh}}
 \newcommand{\quasicoherent}{\mathbf{Qcoh}}
+\newcommand{\divisorclass}{\mathbf{Div}}
 
 \newcommand{\matrices}[2]{\operatorname{Mat}_{#1}(#2)}
 \newcommand{\generallineargroup}[2]{\operatorname{GL}_{#1}(#2)}
@@ -3825,7 +3833,7 @@ Then we get a commutative diagram consisting of vector bundles, with exact rows
         \mathcal{F}' \arrow[l, hookrightarrow] &
         0 \arrow[l] 
     \end{tikzcd}
-    \label{equation:commutative_diagram_factoring_through_map_of_maxiaml_rank}
+    \label{equation:commutative_diagram_factoring_through_map_of_maximal_rank}
 \end{equation}
 By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''$.
 \begin{definition}
@@ -3919,7 +3927,7 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
 \end{proposition}
 \begin{proof}
     Suppose $f$ is not isomorphism.
-    By construction of the diagram \ref{equation:commutative_diagram_factoring_through_map_of_maxiaml_rank}, we get
+    By construction of the diagram \ref{equation:commutative_diagram_factoring_through_map_of_maximal_rank}, we get
     \begin{equation}
         \begin{tikzcd}
             0 \arrow[r] &
@@ -3977,7 +3985,7 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
     \label{Proposition 6.5}
 \end{proposition}
 \begin{proof}
-    By construction of the diagram \ref{equation:commutative_diagram_factoring_through_map_of_maxiaml_rank}, we get
+    By construction of the diagram \ref{equation:commutative_diagram_factoring_through_map_of_maximal_rank}, we get
     \begin{equation}
         \begin{tikzcd}
             0 \arrow[r] &
@@ -4019,7 +4027,7 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
     By Proposition \ref{Proposition 6.5}, we have $\mu(\mathcal{F}') \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{F}') > \mu(\mathcal{F})$).
     For the second case, this already contradicts to semi-stability of $\mathcal{F}$.
     For the first case, since $\mathcal{F}$ is stable, we get $\mathcal{F}'$ must be $\mathcal{F}$ itself.
-    Consider the diagram \ref{equation:commutative_diagram_factoring_through_map_of_maxiaml_rank}
+    Consider the diagram \ref{equation:commutative_diagram_factoring_through_map_of_maximal_rank}
     \begin{equation}
         \begin{tikzcd}
             0 \arrow[r] &
