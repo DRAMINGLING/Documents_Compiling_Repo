@@ -4434,60 +4434,6 @@ Let we introduce some results to better describe derived pushforward.
     While by argument above, we already know $\underset{U\ni y}{\colimit} \mathcal{G}(V_{i} \times U) \cong \mathcal{F}(V_{i}) \otimes_{k} \mathcal{O}_{Y, y}$ and $\underset{U\ni y}{\colimit} \mathcal{G}((V_{i} \cap V_{j}) \times U) \cong \mathcal{F}(V_{i} \cap V_{j}) \otimes_{k} \mathcal{O}_{Y, y}$.
     Conclude that $\underset{U\ni y}{\colimit} \mathcal{G}(X \times U) \cong \mathcal{F}(X) \otimes_{k} \mathcal{O}_{Y, y}$.
 \end{proof}
-\begin{proposition}
-    Let $X$ and $Y$ be algebraic varieties over field $k$, $\mathcal{F}$ coherent sheaf on $X$.
-    Consider the projections $p: X \times Y \rightarrow X$ and $q: X \times Y \rightarrow Y$.
-    Set $\mathcal{G} := p^{\ast}\mathcal{F}$.
-    Then $R^{i}q_{\ast}\mathcal{G} \cong \mathcal{O}_{Y} \otimes_{k} H^{i}(X, \mathcal{F})$.
-    \label{Proposition 7.3}
-\end{proposition}
-\begin{proof}
-    Take injective resolution $0 \rightarrow \mathcal{F} \rightarrow \mathcal{I}^{\bullet}$ and $0 \rightarrow \mathcal{G} \rightarrow \mathcal{J}^{\ast}$.
-    Then there exists chain map $p^{\ast}\mathcal{I}^{\bullet} \rightarrow \mathcal{J}^{\bullet}$.
-    And for all open subset $U \subseteq Y$, there is a map of cohomology groups $H^{i}((p^{\ast}\mathcal{I}^{\bullet})(X \times U)) \rightarrow H^{i}(\mathcal{J}^{\bullet}(X \times U))$.
-    Then there is a sequence of maps
-    \begin{equation}
-        \begin{split}
-            \mathcal{O}_{Y}(U) \otimes_{k} H^{i}(X, \mathcal{F}) & \overset{\sim}{\longrightarrow} \mathcal{O}_{Y}(U) \otimes_{k} H^{i}(\mathcal{I}^{\bullet}(X)) \\
-            & \overset{\sim}{\longrightarrow} H^{i}(\mathcal{I}^{\bullet}(X) \otimes_{k} \mathcal{O}_{Y}(U)) \\
-            & \overset{\sim}{\longrightarrow} H^{i}(\mathcal{I}^{\bullet}(X) \otimes_{\mathcal{O}_{X}(X)} (\mathcal{O}_{X}(X) \otimes_{k} \mathcal{O}_{Y}(U))) \\
-            & \longrightarrow H^{i}((p^{-1}\mathcal{I}^{\bullet})(X \times U) \otimes_{(p^{-1}\mathcal{O}_{X})(X \times U)} \mathcal{O}_{X \times Y}(X \times U)) \\
-            & \longrightarrow H^{i}((p^{\ast}\mathcal{I}^{\bullet})(X \times U)) \\
-            & \longrightarrow H^{i}(\mathcal{J}^{\bullet}(X \times U)) \\
-            & \overset{\sim}{\longrightarrow} H^{i}(q^{-1}(U), \mathcal{G})
-        \end{split}
-        \label{equation:sequence_of_map_from_cohomology_to_derived_pushforward}
-    \end{equation}
-    By Lemma \ref{Lemma 7.1} and universal property of sheafification, we know this map induces a map $\mathcal{O}_{Y} \otimes_{k} H^{i}(X, \mathcal{F}) \rightarrow R^{i}q_{\ast}\mathcal{G}$.
-    Remains to show this map is isomorphic.
-    Suffices to check stalkwise.
-    For all $y\in Y$, take colimit $\underset{U\ni y}{\colimit}$ for the the sequence \ref{equation:sequence_of_map_from_cohomology_to_derived_pushforward},
-    only need to check the following sequence of maps are isomorphic
-    \begin{equation}
-        \begin{split}
-            H^{i}(\mathcal{I}^{\bullet}(X) \otimes_{\mathcal{O}_{X}(X)} \underset{U\ni y}{\colimit} (\mathcal{O}_{X}(X) \otimes_{k} \mathcal{O}_{Y}(U))) & \longrightarrow H^{i}(\underset{U\ni y}{\colimit} (p^{\ast}\mathcal{I}^{\bullet})(X \times U)) \\
-            & \longrightarrow \underset{U\ni y}{\colimit} H^{i}(X \times U, \mathcal{G})
-        \end{split}
-    \end{equation}
-    Since $X$ and $Y$ are varieties, we can compute cohomology with Čech complex.
-    In addition, since the problem is local on $Y$, we can assume $Y = \spec B$ is affine.
-    Cover $X$ with affine open subsets $V_{i} = \spec A_{i}$.
-    Consider the Čech complex
-    \begin{equation}
-        0 \longrightarrow \prod_{i} \mathcal{G}(V_{i} \times Y) \longrightarrow \prod_{i, j} \mathcal{G}((V_{i} \cap V_{j}) \times Y) \longrightarrow \cdots
-    \end{equation}
-    Applying $\underset{U\ni y}{\colimit}$, get 
-    \begin{equation}
-        0 \longrightarrow \prod_{i} \underset{U\ni y}{\colimit} \mathcal{G}(V_{i} \times Y) \longrightarrow \prod_{i, j} \underset{U\ni y}{\colimit} \mathcal{G}((V_{i} \cap V_{j}) \times Y) \longrightarrow \cdots
-    \end{equation}
-    By Lemma \ref{Lemma 7.2}, this is isomorphic to
-    \begin{equation}
-        0 \longrightarrow \prod_{i} \mathcal{F}(V_{i}) \otimes_{k} \mathcal{O}_{Y, y} \longrightarrow \prod_{i, j} \mathcal{F}(V_{i} \cap V_{j}) \otimes_{k} \mathcal{O}_{Y, y} \longrightarrow \cdots
-    \end{equation}
-    Since exact functor commutes with taking cohomology, we know $H^{i}(X \times U, \mathcal{G}) \cong H^{i}(X) \otimes_{k} \mathcal{O}_{Y, y}$.
-    It is clear that this is same to the map given by the sequence.
-    Conclude that $R^{i}q_{\ast}\mathcal{G} \cong \mathcal{O}_{Y} \otimes_{k} H^{i}(X, \mathcal{F})$.
-\end{proof}
 \begin{lemma}
     Let $f: X \hookrightarrow Y$ be a closed immersion between varieties, $\mathcal{F}$ coherent on $X$.
     Then $f_{\ast}\mathcal{F}$ is coherent on $Y$ and $R^{i}f_{\ast}\mathcal{F} = 0$ for all $i > 0$.
@@ -4525,17 +4471,17 @@ Let we introduce some results to better describe derived pushforward.
 \end{reason}
 \begin{theorem}
     Let $f: X \rightarrow Y$ be a projective morphism between varieties, $\mathcal{F}$ coherent on $X$.
-    Then $R^{i}f_{\ast}(\mathcal{F}(m)) = 0$ for $n$ large enough.
+    Then $R^{i}f_{\ast}(\mathcal{F}(m)) = 0$ for $m$ large enough.
     \label{Theorem 7.2}
 \end{theorem}
 \begin{reason}
     By similar argument as proof of Theorem \ref{Theorem 7.1}, this result also comes from Theorem \ref{Theorem 2.7}.
 \end{reason}
-Now assume $Y = X \times S$ for some projective smooth curve $X$ with two projections $p$ and $q$.
-If $S$ is affine, by Corollary \ref{Corollary 1.1}, there is a locally free resolution $\mathcal{L}_{\bullet} \rightarrow \mathcal{F} \rightarrow 0$.
+Now assume $Y = X \times S$ for some projective smooth curve $X$ and variety $S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$.
+When $S$ is affine, by Corollary \ref{Corollary 1.1}, there is a locally free resolution $\mathcal{L}_{\bullet} \rightarrow \mathcal{F} \rightarrow 0$.
 In particular, we can choose all $\mathcal{L}_{i}$ of the form $\mathcal{O}_{Y}(-m_{i})^{\oplus r_{i}}$ with $m_{i}$ and $r_{i}$ positive.
-Note that $\mathcal{O}_{Y}(-m_{i}) = p^{\ast}\mathcal{O}_{X}(-m_{i})$ and $H^{0}(X, \mathcal{O}_{X}(-m_{i})) = 0$.
-By Proposition \ref{Proposition 7.3}, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i \neq 1$ and $R^{1}q_{\ast}\mathcal{L}_{i}$ locally free.
+Note that $\mathcal{O}_{Y}(-m_{i}) = p^{\ast}\mathcal{O}_{X}(-m_{i})$, $\dim X = 1$ and $H^{0}(X, \mathcal{O}_{X}(-m_{i})) = 0$.
+By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i \neq 1$ and $R^{1}q_{\ast}\mathcal{L}_{i}$ locally free.
 \begin{lemma}
     In this setting, $R^{j}q_{\ast}\mathcal{F} = 0$ for all $j \ge 2$.
     \label{Lemma 7.5}
@@ -4547,11 +4493,156 @@ By Proposition \ref{Proposition 7.3}, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ 
     \begin{equation}
         \begin{split}
             0 & \longrightarrow q_{\ast}\mathcal{Z}_{i} \longrightarrow 0 \longrightarrow q_{\ast}\mathcal{Z}_{i - 1} \longrightarrow R^{1}q_{\ast}\mathcal{Z}_{i} \longrightarrow R^{1}q_{\ast}\mathcal{L}_{i} \longrightarrow R^{1}q_{\ast}\mathcal{Z}_{i - 1} \\
-            & \longrightarrow R^{2}q_{\ast}\mathcal{Z}_{i} \longrightarrow 0 \longrightarrow R^{2}q_{\ast}\mathcal{Z}_{i} \longrightarrow R^{3}q_{\ast}\mathcal{Z}_{i - 1} \longrightarrow 0 \longrightarrow \cdots
+            & \longrightarrow R^{2}q_{\ast}\mathcal{Z}_{i} \longrightarrow 0 \longrightarrow R^{2}q_{\ast}\mathcal{Z}_{i - 1} \longrightarrow R^{3}q_{\ast}\mathcal{Z}_{i} \longrightarrow 0 \longrightarrow \cdots
         \end{split}
     \end{equation}
     Hence $R^{j}q_{\ast}\mathcal{Z}_{i} \cong R^{j + 1}q_{\ast}\mathcal{Z}_{i + 1}$ for all $j \ge 2$.
     While $\dim Y$ is finite and $R^{j}q_{\ast}\mathcal{Z}_{i}$ is given by $H^{j}(X, \mathcal{Z}_{i})$, $R^{j}q_{\ast}\mathcal{Z}_{i} = 0$ for all $j > \dim Y$.
-    Conclude $R^{j}q_{\ast}\mathcal{F} = 0$ for all $j \ge 2$.
+    By induction, conclude that $R^{j}q_{\ast}\mathcal{F} = 0$ for all $j \ge 2$.
+\end{proof}
+\begin{corollary}
+    Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$.
+    Then for all $s\in S$,
+    \begin{equation}
+        (R^{1}q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \overset{\sim}{\longrightarrow} H^{1}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}})
+    \end{equation}
+    \vspace{-\baselineskip} % 减少一行间距
+    \label{Corollary 7.2}
+\end{corollary}
+\begin{proof}
+    Take an affine open neighbourhood $U$ of $s$.
+    Consider the commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            Y_{s} \arrow[r] \arrow[d] &
+            \spec k(s) \arrow[d] \\
+            Y' = X \times U \arrow[r, "{q'}"] \arrow[d, "\ell"] &
+            U \arrow[d, hookrightarrow] \\
+            Y \arrow[r, "q"] \arrow[d, "p"] &
+            S \arrow[d] \\
+            X \arrow[r] &
+            \spec \mathbb{C}
+        \end{tikzcd}
+    \end{equation}
+    Note that open immersions are flat morphisms, by cohomology and base change,
+    we get that $(R^{1}q_{\ast}\mathcal{F})_{s} = ((R^{1}q_{\ast}\mathcal{F})\big{|}_{U})_{s} \cong (R^{1}q'_{\ast}(\ell^{\ast}\mathcal{F}))_{s}$.
+    Hence we may assume $S$ is affine.
+    Then same as argument above, there is a locally free resolution $\mathcal{L}_{\bullet} \rightarrow \mathcal{F} \rightarrow 0$.
+    In particular, we can choose all $\mathcal{L}_{i}$ of the form $\mathcal{O}_{Y}(-m_{i})^{\oplus r_{i}}$ with $m_{i}$ and $r_{i}$ positive.
+    \par
+    Split the resolution into short exact sequences $0 \rightarrow \mathcal{Z}_{i} \rightarrow \mathcal{L}_{i} \rightarrow \mathcal{Z}_{i - 1} \rightarrow 0$,
+    where $\mathcal{Z}_{-1} = \mathcal{F}$ and $\mathcal{Z}_{i} = \ker (\mathcal{L}_{i} \rightarrow \mathcal{Z}_{i - 1})$ for all $i \ge 0$.
+    For all $i$, we get exact sequences
+    \begin{equation}
+        \mathcal{Z}_{i}\big{|}_{Y_{s}} \longrightarrow \mathcal{L}_{i}\big{|}_{Y_{s}} \longrightarrow \mathcal{Z}_{i - 1}\big{|}_{Y_{s}} \longrightarrow 0
+    \end{equation}
+    Since $\dim Y_{s} = \dim (X \times_{\mathbb{C}} k(s)) = 1$, it is clear to see there are exact sequences
+    \begin{equation}
+        H^{1}(Y_{s}, \mathcal{Z}_{i}\big{|}_{Y_{s}}) \longrightarrow H^{1}(Y_{s}, \mathcal{L}_{i}\big{|}_{Y_{s}}) \longrightarrow H^{1}(Y_{s}, \mathcal{Z}_{i - 1}\big{|}_{Y_{s}}) \longrightarrow 0
+    \end{equation}
+    and hence we can also replace the first term by $H^{1}(Y_{s}, \mathcal{L}_{i + 1}\big{|}_{Y_{s}})$.
+    Note that by Lemma \ref{Lemma 7.5} and its proof, there are exact sequences
+    \begin{equation}
+        0 \longrightarrow q_{\ast}\mathcal{Z}_{i - 1} \longrightarrow R^{1}q_{\ast}\mathcal{Z}_{i} \longrightarrow R^{1}q_{\ast}\mathcal{L}_{i} \longrightarrow R^{1}q_{\ast}\mathcal{Z}_{i - 1} \longrightarrow 0
+    \end{equation}
+    and $q_{\ast}\mathcal{Z}_{i} = 0$ for all $i \ge 0$.
+    Since taking stalks is exact, we get exact sequences
+    \begin{equation}
+        0 \longrightarrow (q_{\ast}\mathcal{Z}_{i - 1})_{s} \longrightarrow (R^{1}q_{\ast}\mathcal{Z}_{i})_{s} \longrightarrow (R^{1}q_{\ast}\mathcal{L}_{i})_{s} \longrightarrow (R^{1}q_{\ast}\mathcal{Z}_{i - 1})_{s} \longrightarrow 0
+    \end{equation}
+    Tensoring by $k(s)$ over $\mathcal{O}_{S, s}$, we get exact sequences
+    \begin{equation}
+        (R^{1}q_{\ast}\mathcal{Z}_{i})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \longrightarrow (R^{1}q_{\ast}\mathcal{L}_{i})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \longrightarrow (R^{1}q_{\ast}\mathcal{Z}_{i - 1})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \longrightarrow 0
+    \end{equation}
+    and hence we can also replace the first term by $(R^{1}q_{\ast}\mathcal{L}_{i + 1})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)$.
+    Now suffices to show there are natural isomorphisms 
+    \begin{equation}
+        (R^{1}q_{\ast}\mathcal{L}_{i})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \overset{\sim}{\longrightarrow} H^{1}(Y_{s}, \mathcal{L}_{i}\big{|}_{Y_{s}})
+    \end{equation}
+    for all $i$.
+    While $\mathcal{L}_{i} = p^{\ast}\mathcal{E}_{i}$ for some vector bundle $\mathcal{E}_{i}$ over $X$,
+    by cohomology and base change, we get natural isomorphisms
+    \begin{equation}
+        \begin{split}
+            (R^{1}q_{\ast}\mathcal{L}_{i})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) & \cong (\mathcal{O}_{S} \otimes_{\mathbb{C}} H^{1}(X, \mathcal{E}_{i}))_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \\
+            & \cong (\mathcal{O}_{S, s} \otimes_{\mathbb{C}} H^{1}(X, \mathcal{E}_{i})) \otimes_{\mathcal{O}_{S, s}} k(s) \\
+            & \cong H^{1}(X, \mathcal{E}_{i}) \otimes_{\mathbb{C}} k(s) \\
+            & \cong H^{1}(Y_{s}, \mathcal{L}_{i}\big{|}_{Y_{s}})
+        \end{split}
+    \end{equation}
+    done!
+\end{proof}
+\begin{corollary}
+    Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
+    Then for all $s\in S$, the canonical base change map
+    \begin{equation}
+        (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \longrightarrow H^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}})
+    \end{equation}
+    has kernel $\im (\tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \rightarrow (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))$ and cokernel isomorphic to $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s))$.
+    Moreover, for all $i \ge 2$, we have that $\tor_{i + 1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \cong \tor_{i}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{Z}_{0})_{s}, k(s))$.
+    \label{Corollary 7.3}
+\end{corollary}
+\begin{proof}
+    Same to proof of Corollary \ref{Corollary 7.2}, first reduce to $S$ affine case.
+    By cohomology and base change, there is a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\alpha"] \arrow[d, "\varphi"] &
+            (R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[d, "\psi"] \\
+            H^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) \arrow[r, "\beta"] &
+            H^{1}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) 
+        \end{tikzcd}        
+    \end{equation}
+    By Corollary \ref{Corollary 7.2}, we see $\psi$ is isomorphic.
+    Since $\mathcal{F}$ is flat over $S$, by some useful result, we get exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{Z}_{0}\big{|}_{Y_{s}} \longrightarrow \mathcal{L}_{0}\big{|}_{Y_{s}} \longrightarrow \mathcal{F}\big{|}_{Y_{s}} \longrightarrow 0
+        \label{equation:exact_sequence_with_F_exact}
+    \end{equation}
+    As $H^{0}(Y_{s}, \mathcal{L}_{0}\big{|}_{Y_{s}}) = 0$, we get $\beta$ is injective.
+    Hence $\ker \varphi = \ker (\beta \circ \varphi) = \ker (\psi \circ \alpha) = \ker \alpha$.
+    Denote $\mathcal{K} = \ker (R^{1}q_{\ast}\mathcal{L}_{0} \rightarrow R^{1}q_{\ast}\mathcal{F})$.
+    Then there are exact sequences
+    \begin{equation}
+        \begin{split}
+            \cdots & \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}((q_{\ast}\mathcal{F})_{s}, k(s)) \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{Z}_{0})_{s}, k(s)) \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}(\mathcal{K}_{s}, k(s)) \\
+            & \rightarrow \tor_{1}^{\mathcal{O}_{S, s}}((q_{\ast}\mathcal{F})_{s}, k(s)) \rightarrow \tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{Z}_{0})_{s}, k(s)) \rightarrow \tor_{1}^{\mathcal{O}_{S, s}}(\mathcal{K}_{s}, k(s)) \\
+            & \rightarrow (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \overset{\alpha}{\rightarrow} (R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow \mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow 0
+        \end{split}
+    \end{equation}
+    and
+    \begin{equation}
+        \begin{split}
+            \cdots & \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}(\mathcal{K}_{s}, k(s)) \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{L}_{0})_{s}, k(s)) \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \\
+            & \rightarrow \tor_{1}^{\mathcal{O}_{S, s}}(\mathcal{K}_{s}, k(s)) \rightarrow \tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{L}_{0})_{s}, k(s)) \rightarrow \tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \\
+            & \rightarrow \mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow (R^{1}q_{\ast}\mathcal{L}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \overset{\alpha}{\rightarrow} (R^{1}q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow 0
+        \end{split}
+    \end{equation}
+    While both $q_{\ast}\mathcal{F}$ and $R^{1}q_{\ast}\mathcal{L}_{0}$ are flat over $\mathcal{O}_{S}$,
+    we get $\ker \alpha = \im (\tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \rightarrow (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))$.
+    And the isomorphisms between $Tor$ are obvious.
+    \par
+    Remains to prove for $\coker \varphi$.
+    Consider a bigger commutative diagram
+    \begin{equation*}
+        \begin{tikzcd}[sep = small]
+            (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\alpha"] \arrow[d, "\varphi"] &
+            (R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\gamma"] \arrow[d, "\psi"] &
+            \mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\eta"] &
+            (R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)  \arrow[d, "\phi"] \\
+            H^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) \arrow[r, "\beta"] &
+            H^{1}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) \arrow[rr, "\mu"] &&
+            H^{1}(Y_{s}, \mathcal{L}_{0}\big{|}_{Y_{s}})
+        \end{tikzcd}
+    \end{equation*}
+    By Corollary \ref{Corollary 7.2}, we also get $\phi$ isomorphic.
+    Note that $\im \alpha = \ker \gamma$ and hence $\coker \varphi \cong \im \psi^{-1} \circ \beta/\im \alpha \cong \im \gamma \circ \psi^{-1} \circ \beta$,
+    as $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s))$ is kernel of $\eta$,
+    suffices to show $\im \gamma \circ \psi^{-1} \circ \beta = \ker \eta$.
+    In fact, by the exact sequence \ref{equation:exact_sequence_with_F_exact},
+    we get the lower row is exact and hence $\im \beta = \ker \mu = \ker \phi \circ \eta \circ \gamma \circ \psi^{-1}$.
+    As $\gamma$ is surjective, conclude that $\im \gamma \circ \psi^{-1} \circ \beta = \ker \eta$, done!
 \end{proof}
 \end{document}
