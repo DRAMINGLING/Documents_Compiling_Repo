@@ -95,6 +95,8 @@
 \newcommand{\cartierdivisorfunctor}{\mathcal{C}\kern -.5pt Div}
 \newcommand{\picardscheme}{\operatorname{Pic}}
 \newcommand{\picardfunctor}{\mathcal{P}\kern -.5pt ic}
+\newcommand{\quotscheme}{\operatorname{Quot}}
+\newcommand{\quotfunctor}{\mathcal{Q}\kern -.5pt uot}
 \newcommand{\isomorphismscheme}{\operatorname{Isom}}
 \newcommand{\isomorphismfunctor}{\mathcal{I}\kern -.5pt som}
 \newcommand{\chowpullback}{\operatorname{ch}}
@@ -4507,7 +4509,11 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
     \begin{equation}
         (R^{1}q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \overset{\sim}{\longrightarrow} H^{1}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}})
     \end{equation}
-    \vspace{-\baselineskip} % 减少一行间距
+    In particular, the function
+    \begin{equation}
+        s \longmapsto h^{1}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}})
+    \end{equation}
+    is upper semicontinuous.
     \label{Corollary 7.2}
 \end{corollary}
 \begin{proof}
@@ -4571,7 +4577,7 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
             & \cong H^{1}(Y_{s}, \mathcal{L}_{i}\big{|}_{Y_{s}})
         \end{split}
     \end{equation}
-    done!
+    And by Hartshorne Chapter II exercise 5.8, we get the semicontinuity.
 \end{proof}
 \begin{corollary}
     Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
@@ -4631,7 +4637,7 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
             (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\alpha"] \arrow[d, "\varphi"] &
             (R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\gamma"] \arrow[d, "\psi"] &
             \mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\eta"] &
-            (R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)  \arrow[d, "\phi"] \\
+            (R^{1}q_{\ast}\mathcal{L}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)  \arrow[d, "\phi"] \\
             H^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) \arrow[r, "\beta"] &
             H^{1}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) \arrow[rr, "\mu"] &&
             H^{1}(Y_{s}, \mathcal{L}_{0}\big{|}_{Y_{s}})
@@ -4678,22 +4684,91 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
     \begin{equation}
         0 \longrightarrow (R^{1}q_{\ast}\mathcal{Z}_{i})_{s} \longrightarrow (R^{1}q_{\ast}\mathcal{L}_{i})_{s} \longrightarrow (R^{1}q_{\ast}\mathcal{Z}_{i - 1})_{s} \longrightarrow 0
     \end{equation}
-    The first one shows that $H^{0}(Y_{s}, \mathcal{Z}_{i}\big{|}_{Y_{s}}) = 0$ for all $i \ge 1$.
-    Follow the argument in proof of Corollary \ref{Corollary 7.3}, we see there are exact sequences for all $i \ge 1$
+    As $H^{0}(Y_{s}, \mathcal{L}_{i}\big{|}_{Y_{s}}) = 0$, the first one shows that $H^{0}(Y_{s}, \mathcal{Z}_{i}\big{|}_{Y_{s}}) = 0$ for all $i \ge 0$.
+    %Follow the argument in proof of Corollary \ref{Corollary 7.3}, we see there are exact sequences for all $i \ge 1$
+    %\begin{equation}
+    %    0 \longrightarrow H^{1}(Y, \mathcal{Z}_{i}) \otimes_{A} k(s) \longrightarrow H^{1}(Y, \mathcal{L}_{i}) \otimes_{A} k(s) \longrightarrow H^{1}(Y, \mathcal{Z}_{i - 1}) \otimes_{A} k(s) \longrightarrow 0
+    %\end{equation}
+    
+    Consider the following commutative diagram
+    \begin{equation*}
+        \begin{tikzcd}[sep = small]
+            0 \arrow[r] \arrow[d] &
+            (R^{1}q_{\ast}\mathcal{Z}_{1})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\gamma"] \arrow[d, "\psi"] &
+            (R^{1}q_{\ast}\mathcal{L}_{1})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)  \arrow[d, "\phi"] \\
+            0 = H^{0}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) \arrow[r, "\beta"] &
+            H^{1}(Y_{s}, \mathcal{Z}_{1}\big{|}_{Y_{s}}) \arrow[r, "\mu"] &
+            H^{1}(Y_{s}, \mathcal{L}_{1}\big{|}_{Y_{s}})
+        \end{tikzcd}
+    \end{equation*}
+    Then similar argument as proof of Corollary \ref{Corollary 7.3} shows that $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{Z}_{0})_{s}, k(s)) = \ker \gamma = \ker \phi^{-1} \circ \mu \circ \psi = \im \psi^{-1} \circ \beta = 0$ for all $s$.
+    And by Proposition \ref{Proposition 7.1}, we get $(R^{1}q_{\ast}\mathcal{Z}_{0})_{s}$ is flat over $\mathcal{O}_{S, s}$ so that $R^{1}q_{\ast}\mathcal{Z}_{0}$ is flat over $S$.
+    Recall the exact sequence
     \begin{equation}
-        0 \longrightarrow H^{1}(Y, \mathcal{Z}_{i}) \otimes_{A} k(s) \longrightarrow H^{1}(Y, \mathcal{L}_{i}) \otimes_{A} k(s) \longrightarrow H^{1}(Y, \mathcal{Z}_{i - 1}) \otimes_{A} k(s) \longrightarrow 0
+        0 \longrightarrow q_{\ast}\mathcal{F} \longrightarrow R^{1}q_{\ast}\mathcal{Z}_{0} \longrightarrow R^{1}q_{\ast}\mathcal{L}_{0} \longrightarrow R^{1}q_{\ast}\mathcal{F} \longrightarrow 0
     \end{equation}
-    Thus we get
-    \begin{equation}
-        \begin{split}
-            \chi(\mathcal{F}\big{|}_{Y_{s}}) = & \dim_{k(s)} (H^{1}(Y, \mathcal{Z}_{0}) \otimes_{A} k(s)) - \dim_{k(s)} (H^{1}(Y, \mathcal{L}_{0}) \otimes_{A} k(s)) \\
-            = & - \dim_{k(s)} (H^{1}(Y, \mathcal{Z}_{1}) \otimes_{A} k(s)) + \dim_{k(s)} (H^{1}(Y, \mathcal{L}_{1}) \otimes_{A} k(s)) \\ 
-            & - \dim_{k(s)} (H^{1}(Y, \mathcal{L}_{0}) \otimes_{A} k(s)) \\
-            = & \cdots \\
-            = & \sum_{i \ge 0} (-1)^{i - 1}\dim_{k(s)} (H^{1}(Y, \mathcal{L}_{i}) \otimes_{A} k(s))
-        \end{split}
-    \end{equation}
-    By our choice of $\mathcal{L}_{i}$, $H^{1}(Y, \mathcal{L}_{i})$ is locally free hence $\dim_{k(s)} (H^{1}(Y, \mathcal{L}_{i}) \otimes_{A} k(s))$ is locally constant.
-    Conclude that $\chi(\mathcal{F}\big{|}_{Y_{s}})$ is also locally constant.
+    Since $q_{\ast}\mathcal{F}$, $R^{1}q_{\ast}\mathcal{Z}_{0}$ and $R^{1}q_{\ast}\mathcal{L}_{0}$ are all flat,
+    this induces $R^{1}q_{\ast}\mathcal{F}$ is also flat.
+    \textbf{But we only assume $\mathcal{F}$ is flat, this is a strange result}.
+
 \end{proof}
+\begin{corollary}
+    Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
+    Then Hilbert polynomial of $\mathcal{F}\big{|}_{Y_{s}}$ is locally constant.
+    \label{Corollary 7.5}
+\end{corollary}
+\begin{reason}
+    Immediately comes from Corollary \ref{Corollary 7.4}
+\end{reason}
+\begin{corollary}
+    Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
+    Then the function
+    \begin{equation}
+        s \longmapsto h^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}})
+    \end{equation} 
+    is bounded and 
+    Conversely, if these two functions are both constant and $S$ is integral,
+    then $q_{\ast}\mathcal{F}$ and $R^{1}q_{\ast}\mathcal{F}$ are locally free.
+    \label{Corollary 7.6}
+\end{corollary}
+\begin{theorem}
+    Let $X$ be a projective smooth curve and $S$ be an integral variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$.
+    Then $\mathcal{F}$ is flat over $S$ if and only if the coefficients of Hilbert polynomial of $\mathcal{F}$ is constant fiberwise.
+    \label{Theorem 7.3}
+\end{theorem}
+\begin{corollary}
+    Let $X$ be a projective smooth curve and $S$ be an integral variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$.
+    If $q_{\ast}(\mathcal{F}(m))$ is locally free for $m$ large enough, then $\mathcal{F}$ is flat over $S$.
+    \label{Corollary 7.7}
+\end{corollary}
+\begin{reason}
+    By Theorem \ref{Theorem 7.3}, suffices to show Hilbert polynomial of $\mathcal{F}$ is constant fiberwise.
+    In fact, for $m$ large enough, since $q_{\ast}(\mathcal{F}(m))$ is locally free,
+    by Corollary \ref{Corollary 7.4}, $\chi(\mathcal{F}(m)\big{|}_{Y_{s}})$ is locally constant.
+    Since $S$ is integral, we immediately get Hilbert polynomial of $\mathcal{F}$ is constant fiberwise.
+\end{reason}
+
+\subsection{Hilbert schemes and Quot schemes}
+\label{subsection:Moduli_Space_of_Vector_Bundles_Hilbert_schemes_and_Quot_schemes}
+
+In general, the notion Hilbert scheme parameterizes the family of flat closed subschemes with fixed Hilbert polynomial.
+And Quot scheme is a generalization of Hilbert scheme, which should parameterize quotient of coherent sheaf with fixed Hilbert polynomial.
+Here, we only study the Quot schemes and later use it to construct the moduli space of vector bundles.
+\begin{definition}
+    Let $X$ and $S$ be varieties, $\mathcal{E}$ coherent sheaf on $X$.
+    Denote $\mathcal{E}_{S}$ the pullback of $\mathcal{E}$ along projection $X \times S \rightarrow X$.
+    Define
+    \begin{equation*}
+        \quotfunctor^{P}(E, S) := \{\mathcal{G} = \mathcal{E}_{S}/\mathcal{F} \big{|} \mathcal{G} \text{ flat over } S \text{ and } \forall s\in S, \mathcal{G}\big{|}_{X \times s} \text{ has Hilbert polynomial } P\}
+    \end{equation*}
+    Clearly, this gives a contravariant functor $\quotfunctor^{P}(E, \cdot)$ on the category of varieties.
+\end{definition}
+\begin{theorem}[\textbf{\emph{Grothendieck}}]
+    This functor $\quotfunctor^{P}(E, \cdot)$ is representable by a projective variety $\quotscheme^{P}(E)$.
+    \label{Theorem 7.4}
+\end{theorem}
 \end{document}
