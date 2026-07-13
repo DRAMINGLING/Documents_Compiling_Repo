@@ -4617,12 +4617,12 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
         \begin{split}
             \cdots & \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}(\mathcal{K}_{s}, k(s)) \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{L}_{0})_{s}, k(s)) \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \\
             & \rightarrow \tor_{1}^{\mathcal{O}_{S, s}}(\mathcal{K}_{s}, k(s)) \rightarrow \tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{L}_{0})_{s}, k(s)) \rightarrow \tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \\
-            & \rightarrow \mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow (R^{1}q_{\ast}\mathcal{L}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \overset{\alpha}{\rightarrow} (R^{1}q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow 0
+            & \rightarrow \mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow (R^{1}q_{\ast}\mathcal{L}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow (R^{1}q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow 0
         \end{split}
     \end{equation}
     While both $q_{\ast}\mathcal{F}$ and $R^{1}q_{\ast}\mathcal{L}_{0}$ are flat over $\mathcal{O}_{S}$,
     we get $\ker \alpha = \im (\tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \rightarrow (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))$.
-    And the isomorphisms between $Tor$ are obvious.
+    And the isomorphisms between $\tor$ are obvious.
     \par
     Remains to prove for $\coker \varphi$.
     Consider a bigger commutative diagram
@@ -4644,5 +4644,56 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
     In fact, by the exact sequence \ref{equation:exact_sequence_with_F_exact},
     we get the lower row is exact and hence $\im \beta = \ker \mu = \ker \phi \circ \eta \circ \gamma \circ \psi^{-1}$.
     As $\gamma$ is surjective, conclude that $\im \gamma \circ \psi^{-1} \circ \beta = \ker \eta$, done!
+\end{proof}
+\begin{corollary}
+    Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
+    Then $\chi(\mathcal{F}\big{|}_{Y_{s}})$ is locally constant.
+    \label{Corollary 7.4}
+\end{corollary}
+\begin{proof}
+    Same to proof of Corollary \ref{Corollary 7.2}, first reduce to $S$ affine case.
+    For all $s\in S$, since $\dim Y_{s} = 1$, by Corollary \ref{Corollary 7.2} and Corollary \ref{Corollary 7.3}, we get that
+    \begin{equation}
+        \begin{split}
+            \chi(\mathcal{F}\big{|}_{Y_{s}}) = & h^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) - h^{1}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) \\
+            = & \dim_{k(s)} \tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) + \dim_{k(s)} (\im \alpha) - \dim_{k(s)} ((R^{1}q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)) \\
+            = & \dim_{k(s)} \tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) + \dim_{k(s)} ((R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)) \\
+            & - \dim_{k(s)} (\mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s)) - \dim_{k(s)} ((R^{1}q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)) \\
+            = & \dim_{k(s)} ((R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)) - \dim_{k(s)} ((R^{1}q_{\ast}\mathcal{L}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))
+        \end{split}
+    \end{equation}
+    While $S$ is affine, we see that $R^{1}q_{\ast}\mathcal{F}$ is just the coherent sheaf given by module $H^{1}(Y, \mathcal{F})$ for all coherent sheaf $\mathcal{F}$ on $Y$.
+    And taking stalks is same to localization.
+    Assume $S = \spec A$.
+    Then we get
+    \begin{equation}
+        \chi(\mathcal{F}\big{|}_{Y_{s}}) = \dim_{k(s)} (H^{1}(Y, \mathcal{Z}_{0}) \otimes_{A} k(s)) - \dim_{k(s)} (H^{1}(Y, \mathcal{L}_{0}) \otimes_{A} k(s))
+    \end{equation}
+    For all $i \ge 0$, we have exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{Z}_{i}\big{|}_{Y_{s}} \longrightarrow \mathcal{L}_{i}\big{|}_{Y_{s}} \longrightarrow \mathcal{Z}_{i - 1}\big{|}_{Y_{s}} \longrightarrow 0
+    \end{equation}
+    and for all $i \ge 1$, we have exact sequence
+    \begin{equation}
+        0 \longrightarrow (R^{1}q_{\ast}\mathcal{Z}_{i})_{s} \longrightarrow (R^{1}q_{\ast}\mathcal{L}_{i})_{s} \longrightarrow (R^{1}q_{\ast}\mathcal{Z}_{i - 1})_{s} \longrightarrow 0
+    \end{equation}
+    The first one shows that $H^{0}(Y_{s}, \mathcal{Z}_{i}\big{|}_{Y_{s}}) = 0$ for all $i \ge 1$.
+    Follow the argument in proof of Corollary \ref{Corollary 7.3}, we see there are exact sequences for all $i \ge 1$
+    \begin{equation}
+        0 \longrightarrow H^{1}(Y, \mathcal{Z}_{i}) \otimes_{A} k(s) \longrightarrow H^{1}(Y, \mathcal{L}_{i}) \otimes_{A} k(s) \longrightarrow H^{1}(Y, \mathcal{Z}_{i - 1}) \otimes_{A} k(s) \longrightarrow 0
+    \end{equation}
+    Thus we get
+    \begin{equation}
+        \begin{split}
+            \chi(\mathcal{F}\big{|}_{Y_{s}}) = & \dim_{k(s)} (H^{1}(Y, \mathcal{Z}_{0}) \otimes_{A} k(s)) - \dim_{k(s)} (H^{1}(Y, \mathcal{L}_{0}) \otimes_{A} k(s)) \\
+            = & - \dim_{k(s)} (H^{1}(Y, \mathcal{Z}_{1}) \otimes_{A} k(s)) + \dim_{k(s)} (H^{1}(Y, \mathcal{L}_{1}) \otimes_{A} k(s)) \\ 
+            & - \dim_{k(s)} (H^{1}(Y, \mathcal{L}_{0}) \otimes_{A} k(s)) \\
+            = & \cdots \\
+            = & \sum_{i \ge 0} (-1)^{i - 1}\dim_{k(s)} (H^{1}(Y, \mathcal{L}_{i}) \otimes_{A} k(s))
+        \end{split}
+    \end{equation}
+    By our choice of $\mathcal{L}_{i}$, $H^{1}(Y, \mathcal{L}_{i})$ is locally free hence $\dim_{k(s)} (H^{1}(Y, \mathcal{L}_{i}) \otimes_{A} k(s))$ is locally constant.
+    Conclude that $\chi(\mathcal{F}\big{|}_{Y_{s}})$ is also locally constant.
 \end{proof}
 \end{document}
