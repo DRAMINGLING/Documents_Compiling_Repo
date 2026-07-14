@@ -4581,13 +4581,17 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
 \end{proof}
 \begin{corollary}
     Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
-    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
-    Then for all $s\in S$, the canonical base change map
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$.
+    If denote $\mathcal{K} = \ker (R^{1}q_{\ast}\mathcal{L}_{0} \rightarrow R^{1}q_{\ast}\mathcal{F})$,
+    then for all $s\in S$, the canonical base change map
     \begin{equation}
         (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \longrightarrow H^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}})
     \end{equation}
-    has kernel $\im (\tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \rightarrow (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))$ and cokernel isomorphic to $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s))$.
-    Moreover, for all $i \ge 2$, we have that $\tor_{i + 1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \cong \tor_{i}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{Z}_{0})_{s}, k(s))$.
+    has kernel $\im (\tor_{1}^{\mathcal{O}_{S, s}}(\mathcal{K}_{s}, k(s)) \rightarrow (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))$ and cokernel isomorphic to image of the following map
+    \begin{equation}
+        H^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) \longrightarrow H^{1}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) \overset{\sim}{\longrightarrow} (R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \longrightarrow \mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s)
+    \end{equation}
+    \vspace{-\baselineskip} % 减少一行间距
     \label{Corollary 7.3}
 \end{corollary}
 \begin{proof}
@@ -4602,15 +4606,21 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
         \end{tikzcd}        
     \end{equation}
     By Corollary \ref{Corollary 7.2}, we see $\psi$ is isomorphic.
-    Since $\mathcal{F}$ is flat over $S$, by some useful result, we get exact sequence
+    Note that there is an exact sequence
     \begin{equation}
-        0 \longrightarrow \mathcal{Z}_{0}\big{|}_{Y_{s}} \longrightarrow \mathcal{L}_{0}\big{|}_{Y_{s}} \longrightarrow \mathcal{F}\big{|}_{Y_{s}} \longrightarrow 0
-        \label{equation:exact_sequence_with_F_exact}
+        \mathcal{Z}_{0}\big{|}_{Y_{s}} \longrightarrow \mathcal{L}_{0}\big{|}_{Y_{s}} \longrightarrow \mathcal{F}\big{|}_{Y_{s}} \longrightarrow 0
     \end{equation}
-    As $H^{0}(Y_{s}, \mathcal{L}_{0}\big{|}_{Y_{s}}) = 0$, we get $\beta$ is injective.
-    Hence $\ker \varphi = \ker (\beta \circ \varphi) = \ker (\psi \circ \alpha) = \ker \alpha$.
-    Denote $\mathcal{K} = \ker (R^{1}q_{\ast}\mathcal{L}_{0} \rightarrow R^{1}q_{\ast}\mathcal{F})$.
-    Then there are exact sequences
+    Denote $\mathcal{K}' = \ker (\mathcal{L}_{0}\big{|}_{Y_{s}} \rightarrow \mathcal{F}\big{|}_{Y_{s}})$.
+    As $H^{0}(Y_{s}, \mathcal{L}_{0}\big{|}_{Y_{s}}) = 0$, then there is a commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            H^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) \arrow[rr, hookrightarrow] \arrow[dr, "\beta"] &&
+            H^{1}(Y_{s}, \mathcal{K}') \\
+            & H^{1}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) \arrow[ur, twoheadrightarrow] &
+        \end{tikzcd}
+    \end{equation}
+    Hence $\beta$ is injective and $\ker \varphi = \ker (\beta \circ \varphi) = \ker (\psi \circ \alpha) = \ker \alpha$.
+    Consider following long exact sequences
     \begin{equation}
         \begin{split}
             \cdots & \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}((q_{\ast}\mathcal{F})_{s}, k(s)) \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{Z}_{0})_{s}, k(s)) \rightarrow \tor_{2}^{\mathcal{O}_{S, s}}(\mathcal{K}_{s}, k(s)) \\
@@ -4626,10 +4636,8 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
             & \rightarrow \mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow (R^{1}q_{\ast}\mathcal{L}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow (R^{1}q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow 0
         \end{split}
     \end{equation}
-    While both $q_{\ast}\mathcal{F}$ and $R^{1}q_{\ast}\mathcal{L}_{0}$ are flat over $\mathcal{O}_{S}$,
-    we get $\ker \alpha = \im (\tor_{2}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) \rightarrow (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))$.
-    And the isomorphisms between $\tor$ are obvious.
-    \par
+    Since $R^{1}q_{\ast}\mathcal{L}_{0}$ is flat over $\mathcal{O}_{S}$,
+    we get $\ker \alpha = \im (\tor_{1}^{\mathcal{O}_{S, s}}(\mathcal{K}_{s}, k(s)) \rightarrow (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))$.
     Remains to prove for $\coker \varphi$.
     Consider a bigger commutative diagram
     \begin{equation*}
@@ -4644,22 +4652,111 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
         \end{tikzcd}
     \end{equation*}
     By Corollary \ref{Corollary 7.2}, we also get $\phi$ isomorphic.
-    Note that $\im \alpha = \ker \gamma$ and hence $\coker \varphi \cong \im \psi^{-1} \circ \beta/\im \alpha \cong \im \gamma \circ \psi^{-1} \circ \beta$,
-    as $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s))$ is kernel of $\eta$,
+    Note that $\im \alpha = \ker \gamma$ and hence $\coker \varphi \cong \im \psi^{-1} \circ \beta/\im \alpha \cong \im \gamma \circ \psi^{-1} \circ \beta$, done!
+\end{proof}
+\begin{corollary}
+    Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
+    If denote $\mathcal{K} = \ker (R^{1}q_{\ast}\mathcal{L}_{0} \rightarrow R^{1}q_{\ast}\mathcal{F})$,
+    then for all $s\in S$, the canonical base change map
+    \begin{equation}
+        (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \longrightarrow H^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}})
+    \end{equation}
+    has cokernel isomorphic to $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s))$.
+    \label{Corollary 7.4}
+\end{corollary}
+\begin{proof}
+    As $\mathcal{F}$ is flat over $S$, by some useful result, we have exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{Z}_{0}\big{|}_{Y_{s}} \longrightarrow \mathcal{L}_{0}\big{|}_{Y_{s}} \longrightarrow \mathcal{F}\big{|}_{Y_{s}} \longrightarrow 0
+        \label{equation:exact_sequence_with_F_exact}
+    \end{equation}
+    Again consider the commutative diagram
+    \begin{equation*}
+        \begin{tikzcd}[sep = small]
+            (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\alpha"] \arrow[d, "\varphi"] &
+            (R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\gamma"] \arrow[d, "\psi"] &
+            \mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\eta"] &
+            (R^{1}q_{\ast}\mathcal{L}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)  \arrow[d, "\phi"] \\
+            H^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) \arrow[r, "\beta"] &
+            H^{1}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) \arrow[rr, "\mu"] &&
+            H^{1}(Y_{s}, \mathcal{L}_{0}\big{|}_{Y_{s}})
+        \end{tikzcd}
+    \end{equation*}
+    As $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s))$ is kernel of $\eta$, by Corollary \ref{Corollary 7.3},
     suffices to show $\im \gamma \circ \psi^{-1} \circ \beta = \ker \eta$.
     In fact, by the exact sequence \ref{equation:exact_sequence_with_F_exact},
     we get the lower row is exact and hence $\im \beta = \ker \mu = \ker \phi \circ \eta \circ \gamma \circ \psi^{-1}$.
     As $\gamma$ is surjective, conclude that $\im \gamma \circ \psi^{-1} \circ \beta = \ker \eta$, done!
 \end{proof}
+\begin{lemma}
+    Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
+    Then for all $i \ge 0$, $\mathcal{Z}_{i}$ is flat over $S$.
+    \label{Lemma 7.6}
+\end{lemma}
+\begin{proof}
+    Since there are exact sequences
+    \begin{equation}
+        0 \longrightarrow \mathcal{Z}_{i} \longrightarrow \mathcal{L}_{i} \longrightarrow \mathcal{Z}_{i - 1} \longrightarrow 0
+    \end{equation}
+    suffices to show $\mathcal{L}_{i}$ is flat over $S$ for all $i \ge 0$.
+    In fact, since $\mathcal{L}_{i}$ is locally free, its stalks are all isomorphic to stalks of structure sheaf.
+    Notice that $X$ is smooth curve so that $q$ is flat, done!
+\end{proof}
+\begin{lemma}
+    Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
+    Then for all $i \ge 0$, $H^{0}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) = 0$.
+    \label{Lemma 7.7}
+\end{lemma}
+\begin{reason}
+    By Lemma \ref{Lemma 7.6}, $\mathcal{Z}_{i}$ is flat over $S$.
+    Then there are exact sequences
+    \begin{equation}
+        0 \longrightarrow \mathcal{Z}_{i}\big{|}_{Y_{s}} \longrightarrow \mathcal{L}_{i}\big{|}_{Y_{s}} \longrightarrow \mathcal{Z}_{i - 1}\big{|}_{Y_{s}} \longrightarrow 0
+        \label{equation:exact_sequence_with_Z_exact}
+    \end{equation}
+    And we get long exact sequence of cohomology
+    \begin{equation}
+        0 \longrightarrow H^{0}(Y_{s}, \mathcal{Z}_{i}\big{|}_{Y_{s}}) \longrightarrow H^{0}(Y_{s}, \mathcal{L}_{i}\big{|}_{Y_{s}}) \longrightarrow H^{0}(Y_{s}, \mathcal{Z}_{i - 1}\big{|}_{Y_{s}}) \longrightarrow \cdots
+    \end{equation}
+    As $H^{0}(Y_{s}, \mathcal{L}_{i}\big{|}_{Y_{s}}) = 0$, we get $H^{0}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) = 0$.
+\end{reason}
+\begin{proposition}
+    Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
+    Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
+    Moreover, assume $q_{\ast}\mathcal{F}$ is flat over $S$.
+    Then $R^{1}q_{\ast}\mathcal{F}$ is also flat over $S$.
+    In particular, $R^{1}q_{\ast}\mathcal{F}$ is locally free.
+    \label{Proposition 7.3}
+\end{proposition}
+\begin{proof}
+    Recall the exact sequence
+    \begin{equation}
+        0 \longrightarrow q_{\ast}\mathcal{F} \longrightarrow R^{1}q_{\ast}\mathcal{Z}_{0} \longrightarrow R^{1}q_{\ast}\mathcal{L}_{0} \longrightarrow R^{1}q_{\ast}\mathcal{F} \longrightarrow 0
+    \end{equation}
+    Since $q_{\ast}\mathcal{F}$ and $R^{1}q_{\ast}\mathcal{L}_{0}$ are flat,
+    suffices to show $R^{1}q_{\ast}\mathcal{Z}_{0}$ is also flat.
+    In fact, by Lemma \ref{Lemma 7.6} and Corollary \ref{Corollary 7.4},
+    we get the cokernel of the base change map
+    \begin{equation}
+        (q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \longrightarrow H^{0}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}})
+    \end{equation}
+    is isomorphic to $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{Z}_{0})_{s}, k(s))$ for all $s$.
+    While by Lemma \ref{Lemma 7.7}, $H^{0}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) = 0$ so that $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{Z}_{0})_{s}, k(s)) = 0$.
+    Hence by Proposition \ref{Proposition 7.1}, we get $(R^{1}q_{\ast}\mathcal{Z}_{0})_{s}$ is flat over $\mathcal{O}_{S, s}$ so that $R^{1}q_{\ast}\mathcal{Z}_{0}$ is flat over $S$.
+    Then by some useful result, $R^{1}q_{\ast}\mathcal{F}$ is also locally free, we are done!
+\end{proof}
 \begin{corollary}
     Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
     Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
     Then $\chi(\mathcal{F}\big{|}_{Y_{s}})$ is locally constant.
-    \label{Corollary 7.4}
+    \label{Corollary 7.5}
 \end{corollary}
 \begin{proof}
     Same to proof of Corollary \ref{Corollary 7.2}, first reduce to $S$ affine case.
-    For all $s\in S$, since $\dim Y_{s} = 1$, by Corollary \ref{Corollary 7.2} and Corollary \ref{Corollary 7.3}, we get that
+    For all $s\in S$, since $\dim Y_{s} = 1$, by Corollary \ref{Corollary 7.2} and Corollary \ref{Corollary 7.4}, we get that
     \begin{equation}
         \begin{split}
             \chi(\mathcal{F}\big{|}_{Y_{s}}) = & h^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) - h^{1}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) \\
@@ -4669,87 +4766,84 @@ By cohomology and base change, we get $R^{i}q_{\ast}\mathcal{L}_{i} = 0$ for $i 
             = & \dim_{k(s)} ((R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)) - \dim_{k(s)} ((R^{1}q_{\ast}\mathcal{L}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))
         \end{split}
     \end{equation}
-    While $S$ is affine, we see that $R^{1}q_{\ast}\mathcal{F}$ is just the coherent sheaf given by module $H^{1}(Y, \mathcal{F})$ for all coherent sheaf $\mathcal{F}$ on $Y$.
-    And taking stalks is same to localization.
-    Assume $S = \spec A$.
-    Then we get
-    \begin{equation}
-        \chi(\mathcal{F}\big{|}_{Y_{s}}) = \dim_{k(s)} (H^{1}(Y, \mathcal{Z}_{0}) \otimes_{A} k(s)) - \dim_{k(s)} (H^{1}(Y, \mathcal{L}_{0}) \otimes_{A} k(s))
-    \end{equation}
-    For all $i \ge 0$, we have exact sequence
-    \begin{equation}
-        0 \longrightarrow \mathcal{Z}_{i}\big{|}_{Y_{s}} \longrightarrow \mathcal{L}_{i}\big{|}_{Y_{s}} \longrightarrow \mathcal{Z}_{i - 1}\big{|}_{Y_{s}} \longrightarrow 0
-    \end{equation}
-    and for all $i \ge 1$, we have exact sequence
-    \begin{equation}
-        0 \longrightarrow (R^{1}q_{\ast}\mathcal{Z}_{i})_{s} \longrightarrow (R^{1}q_{\ast}\mathcal{L}_{i})_{s} \longrightarrow (R^{1}q_{\ast}\mathcal{Z}_{i - 1})_{s} \longrightarrow 0
-    \end{equation}
-    As $H^{0}(Y_{s}, \mathcal{L}_{i}\big{|}_{Y_{s}}) = 0$, the first one shows that $H^{0}(Y_{s}, \mathcal{Z}_{i}\big{|}_{Y_{s}}) = 0$ for all $i \ge 0$.
-    %Follow the argument in proof of Corollary \ref{Corollary 7.3}, we see there are exact sequences for all $i \ge 1$
-    %\begin{equation}
-    %    0 \longrightarrow H^{1}(Y, \mathcal{Z}_{i}) \otimes_{A} k(s) \longrightarrow H^{1}(Y, \mathcal{L}_{i}) \otimes_{A} k(s) \longrightarrow H^{1}(Y, \mathcal{Z}_{i - 1}) \otimes_{A} k(s) \longrightarrow 0
-    %\end{equation}
-    
-    Consider the following commutative diagram
-    \begin{equation*}
-        \begin{tikzcd}[sep = small]
-            0 \arrow[r] \arrow[d] &
-            (R^{1}q_{\ast}\mathcal{Z}_{1})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \arrow[r, "\gamma"] \arrow[d, "\psi"] &
-            (R^{1}q_{\ast}\mathcal{L}_{1})_{s} \otimes_{\mathcal{O}_{S, s}} k(s)  \arrow[d, "\phi"] \\
-            0 = H^{0}(Y_{s}, \mathcal{Z}_{0}\big{|}_{Y_{s}}) \arrow[r, "\beta"] &
-            H^{1}(Y_{s}, \mathcal{Z}_{1}\big{|}_{Y_{s}}) \arrow[r, "\mu"] &
-            H^{1}(Y_{s}, \mathcal{L}_{1}\big{|}_{Y_{s}})
-        \end{tikzcd}
-    \end{equation*}
-    Then similar argument as proof of Corollary \ref{Corollary 7.3} shows that $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{Z}_{0})_{s}, k(s)) = \ker \gamma = \ker \phi^{-1} \circ \mu \circ \psi = \im \psi^{-1} \circ \beta = 0$ for all $s$.
-    And by Proposition \ref{Proposition 7.1}, we get $(R^{1}q_{\ast}\mathcal{Z}_{0})_{s}$ is flat over $\mathcal{O}_{S, s}$ so that $R^{1}q_{\ast}\mathcal{Z}_{0}$ is flat over $S$.
-    Recall the exact sequence
-    \begin{equation}
-        0 \longrightarrow q_{\ast}\mathcal{F} \longrightarrow R^{1}q_{\ast}\mathcal{Z}_{0} \longrightarrow R^{1}q_{\ast}\mathcal{L}_{0} \longrightarrow R^{1}q_{\ast}\mathcal{F} \longrightarrow 0
-    \end{equation}
-    Since $q_{\ast}\mathcal{F}$, $R^{1}q_{\ast}\mathcal{Z}_{0}$ and $R^{1}q_{\ast}\mathcal{L}_{0}$ are all flat,
-    this induces $R^{1}q_{\ast}\mathcal{F}$ is also flat.
-    \textbf{But we only assume $\mathcal{F}$ is flat, this is a strange result}.
-
+    By Lemma \ref{Lemma 7.6}, $Z_{0}$ is flat over $S$.
+    Since $q_{\ast}\mathcal{Z}_{0} = 0$ also flat, by Proposition \ref{Proposition 7.3}, we get $R^{1}q_{\ast}\mathcal{Z}_{0}$ is locally free.
+    Hence it is clear that $\chi(\mathcal{F}\big{|}_{Y_{s}})$ is locally constant.
 \end{proof}
 \begin{corollary}
     Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
     Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
     Then Hilbert polynomial of $\mathcal{F}\big{|}_{Y_{s}}$ is locally constant.
-    \label{Corollary 7.5}
+    \label{Corollary 7.6}
 \end{corollary}
 \begin{reason}
-    Immediately comes from Corollary \ref{Corollary 7.4}
+    Immediately comes from Corollary \ref{Corollary 7.5}
 \end{reason}
 \begin{corollary}
     Let $X$ be a projective smooth curve and $S$ be an arbitrary variety.
     Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$ flat over $S$.
-    Then the function
+    If the function
     \begin{equation}
-        s \longmapsto h^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}})
+        s \longmapsto h^{1}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}})
     \end{equation} 
-    is bounded and 
-    Conversely, if these two functions are both constant and $S$ is integral,
-    then $q_{\ast}\mathcal{F}$ and $R^{1}q_{\ast}\mathcal{F}$ are locally free.
-    \label{Corollary 7.6}
+    is constant and $S$ is reduced, then $q_{\ast}\mathcal{F}$ and $R^{1}q_{\ast}\mathcal{F}$ are locally free.
+    \label{Corollary 7.7}
 \end{corollary}
+\begin{proof}
+    By Corollary \ref{Corollary 7.2}, $h^{1}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}}) = \dim_{k(s)} ((R^{1}q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))$.
+    And by Hartshorne Chapter II exercise 5.8, if the function is constant and $S$ is reduced,
+    then $R^{1}q_{\ast}\mathcal{F}$ are locally free.
+    While by Lemma \ref{Lemma 7.6} and Proposition \ref{Proposition 7.3}, $R^{1}q_{\ast}\mathcal{Z}_{0}$ is locally free,
+    recall the exact sequence
+    \begin{equation}
+        0 \longrightarrow q_{\ast}\mathcal{F} \longrightarrow R^{1}q_{\ast}\mathcal{Z}_{0} \longrightarrow R^{1}q_{\ast}\mathcal{L}_{0} \longrightarrow R^{1}q_{\ast}\mathcal{F} \longrightarrow 0
+    \end{equation}
+    We get $q_{\ast}\mathcal{F}$ is flat and hence by some useful result locally free.
+\end{proof}
 \begin{theorem}
     Let $X$ be a projective smooth curve and $S$ be an integral variety.
     Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$.
     Then $\mathcal{F}$ is flat over $S$ if and only if the coefficients of Hilbert polynomial of $\mathcal{F}$ is constant fiberwise.
     \label{Theorem 7.3}
 \end{theorem}
+\begin{proof}
+    \leftquotes $\Rightarrow$ \rightquotes : Assume $\mathcal{F}$ is flat.
+    By Corollary \ref{Corollary 7.6}, since $S$ is integral, the Hilbert polynomial is constant fiberwise.
+    \par
+    \leftquotes $\Leftarrow$ \rightquotes : Assume the Hilbert polynomial is constant fiberwise.
+    By same argument as proof of Corollary \ref{Corollary 7.7}, we see that $R^{1}q_{\ast}\mathcal{F}$ are locally free so that $\mathcal{K}$ is flat.
+    Then $\tor_{1}^{\mathcal{O}_{S, s}}(\mathcal{K}_{s}, k(s)) = 0$ for all $s$ and we get exact sequence
+    \begin{equation}
+        0 \rightarrow (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \overset{\alpha}{\rightarrow} (R^{1}q_{\ast}\mathcal{Z}_{0})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow \mathcal{K}_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \rightarrow 0
+    \end{equation}
+    While by Corollary \ref{Corollary 7.3}, the kernel of base change map is just $\ker \alpha$ and cokernel lies in $\tor_{1}^{\mathcal{O}_{S, s}}((R^{1}q_{\ast}\mathcal{F})_{s}, k(s)) = 0$,
+    we get that
+    \begin{equation}
+        (q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s) \longrightarrow H^{0}(Y_{s}, \mathcal{F}\big{|}_{Y_{s}})
+    \end{equation}
+    is isomorphic.
+    Hence constancy of Hilbert polynomial also implies that $\dim_{k(s)} ((q_{\ast}\mathcal{F})_{s} \otimes_{\mathcal{O}_{S, s}} k(s))$ is constant.
+    Then again by Hartshorne Chapter II exercise 5.8, $q_{\ast}\mathcal{F}$ is flat and so is $R^{1}q_{\ast}\mathcal{Z}_{0}$.
+    By some useful result, we get $q_{\ast}\mathcal{F}$ is locally free.
+    Note that above argument also holds for $\mathcal{F}(n)$ for all $n$, we get $q_{\ast}(\mathcal{F}(n))$ is also locally free.
+    \par
+    Since flatness is local, we may assume $S = \spec A$ is affine.
+    Since $q$ is projective and pushforward along closed immersion preserves stalks, we may reduce to projective space $Y = \mathbb{P}_{A}^{N}$.
+    Then $q_{\ast}(\mathcal{F}(n))$ is defined by locally free $A$-module $H^{0}(Y, \mathcal{F}(n))$.
+    Note that by Hartshorne Chapter II Proposition 5.15, we have that $\mathcal{F} \cong \widetilde{\bigoplus_{n \ge 0} H^{0}(Y, \mathcal{F}(n))}$.
+    It is clear that such an $\mathcal{F}$ is flat over $\spec A$.
+\end{proof}
 \begin{corollary}
     Let $X$ be a projective smooth curve and $S$ be an integral variety.
     Assume $Y = X \times S$ with two projections $p$ and $q$, $\mathcal{F}$ coherent sheaf on $Y$.
     If $q_{\ast}(\mathcal{F}(m))$ is locally free for $m$ large enough, then $\mathcal{F}$ is flat over $S$.
-    \label{Corollary 7.7}
+    \label{Corollary 7.8}
 \end{corollary}
 \begin{reason}
     By Theorem \ref{Theorem 7.3}, suffices to show Hilbert polynomial of $\mathcal{F}$ is constant fiberwise.
     In fact, for $m$ large enough, since $q_{\ast}(\mathcal{F}(m))$ is locally free,
-    by Corollary \ref{Corollary 7.4}, $\chi(\mathcal{F}(m)\big{|}_{Y_{s}})$ is locally constant.
-    Since $S$ is integral, we immediately get Hilbert polynomial of $\mathcal{F}$ is constant fiberwise.
+    by Corollary \ref{Corollary 7.5}, $\chi(\mathcal{F}(m)\big{|}_{Y_{s}})$ is locally constant.
+    Since $S$ is integral, we are done!
 \end{reason}
 
 \subsection{Hilbert schemes and Quot schemes}
