@@ -144,11 +144,10 @@
 \section*{Introduction}
 \label{section:Introduction}
 
-The course aims at introducing vector bundles on curve and Koszul cohomology.
+The course aims at introducing vector bundles on curve, including positivity and moduli theory.
 You may benefit from the following references
 \begin{itemize}
     \item \emph{Ample Vector Bundles}, Hartshorne
-    \item \emph{Koszul Cohomology and Algebraic Geometry}, Aprodu-Nagel
     \item \emph{Lectures on Vector Bundles}, J.Le Potier
     \item \emph{The Geometry of Moduli Space of Sheaves}, Huybrechts-Lehn.
 \end{itemize}
@@ -4865,4 +4864,196 @@ Here, we only study the Quot schemes and later use it to construct the moduli sp
     This functor $\quotfunctor^{P}(E, \cdot)$ is representable by a projective variety $\quotscheme^{P}(E)$.
     \label{Theorem 7.4}
 \end{theorem}
+Here we consider the case for $X$ a projective smooth curve over $\mathbb{C}$.
+\begin{lemma}
+    Let $X$ be a projective smooth curve, $P$ polynomial.
+    There exists integer $v$ relative to $n$ and $P$ such that \\
+    (1)$H^{1}(X, \mathcal{O}_{X}(i)^{\oplus n}) = 0$ for all $i \ge v$. \\
+    (2)For all quotient $\mathcal{G} = \mathcal{O}_{X}^{\oplus n}/\mathcal{F}$ of Hilbert polynomial $P$ and all $k \ge 0$,
+    we have $H^{1}(X, \mathcal{F}(v + k)) = 0$ and surjection
+    \begin{equation}
+        H^{0}(X, \mathcal{O}_{X}(k)) \times H^{0}(X, \mathcal{F}(v)) \twoheadrightarrow H^{0}(X, \mathcal{F}(k + v))
+    \end{equation}
+    \vspace{-\baselineskip} % 减少一行间距
+    \label{Lemma 7.8}
+\end{lemma}
+\begin{remark}
+    This lemma is a changed version of Lemma 4.11 in my dissertation, or refer to \emph{Geometry of Algebraic Curves} by Griffiths.
+\end{remark}
+\begin{corollary}
+    Let $X$ be a projective smooth curve, $\mathcal{E}$ coherent sheaf on $X$, $P$ polynomial.
+    There exists integer $v$ relative to $\mathcal{E}$ and $P$ such that \\
+    (1)$H^{1}(X, \mathcal{E}(i)) = 0$ for all $i \ge v$. \\
+    (2)For all quotient $\mathcal{G} = \mathcal{E}/\mathcal{F}$ of Hilbert polynomial $P$ and all $k \ge 0$,
+    we have $H^{1}(X, \mathcal{F}(v + k)) = 0$ and surjection
+    \begin{equation}
+        H^{0}(X, \mathcal{O}_{X}(k)) \times H^{0}(X, \mathcal{F}(v)) \twoheadrightarrow H^{0}(X, \mathcal{F}(k + v))
+    \end{equation}
+    In particular, we can take $v$ such that $\mathcal{E}(i)$ is globally generated for all $i \ge v$.
+    \label{Corollary 7.9}
+\end{corollary}
+\begin{proof}
+    Since $\mathcal{O}_{X}(1)$ is ample, there exists some integer $v_{1}$ such that $\mathcal{E}(i)$ is globally generated for all $i \ge v_{1}$.
+    Replace $\mathcal{E}$ by $\mathcal{E}(v_{1})$, we may assume $\mathcal{E}$ is globally generated and there is a surjection
+    \begin{equation}
+        H^{0}(X, \mathcal{E}) \otimes \mathcal{O}_{X} \twoheadrightarrow \mathcal{E}
+    \end{equation}
+    Then by Lemma \ref{Lemma 7.8}, we choose integers $v_{2}$ and $v_{3}$ for $H^{0}(X, \mathcal{E}) \otimes \mathcal{O}_{X}$ relative to $P$ and $P_{\mathcal{E}}$ respectively,
+    where $P_{\mathcal{E}}$ is the Hilbert polynomial of $\mathcal{E}$.
+    Set $v := \max \{v_{2}, v_{3}\}$.
+    Note that for all $i \ge v$, we have surjection
+    \begin{equation}
+        H^{0}(X, \mathcal{E}) \otimes \mathcal{O}_{X}(i) \twoheadrightarrow \mathcal{E}(i)
+    \end{equation}
+    so that $H^{0}(X, \mathcal{O}_{X}(i)^{\oplus h^{0}(X, \mathcal{E})}) = 0$ surjectively maps to $H^{1}(X, \mathcal{E}(i))$ and we get the first result.
+    And for any $\mathcal{G} = \mathcal{E}/\mathcal{F}$, take $\mathcal{K} := \ker (H^{0}(X, \mathcal{E}) \otimes \mathcal{O}_{X} \twoheadrightarrow \mathcal{E} \twoheadrightarrow \mathcal{G})$.
+    Then $\mathcal{K}$ surjectively maps to $\mathcal{F}$.
+    By choice of $v$, for all $k \ge 0$, we have $H^{1}(X, \mathcal{K}(v + k)) = 0$ and surjection
+    \begin{equation}
+        H^{0}(X, \mathcal{O}_{X}(k)) \times H^{0}(X, \mathcal{K}(v)) \twoheadrightarrow H^{0}(X, \mathcal{K}(k + v))
+    \end{equation}
+    Consider the following commutative diagram
+    \begin{equation}
+        \begin{tikzcd}
+            H^{0}(X, \mathcal{O}_{X}(k)) \times H^{0}(X, \mathcal{K}(v)) \arrow[r] \arrow[d, twoheadrightarrow] &
+            H^{0}(X, \mathcal{O}_{X}(k)) \times H^{0}(X, \mathcal{K}(v)) \arrow[d, "\alpha"] \\
+            H^{0}(X, \mathcal{K}(k + v)) \arrow[r, "\beta"] &
+            H^{0}(X, \mathcal{F}(k + v))
+        \end{tikzcd}
+    \end{equation}
+    Note that $\mathcal{K}' := \ker (\mathcal{K} \rightarrow \mathcal{F}) = \ker (H^{0}(X, \mathcal{E}) \otimes \mathcal{O}_{X} \rightarrow \mathcal{E})$,
+    by choice of $v$, $H^{1}(X, \mathcal{K}'(k + v))$ also vanishes.
+    Thus $\beta$ is surjective.
+    Conclude that $H^{1}(X, \mathcal{F}(v + k)) = 0$ and $\alpha$ is surjective.
+\end{proof}
+Let $X$ be a projective smooth curve, $\mathcal{E}$ coherent sheaf on $X$, $P$ polynomial.
+By previous corollary, we get an integer $v$.
+Set $\grassmanmianfunctor{P(v)}{H^{0}(X, \mathcal{E}(v))}$ to be the Grassmannian of vector subspaces of $H^{0}(X, \mathcal{E}(v))$ of codimension $P(v)$.
+Consider the map
+\begin{equation}
+    \begin{split}
+        \Phi: \quotfunctor^{P}(E, \mathbb{C}) & \longrightarrow \grassmanmianfunctor{P(v)}{H^{0}(X, \mathcal{E}(v))} \\
+        \mathcal{G} = \mathcal{E}/\mathcal{F} & \longmapsto H^{0}(X, \mathcal{F}(v))
+    \end{split}
+\end{equation}
+where $h^{0}(X, \mathcal{E}(v)) - h^{0}(X, \mathcal{F}(v)) = \chi(X, \mathcal{E}(v)) - \chi(X, \mathcal{F}(v)) = \chi(X, \mathcal{G}(v)) = P(v)$. 
+\begin{lemma}
+    $\Phi$ is injective and $\im \Phi$ is the subset
+    \begin{equation*}
+        \Sigma = \{\Gamma \subseteq H^{0}(X, \mathcal{E}(v)) \text{ subalgebra} \big{|} \dim (H^{0}(X, \mathcal{E}(m))/\Gamma \cdot H^{0}(X, \mathcal{O}_{X}(m - v))) = P(m), \forall m \ge v\}
+    \end{equation*}
+    \vspace{-\baselineskip} % 减少一行间距
+    \label{Lemma 7.9}
+\end{lemma}
+\begin{proof}
+    First to show $\im \Phi \subseteq \Sigma$.
+    For $\mathcal{G} = \mathcal{E}/\mathcal{F}$, we have exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{F}(m) \longrightarrow \mathcal{E}(m) \longrightarrow \mathcal{G}(m) \longrightarrow 0
+    \end{equation}
+    and by Corollary \ref{Corollary 7.9}, we get surjections
+    \begin{equation}
+        H^{0}(X, \mathcal{O}_{X}(m - v)) \times H^{0}(X, \mathcal{F}(v)) \twoheadrightarrow H^{0}(X, \mathcal{F}(m))
+    \end{equation}
+    so that
+    \begin{equation}
+        \begin{split}
+            \dim (H^{0}(X, \mathcal{E}(m))/H^{0}(X, \mathcal{F}(v)) \cdot H^{0}(X, \mathcal{O}_{X}(m - v))) & = \dim (H^{0}(X, \mathcal{E}(m))/H^{0}(X, \mathcal{F}(m))) \\ 
+            & = h^{0}(X, \mathcal{G}(m)) \\
+            & = \chi(X, \mathcal{G}(m)) \\
+            & = P(m)
+        \end{split}
+    \end{equation}
+    Thus $\im \Phi \subseteq \Sigma$.
+    Conversely, for all $\Gamma\in \Sigma$, consider the map
+    \begin{equation}
+        \theta: \Gamma \otimes \mathcal{O}_{X}(-v) \longrightarrow H^{0}(X, \mathcal{E}(v)) \otimes \mathcal{O}_{X}(-v) \longrightarrow \mathcal{E} 
+    \end{equation}
+    Take $\mathcal{G}_{\Gamma} := \coker \theta$ and $\mathcal{F}_{\Gamma} := \im \theta$.
+    Again by Corollary \ref{Corollary 7.9}, we can choose integer $v' \ge v$ for $\Gamma \otimes \mathcal{O}_{X}(-v)$ relative to $P_{\mathcal{E}} - P$.
+    Then for all $m \ge v'$, $H^{0}(X, \Gamma \otimes \mathcal{O}_{X}(m - v)) \rightarrow H^{0}(X, \mathcal{F}_{\Gamma}(m))$ is surjective and hence 
+    \begin{equation}
+        \begin{split}
+            \chi(X, \mathcal{G}_{\Gamma}(m)) & = \chi(X, \mathcal{E}(m)) - \chi(X, \mathcal{F}_{\Gamma}(m)) \\
+            & = h^{0}(X, \mathcal{E}(m)) - h^{0}(X, \mathcal{F}_{\Gamma}(m)) \\
+            & = \dim (H^{0}(X, \mathcal{E}(m))/\Gamma \cdot H^{0}(X, \mathcal{O}_{X}(m - v))) \\
+            & = P(m)
+        \end{split}
+    \end{equation}
+    Thus $\mathcal{G}_{\Gamma}$ has Hilbert polynomial $P$.
+    Define map
+    \begin{equation}
+        \begin{split}
+            \Psi: \Sigma & \longrightarrow \quotfunctor^{P}(E, \mathbb{C}) \\
+            \Gamma & \longmapsto \mathcal{G}_{\Gamma}
+        \end{split}
+    \end{equation}
+    Suffices to check $\Psi$ is the inverse of $\Phi$.
+    For all $\mathcal{G} = \mathcal{E}/\mathcal{F}$, consider the map
+    \begin{equation}
+        H^{0}(X, \mathcal{F}(v)) \otimes \mathcal{O}_{X}(-v) \rightarrow \mathcal{F} \hookrightarrow \mathcal{E}
+    \end{equation}
+    It is clear that this is same to $\theta$ defined above.
+    While by choice of $v$, $H^{0}(X, \mathcal{F}(v)) \otimes \mathcal{O}_{X} \rightarrow \mathcal{F}$ is surjective so that $\coker \theta = \coker (\mathcal{F} \hookrightarrow \mathcal{E}) = \mathcal{G}$.
+    Thus $\Psi \circ \Psi$ is identity.
+    \par
+    Conversely, it is clear that the image of $\Gamma \otimes H^{0}(X, \mathcal{O}_{X}) \overset{\theta}{\rightarrow} H^{0}(X, \mathcal{E}(v))$ is just $\Gamma$.
+    Suffices to show $\Gamma \otimes H^{0}(X, \mathcal{O}_{X}) \rightarrow H^{0}(X, \mathcal{F}_{\Gamma}(v))$ is surjective.
+    By argument above, since $h^{0}(X, \mathcal{E}(v)) - \dim \Gamma = P(v) = \chi(X, \mathcal{G}_{\Gamma}(v)) = h^{0}(X, \mathcal{E}(v)) - h^{0}(X, \mathcal{F}_{\Gamma}(v))$,
+    we get $\dim \Gamma = h^{0}(X, \mathcal{F}_{\Gamma}(v))$, done!
+\end{proof}
+Take $S = \grassmannianscheme{P(v)}{H^{0}(X, \mathcal{E}(v))}$.
+By representability, there is a universal subbundle $\mathcal{U}_{S}$ of $H^{0}(X, \mathcal{E}(v)) \otimes \mathcal{O}_{S}$ over $S$.
+Consider the diagram
+\begin{equation}
+    \begin{tikzcd}
+        X \times S \arrow[r, "q"] \arrow[d, "p"] &
+        S \\
+        X &
+    \end{tikzcd}
+\end{equation}
+There is a canonical map
+\begin{equation}
+    \Theta: \mathcal{O}_{X}(-v) \boxtimes \mathcal{U}_{S} \rightarrow H^{0}(X, \mathcal{E}(v)) \otimes \mathcal{O}_{X \times S}(-v) \rightarrow p^{\ast}\mathcal{E}
+\end{equation}
+Set $\mathcal{G} := \coker \Theta$.
+By cohomology and base change, $R^{1}q_{\ast}(p^{\ast}\mathcal{E}(m)) = H^{1}(X, \mathcal{E}(m)) \otimes \mathcal{O}_{S}$ vanishes for all $m \ge v$.
+As there is a surjection $p^{\ast}\mathcal{E} \twoheadrightarrow \mathcal{G}$, we get $R^{1}q_{\ast}(\mathcal{G}(m)) = 0$.
+For $m \ge v$, define
+\begin{equation*}
+    \varphi_{m}: H^{0}(X, \mathcal{O}_{X}(m - v)) \otimes \mathcal{U}_{S} \rightarrow H^{0}(X, \mathcal{O}_{X}(m - v)) \otimes H^{0}(X, \mathcal{E}(v)) \otimes \mathcal{O}_{S} \rightarrow H^{0}(X, \mathcal{E}(m)) \otimes \mathcal{O}_{S}
+\end{equation*}
+Note that there are exact sequences
+\begin{equation}
+    \mathcal{O}_{X}(m - v) \boxtimes \mathcal{U}_{S} \rightarrow p^{\ast}\mathcal{E}(m) \rightarrow \mathcal{G}(m) \rightarrow 0
+\end{equation}
+Denote $\mathcal{K} := \ker (p^{\ast}\mathcal{E}(m) \rightarrow \mathcal{G}(m))$.
+Then we get surjection $R^{1}q_{\ast}(\mathcal{O}_{X}(m - v) \boxtimes \mathcal{U}_{S}) \twoheadrightarrow $
+\begin{lemma}
+    If $S' \subseteq S$ is a locally closed subvariety,
+    then there exists integer $v' \ge v$ such that for all $m' \ge v'$, the canonical base change map
+    \begin{equation}
+        q_{\ast}(\mathcal{G}(m')) \otimes \mathcal{O}_{S'} \rightarrow q'_{\ast}(\mathcal{G}(m')\big{|}_{X \times S'})
+    \end{equation}
+    is isomorphic, where $q': X \times S'$ is the projection.
+    \label{Lemma 7.10}
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+\begin{lemma}
+    There is a finite covering of $S$, consisting of locally closed subvariety $S_{j}$,
+    such that $\mathcal{G}\big{|}_{X \times S_{j}}$ is flat over $S_{j}$ for all $j$.
+    \label{Lemma 7.11}
+\end{lemma}
+Hilbert polynomial of $\mathcal{G}\big{|}_{X \times S_{j}}$ is constant fiberwise, denoted by $Q_{j}$.
+In addition, we have $\varphi_{m}(s) \ge Q_{j}(m)$.
+Set $U_{m} = \{s\in S \big{|} \dim (\coker \varphi_{m}(s)) \le P(m)\}$ and $\Sigma_{m} = \{s\in S_{m} \big{|} \dim (\coker \varphi_{m}(s)) = P(m)\}$.
+\begin{lemma}
+    There exists $l \ge v$ such that for all $m \ge l$, $\Sigma = \bigcap_{v \le i \le m} \Sigma_{i}$ and $U_{\infty} := \bigcap_{i \ge v} U_{i}$ is an open subset of $S$.
+    Moreover, if define $\widetilde{\Sigma} := \bigcap_{i \ge v} \Sigma_{i}$,
+    then for $m$ large enough, $q_{\ast}(\mathcal{G}(m))\big{|}_{\widetilde{\Sigma}}$ is locally free.
+    In particular, $\mathcal{G}\big{|}_{\widetilde{\Sigma}}$ is flat over $\widetilde{\Sigma}$.
+    \label{Lemma 7.12}
+\end{lemma}
 \end{document}
