@@ -95,6 +95,8 @@
 \newcommand{\cartierdivisorfunctor}{\mathcal{C}\kern -.5pt Div}
 \newcommand{\picardscheme}{\operatorname{Pic}}
 \newcommand{\picardfunctor}{\mathcal{P}\kern -.5pt ic}
+\newcommand{\quotscheme}{\operatorname{Quot}}
+\newcommand{\quotfunctor}{\mathcal{Q}\kern -.5pt uot}
 \newcommand{\isomorphismscheme}{\operatorname{Isom}}
 \newcommand{\isomorphismfunctor}{\mathcal{I}\kern -.5pt som}
 \newcommand{\chowpullback}{\operatorname{ch}}
@@ -4306,7 +4308,7 @@ There are some special functors in Algebraic Geometry.
 \end{proof}
 \begin{theorem}[\textbf{\emph{Serre}}]
     Let $A$ be a noetherian ring, $X$ projective scheme over $A$, $\mathcal{F}$ coherent sheaf on $X$.
-    Assume $X \rightarrow A$ factor through closed immersion $j: X \hookrightarrow \mathbb{P}_{A}^{r}$.
+    Assume $X \rightarrow \spec A$ factor through closed immersion $j: X \hookrightarrow \mathbb{P}_{A}^{r}$.
     Then \\
     (1)for all $i \ge 0$, $H^{i}(X, \mathcal{F})$ is a finite $A$-module. \\
     (2)there exists integer $n_{0}$ relative to $\mathcal{F}$ such that $H^{i}(X, \mathcal{F}(n)) = 0$ for all $i > 0$ and $n \ge n_{0}$.
@@ -4351,6 +4353,18 @@ There are some special functors in Algebraic Geometry.
     Thus there exists $n_{i}(\mathcal{F})$ such that $H^{i}(X, \mathcal{F}(n)) = 0$ for all $n \ge n_{i}(\mathcal{F})$.
     As there are finitely many $i$, we can take a uniform upper $n_{0}(\mathcal{F})$ bound for $n_{i}(\mathcal{F})$.
 \end{proof}
+\begin{theorem}[\textbf{\emph{Serre}}]
+    Let $p: X \rightarrow S$ be a projective morphism between noetherian schemes, $\mathcal{F}$ coherent sheaf on $X$.
+    Then there exists integer $n_{0}$ relative to $\mathcal{F}$ such that $R^{i}p_{\ast}(\mathcal{F}(n)) = 0$ for all $i > 0$ and $n \ge n_{0}$.
+    \label{Theorem 7.8}
+\end{theorem}
+\begin{reason}
+    Since $S$ is noetherian, we can take finite affine open covering $\mathcal{U} = \{U_{j}\}$ of $S$.
+    Apply Theorem \ref{Theorem 7.7} to each $X \times_{S} U_{j} \rightarrow U_{j}$ and restriction of $\mathcal{F}$,
+    we get integers $n_{j}$ such that for all $n \ge n_{j}$, $H^{i}(X \times_{S} U_{j}, \mathcal{F}(n)\big{|}_{X \times_{S} U_{j}}) = 0$ for all $i > 0$.
+    Set $n_{0} = \max_{j} \{n_{j}\}$, then we see that for all $n \ge n_{0}$,
+    $(R^{i}p_{\ast}(\mathcal{F}(n)))\big{|}_{U_{j}} = 0$, done! 
+\end{reason}
 \begin{corollary}
     Let $f: X \longrightarrow Y$ be a projective morphism with $X, Y$ noetherian, $\mathcal{F}$ coherent sheaf on $X$.
     Then $f_{\ast}\mathcal{F}$ is coherent on $Y$.
@@ -4391,7 +4405,7 @@ There are some special functors in Algebraic Geometry.
     (3)for all $\mathcal{F}$ coherent sheaf on $X$, 
     there exists $n_{0}$ relative to $\mathcal{F}$ such that $H^{1}(X, \mathcal{F} \otimes_{\mathcal{O}_{X}} \mathcal{L}^{n}) = 0$.
     \vspace{-\baselineskip} % 减少一行间距
-    \label{Theorem 7.8}
+    \label{Theorem 7.9}
 \end{theorem}
 \begin{proof}
     Step 1.
