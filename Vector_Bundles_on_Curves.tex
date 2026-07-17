@@ -129,6 +129,7 @@
 \newcommand{\annihilator}{\operatorname{ann}}
 \newcommand{\coefficient}{\operatorname{coeff}}
 \newcommand{\multiplicity}{\operatorname{multi}}
+\newcommand{\grade}{\operatorname{gr}}
 
 \title{Vector Bundles on Curves}
 \author{Taught by Jiabin Du}
@@ -1659,7 +1660,7 @@ There are some special functors in Algebraic Geometry.
     By hypothesis, there exists $n_{i + 1}(\mathcal{G})$ such that $H^{i + 1}(X, \mathcal{G}(n)) = 0$ for all $n \ge n_{i + 1}(\mathcal{G})$.
     By Theorem \ref{Theorem 2.6}, $H^{i}(X, \mathcal{O}_{X}(m + n)^{r}) = 0$ for large enough $n$.
     Thus there exists $n_{i}(\mathcal{F})$ such that $H^{i}(X, \mathcal{F}(n)) = 0$ for all $n \ge n_{i}(\mathcal{F})$.
-    As there are finitely many $i$, we can take a uniform upper $n_{0}(\mathcal{F})$ bound for $n_{i}(\mathcal{F})$.
+    As there are finitely many $i$, we can take a uniform upper bound $n_{0}(\mathcal{F})$ for $n_{i}(\mathcal{F})$.
 \end{proof}
 \begin{corollary}
     Let $f: X \longrightarrow Y$ be a projective morphism with $X, Y$ noetherian, $\mathcal{F}$ coherent sheaf on $X$.
@@ -3751,7 +3752,7 @@ In the following, we would give \leftquotes uniqueness theorem \rightquotes and 
             \end{aligned}
         \right.
     \end{equation}
-    Starting with $\mathcal{E}(r, d)$ and $\beta_{r, d}$ and reapeating the process, we get $\mathcal{E}(r, d) \overset{\beta_{r, d}}{\longleftrightarrow} \mathcal{E}(r', d') \overset{\beta_{r', d'}}{\longleftrightarrow} \cdots$.
+    Starting with $\mathcal{E}(r, d)$ and $\beta_{r, d}$ and repeating the process, we get $\mathcal{E}(r, d) \overset{\beta_{r, d}}{\longleftrightarrow} \mathcal{E}(r', d') \overset{\beta_{r', d'}}{\longleftrightarrow} \cdots$.
     For each step, it is easy to see that $r' + d' < r + d$, $\gcd (r', d') = \gcd(r, d)$ and $d' \ge 0$.
     Hence the process would stop at $\mathcal{E}(h, 0)$.
     Combining these correspondence together, we get one-to-one correspondence $\beta_{r, d}: \mathcal{E}(r, d) \longleftrightarrow \mathcal{E}(r_{0}, 0)$.
@@ -3854,13 +3855,54 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
     Define the slope of $\mathcal{F}$ to be $\mu(\mathcal{F}) := \frac{\deg \mathcal{F}}{\rank \mathcal{F}}$.
 \end{definition}
 \begin{definition}
-    We say a vector bundle $\mathcal{E}$ on $X$ is stable (resp. semi-stable) if for all proper subbundle $\mathcal{E}' \subset \mathcal{E}$,
+    We say a vector bundle $\mathcal{E}$ on $X$ is stable (resp. semistable) if for all proper subbundle $\mathcal{E}' \subset \mathcal{E}$,
     we have $\mu(\mathcal{E}') < \mu(\mathcal{E})$ (resp. $\mu(\mathcal{E}') \le \mu(\mathcal{E})$).
 \end{definition}
+\begin{remark}
+    In general, we can also define slope stability for coherent sheaf with slope inequalities holding for all nontrivial subsheaves.
+    The two definitions agree on vector bundle since there is a result that on a smooth projective curve,
+    for all coherent $\mathcal{F}$, $\mathcal{F} \cong \tor(\mathcal{F}) \oplus (\mathcal{F}/\tor(\mathcal{F}))$,
+    equivalent to the following exact sequence splits
+    \begin{equation}
+        0 \longrightarrow \tor(\mathcal{F}) \longrightarrow \mathcal{F} \longrightarrow \mathcal{F}/\tor(\mathcal{F}) \longrightarrow 0
+    \end{equation}
+    We omits the proof here.
+\end{remark}
 \begin{lemma}
-    Let $\mathcal{E}$ be a semi-stable vector bundle of deg $d$ and rank $r$.
-    If $\gcd (r, d) = 1$, then $\mathcal{E}$ is stable.
+    Assume there is an exact sequence of vector bundles
+    \begin{equation}
+        0 \longrightarrow \mathcal{E} \longrightarrow \mathcal{F} \longrightarrow \mathcal{G} \longrightarrow 0
+    \end{equation}
+    If $\mathcal{E}$ and $\mathcal{G}$ are semistable, then so is $\mathcal{F}$.
     \label{Lemma 6.2}
+\end{lemma}
+\begin{proof}
+    For all nontrivial subbundle $\mathcal{F}' \subset \mathcal{F}$, consider the commutative diagram with exact rows
+    \begin{equation}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{E} \arrow[r] &
+            \mathcal{F} \arrow[r, "\alpha"] &
+            \mathcal{G} \arrow[r] &
+            0 \\
+            0 \arrow[r] &
+            \mathcal{E}' \arrow[u, hookrightarrow] \arrow[r] &
+            \mathcal{F}' \arrow[u, hookrightarrow, "\ell"] \arrow[r, "\beta"] &
+            \mathcal{G}' \arrow[u, hookrightarrow] \arrow[r] &
+            0
+        \end{tikzcd}
+    \end{equation}
+    where $\mathcal{G}' = \im (\alpha \circ \ell)$ and $\mathcal{F}' = \ker \beta$.
+    Since $\mathcal{E}$ and $\mathcal{G}$ are semistable, we get
+    \begin{equation}
+        \mu(\mathcal{F}') = \frac{\deg \mathcal{F}'}{\rank \mathcal{F}'} = \frac{\deg \mathcal{E}' + \deg \mathcal{G}'}{\rank \mathcal{E}' + \rank \mathcal{G}'} \le \frac{\deg \mathcal{E} + \deg \mathcal{G}}{\rank \mathcal{E} + \rank \mathcal{G}} = \frac{\deg \mathcal{F}}{\rank \mathcal{F}} = \mu(\mathcal{F})
+    \end{equation}
+    done!
+\end{proof}
+\begin{lemma}
+    Let $\mathcal{E}$ be a semistable vector bundle of deg $d$ and rank $r$.
+    If $\gcd (r, d) = 1$, then $\mathcal{E}$ is stable.
+    \label{Lemma 6.3}
 \end{lemma}
 \begin{proof}
     Suffice to show for all subbundle $\mathcal{E}' \subseteq \mathcal{E}$, $\mu(\mathcal{E}') = \mu(\mathcal{E})$ if and only if $\mathcal{E}' = \mathcal{E}$.
@@ -3868,7 +3910,7 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
     Since $\gcd (r, d) = 1$, we must have $r \mid \rank \mathcal{E}'$ so that $\mathcal{E}' = r$ and $\mathcal{E}' = \mathcal{E}$.
 \end{proof}
 \begin{proposition}
-    There is an equivalent definition of stability (resp. semi-stability) that $\mathcal{E}$ is stable (resp. semi-stable) if for any nontrivial surjection $\mathcal{E} \twoheadrightarrow \mathcal{F}$ to vector bundle $\mathcal{F}$,
+    There is an equivalent definition of stability (resp. semi-stability) that $\mathcal{E}$ is stable (resp. semistable) if for any nontrivial surjection $\mathcal{E} \twoheadrightarrow \mathcal{F}$ to vector bundle $\mathcal{F}$,
     we have $\mu(\mathcal{E}) < \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) \le \mu(\mathcal{F})$).
     \label{Proposition 6.1}
 \end{proposition}
@@ -3897,7 +3939,7 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
     Conclude that the two definitions are equivalent.
 \end{proof}
 \begin{proposition}
-    $\mathcal{E}$ is stable (resp. semi-stable) if and only if for all proper subbundle $\mathcal{E}' \subset \mathcal{E}$,
+    $\mathcal{E}$ is stable (resp. semistable) if and only if for all proper subbundle $\mathcal{E}' \subset \mathcal{E}$,
     $\deg (\mathcal{E}^{\vee} \otimes \mathcal{E}') < 0$ (resp. $\mathcal{E}' \subset \mathcal{E}$, $\deg (\mathcal{E}^{\vee} \otimes \mathcal{E}') \le 0$).
     \label{Proposition 6.2}
 \end{proposition}
@@ -3907,11 +3949,11 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
 \end{reason}
 \begin{proposition}
     Let $\mathcal{L}$ be a line bundle on $X$.
-    Then $\mathcal{E}$ is stable (resp. semi-stable) if and only if $\mathcal{E} \otimes \mathcal{L}$ is stable (resp. semi-stable).
+    Then $\mathcal{E}$ is stable (resp. semistable) if and only if $\mathcal{E} \otimes \mathcal{L}$ is stable (resp. semistable).
     \label{Proposition 6.3}
 \end{proposition}
 \begin{proof}
-    Since $\mathcal{L}^{\vee}$ is also a line bundle, suffices to show if $\mathcal{E}$ stable (resp. semi-stable) then $\mathcal{E} \otimes \mathcal{L}$ stable (resp. semi-stable).
+    Since $\mathcal{L}^{\vee}$ is also a line bundle, suffices to show if $\mathcal{E}$ stable (resp. semistable) then $\mathcal{E} \otimes \mathcal{L}$ stable (resp. semistable).
     In fact, for all proper subbundle $\mathcal{F} \subset \mathcal{E} \otimes \mathcal{L}$, we get $\mathcal{F} \otimes \mathcal{L}^{\vee}$ a proper subbundle of $\mathcal{E}$.
     Hence $\mu(\mathcal{F} \otimes \mathcal{L}^{\vee}) < \mu(\mathcal{E})$ (resp. $\mu(\mathcal{F} \otimes \mathcal{L}^{\vee}) \le \mu(\mathcal{E})$).
     Note that
@@ -3933,7 +3975,7 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
     Thus $\mu(\mathcal{F}) < \mu(\mathcal{E} \otimes \mathcal{L})$ (resp. $\mu(\mathcal{F}) \le \mu(\mathcal{E} \otimes \mathcal{L})$).
 \end{proof}
 \begin{proposition}
-    Let $\mathcal{E}$ and $\mathcal{F}$ be two semi-stable vector bundles of same rank and degree.
+    Let $\mathcal{E}$ and $\mathcal{F}$ be two semistable vector bundles of same slope $\mu$.
     Assume at least one of them is stable.
     If $f: \mathcal{E} \rightarrow \mathcal{F}$ is a nonzero map, then $f$ is an isomorphism.
     \label{Proposition 6.4}
@@ -3978,7 +4020,7 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
 \end{definition}
 \begin{lemma}
     A simple vector bundle $\mathcal{E}$ is indecomposable.
-    \label{Lemma 6.3}
+    \label{Lemma 6.4}
 \end{lemma}
 \begin{proof}
     Suppose $\mathcal{E} \cong \mathcal{E}_{1} \oplus \mathcal{E}_{2}$ for vector bundles $\mathcal{E}_{1}$ and $\mathcal{E}_{2}$.
@@ -3993,7 +4035,7 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
     Hence $\homend(\mathcal{E})$ is a division algebra finite over $\mathbb{C}$, which must be $\mathbb{C}$ as $\mathbb{C}$ is algebraically closed.
 \end{reason}
 \begin{proposition}
-    Let $\mathcal{E}$ be a semi-stable vector bundle and $\mathcal{F}$ be a vector bundle with $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$).
+    Let $\mathcal{E}$ be a semistable vector bundle and $\mathcal{F}$ be a vector bundle with $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$).
     If $f: \mathcal{E} \rightarrow \mathcal{F}$ is a nonzero morphism and $\mathcal{F}' := (\im f)^{\saturation}$, then $\mu(\mathcal{F}') \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{F}') > \mu(\mathcal{F})$).
     \label{Proposition 6.5}
 \end{proposition}
@@ -4014,12 +4056,12 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
         \end{tikzcd}
     \end{equation}
     Hence $\mu(\mathcal{F}') \ge \mu(\mathcal{E}'')$.
-    Since $\mathcal{E}$ is semi-stable, we get $\mu(\mathcal{E}'') \ge \mu(\mathcal{E})$.
+    Since $\mathcal{E}$ is semistable, we get $\mu(\mathcal{E}'') \ge \mu(\mathcal{E})$.
     As $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$), we are done!
 \end{proof}
 \begin{proposition}
     If $\mathcal{E}$ is not stable, then there exists stable subbundle $\mathcal{E}' \subset \mathcal{E}$ with $\mu(\mathcal{E}') \ge \mu(\mathcal{E})$.
-    Moreover, if $\mathcal{E}$ is not semi-stable, then there exists stable subbundle $\mathcal{E}' \subset \mathcal{E}$ with $\mu(\mathcal{E}') > \mu(\mathcal{E})$.
+    Moreover, if $\mathcal{E}$ is not semistable, then there exists stable subbundle $\mathcal{E}' \subset \mathcal{E}$ with $\mu(\mathcal{E}') > \mu(\mathcal{E})$.
     \label{Proposition 6.6}
 \end{proposition}
 \begin{proof}
@@ -4028,13 +4070,13 @@ By Lemma \ref{Lemma 6.1}, we also have $\rank \mathcal{F}' = \rank \mathcal{E}''
 \end{proof}
 \begin{proposition}
     Let $\mathcal{F}$ be a vector bundle of rank $r$.
-    Then $\mathcal{F}$ is not stable (resp. semi-stable) if and only if there exists stable vector bundle $\mathcal{E}$ with $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$) and a nonisomorphic nonzero map $f: \mathcal{E} \rightarrow \mathcal{F}$.
+    Then $\mathcal{F}$ is not stable (resp. semistable) if and only if there exists stable vector bundle $\mathcal{E}$ with $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$) and a nonisomorphic nonzero map $f: \mathcal{E} \rightarrow \mathcal{F}$.
     \label{Proposition 6.7}
 \end{proposition}
 \begin{proof}
     By Proposition \ref{Proposition 6.6}, suffices to show if there exists stable vector bundle $\mathcal{E}$ with $\mu(\mathcal{E}) \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{E}) > \mu(\mathcal{F})$) and a nonisomorphic nonzero map $f: \mathcal{E} \rightarrow \mathcal{F}$,
-    then $\mathcal{F}$ is not stable (resp. semi-stable).
-    Suppose $\mathcal{F}$ is stable (resp. semi-stable).
+    then $\mathcal{F}$ is not stable (resp. semistable).
+    Suppose $\mathcal{F}$ is stable (resp. semistable).
     \par
     Denote $\mathcal{F}' = (\im f)^{\saturation}$.
     By Proposition \ref{Proposition 6.5}, we have $\mu(\mathcal{F}') \ge \mu(\mathcal{F})$ (resp. $\mu(\mathcal{F}') > \mu(\mathcal{F})$).
@@ -4085,7 +4127,7 @@ For this section, you may refer to the paper \emph{Ample Vector Bundles on Curve
     By assumption, $\mathcal{E}'$ is ample.
     Consider the following exact sequence
     \begin{equation}
-        0 \longrightarrow \mathcal{E}' \longrightarrow \mathcal{E} \longmapsfrom \mathcal{E}'' := \mathcal{E}/\mathcal{E}' \longrightarrow 0
+        0 \longrightarrow \mathcal{E}' \longrightarrow \mathcal{E} \longrightarrow \mathcal{E}'' := \mathcal{E}/\mathcal{E}' \longrightarrow 0
     \end{equation}  
     Note that quotient bundles of $\mathcal{E}''$ are also quotient bundles of $\mathcal{E}$ and hence have positive degree.
     By inductive hypothesis, we know $\mathcal{E}''$ is ample.
@@ -4146,7 +4188,7 @@ In Hartshorne's paper, he proved the following deep theorem with results of Nara
 Here we quote it without proof.
 \begin{theorem}
     Let $X$ be a complete smooth complex curve of genus $g \ge 2$, $\mathcal{E}$ stable vector bundle on $X$.
-    Then $S^{n}\mathcal{E}$ is semi-stable for all $n \ge 1$.
+    Then $S^{n}\mathcal{E}$ is semistable for all $n \ge 1$.
     \label{Theorem 6.2}
 \end{theorem}
 \begin{lemma}
@@ -4155,7 +4197,7 @@ Here we quote it without proof.
     (1)$R^{i}f_{\ast}\mathcal{F} = 0$ for all coherent $\mathcal{F}$ and $i > 0$ \\
     (2)$\rank (f_{\ast}\mathcal{F}) = \deg f \cdot \rank \mathcal{F}$ for all coherent $\mathcal{F}$, where $\deg f = [K(X) : K(Y)]$. \\
     (3)$\deg (f_{\ast}\mathcal{F}) = \deg \mathcal{F} + \rank \mathcal{F} \cdot \deg (f_{\ast}\mathcal{F})$ for all coherent $\mathcal{F}$.
-    \label{Lemma 6.4} 
+    \label{Lemma 6.5} 
 \end{lemma}
 \begin{proof}
     For (1), we may assume $Y = \spec A$ and $X = \spec B$ with $A$ finite over $B$.
@@ -4194,7 +4236,7 @@ Here we quote it without proof.
 \end{proof}
 From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C}$.
 \begin{proposition}
-    Let $\mathcal{E}$ be a vector bundle on $X$ of positive degree satisfying that $S^{n}\mathcal{E}$ is semi-stable for all $n$.
+    Let $\mathcal{E}$ be a vector bundle on $X$ of positive degree satisfying that $S^{n}\mathcal{E}$ is semistable for all $n$.
     Then $\mathcal{E}$ is ample.
     \label{Proposition 6.9}
 \end{proposition}
@@ -4207,7 +4249,7 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
     If $\pi(C)$ is a single point, then $C$ is contained in some fiber of $\pi$, which is isomorphic to $\mathbb{P}_{\mathbb{C}}^{r - 1}$.
     Hence $\mathcal{L} \cdot C = \deg C \ge m(C)$.
     When $\pi(C)$ is not a single point, then $\dim (\pi(C)) = 1$ so that $\pi(C) = X$ and $\pi\big{|}_{C}: C \rightarrow X$ is a finite surjection.
-    Then by Lemma \ref{Lemma 6.4}, $\rank ((\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})) = \deg (\pi\big{|}_{C})$ and $\deg ((\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})) = \deg (\mathcal{L}^{m}\big{|}_{C}) + \deg ((\pi\big{|}_{C})_{\ast}\mathcal{O}_{C})$.
+    Then by Lemma \ref{Lemma 6.5}, $\rank ((\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})) = \deg (\pi\big{|}_{C})$ and $\deg ((\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})) = \deg (\mathcal{L}^{m}\big{|}_{C}) + \deg ((\pi\big{|}_{C})_{\ast}\mathcal{O}_{C})$.
     Consider the following surjection
     \begin{equation}
         S^{m}\mathcal{E} \cong (\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}) \twoheadrightarrow (\pi\big{|}_{C})_{\ast}(\mathcal{L}^{m}\big{|}_{C})
@@ -4246,7 +4288,7 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
     And ample vector bundle automatically has positive degree.
     Conversely, by Proposition \ref{Proposition 6.8}, suffices to prove every stable vector bundle of positive degree is ample.
     Consider stable vector bundle $\mathcal{E}$ of positive degree.
-    When genus $g \ge 2$, by Theorem \ref{Theorem 6.2}, $S^{n}\mathcal{E}$ is semi-stable for all $n \ge 1$.
+    When genus $g \ge 2$, by Theorem \ref{Theorem 6.2}, $S^{n}\mathcal{E}$ is semistable for all $n \ge 1$.
     Then by Proposition \ref{Proposition 6.9}, $\mathcal{E}$ is ample.
     For $g = 1$, this is a result by Atiyah.
     And for $g = 0$, $X$ is a rational curve.
@@ -4257,7 +4299,7 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
     Let $\mathcal{E}$ be a vector bundle on $X$, $s\in \Gamma(X, \mathcal{E})$ not vanishing at any singular point of $X$.
     Then $\mathcal{E}$ has a line subbundle $\mathcal{L}$ such that $s\in \Gamma(X, \mathcal{L})$.
     Moreover, if $s$ is not invertible, $\mathcal{L}$ is ample.
-    \label{Lemma 6.5}
+    \label{Lemma 6.6}
 \end{lemma}
 \begin{proof}
     Note that $s$ would give a rational section $\tau: X \dashrightarrow \mathbb{P}(\mathcal{E})$ defined on $X$ minus finitely many regular points.
@@ -4287,7 +4329,7 @@ From now on, we again assume $X$ to be a smooth projective curve over $\mathbb{C
     When $Y$ is a curve, we prove the result by induction on $\rank \mathcal{E}$.
     By inductive hypothesis, every nontrivial quotient bundle of $\mathcal{E}$ is ample.
     Hence we suffices to find an ample line subbundle of $\mathcal{E}$.
-    By Lemma \ref{Lemma 6.5}, only need to find a section which does not vanish at any singular point of $Y$ but not invertible.
+    By Lemma \ref{Lemma 6.6}, only need to find a section which does not vanish at any singular point of $Y$ but not invertible.
     \par
     Set $n = h^{0}(Y, \mathcal{E})$.
     As $\mathcal{E}$ is globally generated, there is a surjection $\psi: \mathcal{O}_{Y}^{\oplus n} \twoheadrightarrow \mathcal{E}$.
@@ -5057,4 +5099,351 @@ Set $U_{m} = \{s\in S \big{|} \dim (\coker \varphi_{m}(s)) \le P(m)\}$ and $\Sig
     With these results, we finally find an appropriate set with scheme structure representing the Quot functor.
     And for the proofs of previous two lemmas, refer to Lemma 4.4.8 and Lemma 4.4.9 in \emph{Lectures on Vector Bundles}, J.Le Potier
 \end{remark}
+
+\subsection{Boundedness}
+\label{subsection:Moduli_Space_of_Vector_Bundles_Boundedness}
+
+Let $X$ be a smooth projective curve, $V$ a set of isomorphism classes of vector bundles on $X$
+We say $V$ is bounded if there exist variety $S$ and vector bundle $\mathcal{F}$ on $X \times S$ such that
+\begin{equation}
+    V \subseteq \{\mathcal{V} \text{ vector bundle on } X \big{|} \mathcal{V}\big{|}_{X \times s} \cong \mathcal{F}\big{|}_{X \times s}, \text{ for some } s\in S\}/\sim
+\end{equation}
+\begin{lemma}
+    Assume $V$ is bounded.
+    Then the set $\{(\rank \mathcal{V}, \deg \mathcal{V}) \big{|} \mathcal{V}\in V\}$ is finite.
+    \label{Lemma 7.13}
+\end{lemma}
+\begin{proof}
+    Since $S$ is of finite type over $\mathbb{C}$, we can take finite affine open covering $\mathcal{U} = \{U_{i}\}$ of $S$.
+    In addition, for each $i$, we can take finite affine open covering $\mathcal{U}_{i} = \{U_{ij}\}$ of $X \times U_{i}$ trivializing $\mathcal{F}$.
+    Clearly, we get $\{\rank \mathcal{V} \big{|} \mathcal{V}\in V\}$ finite.
+    And since $\mathcal{F}$ is flat over $S$, by Corollary \ref{Corollary 7.4},
+    the Euler characteristic is locally constant so that $\{\deg \mathcal{V} \big{|} \mathcal{V}\in V\}$ is also finite, done!
+\end{proof}
+\begin{lemma}
+    Assume $V$ is bounded.
+    Then the set $\{h^{1}(X, \mathcal{V}) \big{|} \mathcal{V}\in V\}$ is finite and the same holds for $h^{0}(X, \mathcal{V})$.
+    \label{Lemma 7.14}
+\end{lemma}
+\begin{reason}
+    By Corollary \ref{Corollary 7.2}, the set $U_{n} := \{s\in S \big{|} h^{1}(X \times s, \mathcal{F}\big{|}_{X \times s}) < n\}$ is open subset of $S$ for all $n$.
+    Note that $S = \cup_{n \ge 0} U_{n}$, as $S$ is quasi-compact, we get there exists $n_{0}$ such that $S = \cup_{0 \le n \le n_{0}} U_{n}$.
+    Hence $\{h^{1}(X, \mathcal{V}) \big{|} \mathcal{V}\in V\}$ is finite.
+\end{reason}
+By results in the previous section, we get that for fixed bundle $\mathcal{E}$ on $X$,
+the set of isomorphism classes of quotient bundle of $\mathcal{E}$ with fixed Hilbert polynomial $P$ is bounded.
+But the following proposition shows that we won't get a bounded family if we only fix rank and degree.
+\begin{proposition}
+    The set of isomorphism classes of vector bundles of rank $r$ and degree $d$ is not bounded if $r \ge 2$.
+    \label{Proposition 7.4}
+\end{proposition}
+\begin{reason}
+    Set $\mathcal{E}_{k} := \mathcal{O}_{X}(-k) \oplus \mathcal{O}_{X}(d + k) \oplus \mathcal{O}_{X}^{\oplus (r - 2)}$,
+    then $\mathcal{E}_{k}$ is of rank $r$ and degree $d$.
+    But $h^{1}(\mathcal{E}_{k}) \ge  h^{1}(\mathcal{O}_{X}(-k)) = k + g - 1$ is unbounded, contradicting to Lemma \ref{Lemma 7.14}.
+\end{reason}
+
+\subsection{Category of semistable bundles}
+\label{subsection:Moduli_Space_of_Vector_Bundles_Category_of_semistable_bundles}
+
+To get a correct bounded family, we may need the help of stability condition.
+Denote $\mathscr{C}(\mu)$ the set of semistable vector bundle of slope $\mu$.
+Want to show this is an abelian category.
+\begin{lemma}
+    Assume there is an exact sequence of vector bundles
+    \begin{equation}
+        0 \longrightarrow \mathcal{E} \longrightarrow \mathcal{F} \longrightarrow \mathcal{G} \longrightarrow 0
+    \end{equation}
+    If any two of them have slope $\mu$, then so does the last one.
+    \label{Lemma 7.15}
+\end{lemma}
+\begin{reason}
+    Note that there is an inequality
+    \begin{equation}
+        \min \{\mu(\mathcal{E}), \mu(\mathcal{G})\} \le \mu(\mathcal{F}) = \frac{\deg \mathcal{F}}{\rank \mathcal{F}} = \frac{\deg \mathcal{E} + \deg \mathcal{G}}{\rank \mathcal{E} + \rank \mathcal{G}} \le \max \{\mu(\mathcal{E}), \mu(\mathcal{G})\}
+    \end{equation}
+    where the equalities hold when $\mu(\mathcal{E}) = \mu(\mathcal{G})$.
+\end{reason}
+\begin{proposition}
+    Assume there is an exact sequence of vector bundles
+    \begin{equation}
+        0 \longrightarrow \mathcal{E} \longrightarrow \mathcal{F} \longrightarrow \mathcal{G} \longrightarrow 0
+    \end{equation}
+    If any two of them are both elements in $\mathscr{C}(\mu)$, then so is the last one.
+    \label{Proposition 7.5}
+\end{proposition}
+\begin{proof}
+    Firstly, by Lemma \ref{Lemma 7.15}, $\mu(\mathcal{E}) = \mu(\mathcal{F}) = \mu(\mathcal{G}) = \mu$.
+    \par
+    Suppose $\mathcal{E}, \mathcal{F}\in \mathscr{C}(\mu)$.
+    By Proposition \ref{Proposition 6.1}, suffices to show for all nontrivial quotient bundle $\mathcal{H}$ of $\mathcal{G}$, we have $\mu(\mathcal{H}) \ge \mu$.
+    In fact, $\mathcal{H}$ is also a nontrivial bundle of $\mathcal{F}$ so that $\mu(\mathcal{H}) \ge \mu$.
+    \par
+    Suppose $\mathcal{E}, \mathcal{G}\in \mathscr{C}(\mu)$.
+    For all nontrivial subbundle $\mathcal{F}' \subset \mathcal{F}$, consider the commutative diagram with exact rows
+    \begin{equation}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{E} \arrow[r] &
+            \mathcal{F} \arrow[r, "\alpha"] &
+            \mathcal{G} \arrow[r] &
+            0 \\
+            0 \arrow[r] &
+            \mathcal{E}' \arrow[u, hookrightarrow] \arrow[r] &
+            \mathcal{F}' \arrow[u, hookrightarrow, "\ell"] \arrow[r, "\beta"] &
+            \mathcal{G}' \arrow[u, hookrightarrow] \arrow[r] &
+            0
+        \end{tikzcd}
+    \end{equation}
+    where $\mathcal{G}' = \im (\alpha \circ \ell)$ and $\mathcal{F}' = \ker \beta$.
+    Then we get
+    \begin{equation}
+        \mu(\mathcal{F}') = \frac{\deg \mathcal{F}'}{\rank \mathcal{F}'} = \frac{\deg \mathcal{E}' + \deg \mathcal{G}'}{\rank \mathcal{E}' + \rank \mathcal{G}'} \le \max \{\mu(\mathcal{E}'), \mu(\mathcal{G}')\} \le \mu
+    \end{equation}
+    \par
+    Suppose $\mathcal{F}, \mathcal{G}\in \mathscr{C}(\mu)$.
+    For all nontrivial subbundle $\mathcal{E}' \subset \mathcal{E}$, it is also a subbundle of $\mathcal{F}$ so that $\mu(\mathcal{E}') \le \mu$.
+\end{proof}
+\begin{proposition}
+    $\mathscr{C}(\mu)$ with morphisms of vector bundles is an abelian full subcategory of $\vectorbundle$.
+    \label{Proposition 7.6}
+\end{proposition}
+\begin{proof}
+    Clearly, it is a category.
+    Since $\vectorbundle$ is abelian category, suffices to show product, kernel and coker all lie in $\mathscr{C}(\mu)$.
+    By Proposition \ref{Proposition 7.5}, for all $\mathcal{E}, \mathcal{F}\in \mathscr{C}(\mu)$, their product $\mathcal{E} \oplus \mathcal{F}\in \mathscr{C}(\mu)$.
+    And for any morphism $\varphi: \mathcal{E} \rightarrow \mathcal{F}$ in $\mathscr{C}(\mu)$,
+    note that $\mu(\mathcal{E}) \le \mu(\im \varphi) \le \mu(\mathcal{F})$, we get $\im \mu\in \mathscr{C}(\mu)$.
+    Then again by Proposition \ref{Proposition 7.5}, $\ker f$ and $\coker f$ are both elements in $\mathscr{C}(\mu)$.
+\end{proof}
+Here, we also state a special version of Proposition \ref{Proposition 6.6}.
+\begin{lemma}
+    Let $\mathcal{E}\in \mathscr{C}(\mu)$.
+    If $\mathcal{E}$ is not stable, then $\mathcal{E}$ has a stable subbundle $\mathcal{F}\in \mathscr{C}(\mu)$. 
+    \label{Lemma 7.16}
+\end{lemma}
+\begin{proof}
+    By Proposition \ref{Proposition 6.6}, there exists stable bundle $\mathcal{F}$ of $\mathcal{E}$ with $\mu(\mathcal{F}) \ge \mu(\mathcal{E}) = \mu$.
+    While $\mathcal{E}$ is semistable, $\mu(\mathcal{F}) \le \mu$, done!
+\end{proof}
+To use stable vector bundles to approximate semistable ones, we induce the Jordan-Holder filtration
+\begin{proposition}
+    Let $\mathcal{E}\in \mathscr{C}(\mu)$.
+    Then there is a filtration of subbundles
+    \begin{equation}
+        0 = \mathcal{E}_{0} \subset \mathcal{E}_{1} \subset \mathcal{E}_{2} \subset \cdots \subset \mathcal{E}_{n} = \mathcal{E}
+    \end{equation}
+    where $\mathcal{E}_{i}\in \mathscr{C}(\mu)$, $\grade_{i} := \mathcal{E}_{i}/\mathcal{E}_{i - 1}$ stable, $\grade := \bigoplus_{0 \le i \le n} \grade_{i}$ and $n$ is called the length of this filtration.
+    \label{Proposition 7.7}
+\end{proposition}
+\begin{proof}
+    By Lemma \ref{Lemma 7.16}, $\mathcal{E}$ has a stable subbundle $\mathcal{E}_{1}\in \mathscr{C}(\mu)$.
+    Then $\mathcal{E}/\mathcal{E}_{1}\in \mathscr{C}(\mu)$.
+    Again by Lemma \ref{Lemma 7.16}, $\mathcal{E}/\mathcal{E}_{1}$ has a stable subbundle $\grade_{2}\in \mathscr{C}(\mu)$ and we find $\mathcal{E}_{2} \subset \mathcal{E}$ such that $\mathcal{E}_{2}/\mathcal{E}_{1} = \grade_{2}$.
+    Then consider $\mathcal{E}/\mathcal{E}_{2}$.
+    Repeating this process, note that in each step, the rank of bundle decreases, we end with our desired filtration.
+\end{proof}
+To study the length of Jordan-Holder filtrations, we first give a generalized result of Proposition \ref{Proposition 6.4}.
+\begin{proposition}
+    Let $\mathcal{E}$ and $\mathcal{F}$ be two stable vector bundles of same slope $\mu$.
+    If $f: \mathcal{E} \rightarrow \mathcal{F}$ is a nonzero map, then $f$ is an isomorphism.
+    \label{Proposition 7.8}
+\end{proposition}
+\begin{proof}
+    By construction of the diagram \ref{equation:commutative_diagram_factoring_through_map_of_maximal_rank}, we get
+    \begin{equation}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{E}' \arrow[r, hookrightarrow] &
+            \mathcal{E} \arrow[r, twoheadrightarrow] \arrow[d, "f"] &
+            \mathcal{E}'' \arrow[r] \arrow[d, hookrightarrow, "g"] &
+            0 \\
+            0 &
+            \mathcal{F}'' \arrow[l] &
+            \mathcal{F} \arrow[r, hookleftarrow] \arrow[l, twoheadrightarrow] &
+            \mathcal{F}' &
+            0 \arrow[l] 
+        \end{tikzcd}
+    \end{equation}
+    Since $\mathcal{E}$ is semistable, we have $\mu \le \mu(\mathcal{E}'')$.
+    On the other hand, since $\mathcal{F}$ is semistable, we also have $\mu \ge \mu(\mathcal{F}')$.
+    As $g$ is of maximal rank, $\deg \mathcal{E}'' \le \deg \mathcal{F}'$.
+    While $\rank \mathcal{E}'' = \rank \mathcal{F}'$, we get $\deg (\mathcal{E}^{\vee} \otimes \mathcal{F}') \ge \deg (\mathcal{E}^{\vee} \otimes \mathcal{E}'')$.
+    Thus we obtain
+    \begin{equation}
+        \mu \ge \mu(\mathcal{E}'') \ge \mu(\mathcal{F}') \ge \mu
+    \end{equation}
+    Hence all equalities hold.
+    This implies that $\mathcal{E} \cong \mathcal{E}''$ and $\mathcal{F}' \cong \mathcal{F}$.
+    Thus $\mathcal{E}$ is a subbundle of $\mathcal{F}$.
+    While they have same slope and $\mathcal{F}$ is stable, we get $f$ isomorphic.
+\end{proof}
+\begin{proposition}
+    Let $\mathcal{E}\in \mathscr{C}(\mu)$.
+    Then all Jordan-Holder filtrations of $\mathcal{E}$ are of same length $n$ and for every two filtrations
+    \begin{equation}
+        0 = \mathcal{E}_{0} \subset \mathcal{E}_{1} \subset \mathcal{E}_{2} \subset \cdots \subset \mathcal{E}_{n} = \mathcal{E}
+    \end{equation}
+    and
+    \begin{equation}
+        0 = \mathcal{E}_{0}' \subset \mathcal{E}_{1}' \subset \mathcal{E}_{2}' \subset \cdots \subset \mathcal{E}_{n}' = \mathcal{E}
+    \end{equation}
+    there is a permutaion $\sigma$ in $S_{n}$ such that $\grade_{i}' \cong \grade_{\sigma(i)}$.
+    \label{Proposition 7.9}
+\end{proposition}
+\begin{proof}
+    Induct on $\rank \mathcal{E}$.
+    When $\rank \mathcal{E} = 1$, it has no nontrivial subbundle so that the only Jordan-Holder filtration is $0 \subset \mathcal{E}$ of length $1$.
+    Assume the following filtration is given by process in Proposition \ref{Proposition 7.7}
+    \begin{equation}
+        0 = \mathcal{E}_{0} \subset \mathcal{E}_{1} \subset \mathcal{E}_{2} \subset \cdots \subset \mathcal{E}_{n} = \mathcal{E}
+    \end{equation}
+    and there is another Jordan-Holder filtration
+    \begin{equation}
+        0 = \mathcal{E}_{0}' \subset \mathcal{E}_{1}' \subset \mathcal{E}_{2}' \subset \cdots \subset \mathcal{E}_{m}' = \mathcal{E}
+    \end{equation}
+    Take $i_{1}$ minimal such that $\mathcal{E}_{1} \subseteq \mathcal{E}_{i_{1}}'$ while $\mathcal{E}_{1} \not\subset \mathcal{E}_{i_{1} - 1}$.
+    Then there is a nonzero map
+    \begin{equation}
+        \varphi: \mathcal{E}_{1} \hookrightarrow \mathcal{E}_{i_{1}}' \rightarrow \grade_{i_{1}}'
+    \end{equation}
+    Note that by definition, $\mathcal{E}_{1}$ and $\grade_{i_{1}}'$ are both stable,
+    then by Proposition \ref{Proposition 7.8}, $\varphi$ is isomorphic.
+    And there is an exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{E}_{i_{1} - 1}' \longrightarrow \mathcal{E}_{i_{1}}' \longrightarrow \mathcal{E}_{1} \longrightarrow 0
+    \end{equation}
+    where $\mathcal{E}_{i_{1}}' \rightarrow \mathcal{E}_{1}$ is the composition $\mathcal{E}_{i_{1}}' \twoheadrightarrow \grade_{i_{1}}' \overset{{\varphi'}^{-1}}{\rightarrow} \mathcal{E}_{1}$.
+    Thus $\mathcal{E}_{1} \hookrightarrow \mathcal{E}_{i_{1}}'$ is a section and hence the exact sequence splits.
+    Now we get isomorphism $\mathcal{E}_{i_{1}}' \cong \mathcal{E}_{i_{1} - 1}' \oplus \mathcal{E}_{1}$.
+    Consider $\mathcal{E}' = \mathcal{E}/\mathcal{E}_{1}$.
+    Clearly, the following filtration is still a Jordan-Holder filtration of $\mathcal{E}'$
+    \begin{equation}
+        0 \subset \mathcal{E}_{2}/\mathcal{E}_{1} \subset \mathcal{E}_{3}/\mathcal{E}_{1} \subset \cdots \subset \mathcal{E}'
+    \end{equation}
+    On the other hand, denote $\overline{\mathcal{E}}_{j} = \im (\mathcal{E}_{j}' \rightarrow \mathcal{E}')$.
+    Want to show the following filtration is also a Jordan-Holder filtration
+    \begin{equation}
+        0 = \overline{\mathcal{E}}_{0} \subset \overline{\mathcal{E}}_{1} \subset \overline{\mathcal{E}}_{2} \subset \cdots \subset \overline{\mathcal{E}}_{i_{1} - 1} = \overline{\mathcal{E}}_{i_{1}} \subset \cdots \subset \overline{\mathcal{E}}_{m} = \mathcal{E}'
+        \label{equation:JH_filtration}
+    \end{equation}
+    For all $i \ge i_{1} + 1$, it is clear that $\overline{\grade}_{i} \cong \grade_{i}'$ is stable.
+    And for all $i \le i_{1} - 1$, the filtration is in fact isomorphic to
+    \begin{equation}
+        0 = \mathcal{E}_{0}' \subset \mathcal{E}_{1}' \subset \mathcal{E}_{2}' \subset \cdots \subset \mathcal{E}_{i_{1} - 1}'
+    \end{equation}
+    Hence filtration \ref{equation:JH_filtration} is indeed a Jordan-Holder filtration.
+    By inductive hypothesis, we are done!
+\end{proof}
+Except Jordan-Holder filtration, there is also another filtration used to approximate general vector bundle with semistable bundles, called Harder-Narasimhan filtration.
+\begin{proposition}
+    Let $\mathcal{E}$ be a vector bundle of rank $r$ and deg $d$.
+    Then there is a filtration of subbundles
+    \begin{equation}
+        0 = \mathcal{E}_{0} \subset \mathcal{E}_{1} \subset \mathcal{E}_{2} \subset \cdots \subset \mathcal{E}_{n} = \mathcal{E}        
+    \end{equation}
+    where $\grade_{i} := \mathcal{E}_{i}/\mathcal{E}_{i - 1}$ semistable and 
+    \begin{equation}
+        \mu_{\max}(\mathcal{E}) := \mu(\grade_{1}) > \mu(\grade_{2}) > \cdots > \mu(\grade_{n}) =: \mu_{\min}(\mathcal{E})
+    \end{equation}
+    \vspace{-\baselineskip} % 减少一行间距
+    \label{Proposition 7.10}
+\end{proposition}
+\begin{proof}
+    If $\mathcal{E}$ is semistable, then $0 \subset \mathcal{E}$ is ok.
+    Otherwise, since for all subbundle $\mathcal{E}' \subset \mathcal{E}$,
+    we have that $\chi(\mathcal{E}') \le h^{0}(X, \mathcal{E}') \le h^{0}(X,\mathcal{E})$ is upper bounded.
+    Hence we can take $\mu := \max\{\mu(\mathcal{E}') \big{|} \mathcal{E}' \subset \mathcal{E} \text{ subbundle}\}$ and choose $\mathcal{E}_{1}$ maximal in thoes subbundles of slope $\mu$.
+    Then consider $\mathcal{E}/\mathcal{E}_{1}$.
+    Repeating this process, we end with our desired filtration.
+\end{proof}
+\begin{lemma}
+    Let $\mathcal{E}$ be a vector bundle of rank $r$ and deg $d$.
+    Given a Harder-Narasimhan filtration of $\mathcal{E}$
+    \begin{equation}
+        0 = \mathcal{E}_{0} \subset \mathcal{E}_{1} \subset \mathcal{E}_{2} \subset \cdots \subset \mathcal{E}_{n} = \mathcal{E}        
+    \end{equation}
+    Then for all $i$ and subbundle $\mathcal{F} \supsetneq \mathcal{E}_{i}$ of $\mathcal{E}$, we have $\mu(\mathcal{F}) < \mu(\mathcal{E}_{i})$.
+    \label{Lemma 7.17}
+\end{lemma}
+\begin{proof}
+    Induct on $i$.
+    Quotient by $\mathcal{E}_{i - 1}$, we get a Harder-Narasimhan filtration for $\mathcal{E}/\mathcal{E}_{i - 1}$
+    \begin{equation}
+        0 = \mathcal{E}_{i - 1}/\mathcal{E}_{i - 1} \subset \mathcal{E}_{i}/\mathcal{E}_{i - 1} \subset \mathcal{E}_{i + 1}/\mathcal{E}_{i - 1} \subset \cdots \subset \mathcal{E}/\mathcal{E}_{i - 1}
+    \end{equation}
+    If the inductive hypothesis holds, then we get $\mu(\mathcal{F}/\mathcal{E}_{i - 1}) < \mu(\mathcal{E}_{i}/\mathcal{E}_{i - 1})$.
+    Consider the commutative diagram with exact rows
+    \begin{equation}
+        \begin{tikzcd}
+            0 \arrow[r] &
+            \mathcal{E}_{i - 1} \arrow[r] \arrow[d, equal] &
+            \mathcal{E}_{i} \arrow[r, "\alpha"] \arrow[d, hookrightarrow] &
+            \grade_{i} \arrow[r] \arrow[d] &
+            0 \\
+            0 \arrow[r] &
+            \mathcal{E}_{i - 1} \arrow[r] &
+            \mathcal{F} \arrow[r, "\beta"] &
+            \mathcal{F}/\mathcal{E}_{i - 1} \arrow[r] &
+            0
+        \end{tikzcd}
+    \end{equation}
+    Compute the slopes, it is easy to see that $\mu(\mathcal{F}) < \mu(\mathcal{E}_{i})$.
+    Remains to prove the $i = 1$ case.
+    \par
+    When $i = 1$, assume $\mathcal{F} \subseteq \mathcal{E}_{j}$.
+    Take $j$ minimal.
+    Induct on $j$.
+    If $j = 2$, consider the exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{E}_{1} \longrightarrow \mathcal{F} \longrightarrow \mathcal{F}/\mathcal{E}_{1} \longrightarrow 0
+    \end{equation}
+    Then $\mathcal{F}/\mathcal{E}_{1}$ is a subbundle of $\grade_{2}$.
+    As $\grade_{2}$ is semistable and $\mu(\grade_{2}) < \mu(\mathcal{E}_{1})$, we get $\mu(\mathcal{F}) < \mu(\mathcal{E}_{1})$.
+    When $j > 2$, denote $\mathcal{K} := \mathcal{F} \cap \mathcal{E}_{j - 1}$ and consider the exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{K} \longrightarrow \mathcal{F} \longrightarrow \mathcal{F}/\mathcal{K} \longrightarrow 0
+    \end{equation}
+    By inductive hypothesis, $\mu(\mathcal{K}) < \mu(\mathcal{E}_{1})$.
+    Notice that $\mathcal{K} = \ker (\mathcal{F} \rightarrow \grade_{i})$ so that $\mathcal{K}$ is a subbundle of $\grade_{i}$.
+    As $\grade_{i}$ is semistable and $\mu(\grade_{i}) < \mu(\mathcal{E}_{1})$, we get $\mu(\mathcal{F}/\mathcal{K}) < \mu(\mathcal{E}_{1})$.
+    Conclude that $\mu(\mathcal{F}) < \mu(\mathcal{E}_{1})$.
+\end{proof}
+\begin{theorem}
+    The Harder-Narasimhan filtration is unique.
+    \label{Theorem 7.5}
+\end{theorem}
+\begin{proof}
+    Assume the following filtration is given by process in Proposition \ref{Proposition 7.10}
+    \begin{equation}
+        0 = \mathcal{E}_{0} \subset \mathcal{E}_{1} \subset \mathcal{E}_{2} \subset \cdots \subset \mathcal{E}_{n} = \mathcal{E}
+    \end{equation}
+    and there is another Harder-Narasimhan filtration
+    \begin{equation}
+        0 = \mathcal{E}_{0}' \subset \mathcal{E}_{1}' \subset \mathcal{E}_{2}' \subset \cdots \subset \mathcal{E}_{m}' = \mathcal{E}
+    \end{equation}
+    Suffices to check that $\mathcal{E}_{1} = \mathcal{E}_{1}'$.
+    Consider the following exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{E}_{1} \cap \mathcal{E}_{1}' \longrightarrow \mathcal{E}_{1} \oplus \mathcal{E}_{1}' \longrightarrow \mathcal{E}_{1} + \mathcal{E}_{1}' \longrightarrow 0
+        \label{equation:exact_sequence_for_HN_filtration}
+    \end{equation}
+    If $\mathcal{E}_{1}' \not\subset \mathcal{E}_{1}$, then by our choice of $\mathcal{E}_{1}$,
+    we get $\mu(\mathcal{E}_{1} + \mathcal{E}_{1}') < \mu(\mathcal{E}_{1})$.
+    In addition, by Lemma \ref{Lemma 6.2}, $\mathcal{E}_{1} \oplus \mathcal{E}_{1}'$ is semistable so that 
+    \begin{equation}
+        \mu(\mathcal{E}_{1} \oplus \mathcal{E}_{1}') \le \mu(\mathcal{E}_{1} + \mathcal{E}_{1}') < \mu(\mathcal{E}_{1})
+    \end{equation}    
+    Suppose $\mu(\mathcal{E}_{1}') \ge \mu(\mathcal{E}_{1})$, then $\mu(\mathcal{E}_{1} \oplus \mathcal{E}_{1}') \ge \mu(\mathcal{E}_{1})$, contradiction!
+    Hence $\mu(\mathcal{E}_{1}') < \mu(\mathcal{E}_{1})$ so that $\mu(\mathcal{E}_{1} \oplus \mathcal{E}_{1}) > \mu(\mathcal{E}_{1}')$.
+    \par
+    On the other hand, as $\mathcal{E}_{1}'$ is semistable,
+    we also get $\mu(\mathcal{E}_{1} \cap \mathcal{E}_{1}') \le \mu(\mathcal{E}_{1}')$.
+    Applying Lemma \ref{Lemma 7.17} to $\mathcal{E}_{1}'$ and $\mathcal{E}_{1} + \mathcal{E}_{1}'$, we get $\mu(\mathcal{E}_{1} + \mathcal{E}_{1}') \le \mu(\mathcal{E}_{1}')$.
+    Hence by exact sequence \ref{equation:exact_sequence_for_HN_filtration}, we see $\mu(\mathcal{E}_{1} \oplus \mathcal{E}_{1}') \le \mu(\mathcal{E}_{1}')$, contradiction!
+    \par
+    Now $\mathcal{E}_{1}' \subset \mathcal{E}_{1}$.
+    Again by Lemma \ref{Lemma 7.17}, we see that $\mu(\mathcal{E}_{1}) \le \mu(\mathcal{E}_{1}')$ and the equality holds if and only if $\mathcal{E}_{1} = \mathcal{E}_{2}'$.
+    While by our choice of $\mathcal{E}_{1}$, we have $\mu(\mathcal{E}_{1}) \ge \mu(\mathcal{E}_{1}')$, done!
+\end{proof}
 \end{document}
