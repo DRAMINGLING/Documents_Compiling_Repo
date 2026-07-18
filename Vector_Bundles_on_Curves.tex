@@ -113,6 +113,7 @@
 \newcommand{\module}{\mathbf{Mod}}
 \newcommand{\algebra}{\mathbf{Alg}}
 \newcommand{\scheme}{\mathbf{Sch}}
+\newcommand{\variety}{\mathbf{Var}}
 \newcommand{\vectorspace}{\mathbf{Vect}}
 \newcommand{\vectorbundle}{\underline{\mathbf{Vect}}}
 \newcommand{\coherent}{\mathbf{Coh}}
@@ -4869,7 +4870,7 @@ Here, we only study the Quot schemes and later use it to construct the moduli sp
     \begin{equation*}
         \quotfunctor^{P}(E, S) := \{\mathcal{G} = \mathcal{E}_{S}/\mathcal{F} \big{|} \mathcal{G} \text{ flat over } S \text{ and } \forall s\in S, \mathcal{G}\big{|}_{X \times s} \text{ has Hilbert polynomial } P\}
     \end{equation*}
-    Clearly, this gives a contravariant functor $\quotfunctor^{P}(E, \cdot)$ on the category of varieties.
+    Clearly, this gives a contravariant functor $\quotfunctor^{P}(E, \cdot)$ from $\variety$ to $\sets$.
 \end{definition}
 \begin{theorem}[\textbf{\emph{Grothendieck}}]
     This functor $\quotfunctor^{P}(E, \cdot)$ is representable by a projective variety $\quotscheme^{P}(E)$.
@@ -5086,7 +5087,7 @@ Thus $\coker \varphi_{m'} \cong q_{\ast}(\mathcal{G}(m'))$ for all $m' \ge v'$.
     \label{Lemma 7.11}
 \end{lemma}
 Hilbert polynomial of $\mathcal{G}\big{|}_{X \times S_{j}}$ is constant fiberwise, denoted by $Q_{j}$.
-In addition, we have $\varphi_{m}(s) \ge Q_{j}(m)$.
+In addition, we have $\varphi_{m}(s) \ge Q_{j}(m)$, where $\varphi_{m}(s)$ is map restricted to $s$.
 Set $U_{m} = \{s\in S \big{|} \dim (\coker \varphi_{m}(s)) \le P(m)\}$ and $\Sigma_{m} = \{s\in S_{m} \big{|} \dim (\coker \varphi_{m}(s)) = P(m)\}$.
 \begin{lemma}
     There exists $l \ge v$ such that for all $m \ge l$, $\Sigma = \bigcap_{v \le i \le m} \Sigma_{i}$ and $U_{\infty} := \bigcap_{i \ge v} U_{i}$ is an open subset of $S$.
@@ -5446,4 +5447,110 @@ Except Jordan-Holder filtration, there is also another filtration used to approx
     Again by Lemma \ref{Lemma 7.17}, we see that $\mu(\mathcal{E}_{1}) \le \mu(\mathcal{E}_{1}')$ and the equality holds if and only if $\mathcal{E}_{1} = \mathcal{E}_{2}'$.
     While by our choice of $\mathcal{E}_{1}$, we have $\mu(\mathcal{E}_{1}) \ge \mu(\mathcal{E}_{1}')$, done!
 \end{proof}
+
+\subsection{Moduli space of vector bundles}
+\label{subsection:Moduli_Space_of_Vector_Bundles_Moduli_space_of_vector_bundles}
+
+\begin{theorem}
+    Denote $M_{X}(r, d)$ the set of isomorphism classes of semistable vector bundles of rank $r$ and degree $d$ over $X$.
+    Then $M_{X}(r, d)$ is bounded.
+    \label{Theorem 7.6}
+\end{theorem}
+\begin{proof}
+    Denote $\mu := \frac{d}{r}$ the slope.
+    Assume $\mathcal{F}\in M_{X}(r, d)$.
+    Take integer $k$ with $\mu + k > 2g - 2$ and line bundle $\mathcal{L}$ of degree $d$.
+    Then $\mu(\mathcal{F} \otimes \mathcal{L}) = \frac{d + rk}{r} = \mu + k > 2g - 2$ and $\mu(\omega_{X}) = 2g - 2$.
+    By Proposition \ref{Proposition 6.3}, $\mathcal{F} \otimes \mathcal{L}$ is semistable.
+    In addition, since $\omega_{X}$ is a line bundle, it is also semistable.
+    Hence by Proposition \ref{Proposition 6.5}, we get $\hom(\mathcal{F} \otimes \mathcal{L}, \omega_{X}) = 0$.
+    \par
+    By Serre's duality, we get
+    \begin{equation}
+        \begin{split}
+            h^{1}(X, \mathcal{F} \otimes \mathcal{L}) & = h^{0}(X, (\mathcal{F} \otimes \mathcal{L})^{\vee} \otimes \omega_{X}) \\
+            & = h^{0}(X, \sheafhom(\mathcal{F} \otimes \mathcal{L}, \omega_{X})) \\
+            & = 0
+        \end{split}
+    \end{equation}
+    Choose integer $v > 2g - 1 - \mu$ and a closed point $x\in X$.
+    Then by above argument, for the vector bundle $\mathcal{F}(vx) = \mathcal{O}_{X} \otimes \mathcal{O}_{X}(vx)$, we have $H^{1}(X, \mathcal{F}(vx)) = 0$.
+    Want to show it is globally generated.
+    \par
+    In fact, for any closed point $y\in X$, we also $\deg \mathcal{O}_{X}(vx - y) = v - 1 > 2g - 2 - \mu$.
+    Then again by above argument, we see $H^{1}(X, \mathcal{F}(vx - y)) = 0$.
+    Consider the following exact sequence
+    \begin{equation}
+        0 \longrightarrow \mathcal{F}(vx - y) \longrightarrow \mathcal{F}(vx) \longrightarrow \mathcal{O}_{y} \otimes \mathcal{F}(vx) \longrightarrow 0
+    \end{equation}
+    Since $H^{1}(X, \mathcal{F}(vx - y)) = 0$, we get exact sequence
+    \begin{equation}
+        0 \longrightarrow \Gamma(X, \mathcal{F}(vx - y)) \longrightarrow \Gamma(X, \mathcal{F}(vx)) \longrightarrow \Gamma(X, \mathcal{O}_{y} \otimes \mathcal{F}(vx)) \longrightarrow 0
+    \end{equation}
+    Notethat $\Gamma(X, \mathcal{O}_{y} \otimes \mathcal{F}(vx)) = \mathcal{F}(vx)_{y}$,
+    by Proposition \ref{Proposition 4.7}, we get $\mathcal{F}(vx)$ is globally generated.
+    Put $N = h^{0}(\mathcal{F}(vx)) = \chi(\mathcal{F}(vx)) = d + rv + r(1 - g)$.
+    Let $H$ be an $N$-dimensional vector space over $\mathbb{C}$.
+    Then
+    \begin{equation}
+        H \overset{\sim}{\longrightarrow} H^{0}(X, \mathcal{F}(vx)) \leftrightsquigarrow H \otimes \mathcal{O}_{-vx} \twoheadrightarrow \mathcal{F}
+    \end{equation}
+    Denote $P$ to be the Hilbert polynomial of elements in $M_{X}(r, d)$.
+    Then the above quotient gives a point in $\quotfunctor^{P}(H \otimes \mathcal{O}_{X}(-vx), \mathbb{C})$.
+    Hence the family $M_{X}(r, d)$ is bounded.
+\end{proof}
+Choose $v$, $x$ and $H$ as above.
+Set $\mathcal{E} := H \otimes \mathcal{O}_{X}(-vx)$.
+Define subset of $\quotfunctor^{P}(\mathcal{E}, \mathbb{C})$ consisting of elements satisfying that
+\begin{itemize}
+    \item $\mathcal{F}$ is semistable vector bundle of rank $r$.
+    \item $H \overset{\sim}{\rightarrow} H^{0}(X, \mathcal{F}(vx))$.
+\end{itemize}
+Clearly, there is an $\speciallineargroup{}{H}$-action on $\Omega$.
+For all $a\in \speciallineargroup{}{H}$, $a$ induces isomorphism $\varphi_{a}: \mathcal{E} \rightarrow \mathcal{E}$.
+Then $\varphi_{a}$ on $\Omega$ sends $\mathcal{F}$ to
+\begin{equation}
+    \begin{tikzcd}
+        \mathcal{E} \arrow[r, twoheadrightarrow] \arrow[d, "\varphi_{a}"] &
+        \mathcal{F} \arrow[d, "\sim"] \\
+        \mathcal{E} \arrow[r, twoheadrightarrow] &
+        \mathcal{F}' 
+    \end{tikzcd}
+\end{equation} 
+More precisely, $\mathcal{F}'$ can be defined as quotient $\mathcal{E}/\varphi_{g}(\ker (\mathcal{E} \rightarrow \mathcal{F}))$.
+\begin{theorem}\
+    The natural map $\Omega/\speciallineargroup{}{H} \rightarrow M_{X}(r, d)$ sending $\mathcal{F}$ to $[\mathcal{F}]$ is bijective.
+    \label{Theorem 7.7}
+\end{theorem}
+\begin{proof}
+    The previous theorem has shown the map is surjective.
+    For injectivity, any isomorphism $\mathcal{F} \overset{\sim}{\rightarrow} \mathcal{F}'$ induces isomorphism between $H^{0}(X, \mathcal{F}(vx))$ and $H^{0}(X, \mathcal{F}'(vx))$ and hence an element in $\speciallineargroup{}{H}$.
+    It is clear to see this element gives commutative diagram compatible to original isomorphism.
+\end{proof}
+If abandon the semistable assumption and add some other constraints on the slope, we can define $M_{\alpha}(r, d)$ to be the set of isomorphism classes of vector bundles satisfying that
+\begin{itemize}
+    \item $\mathcal{F}$ is of rank $r$ and degree $d$.
+    \item For all $\mathcal{F}' \subset \mathcal{F}$, $\mu(\mathcal{F}') \le \mu + \alpha$.
+\end{itemize}
+\begin{theorem}
+    $M_{\alpha}(r, d)$ is a bounded family.
+    \label{Theorem 7.8}
+\end{theorem}
+\begin{remark}
+    The idea of proof is much similar to proof of Theorem \ref{Theorem 7.6}.
+    Suffice to find $v$ large enough such that for any line bundle of degree $v$, we get $H^{1}(X, \mathcal{F} \otimes \mathcal{L}) = 0$.
+    And then transition to Quot scheme.
+\end{remark}
+Finally, with help from GIT, we can prove the existence of coarse moduli space of the following functor
+\begin{equation}
+    \begin{split}
+        \mathcal{M}(r, d): \variety & \longrightarrow \sets \\
+        S & \longmapsto \mathcal{M}(r, d)(S)
+    \end{split}
+\end{equation}
+where
+\begin{equation*}
+    \mathcal{M}(r, d)(S) := \{\mathcal{F} \text{ vector bundle on } X \times S \text{ of rank $r$ and degree $d$} \big{|} \forall s\in S, \mathcal{F}\big{|}_{X \times s} \text{ semistable}\}
+\end{equation*}
+For detailed proof, refer to Chapter 6 and Chapter 7 of \emph{Lectures on Vector Bundles}, J.Le Potier.
 \end{document}
