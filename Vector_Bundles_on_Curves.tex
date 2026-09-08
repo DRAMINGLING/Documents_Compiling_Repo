@@ -136,6 +136,8 @@
 \newcommand{\lcm}{\operatorname{lcm}}
 
 \newcommand{\abs}[1]{\left| {#1} \right|}
+\newcommand{\gaussfunction}[1]{\left\lfloor {#1} \right\rfloor}
+\newcommand{\uppergaussfunction}[1]{\left\lceil {#1} \right\rceil}
 
 \title{Vector Bundles on Curves}
 \author{Taught by Jiabin Du}
@@ -4463,7 +4465,7 @@ Let we introduce some results to better describe derived pushforward.
     Let $X$ and $Y$ be algebraic varieties over field $k$, $\mathcal{F}$ coherent sheaf on $X$.
     Consider the projections $p: X \times Y \rightarrow X$ and $q: X \times Y \rightarrow Y$.
     Set $\mathcal{G} := p^{\ast}\mathcal{F}$.
-    Then for all $y\in Y$, there is a canonical isomorphism $\underset{U\ni y}{\colimit} \mathcal{G}(X \times U) \cong \mathcal{F}(X) \otimes_{k} \mathcal{O}_{Y, y}$.
+    Then for all $y\in Y$, there is a canonical isomorphism $\colimit{U\ni y} \mathcal{G}(X \times U) \cong \mathcal{F}(X) \otimes_{k} \mathcal{O}_{Y, y}$.
     \label{Lemma 7.2}
 \end{lemma}
 \begin{proof}
@@ -4473,9 +4475,9 @@ Let we introduce some results to better describe derived pushforward.
     Then $\mathcal{G}\big{|}_{V_{i} \times Y} = \widetilde{M_{i} \otimes_{k} B}$ so that
     \begin{equation}
         \begin{split}
-            \underset{U\ni y}{\colimit} \mathcal{G}(V_{i} \times U) & = \underset{U = D(b)\ni y}{\colimit} \mathcal{G}(V_{i} \times U) \\
-            & = \underset{U = D(b)\ni y}{\colimit} M_{i} \otimes_{k} B_{b} \\
-            & \cong M_{i} \otimes_{k} \underset{U = D(b)\ni y}{\colimit} B_{b} \\
+            \colimit{U\ni y} \mathcal{G}(V_{i} \times U) & = \colimit{U = D(b)\ni y} \mathcal{G}(V_{i} \times U) \\
+            & = \colimit{U = D(b)\ni y} M_{i} \otimes_{k} B_{b} \\
+            & \cong M_{i} \otimes_{k} \colimit{U = D(b)\ni y} B_{b} \\
             & = M_{i} \otimes_{k} \mathcal{O}_{Y, y}
         \end{split}
     \end{equation}
@@ -4486,14 +4488,14 @@ Let we introduce some results to better describe derived pushforward.
     \end{equation}
     As taking direct limit is exact, we get exact sequence
     \begin{equation}
-        0 \longrightarrow \underset{U\ni y}{\colimit} \mathcal{G}(X \times U) \longrightarrow \prod_{i} \underset{U\ni y}{\colimit} \mathcal{G}(V_{i} \times U) \longrightarrow \prod_{i, j} \underset{U\ni y}{\colimit} \mathcal{G}((V_{i} \cap V_{j}) \times U)
+        0 \longrightarrow \colimit{U\ni y} \mathcal{G}(X \times U) \longrightarrow \prod_{i} \colimit{U\ni y} \mathcal{G}(V_{i} \times U) \longrightarrow \prod_{i, j} \colimit{U\ni y} \mathcal{G}((V_{i} \cap V_{j}) \times U)
     \end{equation}
     On the other hand, since $\mathcal{O}_{Y, y}$ is flat over $k$, we have exact sequence
     \begin{equation}
         0 \longrightarrow \mathcal{F}(X) \otimes_{k} \mathcal{O}_{Y, y} \longrightarrow \prod_{i} \mathcal{F}(V_{i}) \otimes_{k} \mathcal{O}_{Y, y} \longrightarrow \prod_{i, j} \mathcal{F}(V_{i} \cap V_{j}) \otimes_{k} \mathcal{O}_{Y, y}
     \end{equation}
-    While by argument above, we already know $\underset{U\ni y}{\colimit} \mathcal{G}(V_{i} \times U) \cong \mathcal{F}(V_{i}) \otimes_{k} \mathcal{O}_{Y, y}$ and $\underset{U\ni y}{\colimit} \mathcal{G}((V_{i} \cap V_{j}) \times U) \cong \mathcal{F}(V_{i} \cap V_{j}) \otimes_{k} \mathcal{O}_{Y, y}$.
-    Conclude that $\underset{U\ni y}{\colimit} \mathcal{G}(X \times U) \cong \mathcal{F}(X) \otimes_{k} \mathcal{O}_{Y, y}$.
+    While by argument above, we already know $\colimit{U\ni y} \mathcal{G}(V_{i} \times U) \cong \mathcal{F}(V_{i}) \otimes_{k} \mathcal{O}_{Y, y}$ and $\colimit{U\ni y} \mathcal{G}((V_{i} \cap V_{j}) \times U) \cong \mathcal{F}(V_{i} \cap V_{j}) \otimes_{k} \mathcal{O}_{Y, y}$.
+    Conclude that $\colimit{U\ni y} \mathcal{G}(X \times U) \cong \mathcal{F}(X) \otimes_{k} \mathcal{O}_{Y, y}$.
 \end{proof}
 \begin{lemma}
     Let $f: X \hookrightarrow Y$ be a closed immersion between varieties, $\mathcal{F}$ coherent on $X$.
