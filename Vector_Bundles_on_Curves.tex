@@ -28,6 +28,7 @@
 \renewcommand{\contentsname}{Contents}
 \renewcommand{\refname}{References}
 \renewcommand{\hom}{\operatorname{Hom}}
+\renewcommand{\vector}[1]{\overset{\longrightarrow}{#1}}
 
 \newcommand{\leftquotes}{\textquotedblleft}
 \newcommand{\rightquotes}{\textquotedblright}
@@ -77,14 +78,15 @@
 \newcommand{\normalization}{\operatorname{nor}}
 \newcommand{\regular}{\operatorname{reg}}
 \newcommand{\smooth}{\operatorname{sm}}
+\newcommand{\unramification}{\operatorname{un}}
 \newcommand{\analytification}{\operatorname{an}}
 \newcommand{\saturation}{\operatorname{sat}}
 \newcommand{\semi}{\operatorname{semi}}
 \newcommand{\weak}{\operatorname{weak}}
 \newcommand{\perfection}{p^{-\infty}}
 
-\newcommand{\inverselimit}{\underset{\longleftarrow}{\lim}} 
-\newcommand{\colimit}{\underset{\longrightarrow}{\lim}}
+\newcommand{\inverselimit}[1]{\underset{#1}{\underset{\longleftarrow}{\lim}}}
+\newcommand{\colimit}[1]{\underset{#1}{\underset{\longrightarrow}{\lim}}}
 \newcommand{\derivedotimes}{\overset{\llcorner}{\otimes}}
 
 \newcommand{\grassmannianscheme}[2]{\operatorname{Gr}(#1, #2)}
@@ -131,6 +133,9 @@
 \newcommand{\coefficient}{\operatorname{coeff}}
 \newcommand{\multiplicity}{\operatorname{multi}}
 \newcommand{\grade}{\operatorname{gr}}
+\newcommand{\lcm}{\operatorname{lcm}}
+
+\newcommand{\abs}[1]{\left| {#1} \right|}
 
 \title{Vector Bundles on Curves}
 \author{Taught by Jiabin Du}
